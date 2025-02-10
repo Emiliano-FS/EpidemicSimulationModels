@@ -14,7 +14,6 @@ parser.add_argument("-d", "--distance", type=float, metavar='DISTANCE', default=
 parser.add_argument("-l", "--lookahead", type=float, metavar='LOOKAHEAD', default=0.1, help="min delay of mailboxes")
 parser.add_argument("-r", "--maxrounds", type= int, default= 10, help = "maximum number of times a message is retransmitted by nodes" )
 parser.add_argument("-f", "--fanout", type= int, default= 5,help = "number of nodes that are selected as gossip targets" )
-parser.add_argument("--seedR", type=int, metavar='SEED', default=10, help="seed for random")
 parser.add_argument("--useMPI", type=int, metavar='MPI', default=0, help="use mpi")
 parser.add_argument("--multipleSender", type=float, metavar='SENDER', default=0,help="multiple Senders for broadcast messages -> default 0-false")
 args = parser.parse_args()
@@ -97,8 +96,9 @@ class Node(simianEngine.Entity):
                 v2 = positions[self.node_idx][1]-positions[peer][1]
                 dist = math.sqrt(v1*v1 + v2*v2)
                 if peer!=self.node_idx and dist<args.distance:
-                    self.peers.append(peer)        
-        self.peers= random.shuffle(self.peers)[:fanout]
+                    self.peers.append(peer)     
+        random.shuffle(self.peers)
+        self.peers= self.peers[:fanout]
     
 
 for i in range(nodes):
@@ -114,7 +114,6 @@ for i in range(0, nodes):
 if args.msgs > 0:
     msgID = 1
     msgGap = round((endTime - 100) / args.msgs,2)
-    n  = Node()
 
     if args.multipleSender == 0:
         idx = random.randrange(len(available))
@@ -125,11 +124,8 @@ if args.msgs > 0:
             idx = random.randrange(len(available))
             n = available[idx]
 
-        simianEngine.schedService(lookahead + 50 + (i * msgGap), "Receive", ''+msgID+"-Paquete Num:"+i+"-0", "Node", n)
+        simianEngine.schedService(lookahead + 50 + (i * msgGap), "Receive", ''+str(msgID)+"-Paquete Num:"+str(i)+"-0", "Node", n)
         msgID+=1
-
-initial_node = random.randint(0, nodes - 1)
-simianEngine.schedService(1, "Receive", "GOSSIP", "Node", initial_node)
 
 simianEngine.run()
 simianEngine.exit()
