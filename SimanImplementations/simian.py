@@ -1346,9 +1346,9 @@ class Simian(object):
                 # self.size = self.MPI.size()
                 self.rank = MPI.COMM_WORLD.Get_rank()
                 self.size = MPI.COMM_WORLD.Get_size()
-                self.sndCounts = (MPI.LONG * self.size)()
+                self.sndCounts = [MPI.LONG] * self.size
                 for i in range(len(self.sndCounts)): self.sndCounts[i] = 0
-                self.rcvCounts = (MPI.LONG * self.size)()
+                self.rcvCounts = [MPI.LONG] * self.size
             except:
                 raise SimianError("Simian.__init__(): you have asserted useMPI - please ensure libmpich is available to ctypes before using Simian for MPI based simulations.\nTry passing absolute path to libmpich.[dylib/so/dll] to Simian.\nI tried to locate it at:\n\t" + mpiLibName + "\nand failed!")
         else:
