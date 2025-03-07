@@ -64,7 +64,7 @@ maxPassiveView = math.ceil(math.log(args.total_nodes,10) + c) * k
 aVShuffleSize = math.ceil(maxActiveView/2)
 pVShuffleSize = math.ceil(maxPassiveView/6)
 
-name = "TestsHPV/HyParView7-S" + str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-MGS'+str(args.msgs)+'-Update'+str(args.updateViews)+'-View'+str(args.c)+'-LOOKAHEAD'+str(args.lookahead)
+name = "HyParViewTests/HyParView7-S" + str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-MGS'+str(args.msgs)+'-Update'+str(args.updateViews)+'-View'+str(args.c)+'-LOOKAHEAD'+str(args.lookahead)
 
 simName, startTime, endTime, minDelay, useMPI, mpiLib = name, 0, args.endtime, 0.00001, uMPI, "/usr/lib/x86_64-linux-gnu/libmpich.so"
 simianEngine = Simian(simName, startTime, endTime, minDelay, useMPI)
