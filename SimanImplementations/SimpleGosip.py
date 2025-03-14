@@ -36,100 +36,24 @@ simianEngine = Simian(simName, startTime, endTime, minDelay, uMPI)
 
 # Init grid
 positions = []
-# Place nodes in grids
-for x in range(int(math.sqrt(nodes))):
-    for y in range(int(math.sqrt(nodes))):
-        px = 50 + x*60 + random.uniform(-20,20)
-        py = 50 + y*60 + random.uniform(-20,20)
-        positions.append((px,py))
+# Calculate the grid size
+grid_size = math.ceil(math.sqrt(nodes))
+spacing = 15
+
+# Place nodes in the grid
+for i in range(nodes):
+    x = i % grid_size
+    y = i // grid_size
+    px = 50 + x * spacing + random.uniform(-20, 20)
+    py = 50 + y * spacing + random.uniform(-20, 20)
+    positions.append((px, py))
+
 
 class msg2:
     def __init__(self, mID, m, round):
         self.ID = int(mID)
         self.payload = m
         self.round = int(round)
-
-class Node(simianEngine.Entity):
-    def __init__(self, baseInfo, *args):
-        super(Node, self).__init__(baseInfo)
-        self.node_idx = args[0]
-        self.total_nodes = args[1]
-        self.peers = []
-        self.receivedMsgs = {}
-        self.report = {}
-        self.active = True
-        self.GetPeers()
-        self.reqService(endTime - 1, "TriggerSystemReport", "none")
-
-    def Receive(self, *args):
-        if not self.active:
-            return
-        
-        m = args[0]
-        m2 = m.split("-")
-        msg = msg2(m2[0], m2[1], m2[2])
-        if msg.ID not in self.report.keys():
-            self.report[msg.ID] = 1
-        else:
-            self.report[msg.ID] += 1   
-
-        if msg.ID not in self.receivedMsgs.keys() and msg.round < maxrounds:
-            self.receivedMsgs[msg.ID] = msg
-            #print(f"Node {self.node_idx} received message {msg.payload} at time {self.engine.now}")
-            self.Gossip(msg)
-
-    def Gossip(self, msg):
-        msg.round += 1
-        for peer in self.peers:
-            self.reqService(lookahead, "Receive", f'{msg.ID}-{self.receivedMsgs[msg.ID]}-{msg.round}', "Node", peer)
-        self.GetPeers()
-
-    def GetPeers(self):
-        lsize = int(math.sqrt(args.total_nodes))
-        idx = self.node_idx
-        xp = idx // lsize
-        yp = idx % lsize
-
-        rxmin = xp - 2
-        rxmax = xp + 2
-        rymin = yp - 2
-        rymax = yp + 2
-
-        if rxmin < 0:
-            rxmin = 0
-        if rxmax > lsize:
-            rxmax = lsize
-        if rymin < 0:
-            rymin = 0
-        if rymax > lsize:
-            rymax = lsize
-
-        for x in range(rxmin, rxmax):
-            for y in range(rymin, rymax):
-                peer = (x * lsize) + y
-                v1 = positions[self.node_idx][0] - positions[peer][0]
-                v2 = positions[self.node_idx][1] - positions[peer][1]
-                dist = math.sqrt(v1 * v1 + v2 * v2)
-                if peer != self.node_idx and dist < args.distance:
-                    self.peers.append(peer)
-        random.shuffle(self.peers)
-        self.peers = self.peers[:fanout]
-
-    def nodeFail(self, *args):
-        if self.active:
-            self.active = False
-        else:
-            self.active = True
-
-    def TriggerSystemReport(self, *args):
-        if self.active:
-            report = []
-            degree = len(self.peers)
-            for m in self.receivedMsgs.keys():
-                report.append((m, self.receivedMsgs[m].round, self.report[m]))
-
-            msgToSend = msgReport('reply', report, degree)
-            self.reqService(lookahead, "SystemReport", msgToSend, "ReportNode", 0)
 
 class msgReport:
     def __init__(self, type, msgs, degree):
@@ -221,12 +145,99 @@ class ReportNode(simianEngine.Entity):
             self.out.write(f"AVERAGE--Reliability: {avRel} %    Nodes: {avNodes}    Latency: {avLat}   RMR: {avRmr}        Gossip: {avGossip} \n")
         self.out.write(f"Degree: {degree}  min: {self.minDegree}    max: {self.maxDegree}    shortest path: {self.shortestPath}\n")
 
+class Node(simianEngine.Entity):
+    def __init__(self, baseInfo, *args):
+        super(Node, self).__init__(baseInfo)
+        self.node_idx = args[0]
+        self.total_nodes = args[1]
+        self.peers = []
+        self.receivedMsgs = {}
+        self.report = {}
+        self.active = True
+        self.GetPeers()
+        self.reqService(endTime - 1, "TriggerSystemReport", "none")
+
+    def Receive(self, *args):
+        if not self.active:
+            print("Error")
+            return
+        m = args[0]
+        m2 = m.split("-")
+        msg = msg2(m2[0], m2[1], m2[2])
+        if msg.ID not in self.report.keys():
+            self.report[msg.ID] = 1
+        else:
+            self.report[msg.ID] += 1   
+
+        if msg.ID not in self.receivedMsgs.keys() and msg.round < maxrounds:
+            self.receivedMsgs[msg.ID] = msg
+            self.Gossip(msg)
+
+    def Gossip(self, msg):
+        msg.round += 1
+        for peer in self.peers:
+            self.reqService(lookahead, "Receive", f'{msg.ID}-{self.receivedMsgs[msg.ID]}-{msg.round}', "Node", peer)
+        self.GetPeers()
+
+    def GetPeers(self):
+        lsize = int(math.sqrt(args.total_nodes))
+        idx = self.node_idx
+        xp = idx // lsize
+        yp = idx % lsize
+
+        rxmin = xp - 2
+        rxmax = xp + 2
+        rymin = yp - 2
+        rymax = yp + 2
+
+        if rxmin < 0:
+            rxmin = 0
+        if rxmax > lsize:
+            rxmax = lsize
+        if rymin < 0:
+            rymin = 0
+        if rymax > lsize:
+            rymax = lsize
+        
+        
+        for x in range(rxmin, rxmax):
+            for y in range(rymin, rymax):
+                peer = (x * lsize) + y
+                v1 = positions[self.node_idx][0] - positions[peer][0]
+                v2 = positions[self.node_idx][1] - positions[peer][1]
+                dist = math.sqrt(v1 * v1 + v2 * v2)
+                if peer != self.node_idx and dist < args.distance:
+                    self.peers.append(peer)
+        random.shuffle(self.peers)
+        
+        self.peers = self.peers[0:fanout]
+        
+
+    def nodeFail(self, *args):
+        if self.active:
+            self.active = False
+        else:
+            self.active = True
+
+    def TriggerSystemReport(self, *args):
+        if self.active:
+            report = []
+            degree = len(self.peers)
+            for m in self.receivedMsgs.keys():
+                report.append((m, self.receivedMsgs[m].round, self.report[m]))
+
+            msgToSend = msgReport('reply', report, degree)
+            self.reqService(lookahead, "SystemReport", msgToSend, "ReportNode", 0)
+
+
+
 for i in range(nodes):
     simianEngine.addEntity("Node", Node, i, i, nodes)
 
 simianEngine.addEntity("ReportNode", ReportNode, 0, 0)
 
 available = []
+
 failsList = []
 fails = int(nodes * args.failRate)
 

@@ -1341,6 +1341,7 @@ class Simian(object):
                 global MPI
                 from mpi4py import MPI
                 self.useMPI = True
+                self.MPI = MPI
                 #self.MPI = MPI(mpiLibName)
                 # self.rank = self.MPI.rank()
                 # self.size = self.MPI.size()
@@ -1415,7 +1416,7 @@ class Simian(object):
                 #toRcvCount = self.MPI.alltoallSum()
                 toRcvCount = 0
                 #ret = MPI.COMM_WORLD.alltoall([adict.get(i, None) for i in range(self.size)])
-                MPI.COMM_WORLD.alltoall(self.sndCounts,self.rcvCounts)
+                MPI.COMM_WORLD.alltoall(self.sndCounts)
                 for i in range(self.size):
                     toRcvCount = toRcvCount + self.rcvCounts[i]
                     self.sndCounts[i] = 0
