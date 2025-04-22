@@ -244,6 +244,7 @@ class Node(simianEngine.Entity):
         #self.GetPeers()
         delay = 10 / self.total_nodes
         delay2 = delay * self.node_idx
+      
         if self.node_idx != 0:
             contactNode = 0 #random.randrange(i)
             msg = msgHPV('JOIN',0,0,self.node_idx)

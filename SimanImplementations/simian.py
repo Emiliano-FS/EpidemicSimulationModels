@@ -286,7 +286,7 @@ class Entity(object):
             self.engine.ec += 1
             heapq.heappush(engine.eventQueue, (time, self.engine.ec, e))
         else:
-            engine.MPI.sendAndCount(e, recvRank)
+            MPI.COMM_WORLD.send(e, dest=recvRank)
 
     def attachService(self, name, fun):
         #Attaches a service at runtime to instance
@@ -1347,9 +1347,9 @@ class Simian(object):
                 # self.size = self.MPI.size()
                 self.rank = MPI.COMM_WORLD.Get_rank()
                 self.size = MPI.COMM_WORLD.Get_size()
-                self.sndCounts = [MPI.LONG] * self.size
+                self.sndCounts = [0] * self.size
                 for i in range(len(self.sndCounts)): self.sndCounts[i] = 0
-                self.rcvCounts = [MPI.LONG] * self.size
+                self.rcvCounts = [0] * self.size
             except:
                 raise SimianError("Simian.__init__(): you have asserted useMPI - please ensure libmpich is available to ctypes before using Simian for MPI based simulations.\nTry passing absolute path to libmpich.[dylib/so/dll] to Simian.\nI tried to locate it at:\n\t" + mpiLibName + "\nand failed!")
         else:

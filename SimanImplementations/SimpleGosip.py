@@ -71,9 +71,11 @@ class ReportNode(simianEngine.Entity):
         self.maxDegree = 0
         self.minDegree = 1000
         self.shortestPath = 0
-        self.reqService(endTime, "PrintSystemReport", "none")
+        
+        self.reqService(endTime , "PrintSystemReport", "none")
 
     def SystemReport(self, *args):
+        
         msg = args[0]
         if msg.degree > self.maxDegree:
             self.maxDegree = msg.degree
@@ -95,6 +97,7 @@ class ReportNode(simianEngine.Entity):
             
 
     def PrintSystemReport(self, *args):
+       
         degree = round(self.degree / (nodes * (1 - failRate)), 2)
         avRel = 0
         avNodes = 0
@@ -105,6 +108,7 @@ class ReportNode(simianEngine.Entity):
         avRel10 = 0
         count = 0
 
+        #print(self.reliability.keys())
         for id in sorted(self.reliability.keys()):
             r = self.reliability[id]
             reliability = round(r / (nodes * (1 - failRate)) * 100, 3)
@@ -158,12 +162,14 @@ class Node(simianEngine.Entity):
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
 
     def Receive(self, *args):
+        
         if not self.active:
-            print("Error")
+            #print("Error")
             return
         m = args[0]
         m2 = m.split("-")
         msg = msg2(m2[0], m2[1], m2[2])
+        #print(f"Received message at Node {self.node_idx}: {msg.payload}")
         if msg.ID not in self.report.keys():
             self.report[msg.ID] = 1
         else:
@@ -176,7 +182,7 @@ class Node(simianEngine.Entity):
     def Gossip(self, msg):
         msg.round += 1
         for peer in self.peers:
-            self.reqService(lookahead, "Receive", f'{msg.ID}-{self.receivedMsgs[msg.ID]}-{msg.round}', "Node", peer)
+            self.reqService(lookahead, "Receive", f'{msg.ID}-{self.receivedMsgs[msg.ID].payload}-{msg.round}', "Node", peer)
         self.GetPeers()
 
     def GetPeers(self):
@@ -255,7 +261,6 @@ if args.failRate <= 1:
 if args.msgs > 0:
     msgID = 1
     msgGap = round((endTime - 100) / args.msgs, 2)
-
     if args.multipleSender == 0:
         idx = random.randrange(len(available))
         n = available[idx]
@@ -265,7 +270,10 @@ if args.msgs > 0:
             idx = random.randrange(len(available))
             n = available[idx]
 
+        #print(f"Scheduling event at time {lookahead + 50 + (i * msgGap)}: Receive, Data: {f'{msgID}-Paquete Num:{i}-0'}, Handler: Node, Entity ID: {n}")
         simianEngine.schedService(lookahead + 50 + (i * msgGap), "Receive", f'{msgID}-Paquete Num:{i}-0', "Node", n)
+        #print("I Scheduled " f'{msgID}-Paquete Num:{i}-0')
+        #print(lookahead + 50 + (i * msgGap))
         msgID += 1
 
 simianEngine.run()
