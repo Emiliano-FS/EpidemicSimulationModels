@@ -174,7 +174,7 @@ class ReportNode(simianEngine.Entity):
                 rmr = 0
             else:
             	rmr = round((self.redundancy[id][0] / (r - 1)) - 1,3)
-
+            
             avRel += reliability
             avNodes += r
             avLat += lat

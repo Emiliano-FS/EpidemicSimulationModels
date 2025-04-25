@@ -49,7 +49,7 @@ stabilizationTime = 49 #args.endtime
 
 # DIMPLE variables
 shuffleSize = math.floor(math.log(nodes,10))
-maxPartialView = math.floor(math.log(nodes,10)) * 2 
+maxPartialView = math.floor(math.log(nodes,2)) + shuffleSize
 dimpleTimer = 2.5
 
 name = "DIMPLETests/"+"PlumTree + DIMPLE" + str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-MGS'+str(args.msgs)+'-LOOKAHEAD'+str(args.lookahead)
@@ -82,8 +82,13 @@ class partialViewEntry:
         self.node_idx = node_idx
         self.age = age
         self.visited = visited
-    def toString(self):
-        return '%s-%d'%(self.node_idx,self.age)
+
+    def __str__(self):
+        return f"partialViewEntry(node_idx={self.node_idx}, age={self.age}, visited={self.visited})"
+
+    # Optional: for better printing in lists or debugging
+    def __repr__(self):
+        return self.__str__()
     
 class msgReport:
     def __init__(self, type, msgs, degree):
@@ -216,14 +221,12 @@ class Node(simianEngine.Entity):
             for peer_id in peer_ids:
                 visited_list = [peer_id, self.node_idx]  # Simulate movement between them
                 self.partial_view.append(partialViewEntry(peer_id, 0, visited_list))    
-                self.reqService(delay2 + 1, "DimpleShuffle", "none")  
+                self.reqService(lookahead * 5 + delay2, "DimpleShuffle", "none")  
         else:
             contactNode = 0 
             msg = msgDimple('JOIN',[],self.node_idx)
-            self.reqService(lookahead + delay2 , "Dimple", msg, "Node", contactNode)
-            self.reqService(lookahead + delay2 + 1, "DimpleShuffle", "none")
-
-        
+            self.reqService( lookahead + delay2  , "Dimple", msg, "Node", contactNode)  
+             
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
 
 
@@ -418,155 +421,169 @@ class Node(simianEngine.Entity):
         msg = args[0]
         if self.active:
             if msg.type == 'VIEW_EXCHANGE_REQUEST':
-                selected_peers =  random.sample(self.partial_view, min(len(self.partial_view), shuffleSize))
-                self.ExchangeProcedure(msg.payload, selected_peers)
-                dimpleMsg = msgDimple('VIEW_EXCHANGE_RESPONSE', [selected_peers, msg.payload], self.node_idx)
-                self.reqService(lookahead, "Dimple", dimpleMsg , "Node", msg.sender)
+                # Q receives P's subset, replies with its own
+                own_subset = random.sample(self.partial_view, min(shuffleSize, len(self.partial_view)))
+                self.ExchangeProcedure(msg.payload, own_subset)
+                reply = msgDimple("VIEW_EXCHANGE_RESPONSE", [own_subset, msg.payload], self.node_idx)
+                self.reqService(lookahead, "Dimple", reply, "Node", msg.sender)
                 
             elif msg.type == 'VIEW_EXCHANGE_RESPONSE':
                 self.timerDimple.remove(msg.sender)
-                self.ExchangeProcedure(msg.payload[0], msg.payload[1])
-                #print("VIEW EXCHANGE FOR" + str(self.node_idx)+ " IS DONE")
+                received_subset, sent_subset = msg.payload
+                self.ExchangeProcedure(received_subset, sent_subset)
 
             elif msg.type == 'REINFORCEMENT':
                 if len(self.partial_view) > 0:
-                    node_toreinforce = msg.payload[1]
-                    if msg.payload[0] == False:
-                        node_toreinforce = max(self.partial_view, key=lambda x: x.age)
-                    #print("STARTED REINFORCEMENT FOR " + str(self.node_idx)+ " WITH " + str(node_toreinforce.node_idx))
+                    node_toreinforce = max(self.partial_view, key=lambda x: x.age)
                     self.timerDimple.append(node_toreinforce.node_idx)
                     self.reqService(dimpleTimer, "TimerDimple", node_toreinforce.node_idx)
-                    dimpleMsg = msgDimple('REINFORCEMENT_INITIATE',partialViewEntry(self.node_idx,0,[node_toreinforce.node_idx]) , self.node_idx)
+                    dimpleMsg = msgDimple('REINFORCEMENT_INITIATE',self.node_idx, self.node_idx)
                     self.reqService(lookahead, "Dimple", dimpleMsg , "Node", node_toreinforce.node_idx)
 
             elif msg.type == 'REINFORCEMENT_INITIATE':
                 response = self.ReinforcementInitiateProcedure(msg.payload)
-                #print("I " + str(self.node_idx) + " WILL RESPOND TO YOU "+ str(msg.sender) +  " WITH THIS " + str(response))
                 dimpleMsg = msgDimple('REINFORCEMENT_RESPONSE',[response, msg.payload] , self.node_idx)
                 self.reqService(lookahead, "Dimple", dimpleMsg , "Node", msg.sender)
                 
             elif msg.type == 'REINFORCEMENT_RESPONSE':
+                response_entry, entry_to_replace = msg.payload
                 self.timerDimple.remove(msg.sender)
-                self.ReinforcementResponseProcedure(msg.payload[0],msg.payload[1])
-                #print("FINISHED REINFORCEMENT FOR " + str(self.node_idx)+ " WITH " + str(msg.sender))
-                #print("THIS IS WHAT IHAVE AFTER THE REINFORCEMENT " + str(self.partial_view))
+                self.ReinforcementResponseProcedure(response_entry,entry_to_replace)
 
             elif msg.type == 'JOIN':
-                #print("STARTED JOIN FOR " + str(msg.sender) + " WITH " + str(self.node_idx))
-                # On Q (introducer)
-                join_candidates = []
+                # JOIN Request → Q returns local view built from visited[-2] or fallback
+                local_view = []
                 for entry in self.partial_view:
-                    if len(entry.visited) >= 2 and entry.visited[-1] == self.node_idx:
-                        join_candidates.append(entry.visited[-2])
+                    if len(entry.visited) >= 2:
+                        local_view.append(entry.visited[-2])
+                    else:
+                        local_view.append(entry.node_idx)
                 
                 # Send join_candidates to P
-                dimpleMsg = msgDimple('JOIN_RESPONSE', join_candidates, self.node_idx)    
-                self.reqService(lookahead, "Dimple", dimpleMsg , "Node", msg.sender)
+                response = msgDimple("JOIN_RESPONSE", local_view, self.node_idx)
+                self.reqService(lookahead, "Dimple", response, "Node", msg.sender)
                 
             elif msg.type == 'JOIN_RESPONSE':
-                #print("RECEIVING JOIN CANDIDATES FOR"+ str(self.node_idx))
-                join_candidates = msg.payload
-                for node in join_candidates:
-                    dimpleMsg = msgDimple('REINFORCEMENT', [True,partialViewEntry(node,0,0)], self.node_idx)
-                    self.reqService(lookahead, "Dimple", dimpleMsg , "Node", self.node_idx)
-                for node in join_candidates:
-                    if node != self.node_idx:
-                        self.partial_view.append(partialViewEntry(node, 0, [node, self.node_idx]))
-                self.UpdatePlumTreePeers()
-                #print("FINISHED JOIN FOR " + str(self.node_idx))  
-                #print("THIS IS WHAT IHAVE AFTER THE JOIN " + str(self.partial_view))
-    
+                # Node P gets view, performs reinforcements
+                candidates = msg.payload
+                random.shuffle(candidates)
+
+                #for candidate in candidates: 
+                #    if candidate != self.node_idx:
+                #        self.partial_view.append(partialViewEntry(candidate, 0, [self.node_idx]))
+          
+                for peer_id in candidates:
+                    if peer_id != self.node_idx:
+                        self.timerDimple.append(peer_id)
+                        self.reqService(dimpleTimer, "TimerDimple", peer_id)
+                        reinforce_msg = msgDimple("REINFORCEMENT_INITIATE", self.node_idx,self.node_idx)
+                        self.reqService(lookahead, "Dimple", reinforce_msg, "Node", peer_id)
+
+                delay = lookahead * (len(candidates) + 2)
+                self.reqService(delay, "DimpleShuffle", "none") 
+                
     
     def DimpleShuffle(self, *args):
-        if self.active and len(self.partial_view) > 0:
-            for entry in self.partial_view:
-                entry.age += 1
-            oldest_entry = max(self.partial_view, key=lambda x: x.age)
-            eligible_entries = [x for x in self.partial_view if x != oldest_entry]
-            selected_peers = random.sample(eligible_entries, min(len(eligible_entries), shuffleSize - 1))
-            selected_peers.append(partialViewEntry(self.node_idx,0,[self.node_idx]))
-            dimpleMsg = msgDimple('VIEW_EXCHANGE_REQUEST', selected_peers, self.node_idx)  
-            self.timerDimple.append(oldest_entry.node_idx)
-            self.reqService(dimpleTimer, "TimerDimple", oldest_entry.node_idx)
-            self.reqService(lookahead, "Dimple", dimpleMsg , "Node", oldest_entry.node_idx)
-            #print("STARTED VIEW EXCHANGE FOR " + str(self.node_idx))
-            reinforceMsg = msgDimple('REINFORCEMENT', [False,partialViewEntry(0,0,0)] , self.node_idx)
-            for i in range(shuffleSize):
-                self.reqService(lookahead, "Dimple", reinforceMsg , "Node", self.node_idx)
-            self.reqService(5, "DimpleShuffle", "none")    
-
-    def ReinforcementInitiateProcedure(self, received_entry):
-
-        if received_entry.node_idx == self.node_idx:
-            return random.sample([entry for entry in self.partial_view if entry.node_idx != self.node_idx],1)[0]
-
-        for e in self.partial_view:
-            if received_entry.node_idx == e.node_idx:
-                return random.sample([entry for entry in self.partial_view if entry.node_idx != self.node_idx],1)[0]
-
-        # Step 1: Fill empty slots in partial_view
-        if len(self.partial_view) < maxPartialView:
-            self.partial_view.append(received_entry)
-            self.UpdatePlumTreePeers()
-            return "NULL"
-
-        # Step 2: Replace entries that were sent to Q (i.e., not updated)
-        node_placement = random.randrange(len(self.partial_view)) 
-        nodeto_replace = self.partial_view[node_placement]
-        self.partial_view[node_placement] = received_entry
-        self.UpdatePlumTreePeers()
-
-        return nodeto_replace
-    
-    def ReinforcementResponseProcedure(self, received_entry, entry_toupdate):
-
-        if received_entry == "NULL":
+        if not self.active or len(self.partial_view) <= 0:
+            self.reqService(25, "DimpleShuffle", "none")  # Reschedule anyway
             return
 
-        if received_entry.node_idx == self.node_idx:
-            return 
+        # Age all entries
+        for entry in self.partial_view:
+            entry.age += 1
 
-        for e in self.partial_view:
-            if received_entry.node_idx == e.node_idx:
-                return 
+        # Select the oldest entry as the target Q
+        oldest_entry = max(self.partial_view, key=lambda e: e.age)
 
-        # Step 2: Replace entries that were sent to Q (i.e., not updated)
-        for i, e in enumerate(self.partial_view):
-            if entry_toupdate.node_idx == e.node_idx:
-                self.partial_view[i] = received_entry
-        self.UpdatePlumTreePeers()       
+        # Select l-1 random peers + self
+        eligible = [e for e in self.partial_view if e.node_idx != oldest_entry.node_idx]
+        subset = random.sample(eligible, min(shuffleSize - 1, len(eligible)))
+        subset.append(partialViewEntry(self.node_idx, 0, [self.node_idx]))
+
+        # Set timeout
+        self.timerDimple.append(oldest_entry.node_idx)
+        self.reqService(dimpleTimer, "TimerDimple", oldest_entry.node_idx)
+
+        # Send VIEW_EXCHANGE_REQUEST to Q
+        msg = msgDimple("VIEW_EXCHANGE_REQUEST", subset, self.node_idx)
+        self.reqService(lookahead, "Dimple", msg, "Node", oldest_entry.node_idx)
+        
+        # Repeat Reinforcement l times in parallel.
+        for i in range(shuffleSize):
+            msg = msgDimple("REINFORCEMENT", None , self.node_idx)
+            self.reqService(lookahead, "Dimple", msg, "Node", self.node_idx)
+
+        # Reschedule next shuffle
+        self.reqService(25, "DimpleShuffle", "none")
 
 
-    def ExchangeProcedure(self, received_subset,subset_toupdate):
-        new_entries = []
+    def ReinforcementInitiateProcedure(self, received_entry_id):
+        if received_entry_id == self.node_idx:
+            return None  # Don't reinforce with self
 
-        # Filter received entries (skip self and duplicates)
-        for entry in received_subset:
-            if entry.node_idx == self.node_idx:
-                continue
-            if all(entry.node_idx != e.node_idx for e in self.partial_view):
-                new_entries.append(entry)
+        existing_ids = {entry.node_idx for entry in self.partial_view}
 
-        # Step 1: Fill empty slots in partial_view
-        while len(self.partial_view) < maxPartialView and new_entries:
-            new_entry = new_entries.pop(0)
-            new_entry.visited.append(self.node_idx)
+        # If already present, ignore
+        if received_entry_id in existing_ids:
+            return None
+
+        # If space available, add directly
+        if len(self.partial_view) < maxPartialView:
+            new_entry = partialViewEntry(received_entry_id, 0, [received_entry_id, self.node_idx])
             self.partial_view.append(new_entry)
+            self.UpdatePlumTreePeers()
+            return None  # No eviction needed
 
-        # Step 2: Replace entries that were sent to Q (i.e., not updated)
-        for i, e in enumerate(self.partial_view):
-            if any(entry.node_idx == e.node_idx for entry in subset_toupdate) and new_entries:
-                new_entry = new_entries.pop(0)
-                new_entry.visited.append(self.node_idx)
-                self.partial_view[i] = new_entry
+        # Replace a random entry
+        to_replace = random.randrange(len(self.partial_view))
+        evicted_entry = self.partial_view[to_replace]
+        self.partial_view[to_replace] = partialViewEntry(received_entry_id, 0, [received_entry_id, self.node_idx])
+        self.UpdatePlumTreePeers()
+        return evicted_entry  # Send this back to P
+    
+    def ReinforcementResponseProcedure(self, response_entry, entry_to_replace_id):
+        if response_entry is None:
+            return  # Nothing to update
+        
+        # If P receives a valid response, P adds the node information to an empty slot if there is one
+        if len(self.partial_view) < maxPartialView:
+            self.partial_view.append(response_entry)
+            self.UpdatePlumTreePeers()
+            return
+
+        # Or replaces the entry of Q with the received information of another node.
+        for i, entry in enumerate(self.partial_view):
+            if entry.node_idx == entry_to_replace_id:
+                self.partial_view[i] = response_entry
+                self.UpdatePlumTreePeers()
+
+
+    def ExchangeProcedure(self, received_subset, sent_subset):
+        # Helper: get all node IDs in the current view for fast lookup
+        current_ids = {entry.node_idx for entry in self.partial_view}
+
+        for received_entry in received_subset:
+            # Ignore if it's self or already in view
+            if received_entry.node_idx == self.node_idx or received_entry.node_idx in current_ids:
+                continue
+
+            # Fill empty slots in partial_view
+            if len(self.partial_view) < maxPartialView:
+                received_entry.visited.append(self.node_idx)
+                self.partial_view.append(received_entry)
+                break
+
+            # Replace entries that were sent to Q (i.e., not updated)
+            for i, e in enumerate(self.partial_view):    
+                if any(entry.node_idx == e.node_idx for entry in sent_subset):
+                    received_entry.visited.append(self.node_idx)
+                    self.partial_view[i] = received_entry
+            
         self.UpdatePlumTreePeers()
 
-    def NodeFailure(self,node_id): 
-        for entry in self.partial_view:
-            if entry.node_idx == node_id:
-                #print("Node Failuere detected For" + str(entry.node_idx))
-                self.partial_view.remove(entry)
-                self.NeighborDown(entry.node_idx)
+    def NodeFailure(self, node_id):
+        self.partial_view = [entry for entry in self.partial_view if entry.node_idx != node_id]
+        self.NeighborDown(node_id)
         
     def TimerDimple(self, *args):
         dest = args[0]
@@ -583,8 +600,8 @@ class Node(simianEngine.Entity):
         # Retain lazy peers only if they still exist in partial_view
         self.lazyPushPeers = [peer for peer in self.lazyPushPeers if peer in current_peers]
 
- #--------------------------------------- TRIGGERS ---------------------------------------------------
-           
+ #--------------------------------------- TRIGGERS ---------------------------------------------------#   
+      
     def TriggerSystemReport(self,*args):
         if self.active:
             report = []
@@ -616,13 +633,22 @@ fails = int(nodes * args.failRate)
 for i in range(0, nodes):
     available.append(i)
 
+available.remove(0)
+available.remove(1)
+available.remove(2)    
+
 if args.failRate <= 1:
     for i in range(fails):
         idx = random.randrange(len(available))
         n = available[idx]
         failsList.append(n)
         available.remove(n)
-        simianEngine.schedService(50, "nodeFail", "x", "Node", n)
+        fail_time = 50 + random.uniform(0, 20)
+        simianEngine.schedService(fail_time, "nodeFail", "x", "Node", n)
+
+available.append(0)
+available.append(1)
+available.append(2)        
 
 
 if args.msgs > 0:
