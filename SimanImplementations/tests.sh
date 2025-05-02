@@ -92,7 +92,13 @@ then
     python3 Brahms.py $nodes $endTime --c $c --updateViews $updateViews -l $lookahead --seedR $seed --msgs $msgs --multipleSender $multipleSender --failRate $failRate &
     psrecord $! --interval 1 --duration $duration --plot TestsBrahms/report$nodes-C$c-SD$seed-s$multipleSender-FR$failRate.png
 
-elif [ $1 -eq 3 ]
+elif [ $1 -eq 3 ] 
+then
+    mkdir TestsDIMPLE
+    python3 pTDIMPLE.py $nodes $endTime --shuffleTime $updateViews -l $lookahead --seedR $seed --msgs $msgs --multipleSender $multipleSender --failRate $failRate &
+    psrecord $! --interval 1 --duration $duration --plot DIMPLETests/report$nodes-C$c-SD$seed-s$multipleSender-FR$failRate.png
+
+elif [ $1 -eq 4 ]
 then
     mkdir TestsHPV
     mkdir TestsBrahms

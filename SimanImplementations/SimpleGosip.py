@@ -38,7 +38,7 @@ simianEngine = Simian(simName, startTime, endTime, minDelay, uMPI)
 positions = []
 # Calculate the grid size
 grid_size = math.ceil(math.sqrt(nodes))
-spacing = 15
+spacing = 60
 
 # Place nodes in the grid
 for i in range(nodes):
@@ -162,14 +162,11 @@ class Node(simianEngine.Entity):
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
 
     def Receive(self, *args):
-        
         if not self.active:
-            #print("Error")
             return
         m = args[0]
         m2 = m.split("-")
         msg = msg2(m2[0], m2[1], m2[2])
-        #print(f"Received message at Node {self.node_idx}: {msg.payload}")
         if msg.ID not in self.report.keys():
             self.report[msg.ID] = 1
         else:
@@ -270,10 +267,7 @@ if args.msgs > 0:
             idx = random.randrange(len(available))
             n = available[idx]
 
-        #print(f"Scheduling event at time {lookahead + 50 + (i * msgGap)}: Receive, Data: {f'{msgID}-Paquete Num:{i}-0'}, Handler: Node, Entity ID: {n}")
         simianEngine.schedService(lookahead + 50 + (i * msgGap), "Receive", f'{msgID}-Paquete Num:{i}-0', "Node", n)
-        #print("I Scheduled " f'{msgID}-Paquete Num:{i}-0')
-        #print(lookahead + 50 + (i * msgGap))
         msgID += 1
 
 simianEngine.run()

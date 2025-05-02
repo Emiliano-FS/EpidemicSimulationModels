@@ -18,15 +18,13 @@ parser.add_argument("--useMPI", type=int, metavar='MPI', default=0,
                     help="use mpi -> 0-false  1-true")
 parser.add_argument("--msgs", type=int, metavar='NMSGS', default=0,
                     help="number of broadcast messages -> default 0")
-parser.add_argument("--updateViews", type=float, metavar='TIME', default=5,
-                    help="update passive Views trigger time -> default 5")
+parser.add_argument("--shuffleTime", type=float, metavar='TIME', default=25,
+                    help="Time to trigger the shuffle -> default 25")
 parser.add_argument("--failRate", type=float, metavar='FAILRATE', default=0.0,
                     help="node fail rate [0.0 ... 1.0]")
 parser.add_argument("--multipleSender", type=float, metavar='SENDER', default=0,
                     help="multiple Senders for broadcast messages -> default 0-false")
-#parser.add_argument("--shuffleSize", type=int, metavar='SHUFFLESIZE', default=4, help="Dimple Shuffle Size")
-#parser.add_argument("--maxPartialView", type=int, metavar='MAXPARTIALVIEW', default=4, help="Dimple Maximum Partial View")
-#parser.add_argument("--dimpleTimeout", type=float, metavar='DIMPLETIMEOUT', default=1.0, help="DIMPLE protocol timeout")
+
 args = parser.parse_args()
 
 uMPI = False
@@ -45,14 +43,14 @@ threshold = 3
 
 timerPTacks = 2.5
 delayLazy = 1
-stabilizationTime = 49 #args.endtime
 
 # DIMPLE variables
+shuffleTime = args.shuffleTime
 shuffleSize = math.floor(math.log(nodes,10))
-maxPartialView = math.floor(math.log(nodes,2)) + shuffleSize
+maxPartialView = math.floor(math.log(nodes,2) * 1.5) 
 dimpleTimer = 2.5
 
-name = "DIMPLETests/"+"PlumTree + DIMPLE" + str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-MGS'+str(args.msgs)+'-LOOKAHEAD'+str(args.lookahead)
+name = "DIMPLETests/"+"PlumTree + DIMPLE" + str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-ShuffleTime'+str(args.shuffleTime)+'-MGS'+str(args.msgs)+'-LOOKAHEAD'+str(args.lookahead)
 
 simName, startTime, endTime, minDelay = name, 0, args.endtime, 0.1
 simianEngine = Simian(simName, startTime, endTime, minDelay, uMPI)
@@ -221,11 +219,11 @@ class Node(simianEngine.Entity):
             for peer_id in peer_ids:
                 visited_list = [peer_id, self.node_idx]  # Simulate movement between them
                 self.partial_view.append(partialViewEntry(peer_id, 0, visited_list))    
-                self.reqService(lookahead * 5 + delay2, "DimpleShuffle", "none")  
+                self.reqService( 5 + delay2, "DimpleShuffle", "none")  
         else:
             contactNode = 0 
             msg = msgDimple('JOIN',[],self.node_idx)
-            self.reqService( lookahead + delay2  , "Dimple", msg, "Node", contactNode)  
+            self.reqService( 0.1 + delay2  , "Dimple", msg, "Node", contactNode)  
              
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
 
@@ -485,7 +483,7 @@ class Node(simianEngine.Entity):
     
     def DimpleShuffle(self, *args):
         if not self.active or len(self.partial_view) <= 0:
-            self.reqService(25, "DimpleShuffle", "none")  # Reschedule anyway
+            self.reqService(shuffleTime, "DimpleShuffle", "none")  # Reschedule anyway
             return
 
         # Age all entries
@@ -514,7 +512,7 @@ class Node(simianEngine.Entity):
             self.reqService(lookahead, "Dimple", msg, "Node", self.node_idx)
 
         # Reschedule next shuffle
-        self.reqService(25, "DimpleShuffle", "none")
+        self.reqService(shuffleTime, "DimpleShuffle", "none")
 
 
     def ReinforcementInitiateProcedure(self, received_entry_id):
