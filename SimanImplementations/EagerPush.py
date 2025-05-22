@@ -29,10 +29,10 @@ fanout = args.fanout
 failRate = args.failRate
 random.seed(args.seedR)
 
-name = "SimpleGossipTests/"+"SimpleGossip" + str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-MGS'+str(args.msgs)+'-LOOKAHEAD'+str(args.lookahead)
+name = "SimpleGossipTests/"+"EagerPushTests/"+"EagerPush"+ str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-MGS'+str(args.msgs)+'-LOOKAHEAD'+str(args.lookahead)
 
-simName, startTime, endTime, minDelay = name, 0, args.endtime, 0.1
-simianEngine = Simian(simName, startTime, endTime, minDelay, uMPI)
+simName, startTime, endTime, minDelay, useMPI, mpiLib = name, 0, args.endtime, 0.00001, uMPI, "/usr/lib/x86_64-linux-gnu/libmpich.so"
+simianEngine = Simian(simName, startTime, endTime, minDelay, useMPI)
 
 # Init grid
 positions = []
@@ -160,6 +160,7 @@ class Node(simianEngine.Entity):
         self.active = True
         self.GetPeers()
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
+        self.reqService(30, "UpdatePeers", "none")
 
     def Receive(self, *args):
         if not self.active:
@@ -180,7 +181,7 @@ class Node(simianEngine.Entity):
         msg.round += 1
         for peer in self.peers:
             self.reqService(lookahead, "Receive", f'{msg.ID}-{self.receivedMsgs[msg.ID].payload}-{msg.round}', "Node", peer)
-        self.GetPeers()
+        
 
     def GetPeers(self):
         lsize = int(math.sqrt(args.total_nodes))
@@ -231,6 +232,10 @@ class Node(simianEngine.Entity):
 
             msgToSend = msgReport('reply', report, degree)
             self.reqService(lookahead, "SystemReport", msgToSend, "ReportNode", 0)
+    
+    def UpdatePeers(self, *args):
+        self.GetPeers()
+        self.reqService(30, "UpdatePeers", "none")
 
 
 

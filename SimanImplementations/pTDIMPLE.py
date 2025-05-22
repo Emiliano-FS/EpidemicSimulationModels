@@ -52,8 +52,9 @@ dimpleTimer = 2.5
 
 name = "DIMPLETests/"+"PlumTree + DIMPLE" + str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-ShuffleTime'+str(args.shuffleTime)+'-MGS'+str(args.msgs)+'-LOOKAHEAD'+str(args.lookahead)
 
-simName, startTime, endTime, minDelay = name, 0, args.endtime, 0.1
-simianEngine = Simian(simName, startTime, endTime, minDelay, uMPI)
+simName, startTime, endTime, minDelay, useMPI, mpiLib = name, 0, args.endtime, 0.00001, uMPI, "/usr/lib/x86_64-linux-gnu/libmpich.so"
+simianEngine = Simian(simName, startTime, endTime, minDelay, useMPI)
+
 
 class msgGossip:
     def __init__(self,type,m,mID,round,sender):
@@ -219,11 +220,11 @@ class Node(simianEngine.Entity):
             for peer_id in peer_ids:
                 visited_list = [peer_id, self.node_idx]  # Simulate movement between them
                 self.partial_view.append(partialViewEntry(peer_id, 0, visited_list))    
-                self.reqService( 5 + delay2, "DimpleShuffle", "none")  
+                self.reqService( delay2 + 5 , "DimpleShuffle", "none")  
         else:
             contactNode = 0 
             msg = msgDimple('JOIN',[],self.node_idx)
-            self.reqService( 0.1 + delay2  , "Dimple", msg, "Node", contactNode)  
+            self.reqService( delay2  , "Dimple", msg, "Node", contactNode)  
              
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
 
