@@ -48,7 +48,6 @@ for i in range(nodes):
     py = 50 + y * spacing + random.uniform(-20, 20)
     positions.append((px, py))
 
-
 class msg2:
     def __init__(self, mID, m, round):
         self.ID = int(mID)

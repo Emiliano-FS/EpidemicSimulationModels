@@ -35,7 +35,7 @@ if args.useMPI == 1:
 nodes = args.total_nodes
 lookahead = args.lookahead
 failRate = args.failRate
-random.seed(args.seedR)
+#random.seed(args.seedR)
 triggerSysReportTime = args.endtime - 1
 timeout1 = args.lookahead
 timeout2 = args.lookahead / 2
@@ -46,9 +46,9 @@ delayLazy = 1
 
 # DIMPLE variables
 shuffleTime = args.shuffleTime
-shuffleSize = math.floor(math.log(nodes,10))
-maxPartialView = math.floor(math.log(nodes,2) * 1.5) 
-dimpleTimer = 2.5
+shuffleSize = math.floor(math.log(nodes,10)) 
+maxPartialView = math.floor(math.log(nodes,10) + 1) * 6 
+dimpleTimer = 1
 
 name = "DIMPLETests/"+"PlumTree + DIMPLE" + str(args.total_nodes)+'-FR'+str(args.failRate)+'-Seed'+str(args.seedR)+'-Sender'+str(args.multipleSender)+'-ShuffleTime'+str(args.shuffleTime)+'-MGS'+str(args.msgs)+'-LOOKAHEAD'+str(args.lookahead)
 
@@ -220,11 +220,11 @@ class Node(simianEngine.Entity):
             for peer_id in peer_ids:
                 visited_list = [peer_id, self.node_idx]  # Simulate movement between them
                 self.partial_view.append(partialViewEntry(peer_id, 0, visited_list))    
-                self.reqService( delay2 + 5 , "DimpleShuffle", "none")  
+                self.reqService( delay2 + 1 , "DimpleShuffle", "none")  
         else:
             contactNode = 0 
             msg = msgDimple('JOIN',[],self.node_idx)
-            self.reqService( delay2  , "Dimple", msg, "Node", contactNode)  
+            self.reqService( delay2, "Dimple", msg, "Node", contactNode)  
              
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
 
