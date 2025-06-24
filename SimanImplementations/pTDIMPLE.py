@@ -35,7 +35,7 @@ if args.useMPI == 1:
 nodes = args.total_nodes
 lookahead = args.lookahead
 failRate = args.failRate
-#random.seed(args.seedR)
+random.seed(args.seedR)
 triggerSysReportTime = args.endtime - 1
 timeout1 = args.lookahead
 timeout2 = args.lookahead / 2
@@ -219,8 +219,7 @@ class Node(simianEngine.Entity):
             peer_ids = random.sample([i for i in range(3) if i != self.node_idx], 2)
             for peer_id in peer_ids:
                 visited_list = [peer_id, self.node_idx]  # Simulate movement between them
-                self.partial_view.append(partialViewEntry(peer_id, 0, visited_list))    
-                self.reqService( delay2 + 1 , "DimpleShuffle", "none")  
+                self.partial_view.append(partialViewEntry(peer_id, 0, list(visited_list)))                 self.reqService( delay2 + 1 , "DimpleShuffle", "none")  
         else:
             contactNode = 0 
             msg = msgDimple('JOIN',[],self.node_idx)
@@ -568,15 +567,19 @@ class Node(simianEngine.Entity):
 
             # Fill empty slots in partial_view
             if len(self.partial_view) < maxPartialView:
-                received_entry.visited.append(self.node_idx)
-                self.partial_view.append(received_entry)
+                new_visited = received_entry.visited.copy()
+                new_visited.append(self.node_idx)
+                new_entry = partialViewEntry(received_entry.node_idx, 0, new_visited)
+                self.partial_view.append(new_entry)
                 break
 
             # Replace entries that were sent to Q (i.e., not updated)
             for i, e in enumerate(self.partial_view):    
                 if any(entry.node_idx == e.node_idx for entry in sent_subset):
-                    received_entry.visited.append(self.node_idx)
-                    self.partial_view[i] = received_entry
+                    new_visited = received_entry.visited.copy()
+                    new_visited.append(self.node_idx)
+                    new_entry = partialViewEntry(received_entry.node_idx, 0, new_visited)
+                    self.partial_view[i] = new_entry
             
         self.UpdatePlumTreePeers()
 
