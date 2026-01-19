@@ -111,8 +111,11 @@ class Blockchain:
 
     def __init__(self):
         self.unconfirmed_transactions = []
+        self.blocks = {}          # hash -> Block
+        self.children = {}        # hash -> list of child hashes
+        self.heights = {}         # hash -> height
+        self.head = None          # hash of best chain tip
         self.chain = []
-        self.forks = {}
         self.orphans = []
 
     def create_genesis_block(self):
@@ -124,10 +127,18 @@ class Blockchain:
     def last_block(self):
         return self.chain[-1]
 
-    def block_validity(self, block, proof):
-        if not Blockchain.is_valid_proof(block, proof):
+    def block_validity(self, block):
+        if not Blockchain.is_valid_proof(block, block.hash):
             return False
-        return True
+    
+        if block.index == 0:
+            return True
+    
+        if block.previous_hash not in self.blocks:
+            return False
+    
+        parent = self.blocks[block.previous_hash]
+        return block.index == parent.index + 1
 
     def add_block(self, block):
         self.chain.append(block)
@@ -197,73 +208,55 @@ class Blockchain:
         return False
 
     def consensus(self, block):
-        if not self.block_validity(block, block.hash):
+        # Reject invalid blocks
+        if not self.block_validity(block):
             return False
 
-        if block.previous_hash == self.last_block.hash:
-            self.add_block(block)
-            self.resolve_forks()
-            self.remove_if_orphan(block)
-            self.try_attach_orphans()
-            return True
-
-        elif block.previous_hash in self.forks:
-            self.forks[block.previous_hash][0].append(block)
-            self.forks[block.hash] = self.forks.pop(block.previous_hash)
-            self.resolve_forks()
-            self.remove_if_orphan(block)
-            self.try_attach_orphans()
-            return True
-
-        elif block.previous_hash in self.chain_hashes():
-            base_index = self.chain_index(block.previous_hash)
-            self.forks[block.hash] = ([block], base_index)
-            self.remove_if_orphan(block)
-            self.try_attach_orphans()
-            return True
-
-        else:
-            if block not in self.orphans:
-                self.orphans.append(block)
+        # Already known
+        if block.hash in self.blocks:
             return False
 
-    def resolve_forks(self):
-        longest_chain = self.chain
-        for fork_blocks, base_index in self.forks.values():
-            candidate_chain = self.chain[: base_index + 1] + fork_blocks
-            if len(candidate_chain) > len(longest_chain):
-                longest_chain = candidate_chain
+        # Store block
+        self.blocks[block.hash] = block
+        self.children.setdefault(block.previous_hash, []).append(block.hash)
 
-        if len(longest_chain) > len(self.chain) + 1:
-            self.chain = longest_chain
+        # Genesis
+        if block.index == 0:
+            self.heights[block.hash] = 0
+            self.head = block.hash
+            self.chain = [block]
+            return True
 
-    def remove_if_orphan(self, block):
-        try:
-            self.orphans.remove(block)
-        except ValueError:
-            pass
+        # Orphan
+        if block.previous_hash not in self.blocks:
+            self.orphans.append(block)
+            return False
 
-    def try_attach_orphans(self):
-        reattachable = []
-        for orphan in self.orphans:
-            if self.consensus(orphan):
-                reattachable.append(orphan)
+        # Normal block
+        self.heights[block.hash] = self.heights[block.previous_hash] + 1
 
-        if reattachable:
-            self.orphans = [o for o in self.orphans if o not in reattachable]
+        # Update best chain
+        if self.head is None or self.heights[block.hash] > self.heights[self.head]:
+            self.head = block.hash
+            self._rebuild_chain()
 
-    def chain_hashes(self):
-        return {block.hash for block in self.chain}
+        return True
 
-    def chain_index(self, hash_value):
-        for i, block in enumerate(self.chain):
-            if block.hash == hash_value:
-                return i
-        return 0
+    def _rebuild_chain(self):
+        chain = []
+        current = self.head
+
+        while current:
+            block = self.blocks[current]
+            chain.append(block)
+            current = block.previous_hash
+
+        self.chain = list(reversed(chain))
+
 
     def remove_confirmed_transactions(self, block):
-        self.unconfirmed_transactions = [
-            tx
-            for tx in self.unconfirmed_transactions
-            if tx.trans_id not in {t.trans_id for t in block.transactions}
+        confirmed_ids = {tx.tx_id for tx in block.transactions}
+        self.current_transactions = [
+            tx for tx in self.current_transactions
+            if tx.tx_id not in confirmed_ids
         ]

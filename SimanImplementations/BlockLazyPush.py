@@ -1,3 +1,4 @@
+import report
 from Blockchain import * 
 from simian import Simian
 import random, math, argparse
@@ -42,6 +43,8 @@ random.seed(args.seedR)
 churn = args.activeChurn
 failRate = args.failRate
 
+seederTimer = 1.5
+
 downNodes = []
 upNodes = []
 
@@ -59,12 +62,15 @@ class msg2:
         self.sender = int(sender)
 
 class msgReport:
-    def __init__(self, msgs, degree, miner, length, trx):
+    def __init__(self, msgs, diss_degree, miner, length, trx,
+                 node_id, neighbors):
         self.msgsFromNode = msgs
-        self.degree = degree
+        self.disseminationDegree = diss_degree
         self.isMiner = miner
         self.lengthChainFromNode = length
         self.trxFromNode = trx
+        self.node_id = node_id
+        self.neighbors = neighbors 
 
 class ChurnManager(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
@@ -98,6 +104,7 @@ class ReportNode(simianEngine.Entity):
         self.minDegree = float('inf')
         self.shortestPathSum = 0
         self.servedNodes = 0
+        self.graph = {}  # node_id -> set(active neighbors)
 
         # Schedule the final report
         self.reqService(endTime, "PrintSystemReport", "none")
@@ -108,7 +115,14 @@ class ReportNode(simianEngine.Entity):
         trx = report.trxFromNode
         chain = report.lengthChainFromNode
         isMiner = report.isMiner
-        degree = report.degree
+        degree = report.disseminationDegree
+        u = report.node_id
+        Nu = set(report.neighbors)
+        
+        self.graph.setdefault(u, set()).update(Nu)
+        
+        for v in Nu:
+            self.graph.setdefault(v, set()).add(u)
 
         self.servedNodes += 1
 
@@ -149,6 +163,30 @@ class ReportNode(simianEngine.Entity):
         if isMiner:
             self.totalMiners += 1
 
+    def compute_clustering(self):
+         total = 0.0
+         count = 0
+
+         for u, Nu in self.graph.items():
+             k = len(Nu)
+             if k < 2:
+                 continue
+
+             links = 0
+             for v in Nu:
+                 if v not in self.graph:
+                     continue
+                 links += len(Nu & self.graph[v])
+
+             links /= 2  # undirected double count
+
+             Ci = links / (k * (k - 1) / 2)
+             total += Ci
+             count += 1
+
+         return total / count if count > 0 else 0
+
+
     def PrintSystemReport(self, *args):
         node_count = nodes * (1 - failRate)
         avg_degree = round(self.degree_sum / node_count, 2) if node_count > 0 else 0
@@ -160,6 +198,8 @@ class ReportNode(simianEngine.Entity):
 
         # Initialize aggregates
         avRel = avNodes = avLat = avRmr = avGossip = avInv = avReq = 0
+
+        clustering = self.compute_clustering()
 
         # Per-message report
         for msg_id in sorted(self.reliability.keys()):
@@ -190,15 +230,13 @@ class ReportNode(simianEngine.Entity):
         avInv /= total_msgs
         avReq /= total_msgs
         avg_shortest_path = self.shortestPathSum / (total_msgs * node_count)
-        avg_chain_len_pct = (self.chainLengths / node_count) / self.longestChain * 100 if self.longestChain else 0
 
         # Print summary
-        self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}  "
-                       f"Longest Chain: {self.longestChain}  Avg Chain Length: {avg_chain_len_pct:.2f}%\n")
+        self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}\n")
         self.out.write(f"AVERAGE -- Reliability:{avRel:.3f}%  Nodes:{avNodes:.1f}  Latency:{avLat:.1f}  "
                        f"RMR:{avRmr:.3f}  Gossip:{avGossip:.1f}  Inv:{avInv:.1f}  Requests:{avReq:.1f}\n")
         self.out.write(f"Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
-                       f"Shortest Path Avg:{avg_shortest_path:.2f}\n")
+                      f"Shortest Path Avg:{avg_shortest_path:.2f} Clustering Coefficient  {clustering:.4f}\n")
 
 total_seeders = [1,2,3]
 
@@ -245,73 +283,231 @@ class Node(simianEngine.Entity):
         self.blockchain.create_genesis_block()
         self.mining = False
 
-        self.known_peers = []
-        self.outpeers = []
+
+        #Seeder/Peer Management
+        self.inbound = []           # inbound connections 117
+        self.outbound = []          # outbound connections (max 8)
+        self.MAX_OUT = 8
+        self.MAX_IN = 117
+        self.addr_new = []    # learned but untried
+        self.addr_tried = []   # successfully connected
+        self.MAX_NEW = 1000
+        self.MAX_TRIED = 256
+        self.nodeTimer = set()   # peers with outstanding connection attempts
+        self.pingTimer = {}  
+        self.ping_nonce = 0
+
         self.receivedMsgs = {}
         self.report = {}
+
 
         JOIN_WINDOW = (0, 200)
         self.reqService(random.uniform(*JOIN_WINDOW), "Bootstrap", "none")
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
 
+    def next_nonce(self):
+        self.ping_nonce += 1
+        return self.ping_nonce
+
+#--------------------------------------- PEER SELECTION ---------------------------------------------------
+
     def Bootstrap(self, *args):
-        #print(f"Node {self.node_idx} is bootstrapping. and knows {len(self.known_peers)} peers.")
-        if len(self.known_peers) > 8:
-            self.UpdateActivePeers()
-            self.reqService(80, "RefreshPeers", "none")
-        else:
-            self.reqService(lookahead, "PeerRequest", self.node_idx, "Seeder", random.choice(total_seeders))
-            self.reqService(80, "RefreshPeers", "none")
+
+        self.reqService(lookahead, "PeerRequest", self.node_idx, "Seeder", random.choice(total_seeders))
+        self.reqService(120, "FeelerMechanism", "none")
+        self.reqService(50, "Ping", "none")
 
     def ReceivePeers(self, *args):
         peer_list = args[0]
         for p in peer_list:
-            if p not in self.known_peers and p != self.node_idx:
-                self.known_peers.append(p)
-        self.UpdateActivePeers()
+            if p not in self.addr_new and p not in self.addr_tried and p != self.node_idx:
+                self.addr_new.append(p)
+                if len(self.addr_new) > self.MAX_NEW:
+                    self.addr_new.pop()
 
-    def UpdateActivePeers(self):
-        if len(self.outpeers) < 8 and len(self.known_peers) > 0:
-            additional_peers = random.sample(self.known_peers, min(8 - len(self.outpeers), len(self.known_peers)))
-            self.outpeers.extend(additional_peers)
-            self.known_peers = [x for x in self.known_peers if x not in self.outpeers]
-            for peer in additional_peers:
-                handshakePeers = random.sample(self.known_peers, min(15, len(self.known_peers))) if self.known_peers else []
-                self.reqService(lookahead, "HandShake", (self.node_idx, handshakePeers), "Node", peer)
+        self.OutboundConnect()
+
+    def OutboundConnect(self):
+
+        i = 0
+        while len(self.outbound) < self.MAX_OUT:
+            peer = None
+
+            if not self.addr_new:
+                break
+
+
+            if self.addr_tried:
+                i += 1
+                p_tried = math.sqrt(1.0 * (10 - i)) / (i + math.sqrt(1.0 * (10 - i)))
+                if random.random() < p_tried:
+                    peer = random.choice(list(self.addr_tried))
+                else:
+                    peer = random.choice(list(self.addr_new))
+                    self.addr_new.remove(peer)
+            else:
+                peer = random.choice(list(self.addr_new))
+                self.addr_new.remove(peer)
+
+            self.outbound.append(peer)
+            
+            if len(self.addr_tried) > self.MAX_TRIED:
+                self.addr_tried.pop(0)
+
+            triedPeers = random.sample(list(self.addr_tried),min(10, len(self.addr_tried)))
+            newPeers = random.sample(list(self.addr_new),min(5, len(self.addr_new)))
+            handshakePeers = triedPeers + newPeers
+            self.nodeTimer.add(peer)
+            self.reqService(seederTimer, "NodeTimer", peer)
+            self.reqService(lookahead,"HandShake",(self.node_idx, handshakePeers),"Node",peer)
+
 
     def HandShake(self, *args):
-        payload = args[0]
-        peer_id = payload[0]
-        receivedPeers = payload[1]
+
+        sender, receivedPeers = args[0]
+
+        # Reject duplicate connection
+        if sender in self.outbound or sender in self.inbound:
+            self.reqService(lookahead, "HandShakeResponse", (self.node_idx, "Duplicate"), "Node", sender)
+            return
+
+        if len(self.inbound) >= self.MAX_IN:
+            return
+
+        self.inbound.append(sender)
         for p in receivedPeers:
-            if p not in self.known_peers and p != self.node_idx:
-                self.known_peers.append(p)
-        self.known_peers.append(peer_id)
-        handshakePeers = random.sample(self.known_peers, min(15, len(self.known_peers))) if self.known_peers else []
-        self.reqService(lookahead, "HandShakeResponse", handshakePeers, "Node", peer_id)
+            if p == self.node_idx:
+                continue
+            if p not in self.addr_tried:
+                self.addr_new.append(p)
+                if len(self.addr_new) > self.MAX_NEW:
+                    self.addr_new.pop()
+
+        # Send response 
+        triedPeers = random.sample(list(self.addr_tried),min(10, len(self.addr_tried)))
+        newPeers = random.sample(list(self.addr_new),min(5, len(self.addr_new)))
+        responsePeers = triedPeers + newPeers
+
+        #print(f"Node {self.node_idx} sending this respinse peers {responsePeers} to node {sender}")
+        self.reqService(lookahead,"HandShakeResponse", (self.node_idx, responsePeers),"Node",sender)
+
 
     def HandShakeResponse(self, *args):
-        handshakePeers = args[0]
-        for p in handshakePeers:
-            if p not in self.known_peers and p != self.node_idx:
-                self.known_peers.append(p)
-        #print(f"Node {self.node_idx} now knows {len(self.known_peers)} peers after handshake.")
+        sender, receivedPeers = args[0]
 
-    def RefreshPeers(self, *args):
+        if receivedPeers == "Duplicate":
+            self.nodeTimer.discard(sender)
+            self.outbound.remove(sender)
+            self.OutboundConnect()
+            return
+
+        self.nodeTimer.discard(sender)
+        self.addr_tried.append(sender)
+        for p in receivedPeers:
+            if p == self.node_idx:
+                continue
+            if p not in self.addr_tried:
+                self.addr_new.append(p)
+                if len(self.addr_new) > self.MAX_NEW:
+                    self.addr_new.pop()
+
+
+    def FeelerMechanism(self, *args):
         if not self.active:
             return
-        if len(self.outpeers) < 8:
-            self.UpdateActivePeers()
-        else:
-            proactiveNode = self.known_peers[-1] 
-            peerToReplace = random.choice(self.outpeers)
-            self.known_peers.remove(proactiveNode)
-            self.outpeers.remove(peerToReplace)
-            self.outpeers.append(proactiveNode)
-            handshakePeers = random.sample(self.known_peers, min(15, len(self.known_peers))) if self.known_peers else []
-            self.reqService(lookahead, "HandShake", (self.node_idx, handshakePeers), "Node", proactiveNode)
-        self.reqService(80, "RefreshPeers", "none")
+        
+        if not self.addr_new:
+            return
 
+        peer = random.choice(list(self.addr_new))
+
+        # Temporary connection
+        self.nodeTimer.add(peer)
+        self.reqService(seederTimer, "NodeTimer", peer)
+        self.reqService(lookahead,"FeelerHandshake",self.node_idx,"Node",peer)
+
+        
+    def FeelerHandshake(self, *args):
+        sender = args[0]
+        if sender in self.outbound or sender in self.inbound:
+            self.reqService(lookahead,"FeelerHandshakeResponse",  (-1 * self.node_idx) ,"Node",sender)
+            return
+        self.reqService(lookahead,"FeelerHandshakeResponse",self.node_idx,"Node",sender)
+
+
+    def FeelerHandshakeResponse(self, *args):
+        sender = args[0]
+        
+        if sender < 0:
+
+            self.nodeTimer.remove((-1 * sender))
+            return
+
+        self.nodeTimer.discard(sender)
+
+        if sender in self.addr_new:
+            self.addr_new.remove(sender)
+        if sender not in self.addr_tried:
+            self.addr_tried.append(sender)
+
+    def Ping(self, *args):
+        for peer in self.outbound + self.inbound:
+            nonce = self.next_nonce()
+            self.pingTimer[peer] = nonce
+            self.reqService(seederTimer, "PingTimer", (peer, nonce))
+            self.reqService(lookahead, "PingMsg", (self.node_idx, nonce), "Node", peer)
+
+
+    def PingMsg(self, *args):
+        sender, nonce = args[0]
+        self.reqService(lookahead, "PongMsg", (self.node_idx, nonce), "Node", sender)
+
+    
+    def PongMsg(self, *args):
+        sender, nonce = args[0]
+        if self.pingTimer.get(sender) == nonce:
+            del self.pingTimer[sender]
+
+
+    def PingTimer(self, *args):
+        peer, nonce = args[0]
+        if self.pingTimer.get(peer) != nonce:
+            return  
+    
+        del self.pingTimer[peer]
+    
+        if peer in self.outbound:
+            self.NodeFailure(peer)
+        elif peer in self.inbound:
+            self.inbound.remove(peer)
+
+    def NodeTimer(self, *args):
+        peer = args[0]
+        if peer not in self.nodeTimer:
+            return 
+
+        self.nodeTimer.remove(peer)
+
+        # Only fail if still not connected
+        if peer not in self.outbound and peer not in self.inbound:
+            self.NodeFailure(peer)
+
+    def NodeFailure(self, node_id):
+        if node_id in self.inbound:
+            self.inbound.remove(node_id)
+
+        if node_id in self.outbound:
+            self.outbound.remove(node_id)
+
+        if node_id in self.addr_tried:
+            self.addr_tried.remove(node_id)
+        
+        if node_id in self.addr_new:
+            self.addr_new.remove(node_id)
+
+        self.OutboundConnect()
+
+ #--------------------------------------- GOSSIP ---------------------------------------------------
 
     def Receive(self, *args):
         if not self.active:
@@ -329,9 +525,9 @@ class Node(simianEngine.Entity):
             if msg.type  == "BLOCK":
                 block = Block.from_dict(msg.payload)
                 accepted = self.blockchain.consensus(block)
-                if accepted:
+                if accepted and block.hash == self.blockchain.head:
                     self.blockchain.remove_confirmed_transactions(block)
-                    if self.mining:
+                    if accepted and block.previous_hash == self.blockchain.last_block.hash:
                         self.mining = False
 
                 self.SendInv(msg.ID)
@@ -361,7 +557,10 @@ class Node(simianEngine.Entity):
 
 
     def SendInv(self, msg_id):
-        for peer in self.outpeers:
+        for peer in self.outbound:
+            self.reqService(lookahead, "ReceiveInv", (msg_id, self.node_idx), "Node", peer)
+
+        for peer in self.inbound:
             self.reqService(lookahead, "ReceiveInv", (msg_id, self.node_idx), "Node", peer)
 
     def ReceiveInv(self, *args):
@@ -393,7 +592,7 @@ class Node(simianEngine.Entity):
     def TriggerSystemReport(self,*args):
         if self.active:
             messageMetrics = []
-            degree = len(self.outpeers)
+
             for m in self.receivedMsgs.keys():
                 messageMetrics.append( {
                                         'id': m,
@@ -402,8 +601,20 @@ class Node(simianEngine.Entity):
                                         'inv': self.report[m][1],
                                         'requests': self.report[m][2]
                                         })
+                
+            neighbors = list(set(self.outbound + self.inbound))
+            diss_degree = len(neighbors)
 
-            msgToSend = msgReport(messageMetrics, degree, self.miner, len(self.blockchain.chain), self.trxMade)
+            msgToSend = msgReport(
+                messageMetrics,
+                diss_degree,
+                self.miner,
+                len(self.blockchain.chain),
+                self.trxMade,
+                self.node_idx,
+                neighbors
+            )
+
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
     def BecomeMiner(self, *args):
@@ -414,7 +625,6 @@ class Node(simianEngine.Entity):
             self.active = False
             self.peers = []
             self.blockchain.chain = []
-            self.blockchain.forks = {}
             self.blockchain.orphans = []
             self.receivedMsgs = {}
             self.report = {}

@@ -1,3 +1,4 @@
+import report
 from Blockchain import * 
 from simian import Simian
 import random, math, argparse
@@ -81,12 +82,15 @@ class msgGossip:
         return '%s-%s-%d-%d-%d'%(self.type,self.payload,self.ID,self.hops,self.sender)
 
 class msgReport:
-    def __init__(self, msgs, degree, miner, length, trx):
+    def __init__(self, msgs, diss_degree, miner, length, trx,
+                 node_id, neighbors):
         self.msgsFromNode = msgs
-        self.degree = degree
+        self.disseminationDegree = diss_degree
         self.isMiner = miner
         self.lengthChainFromNode = length
         self.trxFromNode = trx
+        self.node_id = node_id
+        self.neighbors = neighbors  # activeView snapshot
 
 class msgBrahms:
     def __init__(self,type,view,sender):
@@ -149,6 +153,7 @@ class ReportNode(simianEngine.Entity):
         self.minDegree = float('inf')
         self.shortestPathSum = 0
         self.servedNodes = 0
+        self.graph = {}  # node_id -> set(active neighbors)
 
         # Schedule the final report
         self.reqService(endTime, "PrintSystemReport", "none")
@@ -159,7 +164,14 @@ class ReportNode(simianEngine.Entity):
         trx = report.trxFromNode
         chain = report.lengthChainFromNode
         isMiner = report.isMiner
-        degree = report.degree
+        degree = report.disseminationDegree
+        u = report.node_id
+        Nu = set(report.neighbors)
+
+        self.graph.setdefault(u, set()).update(Nu)
+        for v in Nu:
+            self.graph.setdefault(v, set()).add(u)
+
 
         self.servedNodes += 1
 
@@ -200,6 +212,29 @@ class ReportNode(simianEngine.Entity):
         if isMiner:
             self.totalMiners += 1
 
+    def compute_clustering(self):
+        total = 0.0
+        count = 0
+
+        for u, Nu in self.graph.items():
+            k = len(Nu)
+            if k < 2:
+                continue
+
+            links = 0
+            for v in Nu:
+                if v not in self.graph:
+                    continue
+                links += len(Nu & self.graph[v])
+
+            links /= 2  # undirected double count
+
+            Ci = links / (k * (k - 1) / 2)
+            total += Ci
+            count += 1
+
+        return total / count if count > 0 else 0
+
     def PrintSystemReport(self, *args):
         node_count = nodes * (1 - failRate)
         avg_degree = round(self.degree_sum / node_count, 2) if node_count > 0 else 0
@@ -211,6 +246,8 @@ class ReportNode(simianEngine.Entity):
 
         # Initialize aggregates
         avRel = avNodes = avLat = avRmr = avGossip = avInv = avReq = 0
+
+        clustering = self.compute_clustering()
 
         # Per-message report
         for msg_id in sorted(self.reliability.keys()):
@@ -241,15 +278,13 @@ class ReportNode(simianEngine.Entity):
         avInv /= total_msgs
         avReq /= total_msgs
         avg_shortest_path = self.shortestPathSum / (total_msgs * node_count)
-        avg_chain_len_pct = (self.chainLengths / node_count) / self.longestChain * 100 if self.longestChain else 0
 
         # Print summary
-        self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}  "
-                       f"Longest Chain: {self.longestChain}  Avg Chain Length: {avg_chain_len_pct:.2f}%\n")
+        self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}\n")
         self.out.write(f"AVERAGE -- Reliability:{avRel:.3f}%  Nodes:{avNodes:.1f}  Latency:{avLat:.1f}  "
                        f"RMR:{avRmr:.3f}  Gossip:{avGossip:.1f}  IHAVE:{avInv:.1f}  GRAFT:{avReq:.1f}\n")
         self.out.write(f"Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
-                       f"Shortest Path Avg:{avg_shortest_path:.2f}\n")
+                       f"Shortest Path Avg:{avg_shortest_path:.2f} Clustering Coefficient  {clustering:.4f}\n")
 
 
 class Node(simianEngine.Entity):
@@ -357,9 +392,9 @@ class Node(simianEngine.Entity):
                     if msg.payloadType  == "BLOCK":
                         block = Block.from_dict(msg.payload)
                         accepted = self.blockchain.consensus(block)
-                        if accepted:
+                        if accepted and block.hash == self.blockchain.head:
                             self.blockchain.remove_confirmed_transactions(block)
-                            if self.mining:
+                            if accepted and block.previous_hash == self.blockchain.last_block.hash:
                                 self.mining = False
 
                         self.LazyPush(msg)
@@ -565,7 +600,7 @@ class Node(simianEngine.Entity):
     def TriggerSystemReport(self,*args):
         if self.active:
             messageMetrics = []
-            degree = len(self.eagerPushPeers) + len(self.lazyPushPeers)
+            
             for m in self.receivedMsgs.keys():
                 messageMetrics.append( {
                                         'id': m,
@@ -575,7 +610,17 @@ class Node(simianEngine.Entity):
                                         'graft': self.report[m][2]
                                         })
 
-            msgToSend = msgReport(messageMetrics, degree, self.miner, len(self.blockchain.chain), self.trxMade)
+            diss_degree = len(self.eagerPushPeers) + len(self.lazyPushPeers)
+
+            msgToSend = msgReport(
+                messageMetrics,
+                diss_degree,
+                self.miner,
+                len(self.blockchain.chain),
+                self.trxMade,
+                self.node_idx,
+                list(self.V)
+            )
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
 
@@ -604,7 +649,6 @@ class Node(simianEngine.Entity):
             self.active = False
             self.peers = []
             self.blockchain.chain = []
-            self.blockchain.forks = {}
             self.blockchain.orphans = []
             self.receivedMsgs = {}
             self.report = {}
@@ -616,7 +660,7 @@ class Node(simianEngine.Entity):
 
     def create_transaction(self,*args):
         n = random.choice(upNodes)
-        avg_transactionT = .7
+        avg_transactionT = 1.4
         delay = random.expovariate(1/avg_transactionT)
         if self.active and not self.miner:
             transaction = Transaction(self.node_idx)

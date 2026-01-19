@@ -47,8 +47,8 @@ delayLazy = 1
 
 # DIMPLE variables
 shuffleTime = args.shuffleTime
-shuffleSize = math.floor(math.log(nodes,10)) 
-maxPartialView = 2 * shuffleSize
+shuffleSize = math.floor(math.log(nodes,2))
+maxPartialView = 2 * math.floor(math.log(nodes,2))
 dimpleTimer = 1.5
 
 downNodes = []
@@ -95,12 +95,15 @@ class partialViewEntry:
         return self.__str__()
     
 class msgReport:
-    def __init__(self, msgs, degree, miner, length, trx):
+    def __init__(self, msgs, diss_degree, miner, length, trx,
+                 node_id, neighbors):
         self.msgsFromNode = msgs
-        self.degree = degree
+        self.disseminationDegree = diss_degree
         self.isMiner = miner
         self.lengthChainFromNode = length
         self.trxFromNode = trx
+        self.node_id = node_id
+        self.neighbors = neighbors  # activeView snapshot
 
 class ChurnManager(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
@@ -134,6 +137,7 @@ class ReportNode(simianEngine.Entity):
         self.minDegree = float('inf')
         self.shortestPathSum = 0
         self.servedNodes = 0
+        self.graph = {}  # node_id -> set(active neighbors)
 
         # Schedule the final report
         self.reqService(endTime, "PrintSystemReport", "none")
@@ -144,7 +148,17 @@ class ReportNode(simianEngine.Entity):
         trx = report.trxFromNode
         chain = report.lengthChainFromNode
         isMiner = report.isMiner
-        degree = report.degree
+        degree = report.disseminationDegree
+        u = report.node_id
+        Nu = set(report.neighbors)
+
+        # ensure node exists
+        self.graph.setdefault(u, set()).update(Nu)
+
+        # enforce undirected edges
+        for v in Nu:
+            self.graph.setdefault(v, set()).add(u)
+
 
         self.servedNodes += 1
 
@@ -185,6 +199,29 @@ class ReportNode(simianEngine.Entity):
         if isMiner:
             self.totalMiners += 1
 
+    def compute_clustering(self):
+        total = 0.0
+        count = 0
+
+        for u, Nu in self.graph.items():
+            k = len(Nu)
+            if k < 2:
+                continue
+
+            links = 0
+            for v in Nu:
+                if v not in self.graph:
+                    continue
+                links += len(Nu & self.graph[v])
+
+            links /= 2  # undirected double count
+
+            Ci = links / (k * (k - 1) / 2)
+            total += Ci
+            count += 1
+
+        return total / count if count > 0 else 0
+
     def PrintSystemReport(self, *args):
         node_count = nodes * (1 - failRate)
         avg_degree = round(self.degree_sum / node_count, 2) if node_count > 0 else 0
@@ -196,6 +233,8 @@ class ReportNode(simianEngine.Entity):
 
         # Initialize aggregates
         avRel = avNodes = avLat = avRmr = avGossip = avInv = avReq = 0
+
+        clustering = self.compute_clustering()
 
         # Per-message report
         for msg_id in sorted(self.reliability.keys()):
@@ -226,15 +265,13 @@ class ReportNode(simianEngine.Entity):
         avInv /= total_msgs
         avReq /= total_msgs
         avg_shortest_path = self.shortestPathSum / (total_msgs * node_count)
-        avg_chain_len_pct = (self.chainLengths / node_count) / self.longestChain * 100 if self.longestChain else 0
 
         # Print summary
-        self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}  "
-                       f"Longest Chain: {self.longestChain}  Avg Chain Length: {avg_chain_len_pct:.2f}%\n")
+        self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}\n")
         self.out.write(f"AVERAGE -- Reliability:{avRel:.3f}%  Nodes:{avNodes:.1f}  Latency:{avLat:.1f}  "
                        f"RMR:{avRmr:.3f}  Gossip:{avGossip:.1f}  IHAVE:{avInv:.1f}  GRAFT:{avReq:.1f}\n")
         self.out.write(f"Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
-                       f"Shortest Path Avg:{avg_shortest_path:.2f}\n")
+                       f"Shortest Path Avg:{avg_shortest_path:.2f} Clustering Coefficient  {clustering:.4f}\n")
 
 
 
@@ -272,12 +309,10 @@ class Node(simianEngine.Entity):
         JOIN_WINDOW = (0, 200)
         delay2 = random.uniform(*JOIN_WINDOW)
 
-        if self.node_idx < 3:  # Seed nodes 0, 1, 2
-            peer_ids = random.sample([i for i in range(3) if i != self.node_idx], 2)
-            for peer_id in peer_ids:
-                visited_list = [peer_id, self.node_idx]  # Simulate movement between them
-                self.partial_view.append(partialViewEntry(peer_id, 0, list(visited_list)))    
-                self.reqService(shuffleTime, "DimpleShuffle", "none")  
+        if self.node_idx == 0:  # Seed nodes
+            self.partial_view.append(partialViewEntry(self.node_idx, 0, [self.node_idx]))
+            self.reqService(shuffleTime, "DimpleShuffle", "none")
+
         else:
             contactNode = 0 
             msg = msgDimple('JOIN',[],self.node_idx)
@@ -352,9 +387,9 @@ class Node(simianEngine.Entity):
                     if msg.payloadType  == "BLOCK":
                         block = Block.from_dict(msg.payload)
                         accepted = self.blockchain.consensus(block)
-                        if accepted:
+                        if accepted and block.hash == self.blockchain.head:
                             self.blockchain.remove_confirmed_transactions(block)
-                            if self.mining:
+                            if accepted and block.previous_hash == self.blockchain.last_block.hash:
                                 self.mining = False
 
                         self.LazyPush(msg)
@@ -501,7 +536,6 @@ class Node(simianEngine.Entity):
                 #self.out.write("ack n chegou no node:"+ str(self.node_idx)+"\n")
                 self.NodeFailure(dest)
                 self.timersAck[dest] = []
-
                 self.NeighborDown(dest)
 
 #--------------------------------------- PEER SELECTION ---------------------------------------------------
@@ -522,16 +556,21 @@ class Node(simianEngine.Entity):
                 received_subset, sent_subset = msg.payload
                 self.ExchangeProcedure(received_subset, sent_subset)
 
+                # Repeat Reinforcement l times in parallel.
+                for i in range(shuffleSize):
+                    msg = msgDimple("REINFORCEMENT", None , self.node_idx)
+                    self.reqService(lookahead, "Dimple", msg, "Node", self.node_idx)
+
             elif msg.type == 'REINFORCEMENT':
-                if len(self.partial_view) > 0:
-                    node_toreinforce = max(self.partial_view, key=lambda x: x.age)
-                    self.timerDimple.append(node_toreinforce.node_idx)
-                    self.reqService(dimpleTimer, "TimerDimple", node_toreinforce.node_idx)
-                    dimpleMsg = msgDimple('REINFORCEMENT_INITIATE',self.node_idx, self.node_idx)
-                    self.reqService(lookahead, "Dimple", dimpleMsg , "Node", node_toreinforce.node_idx)
+                node_toreinforce = max(self.partial_view, key=lambda x: x.age)
+                self.timerDimple.append(node_toreinforce.node_idx)
+                self.reqService(dimpleTimer, "TimerDimple", node_toreinforce.node_idx)
+                dimpleMsg = msgDimple('REINFORCEMENT_INITIATE',self.node_idx, self.node_idx)
+                self.reqService(lookahead, "Dimple", dimpleMsg , "Node", node_toreinforce.node_idx)
 
             elif msg.type == 'REINFORCEMENT_INITIATE':
                 response = self.ReinforcementInitiateProcedure(msg.payload)
+                #print(response)
                 dimpleMsg = msgDimple('REINFORCEMENT_RESPONSE',[response, msg.payload] , self.node_idx)
                 self.reqService(lookahead, "Dimple", dimpleMsg , "Node", msg.sender)
                 
@@ -541,22 +580,14 @@ class Node(simianEngine.Entity):
             
                 # Use msg.sender (Q's id) as the entry_to_replace_id
                 if response_entry is not None:
-                    # Ensure visited history is updated to include this node (P)
-                    if hasattr(response_entry, "visited"):
-                        if self.node_idx not in response_entry.visited:
-                            response_entry.visited.append(self.node_idx)
-            
                     self.ReinforcementResponseProcedure(response_entry, msg.sender)
 
             elif msg.type == 'JOIN':
                 # JOIN Request → Q returns local view built from visited[-2] or fallback
                 local_view = []
                 for entry in self.partial_view:
-                    if len(entry.visited) >= 2:
-                        local_view.append(entry.visited[-2])
-                    else:
-                        local_view.append(entry.node_idx)
-                
+                    local_view.append(entry.visited[-1])
+           
                 # Send join_candidates to P
                 response = msgDimple("JOIN_RESPONSE", local_view, self.node_idx)
                 self.reqService(lookahead, "Dimple", response, "Node", msg.sender)
@@ -564,28 +595,25 @@ class Node(simianEngine.Entity):
             elif msg.type == 'JOIN_RESPONSE':
                 # Node P gets view, performs reinforcements
                 candidates = msg.payload
-                random.shuffle(candidates)
 
-                #for candidate in candidates: 
-                #    if candidate != self.node_idx:
-                #        self.partial_view.append(partialViewEntry(candidate, 0, [self.node_idx]))
-          
                 for peer_id in candidates:
                     if peer_id != self.node_idx:
                         self.timerDimple.append(peer_id)
                         self.reqService(dimpleTimer, "TimerDimple", peer_id)
                         reinforce_msg = msgDimple("REINFORCEMENT_INITIATE", self.node_idx,self.node_idx)
                         self.reqService(lookahead, "Dimple", reinforce_msg, "Node", peer_id)
-
-                delay = lookahead * (len(candidates) + 2)
-                self.reqService(delay, "DimpleShuffle", "none") 
+                
+                for candidate in candidates: 
+                    if candidate != self.node_idx and all(entry.node_idx != candidate for entry in self.partial_view):
+                        self.partial_view.append(partialViewEntry(candidate, 0, [candidate, self.node_idx]))
+                
+                self.UpdatePlumTreePeers()
+                self.reqService(shuffleTime, "DimpleShuffle", "none") 
                 
     
     def DimpleShuffle(self, *args):
-        if not self.active or len(self.partial_view) <= 0:
-            self.reqService(shuffleTime, "DimpleShuffle", "none")  # Reschedule anyway
-            return
 
+        #print(f"Node {self.node_idx} Partial View before shuffle: {[str(entry) for entry in self.partial_view]}")
         # Age all entries
         for entry in self.partial_view:
             entry.age += 1
@@ -605,32 +633,29 @@ class Node(simianEngine.Entity):
         # Send VIEW_EXCHANGE_REQUEST to Q
         msg = msgDimple("VIEW_EXCHANGE_REQUEST", subset, self.node_idx)
         self.reqService(lookahead, "Dimple", msg, "Node", oldest_entry.node_idx)
-        
-        # Repeat Reinforcement l times in parallel.
-        for i in range(shuffleSize):
-            msg = msgDimple("REINFORCEMENT", None , self.node_idx)
-            self.reqService(lookahead, "Dimple", msg, "Node", self.node_idx)
-
+    
         # Reschedule next shuffle
         self.reqService(shuffleTime, "DimpleShuffle", "none")
 
 
     def ReinforcementInitiateProcedure(self, received_entry_id):
-        if received_entry_id == self.node_idx:
-            return None  # Don't reinforce with self
 
         existing_ids = {entry.node_idx for entry in self.partial_view}
 
-        # If already present, ignore
-        if received_entry_id in existing_ids:
-            return None
+        #If already present, reset age
 
+        if received_entry_id in existing_ids:
+            for entry in self.partial_view:
+                if entry.node_idx == received_entry_id:
+                    entry.age = 0
+                    return None
+        
         # If space available, add directly
         if len(self.partial_view) < maxPartialView:
             new_entry = partialViewEntry(received_entry_id, 0, [received_entry_id, self.node_idx])
             self.partial_view.append(new_entry)
             self.UpdatePlumTreePeers()
-            return None  # No eviction needed
+            return None  
 
         # Replace a random entry
         to_replace = random.randrange(len(self.partial_view))
@@ -640,8 +665,14 @@ class Node(simianEngine.Entity):
         return evicted_entry  # Send this back to P
     
     def ReinforcementResponseProcedure(self, response_entry, entry_to_replace_id):
-        if response_entry is None:
-            return  # Nothing to update
+
+        existing_ids = {entry.node_idx for entry in self.partial_view}
+
+        if response_entry.node_idx in existing_ids:
+            for entry in self.partial_view:
+                if entry.node_idx == response_entry.node_idx:
+                    entry.age = 0
+                    return
 
         # If P receives a valid response, P adds the node information to an empty slot if there is one
         if len(self.partial_view) < maxPartialView:
@@ -656,17 +687,11 @@ class Node(simianEngine.Entity):
                 self.UpdatePlumTreePeers()
                 return
 
-        # Fallback: if we didn't find Q in our view (edge-case), replace a random entry
-        idx = random.randrange(len(self.partial_view))
-        self.partial_view[idx] = response_entry
-        self.UpdatePlumTreePeers()
 
 
     def ExchangeProcedure(self, received_subset, sent_subset):
         current_ids = {entry.node_idx for entry in self.partial_view}
 
-        # Build a list of indices that correspond to the entries we originally sent (so we can
-        # replace those slots one-by-one if needed).
         sent_ids = [entry.node_idx for entry in sent_subset]
         sent_slot_indices = [i for i, e in enumerate(self.partial_view) if e.node_idx in sent_ids]
 
@@ -675,7 +700,9 @@ class Node(simianEngine.Entity):
                 continue
 
             new_visited = received_entry.visited.copy()
-            new_visited.append(self.node_idx)
+            if self.node_idx not in new_visited:
+                new_visited.append(self.node_idx)
+
             new_entry = partialViewEntry(received_entry.node_idx, 0, new_visited)
 
             # First try to put into an empty slot
@@ -686,15 +713,15 @@ class Node(simianEngine.Entity):
 
             # Otherwise, replace one of the slots we originally sent to Q (one slot per received entry).
             if sent_slot_indices:
-                idx_to_replace = sent_slot_indices.pop(0)  # take one sent slot index
+                idx_to_replace = sent_slot_indices.pop(0)
+
+                old_node = self.partial_view[idx_to_replace].node_idx
+                current_ids.discard(old_node)
+
                 self.partial_view[idx_to_replace] = new_entry
-                # update current_ids accordingly
                 current_ids.add(new_entry.node_idx)
+
                 continue
-            # If no sent slots remain (edge case), replace a random entry as fallback
-            idx = random.randrange(len(self.partial_view))
-            self.partial_view[idx] = new_entry
-            current_ids.add(new_entry.node_idx)
 
         self.UpdatePlumTreePeers()
 
@@ -723,7 +750,6 @@ class Node(simianEngine.Entity):
     def TriggerSystemReport(self,*args):
         if self.active:
             messageMetrics = []
-            degree = len(self.eagerPushPeers) + len(self.lazyPushPeers)
             for m in self.receivedMsgs.keys():
                 messageMetrics.append( {
                                         'id': m,
@@ -733,7 +759,20 @@ class Node(simianEngine.Entity):
                                         'graft': self.report[m][2]
                                         })
 
-            msgToSend = msgReport(messageMetrics, degree, self.miner, len(self.blockchain.chain), self.trxMade)
+            diss_degree = len(self.eagerPushPeers) + len(self.lazyPushPeers)
+
+            neighbors = [entry.node_idx for entry in self.partial_view]
+
+            msgToSend = msgReport(
+                messageMetrics,
+                diss_degree,
+                self.miner,
+                len(self.blockchain.chain),
+                self.trxMade,
+                self.node_idx,
+                neighbors
+            )
+
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
     def BecomeMiner(self, *args):
@@ -744,7 +783,6 @@ class Node(simianEngine.Entity):
             self.active = False
             self.peers = []
             self.blockchain.chain = []
-            self.blockchain.forks = {}
             self.blockchain.orphans = []
             self.receivedMsgs = {}
             self.report = {}
