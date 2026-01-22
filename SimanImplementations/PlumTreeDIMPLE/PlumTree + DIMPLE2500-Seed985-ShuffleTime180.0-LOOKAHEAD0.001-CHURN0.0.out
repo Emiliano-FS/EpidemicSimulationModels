@@ -1,0 +1,3170 @@
+Simian JIT PDES Engine (1.65)
+(c) Copyright 2015-. Triad National Security, LLC. All rights reserved. Released under BSD 3-clause license.
+Author: Nandakishore Santhi (with other contributors as acknowledged in source code)
+
+===================================================
+------------SIMIAN-PIE JIT PDES ENGINE-------------
+------------       VERSION: 1.65      -------------
+===================================================
+MPI: OFF
+===================================================
+
+Node[0]: Running on rank 0
+Node[1]: Running on rank 0
+Node[2]: Running on rank 0
+Node[3]: Running on rank 0
+Node[4]: Running on rank 0
+Node[5]: Running on rank 0
+Node[6]: Running on rank 0
+Node[7]: Running on rank 0
+Node[8]: Running on rank 0
+Node[9]: Running on rank 0
+Node[10]: Running on rank 0
+Node[11]: Running on rank 0
+Node[12]: Running on rank 0
+Node[13]: Running on rank 0
+Node[14]: Running on rank 0
+Node[15]: Running on rank 0
+Node[16]: Running on rank 0
+Node[17]: Running on rank 0
+Node[18]: Running on rank 0
+Node[19]: Running on rank 0
+Node[20]: Running on rank 0
+Node[21]: Running on rank 0
+Node[22]: Running on rank 0
+Node[23]: Running on rank 0
+Node[24]: Running on rank 0
+Node[25]: Running on rank 0
+Node[26]: Running on rank 0
+Node[27]: Running on rank 0
+Node[28]: Running on rank 0
+Node[29]: Running on rank 0
+Node[30]: Running on rank 0
+Node[31]: Running on rank 0
+Node[32]: Running on rank 0
+Node[33]: Running on rank 0
+Node[34]: Running on rank 0
+Node[35]: Running on rank 0
+Node[36]: Running on rank 0
+Node[37]: Running on rank 0
+Node[38]: Running on rank 0
+Node[39]: Running on rank 0
+Node[40]: Running on rank 0
+Node[41]: Running on rank 0
+Node[42]: Running on rank 0
+Node[43]: Running on rank 0
+Node[44]: Running on rank 0
+Node[45]: Running on rank 0
+Node[46]: Running on rank 0
+Node[47]: Running on rank 0
+Node[48]: Running on rank 0
+Node[49]: Running on rank 0
+Node[50]: Running on rank 0
+Node[51]: Running on rank 0
+Node[52]: Running on rank 0
+Node[53]: Running on rank 0
+Node[54]: Running on rank 0
+Node[55]: Running on rank 0
+Node[56]: Running on rank 0
+Node[57]: Running on rank 0
+Node[58]: Running on rank 0
+Node[59]: Running on rank 0
+Node[60]: Running on rank 0
+Node[61]: Running on rank 0
+Node[62]: Running on rank 0
+Node[63]: Running on rank 0
+Node[64]: Running on rank 0
+Node[65]: Running on rank 0
+Node[66]: Running on rank 0
+Node[67]: Running on rank 0
+Node[68]: Running on rank 0
+Node[69]: Running on rank 0
+Node[70]: Running on rank 0
+Node[71]: Running on rank 0
+Node[72]: Running on rank 0
+Node[73]: Running on rank 0
+Node[74]: Running on rank 0
+Node[75]: Running on rank 0
+Node[76]: Running on rank 0
+Node[77]: Running on rank 0
+Node[78]: Running on rank 0
+Node[79]: Running on rank 0
+Node[80]: Running on rank 0
+Node[81]: Running on rank 0
+Node[82]: Running on rank 0
+Node[83]: Running on rank 0
+Node[84]: Running on rank 0
+Node[85]: Running on rank 0
+Node[86]: Running on rank 0
+Node[87]: Running on rank 0
+Node[88]: Running on rank 0
+Node[89]: Running on rank 0
+Node[90]: Running on rank 0
+Node[91]: Running on rank 0
+Node[92]: Running on rank 0
+Node[93]: Running on rank 0
+Node[94]: Running on rank 0
+Node[95]: Running on rank 0
+Node[96]: Running on rank 0
+Node[97]: Running on rank 0
+Node[98]: Running on rank 0
+Node[99]: Running on rank 0
+Node[100]: Running on rank 0
+Node[101]: Running on rank 0
+Node[102]: Running on rank 0
+Node[103]: Running on rank 0
+Node[104]: Running on rank 0
+Node[105]: Running on rank 0
+Node[106]: Running on rank 0
+Node[107]: Running on rank 0
+Node[108]: Running on rank 0
+Node[109]: Running on rank 0
+Node[110]: Running on rank 0
+Node[111]: Running on rank 0
+Node[112]: Running on rank 0
+Node[113]: Running on rank 0
+Node[114]: Running on rank 0
+Node[115]: Running on rank 0
+Node[116]: Running on rank 0
+Node[117]: Running on rank 0
+Node[118]: Running on rank 0
+Node[119]: Running on rank 0
+Node[120]: Running on rank 0
+Node[121]: Running on rank 0
+Node[122]: Running on rank 0
+Node[123]: Running on rank 0
+Node[124]: Running on rank 0
+Node[125]: Running on rank 0
+Node[126]: Running on rank 0
+Node[127]: Running on rank 0
+Node[128]: Running on rank 0
+Node[129]: Running on rank 0
+Node[130]: Running on rank 0
+Node[131]: Running on rank 0
+Node[132]: Running on rank 0
+Node[133]: Running on rank 0
+Node[134]: Running on rank 0
+Node[135]: Running on rank 0
+Node[136]: Running on rank 0
+Node[137]: Running on rank 0
+Node[138]: Running on rank 0
+Node[139]: Running on rank 0
+Node[140]: Running on rank 0
+Node[141]: Running on rank 0
+Node[142]: Running on rank 0
+Node[143]: Running on rank 0
+Node[144]: Running on rank 0
+Node[145]: Running on rank 0
+Node[146]: Running on rank 0
+Node[147]: Running on rank 0
+Node[148]: Running on rank 0
+Node[149]: Running on rank 0
+Node[150]: Running on rank 0
+Node[151]: Running on rank 0
+Node[152]: Running on rank 0
+Node[153]: Running on rank 0
+Node[154]: Running on rank 0
+Node[155]: Running on rank 0
+Node[156]: Running on rank 0
+Node[157]: Running on rank 0
+Node[158]: Running on rank 0
+Node[159]: Running on rank 0
+Node[160]: Running on rank 0
+Node[161]: Running on rank 0
+Node[162]: Running on rank 0
+Node[163]: Running on rank 0
+Node[164]: Running on rank 0
+Node[165]: Running on rank 0
+Node[166]: Running on rank 0
+Node[167]: Running on rank 0
+Node[168]: Running on rank 0
+Node[169]: Running on rank 0
+Node[170]: Running on rank 0
+Node[171]: Running on rank 0
+Node[172]: Running on rank 0
+Node[173]: Running on rank 0
+Node[174]: Running on rank 0
+Node[175]: Running on rank 0
+Node[176]: Running on rank 0
+Node[177]: Running on rank 0
+Node[178]: Running on rank 0
+Node[179]: Running on rank 0
+Node[180]: Running on rank 0
+Node[181]: Running on rank 0
+Node[182]: Running on rank 0
+Node[183]: Running on rank 0
+Node[184]: Running on rank 0
+Node[185]: Running on rank 0
+Node[186]: Running on rank 0
+Node[187]: Running on rank 0
+Node[188]: Running on rank 0
+Node[189]: Running on rank 0
+Node[190]: Running on rank 0
+Node[191]: Running on rank 0
+Node[192]: Running on rank 0
+Node[193]: Running on rank 0
+Node[194]: Running on rank 0
+Node[195]: Running on rank 0
+Node[196]: Running on rank 0
+Node[197]: Running on rank 0
+Node[198]: Running on rank 0
+Node[199]: Running on rank 0
+Node[200]: Running on rank 0
+Node[201]: Running on rank 0
+Node[202]: Running on rank 0
+Node[203]: Running on rank 0
+Node[204]: Running on rank 0
+Node[205]: Running on rank 0
+Node[206]: Running on rank 0
+Node[207]: Running on rank 0
+Node[208]: Running on rank 0
+Node[209]: Running on rank 0
+Node[210]: Running on rank 0
+Node[211]: Running on rank 0
+Node[212]: Running on rank 0
+Node[213]: Running on rank 0
+Node[214]: Running on rank 0
+Node[215]: Running on rank 0
+Node[216]: Running on rank 0
+Node[217]: Running on rank 0
+Node[218]: Running on rank 0
+Node[219]: Running on rank 0
+Node[220]: Running on rank 0
+Node[221]: Running on rank 0
+Node[222]: Running on rank 0
+Node[223]: Running on rank 0
+Node[224]: Running on rank 0
+Node[225]: Running on rank 0
+Node[226]: Running on rank 0
+Node[227]: Running on rank 0
+Node[228]: Running on rank 0
+Node[229]: Running on rank 0
+Node[230]: Running on rank 0
+Node[231]: Running on rank 0
+Node[232]: Running on rank 0
+Node[233]: Running on rank 0
+Node[234]: Running on rank 0
+Node[235]: Running on rank 0
+Node[236]: Running on rank 0
+Node[237]: Running on rank 0
+Node[238]: Running on rank 0
+Node[239]: Running on rank 0
+Node[240]: Running on rank 0
+Node[241]: Running on rank 0
+Node[242]: Running on rank 0
+Node[243]: Running on rank 0
+Node[244]: Running on rank 0
+Node[245]: Running on rank 0
+Node[246]: Running on rank 0
+Node[247]: Running on rank 0
+Node[248]: Running on rank 0
+Node[249]: Running on rank 0
+Node[250]: Running on rank 0
+Node[251]: Running on rank 0
+Node[252]: Running on rank 0
+Node[253]: Running on rank 0
+Node[254]: Running on rank 0
+Node[255]: Running on rank 0
+Node[256]: Running on rank 0
+Node[257]: Running on rank 0
+Node[258]: Running on rank 0
+Node[259]: Running on rank 0
+Node[260]: Running on rank 0
+Node[261]: Running on rank 0
+Node[262]: Running on rank 0
+Node[263]: Running on rank 0
+Node[264]: Running on rank 0
+Node[265]: Running on rank 0
+Node[266]: Running on rank 0
+Node[267]: Running on rank 0
+Node[268]: Running on rank 0
+Node[269]: Running on rank 0
+Node[270]: Running on rank 0
+Node[271]: Running on rank 0
+Node[272]: Running on rank 0
+Node[273]: Running on rank 0
+Node[274]: Running on rank 0
+Node[275]: Running on rank 0
+Node[276]: Running on rank 0
+Node[277]: Running on rank 0
+Node[278]: Running on rank 0
+Node[279]: Running on rank 0
+Node[280]: Running on rank 0
+Node[281]: Running on rank 0
+Node[282]: Running on rank 0
+Node[283]: Running on rank 0
+Node[284]: Running on rank 0
+Node[285]: Running on rank 0
+Node[286]: Running on rank 0
+Node[287]: Running on rank 0
+Node[288]: Running on rank 0
+Node[289]: Running on rank 0
+Node[290]: Running on rank 0
+Node[291]: Running on rank 0
+Node[292]: Running on rank 0
+Node[293]: Running on rank 0
+Node[294]: Running on rank 0
+Node[295]: Running on rank 0
+Node[296]: Running on rank 0
+Node[297]: Running on rank 0
+Node[298]: Running on rank 0
+Node[299]: Running on rank 0
+Node[300]: Running on rank 0
+Node[301]: Running on rank 0
+Node[302]: Running on rank 0
+Node[303]: Running on rank 0
+Node[304]: Running on rank 0
+Node[305]: Running on rank 0
+Node[306]: Running on rank 0
+Node[307]: Running on rank 0
+Node[308]: Running on rank 0
+Node[309]: Running on rank 0
+Node[310]: Running on rank 0
+Node[311]: Running on rank 0
+Node[312]: Running on rank 0
+Node[313]: Running on rank 0
+Node[314]: Running on rank 0
+Node[315]: Running on rank 0
+Node[316]: Running on rank 0
+Node[317]: Running on rank 0
+Node[318]: Running on rank 0
+Node[319]: Running on rank 0
+Node[320]: Running on rank 0
+Node[321]: Running on rank 0
+Node[322]: Running on rank 0
+Node[323]: Running on rank 0
+Node[324]: Running on rank 0
+Node[325]: Running on rank 0
+Node[326]: Running on rank 0
+Node[327]: Running on rank 0
+Node[328]: Running on rank 0
+Node[329]: Running on rank 0
+Node[330]: Running on rank 0
+Node[331]: Running on rank 0
+Node[332]: Running on rank 0
+Node[333]: Running on rank 0
+Node[334]: Running on rank 0
+Node[335]: Running on rank 0
+Node[336]: Running on rank 0
+Node[337]: Running on rank 0
+Node[338]: Running on rank 0
+Node[339]: Running on rank 0
+Node[340]: Running on rank 0
+Node[341]: Running on rank 0
+Node[342]: Running on rank 0
+Node[343]: Running on rank 0
+Node[344]: Running on rank 0
+Node[345]: Running on rank 0
+Node[346]: Running on rank 0
+Node[347]: Running on rank 0
+Node[348]: Running on rank 0
+Node[349]: Running on rank 0
+Node[350]: Running on rank 0
+Node[351]: Running on rank 0
+Node[352]: Running on rank 0
+Node[353]: Running on rank 0
+Node[354]: Running on rank 0
+Node[355]: Running on rank 0
+Node[356]: Running on rank 0
+Node[357]: Running on rank 0
+Node[358]: Running on rank 0
+Node[359]: Running on rank 0
+Node[360]: Running on rank 0
+Node[361]: Running on rank 0
+Node[362]: Running on rank 0
+Node[363]: Running on rank 0
+Node[364]: Running on rank 0
+Node[365]: Running on rank 0
+Node[366]: Running on rank 0
+Node[367]: Running on rank 0
+Node[368]: Running on rank 0
+Node[369]: Running on rank 0
+Node[370]: Running on rank 0
+Node[371]: Running on rank 0
+Node[372]: Running on rank 0
+Node[373]: Running on rank 0
+Node[374]: Running on rank 0
+Node[375]: Running on rank 0
+Node[376]: Running on rank 0
+Node[377]: Running on rank 0
+Node[378]: Running on rank 0
+Node[379]: Running on rank 0
+Node[380]: Running on rank 0
+Node[381]: Running on rank 0
+Node[382]: Running on rank 0
+Node[383]: Running on rank 0
+Node[384]: Running on rank 0
+Node[385]: Running on rank 0
+Node[386]: Running on rank 0
+Node[387]: Running on rank 0
+Node[388]: Running on rank 0
+Node[389]: Running on rank 0
+Node[390]: Running on rank 0
+Node[391]: Running on rank 0
+Node[392]: Running on rank 0
+Node[393]: Running on rank 0
+Node[394]: Running on rank 0
+Node[395]: Running on rank 0
+Node[396]: Running on rank 0
+Node[397]: Running on rank 0
+Node[398]: Running on rank 0
+Node[399]: Running on rank 0
+Node[400]: Running on rank 0
+Node[401]: Running on rank 0
+Node[402]: Running on rank 0
+Node[403]: Running on rank 0
+Node[404]: Running on rank 0
+Node[405]: Running on rank 0
+Node[406]: Running on rank 0
+Node[407]: Running on rank 0
+Node[408]: Running on rank 0
+Node[409]: Running on rank 0
+Node[410]: Running on rank 0
+Node[411]: Running on rank 0
+Node[412]: Running on rank 0
+Node[413]: Running on rank 0
+Node[414]: Running on rank 0
+Node[415]: Running on rank 0
+Node[416]: Running on rank 0
+Node[417]: Running on rank 0
+Node[418]: Running on rank 0
+Node[419]: Running on rank 0
+Node[420]: Running on rank 0
+Node[421]: Running on rank 0
+Node[422]: Running on rank 0
+Node[423]: Running on rank 0
+Node[424]: Running on rank 0
+Node[425]: Running on rank 0
+Node[426]: Running on rank 0
+Node[427]: Running on rank 0
+Node[428]: Running on rank 0
+Node[429]: Running on rank 0
+Node[430]: Running on rank 0
+Node[431]: Running on rank 0
+Node[432]: Running on rank 0
+Node[433]: Running on rank 0
+Node[434]: Running on rank 0
+Node[435]: Running on rank 0
+Node[436]: Running on rank 0
+Node[437]: Running on rank 0
+Node[438]: Running on rank 0
+Node[439]: Running on rank 0
+Node[440]: Running on rank 0
+Node[441]: Running on rank 0
+Node[442]: Running on rank 0
+Node[443]: Running on rank 0
+Node[444]: Running on rank 0
+Node[445]: Running on rank 0
+Node[446]: Running on rank 0
+Node[447]: Running on rank 0
+Node[448]: Running on rank 0
+Node[449]: Running on rank 0
+Node[450]: Running on rank 0
+Node[451]: Running on rank 0
+Node[452]: Running on rank 0
+Node[453]: Running on rank 0
+Node[454]: Running on rank 0
+Node[455]: Running on rank 0
+Node[456]: Running on rank 0
+Node[457]: Running on rank 0
+Node[458]: Running on rank 0
+Node[459]: Running on rank 0
+Node[460]: Running on rank 0
+Node[461]: Running on rank 0
+Node[462]: Running on rank 0
+Node[463]: Running on rank 0
+Node[464]: Running on rank 0
+Node[465]: Running on rank 0
+Node[466]: Running on rank 0
+Node[467]: Running on rank 0
+Node[468]: Running on rank 0
+Node[469]: Running on rank 0
+Node[470]: Running on rank 0
+Node[471]: Running on rank 0
+Node[472]: Running on rank 0
+Node[473]: Running on rank 0
+Node[474]: Running on rank 0
+Node[475]: Running on rank 0
+Node[476]: Running on rank 0
+Node[477]: Running on rank 0
+Node[478]: Running on rank 0
+Node[479]: Running on rank 0
+Node[480]: Running on rank 0
+Node[481]: Running on rank 0
+Node[482]: Running on rank 0
+Node[483]: Running on rank 0
+Node[484]: Running on rank 0
+Node[485]: Running on rank 0
+Node[486]: Running on rank 0
+Node[487]: Running on rank 0
+Node[488]: Running on rank 0
+Node[489]: Running on rank 0
+Node[490]: Running on rank 0
+Node[491]: Running on rank 0
+Node[492]: Running on rank 0
+Node[493]: Running on rank 0
+Node[494]: Running on rank 0
+Node[495]: Running on rank 0
+Node[496]: Running on rank 0
+Node[497]: Running on rank 0
+Node[498]: Running on rank 0
+Node[499]: Running on rank 0
+Node[500]: Running on rank 0
+Node[501]: Running on rank 0
+Node[502]: Running on rank 0
+Node[503]: Running on rank 0
+Node[504]: Running on rank 0
+Node[505]: Running on rank 0
+Node[506]: Running on rank 0
+Node[507]: Running on rank 0
+Node[508]: Running on rank 0
+Node[509]: Running on rank 0
+Node[510]: Running on rank 0
+Node[511]: Running on rank 0
+Node[512]: Running on rank 0
+Node[513]: Running on rank 0
+Node[514]: Running on rank 0
+Node[515]: Running on rank 0
+Node[516]: Running on rank 0
+Node[517]: Running on rank 0
+Node[518]: Running on rank 0
+Node[519]: Running on rank 0
+Node[520]: Running on rank 0
+Node[521]: Running on rank 0
+Node[522]: Running on rank 0
+Node[523]: Running on rank 0
+Node[524]: Running on rank 0
+Node[525]: Running on rank 0
+Node[526]: Running on rank 0
+Node[527]: Running on rank 0
+Node[528]: Running on rank 0
+Node[529]: Running on rank 0
+Node[530]: Running on rank 0
+Node[531]: Running on rank 0
+Node[532]: Running on rank 0
+Node[533]: Running on rank 0
+Node[534]: Running on rank 0
+Node[535]: Running on rank 0
+Node[536]: Running on rank 0
+Node[537]: Running on rank 0
+Node[538]: Running on rank 0
+Node[539]: Running on rank 0
+Node[540]: Running on rank 0
+Node[541]: Running on rank 0
+Node[542]: Running on rank 0
+Node[543]: Running on rank 0
+Node[544]: Running on rank 0
+Node[545]: Running on rank 0
+Node[546]: Running on rank 0
+Node[547]: Running on rank 0
+Node[548]: Running on rank 0
+Node[549]: Running on rank 0
+Node[550]: Running on rank 0
+Node[551]: Running on rank 0
+Node[552]: Running on rank 0
+Node[553]: Running on rank 0
+Node[554]: Running on rank 0
+Node[555]: Running on rank 0
+Node[556]: Running on rank 0
+Node[557]: Running on rank 0
+Node[558]: Running on rank 0
+Node[559]: Running on rank 0
+Node[560]: Running on rank 0
+Node[561]: Running on rank 0
+Node[562]: Running on rank 0
+Node[563]: Running on rank 0
+Node[564]: Running on rank 0
+Node[565]: Running on rank 0
+Node[566]: Running on rank 0
+Node[567]: Running on rank 0
+Node[568]: Running on rank 0
+Node[569]: Running on rank 0
+Node[570]: Running on rank 0
+Node[571]: Running on rank 0
+Node[572]: Running on rank 0
+Node[573]: Running on rank 0
+Node[574]: Running on rank 0
+Node[575]: Running on rank 0
+Node[576]: Running on rank 0
+Node[577]: Running on rank 0
+Node[578]: Running on rank 0
+Node[579]: Running on rank 0
+Node[580]: Running on rank 0
+Node[581]: Running on rank 0
+Node[582]: Running on rank 0
+Node[583]: Running on rank 0
+Node[584]: Running on rank 0
+Node[585]: Running on rank 0
+Node[586]: Running on rank 0
+Node[587]: Running on rank 0
+Node[588]: Running on rank 0
+Node[589]: Running on rank 0
+Node[590]: Running on rank 0
+Node[591]: Running on rank 0
+Node[592]: Running on rank 0
+Node[593]: Running on rank 0
+Node[594]: Running on rank 0
+Node[595]: Running on rank 0
+Node[596]: Running on rank 0
+Node[597]: Running on rank 0
+Node[598]: Running on rank 0
+Node[599]: Running on rank 0
+Node[600]: Running on rank 0
+Node[601]: Running on rank 0
+Node[602]: Running on rank 0
+Node[603]: Running on rank 0
+Node[604]: Running on rank 0
+Node[605]: Running on rank 0
+Node[606]: Running on rank 0
+Node[607]: Running on rank 0
+Node[608]: Running on rank 0
+Node[609]: Running on rank 0
+Node[610]: Running on rank 0
+Node[611]: Running on rank 0
+Node[612]: Running on rank 0
+Node[613]: Running on rank 0
+Node[614]: Running on rank 0
+Node[615]: Running on rank 0
+Node[616]: Running on rank 0
+Node[617]: Running on rank 0
+Node[618]: Running on rank 0
+Node[619]: Running on rank 0
+Node[620]: Running on rank 0
+Node[621]: Running on rank 0
+Node[622]: Running on rank 0
+Node[623]: Running on rank 0
+Node[624]: Running on rank 0
+Node[625]: Running on rank 0
+Node[626]: Running on rank 0
+Node[627]: Running on rank 0
+Node[628]: Running on rank 0
+Node[629]: Running on rank 0
+Node[630]: Running on rank 0
+Node[631]: Running on rank 0
+Node[632]: Running on rank 0
+Node[633]: Running on rank 0
+Node[634]: Running on rank 0
+Node[635]: Running on rank 0
+Node[636]: Running on rank 0
+Node[637]: Running on rank 0
+Node[638]: Running on rank 0
+Node[639]: Running on rank 0
+Node[640]: Running on rank 0
+Node[641]: Running on rank 0
+Node[642]: Running on rank 0
+Node[643]: Running on rank 0
+Node[644]: Running on rank 0
+Node[645]: Running on rank 0
+Node[646]: Running on rank 0
+Node[647]: Running on rank 0
+Node[648]: Running on rank 0
+Node[649]: Running on rank 0
+Node[650]: Running on rank 0
+Node[651]: Running on rank 0
+Node[652]: Running on rank 0
+Node[653]: Running on rank 0
+Node[654]: Running on rank 0
+Node[655]: Running on rank 0
+Node[656]: Running on rank 0
+Node[657]: Running on rank 0
+Node[658]: Running on rank 0
+Node[659]: Running on rank 0
+Node[660]: Running on rank 0
+Node[661]: Running on rank 0
+Node[662]: Running on rank 0
+Node[663]: Running on rank 0
+Node[664]: Running on rank 0
+Node[665]: Running on rank 0
+Node[666]: Running on rank 0
+Node[667]: Running on rank 0
+Node[668]: Running on rank 0
+Node[669]: Running on rank 0
+Node[670]: Running on rank 0
+Node[671]: Running on rank 0
+Node[672]: Running on rank 0
+Node[673]: Running on rank 0
+Node[674]: Running on rank 0
+Node[675]: Running on rank 0
+Node[676]: Running on rank 0
+Node[677]: Running on rank 0
+Node[678]: Running on rank 0
+Node[679]: Running on rank 0
+Node[680]: Running on rank 0
+Node[681]: Running on rank 0
+Node[682]: Running on rank 0
+Node[683]: Running on rank 0
+Node[684]: Running on rank 0
+Node[685]: Running on rank 0
+Node[686]: Running on rank 0
+Node[687]: Running on rank 0
+Node[688]: Running on rank 0
+Node[689]: Running on rank 0
+Node[690]: Running on rank 0
+Node[691]: Running on rank 0
+Node[692]: Running on rank 0
+Node[693]: Running on rank 0
+Node[694]: Running on rank 0
+Node[695]: Running on rank 0
+Node[696]: Running on rank 0
+Node[697]: Running on rank 0
+Node[698]: Running on rank 0
+Node[699]: Running on rank 0
+Node[700]: Running on rank 0
+Node[701]: Running on rank 0
+Node[702]: Running on rank 0
+Node[703]: Running on rank 0
+Node[704]: Running on rank 0
+Node[705]: Running on rank 0
+Node[706]: Running on rank 0
+Node[707]: Running on rank 0
+Node[708]: Running on rank 0
+Node[709]: Running on rank 0
+Node[710]: Running on rank 0
+Node[711]: Running on rank 0
+Node[712]: Running on rank 0
+Node[713]: Running on rank 0
+Node[714]: Running on rank 0
+Node[715]: Running on rank 0
+Node[716]: Running on rank 0
+Node[717]: Running on rank 0
+Node[718]: Running on rank 0
+Node[719]: Running on rank 0
+Node[720]: Running on rank 0
+Node[721]: Running on rank 0
+Node[722]: Running on rank 0
+Node[723]: Running on rank 0
+Node[724]: Running on rank 0
+Node[725]: Running on rank 0
+Node[726]: Running on rank 0
+Node[727]: Running on rank 0
+Node[728]: Running on rank 0
+Node[729]: Running on rank 0
+Node[730]: Running on rank 0
+Node[731]: Running on rank 0
+Node[732]: Running on rank 0
+Node[733]: Running on rank 0
+Node[734]: Running on rank 0
+Node[735]: Running on rank 0
+Node[736]: Running on rank 0
+Node[737]: Running on rank 0
+Node[738]: Running on rank 0
+Node[739]: Running on rank 0
+Node[740]: Running on rank 0
+Node[741]: Running on rank 0
+Node[742]: Running on rank 0
+Node[743]: Running on rank 0
+Node[744]: Running on rank 0
+Node[745]: Running on rank 0
+Node[746]: Running on rank 0
+Node[747]: Running on rank 0
+Node[748]: Running on rank 0
+Node[749]: Running on rank 0
+Node[750]: Running on rank 0
+Node[751]: Running on rank 0
+Node[752]: Running on rank 0
+Node[753]: Running on rank 0
+Node[754]: Running on rank 0
+Node[755]: Running on rank 0
+Node[756]: Running on rank 0
+Node[757]: Running on rank 0
+Node[758]: Running on rank 0
+Node[759]: Running on rank 0
+Node[760]: Running on rank 0
+Node[761]: Running on rank 0
+Node[762]: Running on rank 0
+Node[763]: Running on rank 0
+Node[764]: Running on rank 0
+Node[765]: Running on rank 0
+Node[766]: Running on rank 0
+Node[767]: Running on rank 0
+Node[768]: Running on rank 0
+Node[769]: Running on rank 0
+Node[770]: Running on rank 0
+Node[771]: Running on rank 0
+Node[772]: Running on rank 0
+Node[773]: Running on rank 0
+Node[774]: Running on rank 0
+Node[775]: Running on rank 0
+Node[776]: Running on rank 0
+Node[777]: Running on rank 0
+Node[778]: Running on rank 0
+Node[779]: Running on rank 0
+Node[780]: Running on rank 0
+Node[781]: Running on rank 0
+Node[782]: Running on rank 0
+Node[783]: Running on rank 0
+Node[784]: Running on rank 0
+Node[785]: Running on rank 0
+Node[786]: Running on rank 0
+Node[787]: Running on rank 0
+Node[788]: Running on rank 0
+Node[789]: Running on rank 0
+Node[790]: Running on rank 0
+Node[791]: Running on rank 0
+Node[792]: Running on rank 0
+Node[793]: Running on rank 0
+Node[794]: Running on rank 0
+Node[795]: Running on rank 0
+Node[796]: Running on rank 0
+Node[797]: Running on rank 0
+Node[798]: Running on rank 0
+Node[799]: Running on rank 0
+Node[800]: Running on rank 0
+Node[801]: Running on rank 0
+Node[802]: Running on rank 0
+Node[803]: Running on rank 0
+Node[804]: Running on rank 0
+Node[805]: Running on rank 0
+Node[806]: Running on rank 0
+Node[807]: Running on rank 0
+Node[808]: Running on rank 0
+Node[809]: Running on rank 0
+Node[810]: Running on rank 0
+Node[811]: Running on rank 0
+Node[812]: Running on rank 0
+Node[813]: Running on rank 0
+Node[814]: Running on rank 0
+Node[815]: Running on rank 0
+Node[816]: Running on rank 0
+Node[817]: Running on rank 0
+Node[818]: Running on rank 0
+Node[819]: Running on rank 0
+Node[820]: Running on rank 0
+Node[821]: Running on rank 0
+Node[822]: Running on rank 0
+Node[823]: Running on rank 0
+Node[824]: Running on rank 0
+Node[825]: Running on rank 0
+Node[826]: Running on rank 0
+Node[827]: Running on rank 0
+Node[828]: Running on rank 0
+Node[829]: Running on rank 0
+Node[830]: Running on rank 0
+Node[831]: Running on rank 0
+Node[832]: Running on rank 0
+Node[833]: Running on rank 0
+Node[834]: Running on rank 0
+Node[835]: Running on rank 0
+Node[836]: Running on rank 0
+Node[837]: Running on rank 0
+Node[838]: Running on rank 0
+Node[839]: Running on rank 0
+Node[840]: Running on rank 0
+Node[841]: Running on rank 0
+Node[842]: Running on rank 0
+Node[843]: Running on rank 0
+Node[844]: Running on rank 0
+Node[845]: Running on rank 0
+Node[846]: Running on rank 0
+Node[847]: Running on rank 0
+Node[848]: Running on rank 0
+Node[849]: Running on rank 0
+Node[850]: Running on rank 0
+Node[851]: Running on rank 0
+Node[852]: Running on rank 0
+Node[853]: Running on rank 0
+Node[854]: Running on rank 0
+Node[855]: Running on rank 0
+Node[856]: Running on rank 0
+Node[857]: Running on rank 0
+Node[858]: Running on rank 0
+Node[859]: Running on rank 0
+Node[860]: Running on rank 0
+Node[861]: Running on rank 0
+Node[862]: Running on rank 0
+Node[863]: Running on rank 0
+Node[864]: Running on rank 0
+Node[865]: Running on rank 0
+Node[866]: Running on rank 0
+Node[867]: Running on rank 0
+Node[868]: Running on rank 0
+Node[869]: Running on rank 0
+Node[870]: Running on rank 0
+Node[871]: Running on rank 0
+Node[872]: Running on rank 0
+Node[873]: Running on rank 0
+Node[874]: Running on rank 0
+Node[875]: Running on rank 0
+Node[876]: Running on rank 0
+Node[877]: Running on rank 0
+Node[878]: Running on rank 0
+Node[879]: Running on rank 0
+Node[880]: Running on rank 0
+Node[881]: Running on rank 0
+Node[882]: Running on rank 0
+Node[883]: Running on rank 0
+Node[884]: Running on rank 0
+Node[885]: Running on rank 0
+Node[886]: Running on rank 0
+Node[887]: Running on rank 0
+Node[888]: Running on rank 0
+Node[889]: Running on rank 0
+Node[890]: Running on rank 0
+Node[891]: Running on rank 0
+Node[892]: Running on rank 0
+Node[893]: Running on rank 0
+Node[894]: Running on rank 0
+Node[895]: Running on rank 0
+Node[896]: Running on rank 0
+Node[897]: Running on rank 0
+Node[898]: Running on rank 0
+Node[899]: Running on rank 0
+Node[900]: Running on rank 0
+Node[901]: Running on rank 0
+Node[902]: Running on rank 0
+Node[903]: Running on rank 0
+Node[904]: Running on rank 0
+Node[905]: Running on rank 0
+Node[906]: Running on rank 0
+Node[907]: Running on rank 0
+Node[908]: Running on rank 0
+Node[909]: Running on rank 0
+Node[910]: Running on rank 0
+Node[911]: Running on rank 0
+Node[912]: Running on rank 0
+Node[913]: Running on rank 0
+Node[914]: Running on rank 0
+Node[915]: Running on rank 0
+Node[916]: Running on rank 0
+Node[917]: Running on rank 0
+Node[918]: Running on rank 0
+Node[919]: Running on rank 0
+Node[920]: Running on rank 0
+Node[921]: Running on rank 0
+Node[922]: Running on rank 0
+Node[923]: Running on rank 0
+Node[924]: Running on rank 0
+Node[925]: Running on rank 0
+Node[926]: Running on rank 0
+Node[927]: Running on rank 0
+Node[928]: Running on rank 0
+Node[929]: Running on rank 0
+Node[930]: Running on rank 0
+Node[931]: Running on rank 0
+Node[932]: Running on rank 0
+Node[933]: Running on rank 0
+Node[934]: Running on rank 0
+Node[935]: Running on rank 0
+Node[936]: Running on rank 0
+Node[937]: Running on rank 0
+Node[938]: Running on rank 0
+Node[939]: Running on rank 0
+Node[940]: Running on rank 0
+Node[941]: Running on rank 0
+Node[942]: Running on rank 0
+Node[943]: Running on rank 0
+Node[944]: Running on rank 0
+Node[945]: Running on rank 0
+Node[946]: Running on rank 0
+Node[947]: Running on rank 0
+Node[948]: Running on rank 0
+Node[949]: Running on rank 0
+Node[950]: Running on rank 0
+Node[951]: Running on rank 0
+Node[952]: Running on rank 0
+Node[953]: Running on rank 0
+Node[954]: Running on rank 0
+Node[955]: Running on rank 0
+Node[956]: Running on rank 0
+Node[957]: Running on rank 0
+Node[958]: Running on rank 0
+Node[959]: Running on rank 0
+Node[960]: Running on rank 0
+Node[961]: Running on rank 0
+Node[962]: Running on rank 0
+Node[963]: Running on rank 0
+Node[964]: Running on rank 0
+Node[965]: Running on rank 0
+Node[966]: Running on rank 0
+Node[967]: Running on rank 0
+Node[968]: Running on rank 0
+Node[969]: Running on rank 0
+Node[970]: Running on rank 0
+Node[971]: Running on rank 0
+Node[972]: Running on rank 0
+Node[973]: Running on rank 0
+Node[974]: Running on rank 0
+Node[975]: Running on rank 0
+Node[976]: Running on rank 0
+Node[977]: Running on rank 0
+Node[978]: Running on rank 0
+Node[979]: Running on rank 0
+Node[980]: Running on rank 0
+Node[981]: Running on rank 0
+Node[982]: Running on rank 0
+Node[983]: Running on rank 0
+Node[984]: Running on rank 0
+Node[985]: Running on rank 0
+Node[986]: Running on rank 0
+Node[987]: Running on rank 0
+Node[988]: Running on rank 0
+Node[989]: Running on rank 0
+Node[990]: Running on rank 0
+Node[991]: Running on rank 0
+Node[992]: Running on rank 0
+Node[993]: Running on rank 0
+Node[994]: Running on rank 0
+Node[995]: Running on rank 0
+Node[996]: Running on rank 0
+Node[997]: Running on rank 0
+Node[998]: Running on rank 0
+Node[999]: Running on rank 0
+Node[1000]: Running on rank 0
+Node[1001]: Running on rank 0
+Node[1002]: Running on rank 0
+Node[1003]: Running on rank 0
+Node[1004]: Running on rank 0
+Node[1005]: Running on rank 0
+Node[1006]: Running on rank 0
+Node[1007]: Running on rank 0
+Node[1008]: Running on rank 0
+Node[1009]: Running on rank 0
+Node[1010]: Running on rank 0
+Node[1011]: Running on rank 0
+Node[1012]: Running on rank 0
+Node[1013]: Running on rank 0
+Node[1014]: Running on rank 0
+Node[1015]: Running on rank 0
+Node[1016]: Running on rank 0
+Node[1017]: Running on rank 0
+Node[1018]: Running on rank 0
+Node[1019]: Running on rank 0
+Node[1020]: Running on rank 0
+Node[1021]: Running on rank 0
+Node[1022]: Running on rank 0
+Node[1023]: Running on rank 0
+Node[1024]: Running on rank 0
+Node[1025]: Running on rank 0
+Node[1026]: Running on rank 0
+Node[1027]: Running on rank 0
+Node[1028]: Running on rank 0
+Node[1029]: Running on rank 0
+Node[1030]: Running on rank 0
+Node[1031]: Running on rank 0
+Node[1032]: Running on rank 0
+Node[1033]: Running on rank 0
+Node[1034]: Running on rank 0
+Node[1035]: Running on rank 0
+Node[1036]: Running on rank 0
+Node[1037]: Running on rank 0
+Node[1038]: Running on rank 0
+Node[1039]: Running on rank 0
+Node[1040]: Running on rank 0
+Node[1041]: Running on rank 0
+Node[1042]: Running on rank 0
+Node[1043]: Running on rank 0
+Node[1044]: Running on rank 0
+Node[1045]: Running on rank 0
+Node[1046]: Running on rank 0
+Node[1047]: Running on rank 0
+Node[1048]: Running on rank 0
+Node[1049]: Running on rank 0
+Node[1050]: Running on rank 0
+Node[1051]: Running on rank 0
+Node[1052]: Running on rank 0
+Node[1053]: Running on rank 0
+Node[1054]: Running on rank 0
+Node[1055]: Running on rank 0
+Node[1056]: Running on rank 0
+Node[1057]: Running on rank 0
+Node[1058]: Running on rank 0
+Node[1059]: Running on rank 0
+Node[1060]: Running on rank 0
+Node[1061]: Running on rank 0
+Node[1062]: Running on rank 0
+Node[1063]: Running on rank 0
+Node[1064]: Running on rank 0
+Node[1065]: Running on rank 0
+Node[1066]: Running on rank 0
+Node[1067]: Running on rank 0
+Node[1068]: Running on rank 0
+Node[1069]: Running on rank 0
+Node[1070]: Running on rank 0
+Node[1071]: Running on rank 0
+Node[1072]: Running on rank 0
+Node[1073]: Running on rank 0
+Node[1074]: Running on rank 0
+Node[1075]: Running on rank 0
+Node[1076]: Running on rank 0
+Node[1077]: Running on rank 0
+Node[1078]: Running on rank 0
+Node[1079]: Running on rank 0
+Node[1080]: Running on rank 0
+Node[1081]: Running on rank 0
+Node[1082]: Running on rank 0
+Node[1083]: Running on rank 0
+Node[1084]: Running on rank 0
+Node[1085]: Running on rank 0
+Node[1086]: Running on rank 0
+Node[1087]: Running on rank 0
+Node[1088]: Running on rank 0
+Node[1089]: Running on rank 0
+Node[1090]: Running on rank 0
+Node[1091]: Running on rank 0
+Node[1092]: Running on rank 0
+Node[1093]: Running on rank 0
+Node[1094]: Running on rank 0
+Node[1095]: Running on rank 0
+Node[1096]: Running on rank 0
+Node[1097]: Running on rank 0
+Node[1098]: Running on rank 0
+Node[1099]: Running on rank 0
+Node[1100]: Running on rank 0
+Node[1101]: Running on rank 0
+Node[1102]: Running on rank 0
+Node[1103]: Running on rank 0
+Node[1104]: Running on rank 0
+Node[1105]: Running on rank 0
+Node[1106]: Running on rank 0
+Node[1107]: Running on rank 0
+Node[1108]: Running on rank 0
+Node[1109]: Running on rank 0
+Node[1110]: Running on rank 0
+Node[1111]: Running on rank 0
+Node[1112]: Running on rank 0
+Node[1113]: Running on rank 0
+Node[1114]: Running on rank 0
+Node[1115]: Running on rank 0
+Node[1116]: Running on rank 0
+Node[1117]: Running on rank 0
+Node[1118]: Running on rank 0
+Node[1119]: Running on rank 0
+Node[1120]: Running on rank 0
+Node[1121]: Running on rank 0
+Node[1122]: Running on rank 0
+Node[1123]: Running on rank 0
+Node[1124]: Running on rank 0
+Node[1125]: Running on rank 0
+Node[1126]: Running on rank 0
+Node[1127]: Running on rank 0
+Node[1128]: Running on rank 0
+Node[1129]: Running on rank 0
+Node[1130]: Running on rank 0
+Node[1131]: Running on rank 0
+Node[1132]: Running on rank 0
+Node[1133]: Running on rank 0
+Node[1134]: Running on rank 0
+Node[1135]: Running on rank 0
+Node[1136]: Running on rank 0
+Node[1137]: Running on rank 0
+Node[1138]: Running on rank 0
+Node[1139]: Running on rank 0
+Node[1140]: Running on rank 0
+Node[1141]: Running on rank 0
+Node[1142]: Running on rank 0
+Node[1143]: Running on rank 0
+Node[1144]: Running on rank 0
+Node[1145]: Running on rank 0
+Node[1146]: Running on rank 0
+Node[1147]: Running on rank 0
+Node[1148]: Running on rank 0
+Node[1149]: Running on rank 0
+Node[1150]: Running on rank 0
+Node[1151]: Running on rank 0
+Node[1152]: Running on rank 0
+Node[1153]: Running on rank 0
+Node[1154]: Running on rank 0
+Node[1155]: Running on rank 0
+Node[1156]: Running on rank 0
+Node[1157]: Running on rank 0
+Node[1158]: Running on rank 0
+Node[1159]: Running on rank 0
+Node[1160]: Running on rank 0
+Node[1161]: Running on rank 0
+Node[1162]: Running on rank 0
+Node[1163]: Running on rank 0
+Node[1164]: Running on rank 0
+Node[1165]: Running on rank 0
+Node[1166]: Running on rank 0
+Node[1167]: Running on rank 0
+Node[1168]: Running on rank 0
+Node[1169]: Running on rank 0
+Node[1170]: Running on rank 0
+Node[1171]: Running on rank 0
+Node[1172]: Running on rank 0
+Node[1173]: Running on rank 0
+Node[1174]: Running on rank 0
+Node[1175]: Running on rank 0
+Node[1176]: Running on rank 0
+Node[1177]: Running on rank 0
+Node[1178]: Running on rank 0
+Node[1179]: Running on rank 0
+Node[1180]: Running on rank 0
+Node[1181]: Running on rank 0
+Node[1182]: Running on rank 0
+Node[1183]: Running on rank 0
+Node[1184]: Running on rank 0
+Node[1185]: Running on rank 0
+Node[1186]: Running on rank 0
+Node[1187]: Running on rank 0
+Node[1188]: Running on rank 0
+Node[1189]: Running on rank 0
+Node[1190]: Running on rank 0
+Node[1191]: Running on rank 0
+Node[1192]: Running on rank 0
+Node[1193]: Running on rank 0
+Node[1194]: Running on rank 0
+Node[1195]: Running on rank 0
+Node[1196]: Running on rank 0
+Node[1197]: Running on rank 0
+Node[1198]: Running on rank 0
+Node[1199]: Running on rank 0
+Node[1200]: Running on rank 0
+Node[1201]: Running on rank 0
+Node[1202]: Running on rank 0
+Node[1203]: Running on rank 0
+Node[1204]: Running on rank 0
+Node[1205]: Running on rank 0
+Node[1206]: Running on rank 0
+Node[1207]: Running on rank 0
+Node[1208]: Running on rank 0
+Node[1209]: Running on rank 0
+Node[1210]: Running on rank 0
+Node[1211]: Running on rank 0
+Node[1212]: Running on rank 0
+Node[1213]: Running on rank 0
+Node[1214]: Running on rank 0
+Node[1215]: Running on rank 0
+Node[1216]: Running on rank 0
+Node[1217]: Running on rank 0
+Node[1218]: Running on rank 0
+Node[1219]: Running on rank 0
+Node[1220]: Running on rank 0
+Node[1221]: Running on rank 0
+Node[1222]: Running on rank 0
+Node[1223]: Running on rank 0
+Node[1224]: Running on rank 0
+Node[1225]: Running on rank 0
+Node[1226]: Running on rank 0
+Node[1227]: Running on rank 0
+Node[1228]: Running on rank 0
+Node[1229]: Running on rank 0
+Node[1230]: Running on rank 0
+Node[1231]: Running on rank 0
+Node[1232]: Running on rank 0
+Node[1233]: Running on rank 0
+Node[1234]: Running on rank 0
+Node[1235]: Running on rank 0
+Node[1236]: Running on rank 0
+Node[1237]: Running on rank 0
+Node[1238]: Running on rank 0
+Node[1239]: Running on rank 0
+Node[1240]: Running on rank 0
+Node[1241]: Running on rank 0
+Node[1242]: Running on rank 0
+Node[1243]: Running on rank 0
+Node[1244]: Running on rank 0
+Node[1245]: Running on rank 0
+Node[1246]: Running on rank 0
+Node[1247]: Running on rank 0
+Node[1248]: Running on rank 0
+Node[1249]: Running on rank 0
+Node[1250]: Running on rank 0
+Node[1251]: Running on rank 0
+Node[1252]: Running on rank 0
+Node[1253]: Running on rank 0
+Node[1254]: Running on rank 0
+Node[1255]: Running on rank 0
+Node[1256]: Running on rank 0
+Node[1257]: Running on rank 0
+Node[1258]: Running on rank 0
+Node[1259]: Running on rank 0
+Node[1260]: Running on rank 0
+Node[1261]: Running on rank 0
+Node[1262]: Running on rank 0
+Node[1263]: Running on rank 0
+Node[1264]: Running on rank 0
+Node[1265]: Running on rank 0
+Node[1266]: Running on rank 0
+Node[1267]: Running on rank 0
+Node[1268]: Running on rank 0
+Node[1269]: Running on rank 0
+Node[1270]: Running on rank 0
+Node[1271]: Running on rank 0
+Node[1272]: Running on rank 0
+Node[1273]: Running on rank 0
+Node[1274]: Running on rank 0
+Node[1275]: Running on rank 0
+Node[1276]: Running on rank 0
+Node[1277]: Running on rank 0
+Node[1278]: Running on rank 0
+Node[1279]: Running on rank 0
+Node[1280]: Running on rank 0
+Node[1281]: Running on rank 0
+Node[1282]: Running on rank 0
+Node[1283]: Running on rank 0
+Node[1284]: Running on rank 0
+Node[1285]: Running on rank 0
+Node[1286]: Running on rank 0
+Node[1287]: Running on rank 0
+Node[1288]: Running on rank 0
+Node[1289]: Running on rank 0
+Node[1290]: Running on rank 0
+Node[1291]: Running on rank 0
+Node[1292]: Running on rank 0
+Node[1293]: Running on rank 0
+Node[1294]: Running on rank 0
+Node[1295]: Running on rank 0
+Node[1296]: Running on rank 0
+Node[1297]: Running on rank 0
+Node[1298]: Running on rank 0
+Node[1299]: Running on rank 0
+Node[1300]: Running on rank 0
+Node[1301]: Running on rank 0
+Node[1302]: Running on rank 0
+Node[1303]: Running on rank 0
+Node[1304]: Running on rank 0
+Node[1305]: Running on rank 0
+Node[1306]: Running on rank 0
+Node[1307]: Running on rank 0
+Node[1308]: Running on rank 0
+Node[1309]: Running on rank 0
+Node[1310]: Running on rank 0
+Node[1311]: Running on rank 0
+Node[1312]: Running on rank 0
+Node[1313]: Running on rank 0
+Node[1314]: Running on rank 0
+Node[1315]: Running on rank 0
+Node[1316]: Running on rank 0
+Node[1317]: Running on rank 0
+Node[1318]: Running on rank 0
+Node[1319]: Running on rank 0
+Node[1320]: Running on rank 0
+Node[1321]: Running on rank 0
+Node[1322]: Running on rank 0
+Node[1323]: Running on rank 0
+Node[1324]: Running on rank 0
+Node[1325]: Running on rank 0
+Node[1326]: Running on rank 0
+Node[1327]: Running on rank 0
+Node[1328]: Running on rank 0
+Node[1329]: Running on rank 0
+Node[1330]: Running on rank 0
+Node[1331]: Running on rank 0
+Node[1332]: Running on rank 0
+Node[1333]: Running on rank 0
+Node[1334]: Running on rank 0
+Node[1335]: Running on rank 0
+Node[1336]: Running on rank 0
+Node[1337]: Running on rank 0
+Node[1338]: Running on rank 0
+Node[1339]: Running on rank 0
+Node[1340]: Running on rank 0
+Node[1341]: Running on rank 0
+Node[1342]: Running on rank 0
+Node[1343]: Running on rank 0
+Node[1344]: Running on rank 0
+Node[1345]: Running on rank 0
+Node[1346]: Running on rank 0
+Node[1347]: Running on rank 0
+Node[1348]: Running on rank 0
+Node[1349]: Running on rank 0
+Node[1350]: Running on rank 0
+Node[1351]: Running on rank 0
+Node[1352]: Running on rank 0
+Node[1353]: Running on rank 0
+Node[1354]: Running on rank 0
+Node[1355]: Running on rank 0
+Node[1356]: Running on rank 0
+Node[1357]: Running on rank 0
+Node[1358]: Running on rank 0
+Node[1359]: Running on rank 0
+Node[1360]: Running on rank 0
+Node[1361]: Running on rank 0
+Node[1362]: Running on rank 0
+Node[1363]: Running on rank 0
+Node[1364]: Running on rank 0
+Node[1365]: Running on rank 0
+Node[1366]: Running on rank 0
+Node[1367]: Running on rank 0
+Node[1368]: Running on rank 0
+Node[1369]: Running on rank 0
+Node[1370]: Running on rank 0
+Node[1371]: Running on rank 0
+Node[1372]: Running on rank 0
+Node[1373]: Running on rank 0
+Node[1374]: Running on rank 0
+Node[1375]: Running on rank 0
+Node[1376]: Running on rank 0
+Node[1377]: Running on rank 0
+Node[1378]: Running on rank 0
+Node[1379]: Running on rank 0
+Node[1380]: Running on rank 0
+Node[1381]: Running on rank 0
+Node[1382]: Running on rank 0
+Node[1383]: Running on rank 0
+Node[1384]: Running on rank 0
+Node[1385]: Running on rank 0
+Node[1386]: Running on rank 0
+Node[1387]: Running on rank 0
+Node[1388]: Running on rank 0
+Node[1389]: Running on rank 0
+Node[1390]: Running on rank 0
+Node[1391]: Running on rank 0
+Node[1392]: Running on rank 0
+Node[1393]: Running on rank 0
+Node[1394]: Running on rank 0
+Node[1395]: Running on rank 0
+Node[1396]: Running on rank 0
+Node[1397]: Running on rank 0
+Node[1398]: Running on rank 0
+Node[1399]: Running on rank 0
+Node[1400]: Running on rank 0
+Node[1401]: Running on rank 0
+Node[1402]: Running on rank 0
+Node[1403]: Running on rank 0
+Node[1404]: Running on rank 0
+Node[1405]: Running on rank 0
+Node[1406]: Running on rank 0
+Node[1407]: Running on rank 0
+Node[1408]: Running on rank 0
+Node[1409]: Running on rank 0
+Node[1410]: Running on rank 0
+Node[1411]: Running on rank 0
+Node[1412]: Running on rank 0
+Node[1413]: Running on rank 0
+Node[1414]: Running on rank 0
+Node[1415]: Running on rank 0
+Node[1416]: Running on rank 0
+Node[1417]: Running on rank 0
+Node[1418]: Running on rank 0
+Node[1419]: Running on rank 0
+Node[1420]: Running on rank 0
+Node[1421]: Running on rank 0
+Node[1422]: Running on rank 0
+Node[1423]: Running on rank 0
+Node[1424]: Running on rank 0
+Node[1425]: Running on rank 0
+Node[1426]: Running on rank 0
+Node[1427]: Running on rank 0
+Node[1428]: Running on rank 0
+Node[1429]: Running on rank 0
+Node[1430]: Running on rank 0
+Node[1431]: Running on rank 0
+Node[1432]: Running on rank 0
+Node[1433]: Running on rank 0
+Node[1434]: Running on rank 0
+Node[1435]: Running on rank 0
+Node[1436]: Running on rank 0
+Node[1437]: Running on rank 0
+Node[1438]: Running on rank 0
+Node[1439]: Running on rank 0
+Node[1440]: Running on rank 0
+Node[1441]: Running on rank 0
+Node[1442]: Running on rank 0
+Node[1443]: Running on rank 0
+Node[1444]: Running on rank 0
+Node[1445]: Running on rank 0
+Node[1446]: Running on rank 0
+Node[1447]: Running on rank 0
+Node[1448]: Running on rank 0
+Node[1449]: Running on rank 0
+Node[1450]: Running on rank 0
+Node[1451]: Running on rank 0
+Node[1452]: Running on rank 0
+Node[1453]: Running on rank 0
+Node[1454]: Running on rank 0
+Node[1455]: Running on rank 0
+Node[1456]: Running on rank 0
+Node[1457]: Running on rank 0
+Node[1458]: Running on rank 0
+Node[1459]: Running on rank 0
+Node[1460]: Running on rank 0
+Node[1461]: Running on rank 0
+Node[1462]: Running on rank 0
+Node[1463]: Running on rank 0
+Node[1464]: Running on rank 0
+Node[1465]: Running on rank 0
+Node[1466]: Running on rank 0
+Node[1467]: Running on rank 0
+Node[1468]: Running on rank 0
+Node[1469]: Running on rank 0
+Node[1470]: Running on rank 0
+Node[1471]: Running on rank 0
+Node[1472]: Running on rank 0
+Node[1473]: Running on rank 0
+Node[1474]: Running on rank 0
+Node[1475]: Running on rank 0
+Node[1476]: Running on rank 0
+Node[1477]: Running on rank 0
+Node[1478]: Running on rank 0
+Node[1479]: Running on rank 0
+Node[1480]: Running on rank 0
+Node[1481]: Running on rank 0
+Node[1482]: Running on rank 0
+Node[1483]: Running on rank 0
+Node[1484]: Running on rank 0
+Node[1485]: Running on rank 0
+Node[1486]: Running on rank 0
+Node[1487]: Running on rank 0
+Node[1488]: Running on rank 0
+Node[1489]: Running on rank 0
+Node[1490]: Running on rank 0
+Node[1491]: Running on rank 0
+Node[1492]: Running on rank 0
+Node[1493]: Running on rank 0
+Node[1494]: Running on rank 0
+Node[1495]: Running on rank 0
+Node[1496]: Running on rank 0
+Node[1497]: Running on rank 0
+Node[1498]: Running on rank 0
+Node[1499]: Running on rank 0
+Node[1500]: Running on rank 0
+Node[1501]: Running on rank 0
+Node[1502]: Running on rank 0
+Node[1503]: Running on rank 0
+Node[1504]: Running on rank 0
+Node[1505]: Running on rank 0
+Node[1506]: Running on rank 0
+Node[1507]: Running on rank 0
+Node[1508]: Running on rank 0
+Node[1509]: Running on rank 0
+Node[1510]: Running on rank 0
+Node[1511]: Running on rank 0
+Node[1512]: Running on rank 0
+Node[1513]: Running on rank 0
+Node[1514]: Running on rank 0
+Node[1515]: Running on rank 0
+Node[1516]: Running on rank 0
+Node[1517]: Running on rank 0
+Node[1518]: Running on rank 0
+Node[1519]: Running on rank 0
+Node[1520]: Running on rank 0
+Node[1521]: Running on rank 0
+Node[1522]: Running on rank 0
+Node[1523]: Running on rank 0
+Node[1524]: Running on rank 0
+Node[1525]: Running on rank 0
+Node[1526]: Running on rank 0
+Node[1527]: Running on rank 0
+Node[1528]: Running on rank 0
+Node[1529]: Running on rank 0
+Node[1530]: Running on rank 0
+Node[1531]: Running on rank 0
+Node[1532]: Running on rank 0
+Node[1533]: Running on rank 0
+Node[1534]: Running on rank 0
+Node[1535]: Running on rank 0
+Node[1536]: Running on rank 0
+Node[1537]: Running on rank 0
+Node[1538]: Running on rank 0
+Node[1539]: Running on rank 0
+Node[1540]: Running on rank 0
+Node[1541]: Running on rank 0
+Node[1542]: Running on rank 0
+Node[1543]: Running on rank 0
+Node[1544]: Running on rank 0
+Node[1545]: Running on rank 0
+Node[1546]: Running on rank 0
+Node[1547]: Running on rank 0
+Node[1548]: Running on rank 0
+Node[1549]: Running on rank 0
+Node[1550]: Running on rank 0
+Node[1551]: Running on rank 0
+Node[1552]: Running on rank 0
+Node[1553]: Running on rank 0
+Node[1554]: Running on rank 0
+Node[1555]: Running on rank 0
+Node[1556]: Running on rank 0
+Node[1557]: Running on rank 0
+Node[1558]: Running on rank 0
+Node[1559]: Running on rank 0
+Node[1560]: Running on rank 0
+Node[1561]: Running on rank 0
+Node[1562]: Running on rank 0
+Node[1563]: Running on rank 0
+Node[1564]: Running on rank 0
+Node[1565]: Running on rank 0
+Node[1566]: Running on rank 0
+Node[1567]: Running on rank 0
+Node[1568]: Running on rank 0
+Node[1569]: Running on rank 0
+Node[1570]: Running on rank 0
+Node[1571]: Running on rank 0
+Node[1572]: Running on rank 0
+Node[1573]: Running on rank 0
+Node[1574]: Running on rank 0
+Node[1575]: Running on rank 0
+Node[1576]: Running on rank 0
+Node[1577]: Running on rank 0
+Node[1578]: Running on rank 0
+Node[1579]: Running on rank 0
+Node[1580]: Running on rank 0
+Node[1581]: Running on rank 0
+Node[1582]: Running on rank 0
+Node[1583]: Running on rank 0
+Node[1584]: Running on rank 0
+Node[1585]: Running on rank 0
+Node[1586]: Running on rank 0
+Node[1587]: Running on rank 0
+Node[1588]: Running on rank 0
+Node[1589]: Running on rank 0
+Node[1590]: Running on rank 0
+Node[1591]: Running on rank 0
+Node[1592]: Running on rank 0
+Node[1593]: Running on rank 0
+Node[1594]: Running on rank 0
+Node[1595]: Running on rank 0
+Node[1596]: Running on rank 0
+Node[1597]: Running on rank 0
+Node[1598]: Running on rank 0
+Node[1599]: Running on rank 0
+Node[1600]: Running on rank 0
+Node[1601]: Running on rank 0
+Node[1602]: Running on rank 0
+Node[1603]: Running on rank 0
+Node[1604]: Running on rank 0
+Node[1605]: Running on rank 0
+Node[1606]: Running on rank 0
+Node[1607]: Running on rank 0
+Node[1608]: Running on rank 0
+Node[1609]: Running on rank 0
+Node[1610]: Running on rank 0
+Node[1611]: Running on rank 0
+Node[1612]: Running on rank 0
+Node[1613]: Running on rank 0
+Node[1614]: Running on rank 0
+Node[1615]: Running on rank 0
+Node[1616]: Running on rank 0
+Node[1617]: Running on rank 0
+Node[1618]: Running on rank 0
+Node[1619]: Running on rank 0
+Node[1620]: Running on rank 0
+Node[1621]: Running on rank 0
+Node[1622]: Running on rank 0
+Node[1623]: Running on rank 0
+Node[1624]: Running on rank 0
+Node[1625]: Running on rank 0
+Node[1626]: Running on rank 0
+Node[1627]: Running on rank 0
+Node[1628]: Running on rank 0
+Node[1629]: Running on rank 0
+Node[1630]: Running on rank 0
+Node[1631]: Running on rank 0
+Node[1632]: Running on rank 0
+Node[1633]: Running on rank 0
+Node[1634]: Running on rank 0
+Node[1635]: Running on rank 0
+Node[1636]: Running on rank 0
+Node[1637]: Running on rank 0
+Node[1638]: Running on rank 0
+Node[1639]: Running on rank 0
+Node[1640]: Running on rank 0
+Node[1641]: Running on rank 0
+Node[1642]: Running on rank 0
+Node[1643]: Running on rank 0
+Node[1644]: Running on rank 0
+Node[1645]: Running on rank 0
+Node[1646]: Running on rank 0
+Node[1647]: Running on rank 0
+Node[1648]: Running on rank 0
+Node[1649]: Running on rank 0
+Node[1650]: Running on rank 0
+Node[1651]: Running on rank 0
+Node[1652]: Running on rank 0
+Node[1653]: Running on rank 0
+Node[1654]: Running on rank 0
+Node[1655]: Running on rank 0
+Node[1656]: Running on rank 0
+Node[1657]: Running on rank 0
+Node[1658]: Running on rank 0
+Node[1659]: Running on rank 0
+Node[1660]: Running on rank 0
+Node[1661]: Running on rank 0
+Node[1662]: Running on rank 0
+Node[1663]: Running on rank 0
+Node[1664]: Running on rank 0
+Node[1665]: Running on rank 0
+Node[1666]: Running on rank 0
+Node[1667]: Running on rank 0
+Node[1668]: Running on rank 0
+Node[1669]: Running on rank 0
+Node[1670]: Running on rank 0
+Node[1671]: Running on rank 0
+Node[1672]: Running on rank 0
+Node[1673]: Running on rank 0
+Node[1674]: Running on rank 0
+Node[1675]: Running on rank 0
+Node[1676]: Running on rank 0
+Node[1677]: Running on rank 0
+Node[1678]: Running on rank 0
+Node[1679]: Running on rank 0
+Node[1680]: Running on rank 0
+Node[1681]: Running on rank 0
+Node[1682]: Running on rank 0
+Node[1683]: Running on rank 0
+Node[1684]: Running on rank 0
+Node[1685]: Running on rank 0
+Node[1686]: Running on rank 0
+Node[1687]: Running on rank 0
+Node[1688]: Running on rank 0
+Node[1689]: Running on rank 0
+Node[1690]: Running on rank 0
+Node[1691]: Running on rank 0
+Node[1692]: Running on rank 0
+Node[1693]: Running on rank 0
+Node[1694]: Running on rank 0
+Node[1695]: Running on rank 0
+Node[1696]: Running on rank 0
+Node[1697]: Running on rank 0
+Node[1698]: Running on rank 0
+Node[1699]: Running on rank 0
+Node[1700]: Running on rank 0
+Node[1701]: Running on rank 0
+Node[1702]: Running on rank 0
+Node[1703]: Running on rank 0
+Node[1704]: Running on rank 0
+Node[1705]: Running on rank 0
+Node[1706]: Running on rank 0
+Node[1707]: Running on rank 0
+Node[1708]: Running on rank 0
+Node[1709]: Running on rank 0
+Node[1710]: Running on rank 0
+Node[1711]: Running on rank 0
+Node[1712]: Running on rank 0
+Node[1713]: Running on rank 0
+Node[1714]: Running on rank 0
+Node[1715]: Running on rank 0
+Node[1716]: Running on rank 0
+Node[1717]: Running on rank 0
+Node[1718]: Running on rank 0
+Node[1719]: Running on rank 0
+Node[1720]: Running on rank 0
+Node[1721]: Running on rank 0
+Node[1722]: Running on rank 0
+Node[1723]: Running on rank 0
+Node[1724]: Running on rank 0
+Node[1725]: Running on rank 0
+Node[1726]: Running on rank 0
+Node[1727]: Running on rank 0
+Node[1728]: Running on rank 0
+Node[1729]: Running on rank 0
+Node[1730]: Running on rank 0
+Node[1731]: Running on rank 0
+Node[1732]: Running on rank 0
+Node[1733]: Running on rank 0
+Node[1734]: Running on rank 0
+Node[1735]: Running on rank 0
+Node[1736]: Running on rank 0
+Node[1737]: Running on rank 0
+Node[1738]: Running on rank 0
+Node[1739]: Running on rank 0
+Node[1740]: Running on rank 0
+Node[1741]: Running on rank 0
+Node[1742]: Running on rank 0
+Node[1743]: Running on rank 0
+Node[1744]: Running on rank 0
+Node[1745]: Running on rank 0
+Node[1746]: Running on rank 0
+Node[1747]: Running on rank 0
+Node[1748]: Running on rank 0
+Node[1749]: Running on rank 0
+Node[1750]: Running on rank 0
+Node[1751]: Running on rank 0
+Node[1752]: Running on rank 0
+Node[1753]: Running on rank 0
+Node[1754]: Running on rank 0
+Node[1755]: Running on rank 0
+Node[1756]: Running on rank 0
+Node[1757]: Running on rank 0
+Node[1758]: Running on rank 0
+Node[1759]: Running on rank 0
+Node[1760]: Running on rank 0
+Node[1761]: Running on rank 0
+Node[1762]: Running on rank 0
+Node[1763]: Running on rank 0
+Node[1764]: Running on rank 0
+Node[1765]: Running on rank 0
+Node[1766]: Running on rank 0
+Node[1767]: Running on rank 0
+Node[1768]: Running on rank 0
+Node[1769]: Running on rank 0
+Node[1770]: Running on rank 0
+Node[1771]: Running on rank 0
+Node[1772]: Running on rank 0
+Node[1773]: Running on rank 0
+Node[1774]: Running on rank 0
+Node[1775]: Running on rank 0
+Node[1776]: Running on rank 0
+Node[1777]: Running on rank 0
+Node[1778]: Running on rank 0
+Node[1779]: Running on rank 0
+Node[1780]: Running on rank 0
+Node[1781]: Running on rank 0
+Node[1782]: Running on rank 0
+Node[1783]: Running on rank 0
+Node[1784]: Running on rank 0
+Node[1785]: Running on rank 0
+Node[1786]: Running on rank 0
+Node[1787]: Running on rank 0
+Node[1788]: Running on rank 0
+Node[1789]: Running on rank 0
+Node[1790]: Running on rank 0
+Node[1791]: Running on rank 0
+Node[1792]: Running on rank 0
+Node[1793]: Running on rank 0
+Node[1794]: Running on rank 0
+Node[1795]: Running on rank 0
+Node[1796]: Running on rank 0
+Node[1797]: Running on rank 0
+Node[1798]: Running on rank 0
+Node[1799]: Running on rank 0
+Node[1800]: Running on rank 0
+Node[1801]: Running on rank 0
+Node[1802]: Running on rank 0
+Node[1803]: Running on rank 0
+Node[1804]: Running on rank 0
+Node[1805]: Running on rank 0
+Node[1806]: Running on rank 0
+Node[1807]: Running on rank 0
+Node[1808]: Running on rank 0
+Node[1809]: Running on rank 0
+Node[1810]: Running on rank 0
+Node[1811]: Running on rank 0
+Node[1812]: Running on rank 0
+Node[1813]: Running on rank 0
+Node[1814]: Running on rank 0
+Node[1815]: Running on rank 0
+Node[1816]: Running on rank 0
+Node[1817]: Running on rank 0
+Node[1818]: Running on rank 0
+Node[1819]: Running on rank 0
+Node[1820]: Running on rank 0
+Node[1821]: Running on rank 0
+Node[1822]: Running on rank 0
+Node[1823]: Running on rank 0
+Node[1824]: Running on rank 0
+Node[1825]: Running on rank 0
+Node[1826]: Running on rank 0
+Node[1827]: Running on rank 0
+Node[1828]: Running on rank 0
+Node[1829]: Running on rank 0
+Node[1830]: Running on rank 0
+Node[1831]: Running on rank 0
+Node[1832]: Running on rank 0
+Node[1833]: Running on rank 0
+Node[1834]: Running on rank 0
+Node[1835]: Running on rank 0
+Node[1836]: Running on rank 0
+Node[1837]: Running on rank 0
+Node[1838]: Running on rank 0
+Node[1839]: Running on rank 0
+Node[1840]: Running on rank 0
+Node[1841]: Running on rank 0
+Node[1842]: Running on rank 0
+Node[1843]: Running on rank 0
+Node[1844]: Running on rank 0
+Node[1845]: Running on rank 0
+Node[1846]: Running on rank 0
+Node[1847]: Running on rank 0
+Node[1848]: Running on rank 0
+Node[1849]: Running on rank 0
+Node[1850]: Running on rank 0
+Node[1851]: Running on rank 0
+Node[1852]: Running on rank 0
+Node[1853]: Running on rank 0
+Node[1854]: Running on rank 0
+Node[1855]: Running on rank 0
+Node[1856]: Running on rank 0
+Node[1857]: Running on rank 0
+Node[1858]: Running on rank 0
+Node[1859]: Running on rank 0
+Node[1860]: Running on rank 0
+Node[1861]: Running on rank 0
+Node[1862]: Running on rank 0
+Node[1863]: Running on rank 0
+Node[1864]: Running on rank 0
+Node[1865]: Running on rank 0
+Node[1866]: Running on rank 0
+Node[1867]: Running on rank 0
+Node[1868]: Running on rank 0
+Node[1869]: Running on rank 0
+Node[1870]: Running on rank 0
+Node[1871]: Running on rank 0
+Node[1872]: Running on rank 0
+Node[1873]: Running on rank 0
+Node[1874]: Running on rank 0
+Node[1875]: Running on rank 0
+Node[1876]: Running on rank 0
+Node[1877]: Running on rank 0
+Node[1878]: Running on rank 0
+Node[1879]: Running on rank 0
+Node[1880]: Running on rank 0
+Node[1881]: Running on rank 0
+Node[1882]: Running on rank 0
+Node[1883]: Running on rank 0
+Node[1884]: Running on rank 0
+Node[1885]: Running on rank 0
+Node[1886]: Running on rank 0
+Node[1887]: Running on rank 0
+Node[1888]: Running on rank 0
+Node[1889]: Running on rank 0
+Node[1890]: Running on rank 0
+Node[1891]: Running on rank 0
+Node[1892]: Running on rank 0
+Node[1893]: Running on rank 0
+Node[1894]: Running on rank 0
+Node[1895]: Running on rank 0
+Node[1896]: Running on rank 0
+Node[1897]: Running on rank 0
+Node[1898]: Running on rank 0
+Node[1899]: Running on rank 0
+Node[1900]: Running on rank 0
+Node[1901]: Running on rank 0
+Node[1902]: Running on rank 0
+Node[1903]: Running on rank 0
+Node[1904]: Running on rank 0
+Node[1905]: Running on rank 0
+Node[1906]: Running on rank 0
+Node[1907]: Running on rank 0
+Node[1908]: Running on rank 0
+Node[1909]: Running on rank 0
+Node[1910]: Running on rank 0
+Node[1911]: Running on rank 0
+Node[1912]: Running on rank 0
+Node[1913]: Running on rank 0
+Node[1914]: Running on rank 0
+Node[1915]: Running on rank 0
+Node[1916]: Running on rank 0
+Node[1917]: Running on rank 0
+Node[1918]: Running on rank 0
+Node[1919]: Running on rank 0
+Node[1920]: Running on rank 0
+Node[1921]: Running on rank 0
+Node[1922]: Running on rank 0
+Node[1923]: Running on rank 0
+Node[1924]: Running on rank 0
+Node[1925]: Running on rank 0
+Node[1926]: Running on rank 0
+Node[1927]: Running on rank 0
+Node[1928]: Running on rank 0
+Node[1929]: Running on rank 0
+Node[1930]: Running on rank 0
+Node[1931]: Running on rank 0
+Node[1932]: Running on rank 0
+Node[1933]: Running on rank 0
+Node[1934]: Running on rank 0
+Node[1935]: Running on rank 0
+Node[1936]: Running on rank 0
+Node[1937]: Running on rank 0
+Node[1938]: Running on rank 0
+Node[1939]: Running on rank 0
+Node[1940]: Running on rank 0
+Node[1941]: Running on rank 0
+Node[1942]: Running on rank 0
+Node[1943]: Running on rank 0
+Node[1944]: Running on rank 0
+Node[1945]: Running on rank 0
+Node[1946]: Running on rank 0
+Node[1947]: Running on rank 0
+Node[1948]: Running on rank 0
+Node[1949]: Running on rank 0
+Node[1950]: Running on rank 0
+Node[1951]: Running on rank 0
+Node[1952]: Running on rank 0
+Node[1953]: Running on rank 0
+Node[1954]: Running on rank 0
+Node[1955]: Running on rank 0
+Node[1956]: Running on rank 0
+Node[1957]: Running on rank 0
+Node[1958]: Running on rank 0
+Node[1959]: Running on rank 0
+Node[1960]: Running on rank 0
+Node[1961]: Running on rank 0
+Node[1962]: Running on rank 0
+Node[1963]: Running on rank 0
+Node[1964]: Running on rank 0
+Node[1965]: Running on rank 0
+Node[1966]: Running on rank 0
+Node[1967]: Running on rank 0
+Node[1968]: Running on rank 0
+Node[1969]: Running on rank 0
+Node[1970]: Running on rank 0
+Node[1971]: Running on rank 0
+Node[1972]: Running on rank 0
+Node[1973]: Running on rank 0
+Node[1974]: Running on rank 0
+Node[1975]: Running on rank 0
+Node[1976]: Running on rank 0
+Node[1977]: Running on rank 0
+Node[1978]: Running on rank 0
+Node[1979]: Running on rank 0
+Node[1980]: Running on rank 0
+Node[1981]: Running on rank 0
+Node[1982]: Running on rank 0
+Node[1983]: Running on rank 0
+Node[1984]: Running on rank 0
+Node[1985]: Running on rank 0
+Node[1986]: Running on rank 0
+Node[1987]: Running on rank 0
+Node[1988]: Running on rank 0
+Node[1989]: Running on rank 0
+Node[1990]: Running on rank 0
+Node[1991]: Running on rank 0
+Node[1992]: Running on rank 0
+Node[1993]: Running on rank 0
+Node[1994]: Running on rank 0
+Node[1995]: Running on rank 0
+Node[1996]: Running on rank 0
+Node[1997]: Running on rank 0
+Node[1998]: Running on rank 0
+Node[1999]: Running on rank 0
+Node[2000]: Running on rank 0
+Node[2001]: Running on rank 0
+Node[2002]: Running on rank 0
+Node[2003]: Running on rank 0
+Node[2004]: Running on rank 0
+Node[2005]: Running on rank 0
+Node[2006]: Running on rank 0
+Node[2007]: Running on rank 0
+Node[2008]: Running on rank 0
+Node[2009]: Running on rank 0
+Node[2010]: Running on rank 0
+Node[2011]: Running on rank 0
+Node[2012]: Running on rank 0
+Node[2013]: Running on rank 0
+Node[2014]: Running on rank 0
+Node[2015]: Running on rank 0
+Node[2016]: Running on rank 0
+Node[2017]: Running on rank 0
+Node[2018]: Running on rank 0
+Node[2019]: Running on rank 0
+Node[2020]: Running on rank 0
+Node[2021]: Running on rank 0
+Node[2022]: Running on rank 0
+Node[2023]: Running on rank 0
+Node[2024]: Running on rank 0
+Node[2025]: Running on rank 0
+Node[2026]: Running on rank 0
+Node[2027]: Running on rank 0
+Node[2028]: Running on rank 0
+Node[2029]: Running on rank 0
+Node[2030]: Running on rank 0
+Node[2031]: Running on rank 0
+Node[2032]: Running on rank 0
+Node[2033]: Running on rank 0
+Node[2034]: Running on rank 0
+Node[2035]: Running on rank 0
+Node[2036]: Running on rank 0
+Node[2037]: Running on rank 0
+Node[2038]: Running on rank 0
+Node[2039]: Running on rank 0
+Node[2040]: Running on rank 0
+Node[2041]: Running on rank 0
+Node[2042]: Running on rank 0
+Node[2043]: Running on rank 0
+Node[2044]: Running on rank 0
+Node[2045]: Running on rank 0
+Node[2046]: Running on rank 0
+Node[2047]: Running on rank 0
+Node[2048]: Running on rank 0
+Node[2049]: Running on rank 0
+Node[2050]: Running on rank 0
+Node[2051]: Running on rank 0
+Node[2052]: Running on rank 0
+Node[2053]: Running on rank 0
+Node[2054]: Running on rank 0
+Node[2055]: Running on rank 0
+Node[2056]: Running on rank 0
+Node[2057]: Running on rank 0
+Node[2058]: Running on rank 0
+Node[2059]: Running on rank 0
+Node[2060]: Running on rank 0
+Node[2061]: Running on rank 0
+Node[2062]: Running on rank 0
+Node[2063]: Running on rank 0
+Node[2064]: Running on rank 0
+Node[2065]: Running on rank 0
+Node[2066]: Running on rank 0
+Node[2067]: Running on rank 0
+Node[2068]: Running on rank 0
+Node[2069]: Running on rank 0
+Node[2070]: Running on rank 0
+Node[2071]: Running on rank 0
+Node[2072]: Running on rank 0
+Node[2073]: Running on rank 0
+Node[2074]: Running on rank 0
+Node[2075]: Running on rank 0
+Node[2076]: Running on rank 0
+Node[2077]: Running on rank 0
+Node[2078]: Running on rank 0
+Node[2079]: Running on rank 0
+Node[2080]: Running on rank 0
+Node[2081]: Running on rank 0
+Node[2082]: Running on rank 0
+Node[2083]: Running on rank 0
+Node[2084]: Running on rank 0
+Node[2085]: Running on rank 0
+Node[2086]: Running on rank 0
+Node[2087]: Running on rank 0
+Node[2088]: Running on rank 0
+Node[2089]: Running on rank 0
+Node[2090]: Running on rank 0
+Node[2091]: Running on rank 0
+Node[2092]: Running on rank 0
+Node[2093]: Running on rank 0
+Node[2094]: Running on rank 0
+Node[2095]: Running on rank 0
+Node[2096]: Running on rank 0
+Node[2097]: Running on rank 0
+Node[2098]: Running on rank 0
+Node[2099]: Running on rank 0
+Node[2100]: Running on rank 0
+Node[2101]: Running on rank 0
+Node[2102]: Running on rank 0
+Node[2103]: Running on rank 0
+Node[2104]: Running on rank 0
+Node[2105]: Running on rank 0
+Node[2106]: Running on rank 0
+Node[2107]: Running on rank 0
+Node[2108]: Running on rank 0
+Node[2109]: Running on rank 0
+Node[2110]: Running on rank 0
+Node[2111]: Running on rank 0
+Node[2112]: Running on rank 0
+Node[2113]: Running on rank 0
+Node[2114]: Running on rank 0
+Node[2115]: Running on rank 0
+Node[2116]: Running on rank 0
+Node[2117]: Running on rank 0
+Node[2118]: Running on rank 0
+Node[2119]: Running on rank 0
+Node[2120]: Running on rank 0
+Node[2121]: Running on rank 0
+Node[2122]: Running on rank 0
+Node[2123]: Running on rank 0
+Node[2124]: Running on rank 0
+Node[2125]: Running on rank 0
+Node[2126]: Running on rank 0
+Node[2127]: Running on rank 0
+Node[2128]: Running on rank 0
+Node[2129]: Running on rank 0
+Node[2130]: Running on rank 0
+Node[2131]: Running on rank 0
+Node[2132]: Running on rank 0
+Node[2133]: Running on rank 0
+Node[2134]: Running on rank 0
+Node[2135]: Running on rank 0
+Node[2136]: Running on rank 0
+Node[2137]: Running on rank 0
+Node[2138]: Running on rank 0
+Node[2139]: Running on rank 0
+Node[2140]: Running on rank 0
+Node[2141]: Running on rank 0
+Node[2142]: Running on rank 0
+Node[2143]: Running on rank 0
+Node[2144]: Running on rank 0
+Node[2145]: Running on rank 0
+Node[2146]: Running on rank 0
+Node[2147]: Running on rank 0
+Node[2148]: Running on rank 0
+Node[2149]: Running on rank 0
+Node[2150]: Running on rank 0
+Node[2151]: Running on rank 0
+Node[2152]: Running on rank 0
+Node[2153]: Running on rank 0
+Node[2154]: Running on rank 0
+Node[2155]: Running on rank 0
+Node[2156]: Running on rank 0
+Node[2157]: Running on rank 0
+Node[2158]: Running on rank 0
+Node[2159]: Running on rank 0
+Node[2160]: Running on rank 0
+Node[2161]: Running on rank 0
+Node[2162]: Running on rank 0
+Node[2163]: Running on rank 0
+Node[2164]: Running on rank 0
+Node[2165]: Running on rank 0
+Node[2166]: Running on rank 0
+Node[2167]: Running on rank 0
+Node[2168]: Running on rank 0
+Node[2169]: Running on rank 0
+Node[2170]: Running on rank 0
+Node[2171]: Running on rank 0
+Node[2172]: Running on rank 0
+Node[2173]: Running on rank 0
+Node[2174]: Running on rank 0
+Node[2175]: Running on rank 0
+Node[2176]: Running on rank 0
+Node[2177]: Running on rank 0
+Node[2178]: Running on rank 0
+Node[2179]: Running on rank 0
+Node[2180]: Running on rank 0
+Node[2181]: Running on rank 0
+Node[2182]: Running on rank 0
+Node[2183]: Running on rank 0
+Node[2184]: Running on rank 0
+Node[2185]: Running on rank 0
+Node[2186]: Running on rank 0
+Node[2187]: Running on rank 0
+Node[2188]: Running on rank 0
+Node[2189]: Running on rank 0
+Node[2190]: Running on rank 0
+Node[2191]: Running on rank 0
+Node[2192]: Running on rank 0
+Node[2193]: Running on rank 0
+Node[2194]: Running on rank 0
+Node[2195]: Running on rank 0
+Node[2196]: Running on rank 0
+Node[2197]: Running on rank 0
+Node[2198]: Running on rank 0
+Node[2199]: Running on rank 0
+Node[2200]: Running on rank 0
+Node[2201]: Running on rank 0
+Node[2202]: Running on rank 0
+Node[2203]: Running on rank 0
+Node[2204]: Running on rank 0
+Node[2205]: Running on rank 0
+Node[2206]: Running on rank 0
+Node[2207]: Running on rank 0
+Node[2208]: Running on rank 0
+Node[2209]: Running on rank 0
+Node[2210]: Running on rank 0
+Node[2211]: Running on rank 0
+Node[2212]: Running on rank 0
+Node[2213]: Running on rank 0
+Node[2214]: Running on rank 0
+Node[2215]: Running on rank 0
+Node[2216]: Running on rank 0
+Node[2217]: Running on rank 0
+Node[2218]: Running on rank 0
+Node[2219]: Running on rank 0
+Node[2220]: Running on rank 0
+Node[2221]: Running on rank 0
+Node[2222]: Running on rank 0
+Node[2223]: Running on rank 0
+Node[2224]: Running on rank 0
+Node[2225]: Running on rank 0
+Node[2226]: Running on rank 0
+Node[2227]: Running on rank 0
+Node[2228]: Running on rank 0
+Node[2229]: Running on rank 0
+Node[2230]: Running on rank 0
+Node[2231]: Running on rank 0
+Node[2232]: Running on rank 0
+Node[2233]: Running on rank 0
+Node[2234]: Running on rank 0
+Node[2235]: Running on rank 0
+Node[2236]: Running on rank 0
+Node[2237]: Running on rank 0
+Node[2238]: Running on rank 0
+Node[2239]: Running on rank 0
+Node[2240]: Running on rank 0
+Node[2241]: Running on rank 0
+Node[2242]: Running on rank 0
+Node[2243]: Running on rank 0
+Node[2244]: Running on rank 0
+Node[2245]: Running on rank 0
+Node[2246]: Running on rank 0
+Node[2247]: Running on rank 0
+Node[2248]: Running on rank 0
+Node[2249]: Running on rank 0
+Node[2250]: Running on rank 0
+Node[2251]: Running on rank 0
+Node[2252]: Running on rank 0
+Node[2253]: Running on rank 0
+Node[2254]: Running on rank 0
+Node[2255]: Running on rank 0
+Node[2256]: Running on rank 0
+Node[2257]: Running on rank 0
+Node[2258]: Running on rank 0
+Node[2259]: Running on rank 0
+Node[2260]: Running on rank 0
+Node[2261]: Running on rank 0
+Node[2262]: Running on rank 0
+Node[2263]: Running on rank 0
+Node[2264]: Running on rank 0
+Node[2265]: Running on rank 0
+Node[2266]: Running on rank 0
+Node[2267]: Running on rank 0
+Node[2268]: Running on rank 0
+Node[2269]: Running on rank 0
+Node[2270]: Running on rank 0
+Node[2271]: Running on rank 0
+Node[2272]: Running on rank 0
+Node[2273]: Running on rank 0
+Node[2274]: Running on rank 0
+Node[2275]: Running on rank 0
+Node[2276]: Running on rank 0
+Node[2277]: Running on rank 0
+Node[2278]: Running on rank 0
+Node[2279]: Running on rank 0
+Node[2280]: Running on rank 0
+Node[2281]: Running on rank 0
+Node[2282]: Running on rank 0
+Node[2283]: Running on rank 0
+Node[2284]: Running on rank 0
+Node[2285]: Running on rank 0
+Node[2286]: Running on rank 0
+Node[2287]: Running on rank 0
+Node[2288]: Running on rank 0
+Node[2289]: Running on rank 0
+Node[2290]: Running on rank 0
+Node[2291]: Running on rank 0
+Node[2292]: Running on rank 0
+Node[2293]: Running on rank 0
+Node[2294]: Running on rank 0
+Node[2295]: Running on rank 0
+Node[2296]: Running on rank 0
+Node[2297]: Running on rank 0
+Node[2298]: Running on rank 0
+Node[2299]: Running on rank 0
+Node[2300]: Running on rank 0
+Node[2301]: Running on rank 0
+Node[2302]: Running on rank 0
+Node[2303]: Running on rank 0
+Node[2304]: Running on rank 0
+Node[2305]: Running on rank 0
+Node[2306]: Running on rank 0
+Node[2307]: Running on rank 0
+Node[2308]: Running on rank 0
+Node[2309]: Running on rank 0
+Node[2310]: Running on rank 0
+Node[2311]: Running on rank 0
+Node[2312]: Running on rank 0
+Node[2313]: Running on rank 0
+Node[2314]: Running on rank 0
+Node[2315]: Running on rank 0
+Node[2316]: Running on rank 0
+Node[2317]: Running on rank 0
+Node[2318]: Running on rank 0
+Node[2319]: Running on rank 0
+Node[2320]: Running on rank 0
+Node[2321]: Running on rank 0
+Node[2322]: Running on rank 0
+Node[2323]: Running on rank 0
+Node[2324]: Running on rank 0
+Node[2325]: Running on rank 0
+Node[2326]: Running on rank 0
+Node[2327]: Running on rank 0
+Node[2328]: Running on rank 0
+Node[2329]: Running on rank 0
+Node[2330]: Running on rank 0
+Node[2331]: Running on rank 0
+Node[2332]: Running on rank 0
+Node[2333]: Running on rank 0
+Node[2334]: Running on rank 0
+Node[2335]: Running on rank 0
+Node[2336]: Running on rank 0
+Node[2337]: Running on rank 0
+Node[2338]: Running on rank 0
+Node[2339]: Running on rank 0
+Node[2340]: Running on rank 0
+Node[2341]: Running on rank 0
+Node[2342]: Running on rank 0
+Node[2343]: Running on rank 0
+Node[2344]: Running on rank 0
+Node[2345]: Running on rank 0
+Node[2346]: Running on rank 0
+Node[2347]: Running on rank 0
+Node[2348]: Running on rank 0
+Node[2349]: Running on rank 0
+Node[2350]: Running on rank 0
+Node[2351]: Running on rank 0
+Node[2352]: Running on rank 0
+Node[2353]: Running on rank 0
+Node[2354]: Running on rank 0
+Node[2355]: Running on rank 0
+Node[2356]: Running on rank 0
+Node[2357]: Running on rank 0
+Node[2358]: Running on rank 0
+Node[2359]: Running on rank 0
+Node[2360]: Running on rank 0
+Node[2361]: Running on rank 0
+Node[2362]: Running on rank 0
+Node[2363]: Running on rank 0
+Node[2364]: Running on rank 0
+Node[2365]: Running on rank 0
+Node[2366]: Running on rank 0
+Node[2367]: Running on rank 0
+Node[2368]: Running on rank 0
+Node[2369]: Running on rank 0
+Node[2370]: Running on rank 0
+Node[2371]: Running on rank 0
+Node[2372]: Running on rank 0
+Node[2373]: Running on rank 0
+Node[2374]: Running on rank 0
+Node[2375]: Running on rank 0
+Node[2376]: Running on rank 0
+Node[2377]: Running on rank 0
+Node[2378]: Running on rank 0
+Node[2379]: Running on rank 0
+Node[2380]: Running on rank 0
+Node[2381]: Running on rank 0
+Node[2382]: Running on rank 0
+Node[2383]: Running on rank 0
+Node[2384]: Running on rank 0
+Node[2385]: Running on rank 0
+Node[2386]: Running on rank 0
+Node[2387]: Running on rank 0
+Node[2388]: Running on rank 0
+Node[2389]: Running on rank 0
+Node[2390]: Running on rank 0
+Node[2391]: Running on rank 0
+Node[2392]: Running on rank 0
+Node[2393]: Running on rank 0
+Node[2394]: Running on rank 0
+Node[2395]: Running on rank 0
+Node[2396]: Running on rank 0
+Node[2397]: Running on rank 0
+Node[2398]: Running on rank 0
+Node[2399]: Running on rank 0
+Node[2400]: Running on rank 0
+Node[2401]: Running on rank 0
+Node[2402]: Running on rank 0
+Node[2403]: Running on rank 0
+Node[2404]: Running on rank 0
+Node[2405]: Running on rank 0
+Node[2406]: Running on rank 0
+Node[2407]: Running on rank 0
+Node[2408]: Running on rank 0
+Node[2409]: Running on rank 0
+Node[2410]: Running on rank 0
+Node[2411]: Running on rank 0
+Node[2412]: Running on rank 0
+Node[2413]: Running on rank 0
+Node[2414]: Running on rank 0
+Node[2415]: Running on rank 0
+Node[2416]: Running on rank 0
+Node[2417]: Running on rank 0
+Node[2418]: Running on rank 0
+Node[2419]: Running on rank 0
+Node[2420]: Running on rank 0
+Node[2421]: Running on rank 0
+Node[2422]: Running on rank 0
+Node[2423]: Running on rank 0
+Node[2424]: Running on rank 0
+Node[2425]: Running on rank 0
+Node[2426]: Running on rank 0
+Node[2427]: Running on rank 0
+Node[2428]: Running on rank 0
+Node[2429]: Running on rank 0
+Node[2430]: Running on rank 0
+Node[2431]: Running on rank 0
+Node[2432]: Running on rank 0
+Node[2433]: Running on rank 0
+Node[2434]: Running on rank 0
+Node[2435]: Running on rank 0
+Node[2436]: Running on rank 0
+Node[2437]: Running on rank 0
+Node[2438]: Running on rank 0
+Node[2439]: Running on rank 0
+Node[2440]: Running on rank 0
+Node[2441]: Running on rank 0
+Node[2442]: Running on rank 0
+Node[2443]: Running on rank 0
+Node[2444]: Running on rank 0
+Node[2445]: Running on rank 0
+Node[2446]: Running on rank 0
+Node[2447]: Running on rank 0
+Node[2448]: Running on rank 0
+Node[2449]: Running on rank 0
+Node[2450]: Running on rank 0
+Node[2451]: Running on rank 0
+Node[2452]: Running on rank 0
+Node[2453]: Running on rank 0
+Node[2454]: Running on rank 0
+Node[2455]: Running on rank 0
+Node[2456]: Running on rank 0
+Node[2457]: Running on rank 0
+Node[2458]: Running on rank 0
+Node[2459]: Running on rank 0
+Node[2460]: Running on rank 0
+Node[2461]: Running on rank 0
+Node[2462]: Running on rank 0
+Node[2463]: Running on rank 0
+Node[2464]: Running on rank 0
+Node[2465]: Running on rank 0
+Node[2466]: Running on rank 0
+Node[2467]: Running on rank 0
+Node[2468]: Running on rank 0
+Node[2469]: Running on rank 0
+Node[2470]: Running on rank 0
+Node[2471]: Running on rank 0
+Node[2472]: Running on rank 0
+Node[2473]: Running on rank 0
+Node[2474]: Running on rank 0
+Node[2475]: Running on rank 0
+Node[2476]: Running on rank 0
+Node[2477]: Running on rank 0
+Node[2478]: Running on rank 0
+Node[2479]: Running on rank 0
+Node[2480]: Running on rank 0
+Node[2481]: Running on rank 0
+Node[2482]: Running on rank 0
+Node[2483]: Running on rank 0
+Node[2484]: Running on rank 0
+Node[2485]: Running on rank 0
+Node[2486]: Running on rank 0
+Node[2487]: Running on rank 0
+Node[2488]: Running on rank 0
+Node[2489]: Running on rank 0
+Node[2490]: Running on rank 0
+Node[2491]: Running on rank 0
+Node[2492]: Running on rank 0
+Node[2493]: Running on rank 0
+Node[2494]: Running on rank 0
+Node[2495]: Running on rank 0
+Node[2496]: Running on rank 0
+Node[2497]: Running on rank 0
+Node[2498]: Running on rank 0
+Node[2499]: Running on rank 0
+ReportNode[0]: Running on rank 0
+B-11209132 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.363  Gossip:3406  IHAVE:30853  GRAFT:806
+B-12006452 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:0.647  Gossip:4117  IHAVE:52386  GRAFT:1106
+B-13352417 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.818  Gossip:4544  IHAVE:52600  GRAFT:2035
+B-15341947 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.79  Gossip:6972  IHAVE:52491  GRAFT:4273
+B-18910597 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.376  Gossip:3438  IHAVE:26307  GRAFT:689
+B-19242559 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:1.136  Gossip:5337  IHAVE:52226  GRAFT:1893
+B-19604082 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.04  Gossip:5097  IHAVE:52462  GRAFT:2237
+B-19723317 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.373  Gossip:3431  IHAVE:22037  GRAFT:651
+B-22085272 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.894  Gossip:4733  IHAVE:52601  GRAFT:2154
+B-23264333 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.266  Gossip:3163  IHAVE:31263  GRAFT:646
+B-24075763 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.763  Gossip:4405  IHAVE:52310  GRAFT:1691
+B-24518950 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.445  Gossip:3610  IHAVE:49678  GRAFT:1035
+B-24740739 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.569  Gossip:6419  IHAVE:52411  GRAFT:3263
+B-25107283 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.843  Gossip:7104  IHAVE:52255  GRAFT:3659
+B-25656923 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.088  Gossip:5218  IHAVE:52336  GRAFT:2537
+B-26297734 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:1.808  Gossip:7016  IHAVE:52219  GRAFT:3753
+B-27041520 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.599  Gossip:6496  IHAVE:52107  GRAFT:2991
+B-27230911 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:1.345  Gossip:5860  IHAVE:52486  GRAFT:3198
+B-28278192 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.51  Gossip:3773  IHAVE:52434  GRAFT:1273
+B-28330502 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.529  Gossip:3822  IHAVE:23986  GRAFT:772
+B-28667476 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.174  Gossip:5434  IHAVE:52264  GRAFT:2457
+B-29685913 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.279  Gossip:5696  IHAVE:52439  GRAFT:2632
+B-30378560 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.449  Gossip:3621  IHAVE:33682  GRAFT:919
+B-30456863 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.204  Gossip:5507  IHAVE:52429  GRAFT:2817
+B-33140234 -- Reliability:100.0%  Nodes:2500  Latency:31  RMR:0.62  Gossip:4048  IHAVE:42317  GRAFT:813
+B-34834371 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.569  Gossip:3922  IHAVE:48942  GRAFT:1321
+B-35316359 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.662  Gossip:4154  IHAVE:52558  GRAFT:1472
+B-36556684 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.061  Gossip:5150  IHAVE:52380  GRAFT:2053
+B-36711295 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.775  Gossip:4436  IHAVE:44151  GRAFT:1562
+B-37169768 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.257  Gossip:3142  IHAVE:32467  GRAFT:622
+B-38066958 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.487  Gossip:3715  IHAVE:48051  GRAFT:751
+B-39827453 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.698  Gossip:4243  IHAVE:45364  GRAFT:1457
+B-40374355 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.014  Gossip:5034  IHAVE:52522  GRAFT:2362
+B-40418364 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.933  Gossip:4830  IHAVE:42562  GRAFT:991
+B-40855003 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.995  Gossip:4986  IHAVE:52436  GRAFT:2294
+B-41025831 -- Reliability:100.0%  Nodes:2500  Latency:29  RMR:0.61  Gossip:4024  IHAVE:42173  GRAFT:1373
+B-41484729 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.565  Gossip:3910  IHAVE:50052  GRAFT:1179
+B-41840442 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.117  Gossip:5291  IHAVE:52497  GRAFT:2670
+B-42115908 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.471  Gossip:6175  IHAVE:51909  GRAFT:2036
+B-42597072 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.048  Gossip:5119  IHAVE:52466  GRAFT:2418
+B-42958286 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.55  Gossip:3873  IHAVE:46740  GRAFT:1090
+B-43312238 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.463  Gossip:3657  IHAVE:52506  GRAFT:734
+B-43640382 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.336  Gossip:5838  IHAVE:52602  GRAFT:3302
+B-45004643 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.787  Gossip:4466  IHAVE:46102  GRAFT:1594
+B-45354366 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.28  Gossip:3199  IHAVE:25154  GRAFT:681
+B-46107337 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.488  Gossip:6217  IHAVE:52105  GRAFT:2763
+B-46382251 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.87  Gossip:4672  IHAVE:52466  GRAFT:1705
+B-46492023 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.909  Gossip:7270  IHAVE:51823  GRAFT:2888
+B-47078572 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.417  Gossip:6040  IHAVE:52349  GRAFT:3127
+B-47392445 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.701  Gossip:4250  IHAVE:52531  GRAFT:1586
+B-50783768 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.687  Gossip:4217  IHAVE:46953  GRAFT:1367
+B-50898524 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.764  Gossip:4409  IHAVE:41517  GRAFT:1512
+B-51973356 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.522  Gossip:3804  IHAVE:25822  GRAFT:882
+B-52718329 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.399  Gossip:3496  IHAVE:30109  GRAFT:761
+B-53585318 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.903  Gossip:4756  IHAVE:52384  GRAFT:1563
+B-54233321 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.29  Gossip:5723  IHAVE:52496  GRAFT:2913
+B-55006318 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.768  Gossip:6916  IHAVE:52296  GRAFT:3789
+B-55035656 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.298  Gossip:3243  IHAVE:52623  GRAFT:743
+B-55781417 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.401  Gossip:6001  IHAVE:52489  GRAFT:3387
+B-56533872 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.568  Gossip:6418  IHAVE:52116  GRAFT:2879
+B-56838632 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.178  Gossip:5444  IHAVE:52107  GRAFT:1756
+B-57175465 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.333  Gossip:5830  IHAVE:52110  GRAFT:2013
+B-58029952 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.262  Gossip:5652  IHAVE:52416  GRAFT:2770
+B-61262410 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.703  Gossip:4256  IHAVE:43718  GRAFT:1722
+B-61482587 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:0.597  Gossip:3992  IHAVE:52550  GRAFT:1372
+B-64141151 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.138  Gossip:5343  IHAVE:52558  GRAFT:2739
+B-64455887 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.824  Gossip:4557  IHAVE:47364  GRAFT:1636
+B-67097613 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.633  Gossip:4081  IHAVE:44013  GRAFT:1471
+B-67355268 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.579  Gossip:6444  IHAVE:51937  GRAFT:2676
+B-67828281 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:1.123  Gossip:5306  IHAVE:52559  GRAFT:2757
+B-69178138 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.684  Gossip:4208  IHAVE:50214  GRAFT:781
+B-69782034 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:0.783  Gossip:4456  IHAVE:52458  GRAFT:1595
+B-70200820 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.48  Gossip:6197  IHAVE:52530  GRAFT:3526
+B-70616508 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.034  Gossip:5083  IHAVE:52390  GRAFT:2152
+B-71558312 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.447  Gossip:3616  IHAVE:43128  GRAFT:799
+B-73533758 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.988  Gossip:4968  IHAVE:52043  GRAFT:1083
+B-74108412 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.476  Gossip:6188  IHAVE:52381  GRAFT:3556
+B-76009525 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.647  Gossip:4116  IHAVE:50052  GRAFT:949
+B-76194358 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.736  Gossip:4339  IHAVE:52512  GRAFT:1632
+B-76568553 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.177  Gossip:5441  IHAVE:52291  GRAFT:2234
+B-77712470 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.798  Gossip:4494  IHAVE:52549  GRAFT:1925
+B-77756909 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.461  Gossip:3651  IHAVE:31857  GRAFT:1150
+B-78784842 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.321  Gossip:3300  IHAVE:25306  GRAFT:503
+B-80311549 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.401  Gossip:3502  IHAVE:31645  GRAFT:868
+B-80388716 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.11  Gossip:5273  IHAVE:52194  GRAFT:1929
+B-82043021 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:1.06  Gossip:5147  IHAVE:41011  GRAFT:1988
+B-83366276 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:1.114  Gossip:5282  IHAVE:52531  GRAFT:2682
+B-86908469 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:1.169  Gossip:5420  IHAVE:52298  GRAFT:2030
+B-88876322 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.302  Gossip:5752  IHAVE:52025  GRAFT:1851
+B-89183918 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:0.894  Gossip:4734  IHAVE:52502  GRAFT:2030
+B-90995664 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.939  Gossip:4845  IHAVE:52565  GRAFT:2234
+B-91091908 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.854  Gossip:4632  IHAVE:40319  GRAFT:1504
+B-91161723 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.303  Gossip:3257  IHAVE:49700  GRAFT:728
+B-91652762 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.397  Gossip:5991  IHAVE:52406  GRAFT:3024
+B-92947841 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.424  Gossip:3559  IHAVE:52548  GRAFT:834
+B-93551583 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.376  Gossip:3439  IHAVE:38266  GRAFT:886
+B-94231207 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:0.489  Gossip:3722  IHAVE:52492  GRAFT:940
+B-94971589 -- Reliability:100.0%  Nodes:2500  Latency:31  RMR:0.382  Gossip:3454  IHAVE:42681  GRAFT:733
+B-95141260 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.583  Gossip:3957  IHAVE:28778  GRAFT:921
+B-95185305 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.164  Gossip:5407  IHAVE:52595  GRAFT:2814
+B-96730071 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.75  Gossip:4373  IHAVE:48693  GRAFT:1501
+B-96850288 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.452  Gossip:3629  IHAVE:42020  GRAFT:1078
+B-97792356 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.787  Gossip:4466  IHAVE:52478  GRAFT:1820
+B-97896762 -- Reliability:100.0%  Nodes:2500  Latency:28  RMR:0.372  Gossip:3429  IHAVE:35667  GRAFT:817
+B-98518846 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.516  Gossip:3789  IHAVE:52540  GRAFT:960
+B-99758311 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.646  Gossip:6612  IHAVE:51980  GRAFT:2714
+T-11331260 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.731  Gossip:4325  IHAVE:52398  GRAFT:1250
+T-11367371 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.778  Gossip:4444  IHAVE:44286  GRAFT:1805
+T-11553674 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.192  Gossip:5478  IHAVE:52366  GRAFT:2551
+T-11950707 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:1.224  Gossip:5557  IHAVE:52484  GRAFT:2548
+T-12030391 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.277  Gossip:3190  IHAVE:50073  GRAFT:628
+T-12194275 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.283  Gossip:5704  IHAVE:52220  GRAFT:2276
+T-12726972 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.734  Gossip:4333  IHAVE:52598  GRAFT:1620
+T-13098605 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.56  Gossip:3898  IHAVE:46873  GRAFT:962
+T-13394862 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.518  Gossip:6292  IHAVE:52460  GRAFT:3495
+T-13460650 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.195  Gossip:2987  IHAVE:24371  GRAFT:395
+T-13548777 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.019  Gossip:5045  IHAVE:52404  GRAFT:2131
+T-14184143 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.515  Gossip:6285  IHAVE:52349  GRAFT:2928
+T-14317390 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.495  Gossip:3735  IHAVE:36806  GRAFT:722
+T-14480200 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:1.137  Gossip:5341  IHAVE:52301  GRAFT:2040
+T-14592200 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.81  Gossip:7022  IHAVE:51728  GRAFT:2532
+T-14599872 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:0.447  Gossip:3617  IHAVE:52635  GRAFT:980
+T-14819235 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.333  Gossip:5829  IHAVE:52285  GRAFT:2740
+T-15032113 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.712  Gossip:6777  IHAVE:52455  GRAFT:4111
+T-15062692 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.901  Gossip:4750  IHAVE:52250  GRAFT:1550
+T-15099436 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.409  Gossip:3521  IHAVE:47247  GRAFT:932
+T-15117987 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.543  Gossip:3856  IHAVE:44568  GRAFT:1163
+T-15138771 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.673  Gossip:4181  IHAVE:48898  GRAFT:1675
+T-15162129 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.116  Gossip:5287  IHAVE:52576  GRAFT:2740
+T-15715543 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.551  Gossip:6374  IHAVE:52212  GRAFT:2949
+T-15887429 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.447  Gossip:3615  IHAVE:50993  GRAFT:1089
+T-16010784 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.819  Gossip:4546  IHAVE:52098  GRAFT:708
+T-16016518 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.782  Gossip:4453  IHAVE:52459  GRAFT:1677
+T-16030118 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.354  Gossip:3384  IHAVE:49246  GRAFT:732
+T-16085294 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:0.55  Gossip:3873  IHAVE:52546  GRAFT:1194
+T-16119415 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:1.2  Gossip:5497  IHAVE:52465  GRAFT:2526
+T-16328221 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.681  Gossip:4202  IHAVE:52599  GRAFT:1689
+T-16411131 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.98  Gossip:4947  IHAVE:52602  GRAFT:2411
+T-16413258 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.428  Gossip:6067  IHAVE:52337  GRAFT:2973
+T-16447074 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.692  Gossip:6728  IHAVE:52435  GRAFT:3796
+T-16768439 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:1.076  Gossip:5187  IHAVE:52503  GRAFT:2496
+T-16791856 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.501  Gossip:6251  IHAVE:52468  GRAFT:3448
+T-17139219 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.062  Gossip:5153  IHAVE:52349  GRAFT:2141
+T-17469065 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.468  Gossip:3669  IHAVE:27886  GRAFT:1167
+T-17520142 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:0.694  Gossip:4234  IHAVE:52424  GRAFT:1344
+T-17543877 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.559  Gossip:3896  IHAVE:52528  GRAFT:1148
+T-17723765 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.742  Gossip:4354  IHAVE:33438  GRAFT:1542
+T-18354343 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:1.054  Gossip:5132  IHAVE:46226  GRAFT:2303
+T-18554413 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.699  Gossip:4245  IHAVE:48524  GRAFT:1527
+T-18806191 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.618  Gossip:6543  IHAVE:52349  GRAFT:3550
+T-18895489 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:1.541  Gossip:6351  IHAVE:50897  GRAFT:1654
+T-18990851 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:1.118  Gossip:5292  IHAVE:32815  GRAFT:1877
+T-19269114 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.211  Gossip:5526  IHAVE:52305  GRAFT:2687
+T-19313431 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.325  Gossip:3312  IHAVE:25310  GRAFT:795
+T-19385056 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.317  Gossip:3290  IHAVE:23601  GRAFT:481
+T-19585770 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.773  Gossip:4431  IHAVE:48936  GRAFT:1140
+T-19807988 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.495  Gossip:3737  IHAVE:52559  GRAFT:1224
+T-19816917 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.662  Gossip:4154  IHAVE:52537  GRAFT:1304
+T-20049100 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:0.968  Gossip:4918  IHAVE:52343  GRAFT:1710
+T-20598186 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.769  Gossip:6920  IHAVE:52258  GRAFT:3867
+T-20617351 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.867  Gossip:4665  IHAVE:52501  GRAFT:1782
+T-20617917 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.371  Gossip:3427  IHAVE:24667  GRAFT:694
+T-20683500 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.298  Gossip:5743  IHAVE:52386  GRAFT:2866
+T-20767934 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:1.12  Gossip:5299  IHAVE:52529  GRAFT:2547
+T-20823696 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.729  Gossip:4321  IHAVE:47702  GRAFT:1410
+T-20826204 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.479  Gossip:3697  IHAVE:26118  GRAFT:924
+T-20843346 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.509  Gossip:3771  IHAVE:47244  GRAFT:1157
+T-20892511 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:1.016  Gossip:5038  IHAVE:41717  GRAFT:2183
+T-21118035 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.429  Gossip:3570  IHAVE:43244  GRAFT:566
+T-21441458 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.575  Gossip:3935  IHAVE:52601  GRAFT:1350
+T-21546696 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.243  Gossip:3106  IHAVE:22971  GRAFT:506
+T-21800744 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.437  Gossip:6090  IHAVE:52409  GRAFT:3358
+T-21971472 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.453  Gossip:3631  IHAVE:29146  GRAFT:741
+T-21987091 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.562  Gossip:3904  IHAVE:38240  GRAFT:859
+T-22047047 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.304  Gossip:5757  IHAVE:52428  GRAFT:2680
+T-22463140 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.506  Gossip:6262  IHAVE:52385  GRAFT:3477
+T-22901062 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.092  Gossip:5227  IHAVE:52542  GRAFT:2540
+T-22920993 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.159  Gossip:5395  IHAVE:52553  GRAFT:2835
+T-23169132 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.802  Gossip:4502  IHAVE:45955  GRAFT:1521
+T-23203078 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.633  Gossip:4081  IHAVE:42133  GRAFT:950
+T-23284898 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.388  Gossip:5968  IHAVE:52506  GRAFT:3179
+T-23412314 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.524  Gossip:3808  IHAVE:26850  GRAFT:966
+T-23425436 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.467  Gossip:6164  IHAVE:52384  GRAFT:3375
+T-23594557 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.39  Gossip:5972  IHAVE:52567  GRAFT:3277
+T-23609240 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.478  Gossip:3693  IHAVE:34614  GRAFT:1108
+T-24551790 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.999  Gossip:4996  IHAVE:52414  GRAFT:2154
+T-24599281 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.478  Gossip:3693  IHAVE:24816  GRAFT:726
+T-24692720 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:0.419  Gossip:3547  IHAVE:52446  GRAFT:655
+T-24709567 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.281  Gossip:5700  IHAVE:52428  GRAFT:3012
+T-24720397 -- Reliability:100.0%  Nodes:2500  Latency:29  RMR:0.482  Gossip:3703  IHAVE:40700  GRAFT:1124
+T-24755176 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:1.524  Gossip:6308  IHAVE:51791  GRAFT:1772
+T-24775630 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:1.156  Gossip:5387  IHAVE:52247  GRAFT:2038
+T-24936085 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.685  Gossip:4211  IHAVE:27077  GRAFT:1374
+T-25033281 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.385  Gossip:3460  IHAVE:42392  GRAFT:890
+T-25040221 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.95  Gossip:4872  IHAVE:37726  GRAFT:1364
+T-25059520 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:1.069  Gossip:5171  IHAVE:49627  GRAFT:2515
+T-25185715 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.499  Gossip:6244  IHAVE:52478  GRAFT:3592
+T-25605024 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.808  Gossip:7016  IHAVE:52475  GRAFT:4176
+T-25668046 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.192  Gossip:5479  IHAVE:52083  GRAFT:1762
+T-25678754 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.094  Gossip:5234  IHAVE:52444  GRAFT:2473
+T-25730991 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.533  Gossip:6330  IHAVE:52430  GRAFT:3506
+T-25828501 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.434  Gossip:6082  IHAVE:52377  GRAFT:3225
+T-25944321 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.861  Gossip:4650  IHAVE:46995  GRAFT:1505
+T-26059295 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.745  Gossip:6861  IHAVE:52213  GRAFT:3426
+T-26113644 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.477  Gossip:3692  IHAVE:49842  GRAFT:1104
+T-26349313 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.688  Gossip:4218  IHAVE:52558  GRAFT:1518
+T-26819563 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.578  Gossip:6442  IHAVE:52495  GRAFT:3735
+T-27092732 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.821  Gossip:4550  IHAVE:40898  GRAFT:1477
+T-27295006 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.467  Gossip:3667  IHAVE:51157  GRAFT:1168
+T-27595819 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.208  Gossip:3019  IHAVE:25153  GRAFT:519
+T-27683482 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.352  Gossip:3378  IHAVE:26581  GRAFT:845
+T-27840121 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.865  Gossip:7160  IHAVE:52207  GRAFT:4236
+T-27975654 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.441  Gossip:3601  IHAVE:30942  GRAFT:689
+T-28021474 -- Reliability:100.0%  Nodes:2500  Latency:29  RMR:0.932  Gossip:4827  IHAVE:41605  GRAFT:1865
+T-28087421 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.778  Gossip:4442  IHAVE:50992  GRAFT:791
+T-28163089 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.878  Gossip:4692  IHAVE:52255  GRAFT:1852
+T-28324673 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.12  Gossip:5297  IHAVE:52142  GRAFT:1722
+T-28330847 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:0.759  Gossip:4395  IHAVE:52482  GRAFT:1540
+T-28594451 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.128  Gossip:5317  IHAVE:52474  GRAFT:2636
+T-28700758 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.348  Gossip:3369  IHAVE:26668  GRAFT:865
+T-28715682 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.941  Gossip:4851  IHAVE:52501  GRAFT:2029
+T-28823426 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.495  Gossip:3735  IHAVE:23044  GRAFT:450
+T-29179271 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.368  Gossip:3418  IHAVE:46328  GRAFT:636
+T-29415276 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.926  Gossip:4812  IHAVE:52361  GRAFT:2088
+T-29694169 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.317  Gossip:3290  IHAVE:22048  GRAFT:791
+T-29936139 -- Reliability:100.0%  Nodes:2500  Latency:28  RMR:0.448  Gossip:3619  IHAVE:43213  GRAFT:879
+T-29938564 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.903  Gossip:4755  IHAVE:51615  GRAFT:1035
+T-30210153 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.285  Gossip:5710  IHAVE:52365  GRAFT:2606
+T-30464382 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.837  Gossip:4591  IHAVE:51870  GRAFT:925
+T-30583684 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.689  Gossip:4221  IHAVE:52518  GRAFT:1396
+T-30765134 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.71  Gossip:6773  IHAVE:52523  GRAFT:4145
+T-30855490 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.743  Gossip:6854  IHAVE:52357  GRAFT:3399
+T-30988523 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.265  Gossip:3161  IHAVE:32481  GRAFT:661
+T-31381170 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.387  Gossip:5964  IHAVE:52501  GRAFT:3227
+T-31682483 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.662  Gossip:4153  IHAVE:52402  GRAFT:990
+T-31732604 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.897  Gossip:4740  IHAVE:52462  GRAFT:1838
+T-31775117 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.517  Gossip:3791  IHAVE:34664  GRAFT:1207
+T-31836841 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.463  Gossip:3655  IHAVE:22382  GRAFT:328
+T-31842612 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.826  Gossip:4564  IHAVE:52403  GRAFT:1735
+T-31900224 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:1.09  Gossip:5224  IHAVE:52572  GRAFT:2498
+T-32049167 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.28  Gossip:3199  IHAVE:34671  GRAFT:700
+T-32220699 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.431  Gossip:6075  IHAVE:52289  GRAFT:3052
+T-32256617 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.231  Gossip:5576  IHAVE:52304  GRAFT:2218
+T-32327682 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.015  Gossip:5035  IHAVE:52510  GRAFT:2324
+T-32367318 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:1.283  Gossip:5705  IHAVE:44362  GRAFT:1351
+T-32525337 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.003  Gossip:5005  IHAVE:52463  GRAFT:2260
+T-32575458 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.255  Gossip:5634  IHAVE:52348  GRAFT:3013
+T-32692741 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.218  Gossip:3043  IHAVE:27448  GRAFT:492
+T-32746614 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.06  Gossip:5147  IHAVE:52467  GRAFT:2274
+T-32941291 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.018  Gossip:5042  IHAVE:52545  GRAFT:2165
+T-33258376 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.548  Gossip:3869  IHAVE:48060  GRAFT:1211
+T-33350603 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.517  Gossip:3791  IHAVE:51422  GRAFT:1102
+T-33377075 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.843  Gossip:4605  IHAVE:49082  GRAFT:729
+T-33648954 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.854  Gossip:4634  IHAVE:52529  GRAFT:2000
+T-33701719 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.389  Gossip:5971  IHAVE:52427  GRAFT:3235
+T-33833711 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.453  Gossip:3632  IHAVE:46795  GRAFT:743
+T-34093550 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.466  Gossip:3664  IHAVE:45923  GRAFT:1011
+T-34384995 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.529  Gossip:3821  IHAVE:52645  GRAFT:1290
+T-34548359 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.594  Gossip:3983  IHAVE:45774  GRAFT:1270
+T-34578433 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.078  Gossip:5192  IHAVE:52165  GRAFT:1765
+T-34751282 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.751  Gossip:4376  IHAVE:38531  GRAFT:1819
+T-34782790 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.666  Gossip:4163  IHAVE:30259  GRAFT:839
+T-35680116 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.379  Gossip:3447  IHAVE:32859  GRAFT:912
+T-35680252 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.337  Gossip:3340  IHAVE:25686  GRAFT:639
+T-35814340 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.393  Gossip:3480  IHAVE:26470  GRAFT:828
+T-35911835 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.557  Gossip:3892  IHAVE:51038  GRAFT:1105
+T-36059138 -- Reliability:99.96%  Nodes:2499  Latency:11  RMR:0.887  Gossip:4713  IHAVE:52237  GRAFT:1618
+T-36109944 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.881  Gossip:4701  IHAVE:52507  GRAFT:2140
+T-36171795 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.258  Gossip:5643  IHAVE:52480  GRAFT:2569
+T-36300994 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.768  Gossip:4417  IHAVE:42008  GRAFT:1716
+T-36389208 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.311  Gossip:3276  IHAVE:52542  GRAFT:609
+T-36750421 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.779  Gossip:4445  IHAVE:45209  GRAFT:1435
+T-36758665 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.275  Gossip:5684  IHAVE:52373  GRAFT:2816
+T-36963751 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.567  Gossip:3915  IHAVE:44151  GRAFT:1262
+T-37026233 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.265  Gossip:3161  IHAVE:24544  GRAFT:568
+T-37084952 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:0.659  Gossip:4145  IHAVE:52470  GRAFT:1383
+T-37092264 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.291  Gossip:5724  IHAVE:52440  GRAFT:3111
+T-37141951 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.625  Gossip:4060  IHAVE:46215  GRAFT:1360
+T-37208961 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.623  Gossip:4055  IHAVE:43371  GRAFT:1009
+T-37358433 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:0.677  Gossip:4190  IHAVE:52473  GRAFT:1369
+T-37553825 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.626  Gossip:4064  IHAVE:45683  GRAFT:1258
+T-37570954 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.135  Gossip:5335  IHAVE:52410  GRAFT:2445
+T-37692349 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.499  Gossip:6244  IHAVE:52490  GRAFT:3249
+T-37981945 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.419  Gossip:6044  IHAVE:52128  GRAFT:2407
+T-38187951 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:0.649  Gossip:4122  IHAVE:52576  GRAFT:1508
+T-38348263 -- Reliability:100.0%  Nodes:2500  Latency:31  RMR:0.769  Gossip:4420  IHAVE:42498  GRAFT:1349
+T-38645434 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.73  Gossip:4323  IHAVE:52523  GRAFT:1416
+T-38898345 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.561  Gossip:3902  IHAVE:52485  GRAFT:1185
+T-38937652 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.355  Gossip:3386  IHAVE:31238  GRAFT:852
+T-39279990 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.086  Gossip:5212  IHAVE:52585  GRAFT:2510
+T-39394753 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.933  Gossip:7329  IHAVE:52286  GRAFT:4219
+T-39497954 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.131  Gossip:5326  IHAVE:52186  GRAFT:1838
+T-39550413 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.792  Gossip:4478  IHAVE:52331  GRAFT:1331
+T-39659895 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.038  Gossip:5093  IHAVE:52324  GRAFT:1864
+T-39830337 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.776  Gossip:4439  IHAVE:52564  GRAFT:1811
+T-39884826 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.443  Gossip:6105  IHAVE:52407  GRAFT:3218
+T-39896370 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.443  Gossip:3607  IHAVE:46658  GRAFT:905
+T-39934247 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.541  Gossip:3851  IHAVE:52517  GRAFT:1089
+T-40223905 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.61  Gossip:6523  IHAVE:52243  GRAFT:3317
+T-40328830 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.086  Gossip:5212  IHAVE:52433  GRAFT:2441
+T-40521088 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.647  Gossip:6614  IHAVE:52226  GRAFT:3192
+T-40945619 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.352  Gossip:5878  IHAVE:52432  GRAFT:3105
+T-41033398 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.452  Gossip:6128  IHAVE:52379  GRAFT:3475
+T-41071724 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.851  Gossip:4626  IHAVE:52574  GRAFT:2025
+T-41213725 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.43  Gossip:3574  IHAVE:42416  GRAFT:1048
+T-41660081 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.677  Gossip:4192  IHAVE:52516  GRAFT:1390
+T-41661097 -- Reliability:100.0%  Nodes:2500  Latency:7  RMR:1.912  Gossip:7276  IHAVE:52214  GRAFT:4044
+T-41839864 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.713  Gossip:4280  IHAVE:48502  GRAFT:1648
+T-41891023 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.442  Gossip:3603  IHAVE:44008  GRAFT:995
+T-42677135 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.455  Gossip:3637  IHAVE:42722  GRAFT:1087
+T-42768949 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.24  Gossip:5597  IHAVE:52459  GRAFT:2655
+T-42980958 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.519  Gossip:3797  IHAVE:52495  GRAFT:908
+T-43220415 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.841  Gossip:4600  IHAVE:52480  GRAFT:1906
+T-43332920 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.744  Gossip:4358  IHAVE:46549  GRAFT:1482
+T-43416598 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.904  Gossip:4757  IHAVE:52660  GRAFT:2229
+T-43421108 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.751  Gossip:4375  IHAVE:47428  GRAFT:1092
+T-43599895 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.36  Gossip:3398  IHAVE:46601  GRAFT:873
+T-44061856 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:0.948  Gossip:4867  IHAVE:52337  GRAFT:1962
+T-44193295 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.117  Gossip:5290  IHAVE:52429  GRAFT:2304
+T-44665302 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.278  Gossip:5693  IHAVE:52614  GRAFT:3098
+T-44872154 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.349  Gossip:3371  IHAVE:46243  GRAFT:850
+T-44913042 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.769  Gossip:4420  IHAVE:52278  GRAFT:1170
+T-45022290 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.516  Gossip:3789  IHAVE:31739  GRAFT:1206
+T-45026118 -- Reliability:100.0%  Nodes:2500  Latency:31  RMR:0.768  Gossip:4417  IHAVE:41257  GRAFT:1776
+T-45142519 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.13  Gossip:5324  IHAVE:52561  GRAFT:2658
+T-45311550 -- Reliability:100.0%  Nodes:2500  Latency:28  RMR:0.394  Gossip:3484  IHAVE:51507  GRAFT:735
+T-45659052 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.934  Gossip:4834  IHAVE:40054  GRAFT:1712
+T-45757796 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.665  Gossip:4161  IHAVE:48511  GRAFT:1072
+T-45907721 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.385  Gossip:3460  IHAVE:46939  GRAFT:959
+T-46253171 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.384  Gossip:3459  IHAVE:48941  GRAFT:895
+T-46372296 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.157  Gossip:5391  IHAVE:52512  GRAFT:2746
+T-46662603 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.61  Gossip:4024  IHAVE:41987  GRAFT:1409
+T-47014939 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.335  Gossip:3335  IHAVE:45726  GRAFT:815
+T-47884917 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.375  Gossip:5936  IHAVE:52548  GRAFT:3201
+T-47994428 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.836  Gossip:4587  IHAVE:52575  GRAFT:1972
+T-48221654 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.634  Gossip:4083  IHAVE:45133  GRAFT:1409
+T-48420781 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.563  Gossip:3907  IHAVE:52282  GRAFT:1166
+T-48541919 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.022  Gossip:5053  IHAVE:52536  GRAFT:2477
+T-48618572 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.081  Gossip:5201  IHAVE:52534  GRAFT:2405
+T-48636441 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.568  Gossip:3918  IHAVE:52534  GRAFT:1186
+T-48840951 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.441  Gossip:6100  IHAVE:52270  GRAFT:2774
+T-48879584 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.063  Gossip:5155  IHAVE:52251  GRAFT:1928
+T-48884478 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.531  Gossip:3826  IHAVE:52585  GRAFT:1103
+T-48895420 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.99  Gossip:4974  IHAVE:52412  GRAFT:2361
+T-48898966 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.011  Gossip:5025  IHAVE:52444  GRAFT:2363
+T-49564623 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.757  Gossip:4391  IHAVE:51359  GRAFT:1301
+T-49696729 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.535  Gossip:3836  IHAVE:47885  GRAFT:820
+T-49901084 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.477  Gossip:3690  IHAVE:50921  GRAFT:1010
+T-50048779 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.101  Gossip:5250  IHAVE:52080  GRAFT:1411
+T-50191556 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.608  Gossip:6517  IHAVE:51994  GRAFT:2370
+T-50277210 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.735  Gossip:4337  IHAVE:49809  GRAFT:1449
+T-50568644 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:0.932  Gossip:4829  IHAVE:52560  GRAFT:2170
+T-50617360 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.183  Gossip:5456  IHAVE:52578  GRAFT:2793
+T-50785746 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.336  Gossip:5838  IHAVE:52109  GRAFT:2221
+T-50836285 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.533  Gossip:6330  IHAVE:52241  GRAFT:3208
+T-50970162 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.479  Gossip:3695  IHAVE:52339  GRAFT:538
+T-50986115 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.601  Gossip:6500  IHAVE:52185  GRAFT:3258
+T-51182116 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.562  Gossip:3904  IHAVE:45408  GRAFT:1164
+T-51202463 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.283  Gossip:5704  IHAVE:52338  GRAFT:2692
+T-51209561 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.952  Gossip:4877  IHAVE:52318  GRAFT:1696
+T-51675829 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.894  Gossip:4732  IHAVE:45389  GRAFT:1414
+T-51720195 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.047  Gossip:5115  IHAVE:52376  GRAFT:2150
+T-51776420 -- Reliability:100.0%  Nodes:2500  Latency:32  RMR:0.637  Gossip:4090  IHAVE:40654  GRAFT:1451
+T-51831543 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.966  Gossip:4913  IHAVE:52503  GRAFT:2022
+T-51994429 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.373  Gossip:5930  IHAVE:52456  GRAFT:3274
+T-52157100 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.158  Gossip:5393  IHAVE:52435  GRAFT:2532
+T-52397046 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.268  Gossip:3169  IHAVE:32431  GRAFT:618
+T-52524446 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:0.398  Gossip:3494  IHAVE:52537  GRAFT:891
+T-52804807 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.477  Gossip:3690  IHAVE:28696  GRAFT:1041
+T-52850363 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.817  Gossip:4541  IHAVE:52477  GRAFT:1785
+T-53162997 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.406  Gossip:6013  IHAVE:52237  GRAFT:2704
+T-53168184 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:1.097  Gossip:5241  IHAVE:51974  GRAFT:1299
+T-53538179 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.245  Gossip:5610  IHAVE:52515  GRAFT:3013
+T-53676596 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.693  Gossip:4231  IHAVE:34700  GRAFT:862
+T-53697655 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.434  Gossip:3584  IHAVE:31812  GRAFT:1050
+T-53715882 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.913  Gossip:4780  IHAVE:51863  GRAFT:978
+T-54348087 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:2.048  Gossip:7617  IHAVE:52141  GRAFT:4119
+T-54507336 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.53  Gossip:6322  IHAVE:52189  GRAFT:2742
+T-54579258 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.483  Gossip:3705  IHAVE:29410  GRAFT:749
+T-54974172 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.735  Gossip:4335  IHAVE:50954  GRAFT:1564
+T-54980924 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.665  Gossip:6660  IHAVE:52314  GRAFT:3672
+T-55016250 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.641  Gossip:6601  IHAVE:52394  GRAFT:3674
+T-55192767 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.29  Gossip:3224  IHAVE:43314  GRAFT:696
+T-55488376 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.611  Gossip:4027  IHAVE:32464  GRAFT:988
+T-55851576 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.619  Gossip:4046  IHAVE:45156  GRAFT:1525
+T-56049198 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.558  Gossip:3894  IHAVE:31952  GRAFT:717
+T-56258042 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.503  Gossip:3755  IHAVE:43677  GRAFT:980
+T-56557894 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.737  Gossip:4342  IHAVE:52423  GRAFT:1194
+T-56644103 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.567  Gossip:3916  IHAVE:34255  GRAFT:1153
+T-56694851 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.116  Gossip:5289  IHAVE:52334  GRAFT:2456
+T-56777723 -- Reliability:100.0%  Nodes:2500  Latency:28  RMR:0.324  Gossip:3309  IHAVE:43070  GRAFT:463
+T-56828337 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.627  Gossip:6564  IHAVE:52280  GRAFT:3395
+T-56856673 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.895  Gossip:4736  IHAVE:52574  GRAFT:2134
+T-57166852 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.287  Gossip:3217  IHAVE:30923  GRAFT:666
+T-57367186 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.676  Gossip:4189  IHAVE:33982  GRAFT:1269
+T-57562518 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.101  Gossip:2751  IHAVE:21885  GRAFT:35
+T-57857593 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.504  Gossip:3759  IHAVE:50745  GRAFT:765
+T-57920382 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.673  Gossip:4181  IHAVE:37080  GRAFT:1105
+T-58300458 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.515  Gossip:6285  IHAVE:51865  GRAFT:2318
+T-58477097 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:0.997  Gossip:4990  IHAVE:52342  GRAFT:1712
+T-58561408 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.512  Gossip:6278  IHAVE:52362  GRAFT:3351
+T-58841763 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.646  Gossip:4114  IHAVE:31812  GRAFT:1531
+T-58876723 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.881  Gossip:4700  IHAVE:52576  GRAFT:2164
+T-58989705 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.391  Gossip:3475  IHAVE:47251  GRAFT:933
+T-59229064 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.628  Gossip:4068  IHAVE:45515  GRAFT:1547
+T-59267985 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.339  Gossip:5846  IHAVE:52379  GRAFT:2683
+T-59389292 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.225  Gossip:5560  IHAVE:52514  GRAFT:2761
+T-59682797 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.399  Gossip:3496  IHAVE:42411  GRAFT:968
+T-59927074 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.368  Gossip:3419  IHAVE:52597  GRAFT:786
+T-60099985 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.798  Gossip:4494  IHAVE:52550  GRAFT:1707
+T-60125028 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.276  Gossip:3189  IHAVE:52563  GRAFT:587
+T-60193432 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.517  Gossip:3790  IHAVE:29726  GRAFT:749
+T-60206553 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.361  Gossip:5900  IHAVE:52475  GRAFT:3104
+T-60288629 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:1.071  Gossip:5176  IHAVE:43721  GRAFT:1969
+T-60386538 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.052  Gossip:5128  IHAVE:52261  GRAFT:1961
+T-60435863 -- Reliability:100.0%  Nodes:2500  Latency:28  RMR:0.398  Gossip:3494  IHAVE:35739  GRAFT:871
+T-60451526 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.507  Gossip:3766  IHAVE:52569  GRAFT:1109
+T-60843405 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.104  Gossip:5259  IHAVE:52492  GRAFT:2658
+T-61322867 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:1.324  Gossip:5808  IHAVE:52302  GRAFT:2382
+T-61588671 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.257  Gossip:3141  IHAVE:27285  GRAFT:403
+T-61666002 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.643  Gossip:4107  IHAVE:52564  GRAFT:1455
+T-62007534 -- Reliability:100.0%  Nodes:2500  Latency:7  RMR:1.506  Gossip:6262  IHAVE:52307  GRAFT:3495
+T-62029284 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.33  Gossip:3323  IHAVE:43315  GRAFT:777
+T-62229614 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.582  Gossip:3954  IHAVE:26682  GRAFT:1204
+T-62262310 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.738  Gossip:4343  IHAVE:40808  GRAFT:1475
+T-62352972 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.644  Gossip:4109  IHAVE:32868  GRAFT:1609
+T-62911417 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.992  Gossip:4979  IHAVE:52596  GRAFT:2332
+T-63154883 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.304  Gossip:3258  IHAVE:27827  GRAFT:674
+T-63205826 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.912  Gossip:4777  IHAVE:52465  GRAFT:1670
+T-63208040 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.539  Gossip:6345  IHAVE:52385  GRAFT:3376
+T-63328054 -- Reliability:100.0%  Nodes:2500  Latency:32  RMR:1.172  Gossip:5429  IHAVE:39031  GRAFT:1051
+T-63429716 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:1.187  Gossip:5465  IHAVE:52418  GRAFT:2496
+T-63432895 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.76  Gossip:4399  IHAVE:27887  GRAFT:745
+T-63642212 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.615  Gossip:4037  IHAVE:41913  GRAFT:1381
+T-63733130 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.51  Gossip:3773  IHAVE:46411  GRAFT:1071
+T-64068945 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.495  Gossip:6234  IHAVE:52569  GRAFT:3515
+T-64203766 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.505  Gossip:6259  IHAVE:52234  GRAFT:2750
+T-64393789 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.385  Gossip:3461  IHAVE:48840  GRAFT:834
+T-64845736 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.576  Gossip:6438  IHAVE:52142  GRAFT:3132
+T-64918480 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.836  Gossip:4587  IHAVE:52230  GRAFT:984
+T-64953483 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.168  Gossip:5419  IHAVE:52274  GRAFT:2314
+T-65165019 -- Reliability:100.0%  Nodes:2500  Latency:29  RMR:0.639  Gossip:4096  IHAVE:42028  GRAFT:1127
+T-65587183 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.463  Gossip:3656  IHAVE:47265  GRAFT:1156
+T-65628532 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.681  Gossip:6699  IHAVE:52560  GRAFT:4091
+T-65796836 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.687  Gossip:4215  IHAVE:52549  GRAFT:1504
+T-65965643 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.751  Gossip:4375  IHAVE:52171  GRAFT:881
+T-66035164 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.615  Gossip:4036  IHAVE:41942  GRAFT:1354
+T-66591675 -- Reliability:100.0%  Nodes:2500  Latency:30  RMR:1.063  Gossip:5155  IHAVE:38469  GRAFT:1215
+T-66614600 -- Reliability:100.0%  Nodes:2500  Latency:14  RMR:1.157  Gossip:5390  IHAVE:48383  GRAFT:2874
+T-66628205 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.854  Gossip:7133  IHAVE:51937  GRAFT:3189
+T-66839708 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.406  Gossip:3513  IHAVE:46730  GRAFT:942
+T-67147534 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.381  Gossip:3452  IHAVE:23857  GRAFT:751
+T-67242141 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.566  Gossip:3913  IHAVE:45133  GRAFT:1348
+T-67262914 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.176  Gossip:5437  IHAVE:52439  GRAFT:2378
+T-67515768 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.75  Gossip:4373  IHAVE:52519  GRAFT:1689
+T-67784697 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.992  Gossip:4977  IHAVE:52354  GRAFT:1894
+T-67803629 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.325  Gossip:3312  IHAVE:26679  GRAFT:805
+T-67851958 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.89  Gossip:4724  IHAVE:52546  GRAFT:2014
+T-67976766 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.789  Gossip:4471  IHAVE:52554  GRAFT:1760
+T-67980978 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.186  Gossip:5464  IHAVE:52458  GRAFT:2813
+T-68111374 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.179  Gossip:5445  IHAVE:52515  GRAFT:2814
+T-68244161 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.412  Gossip:3529  IHAVE:25512  GRAFT:776
+T-68372305 -- Reliability:100.0%  Nodes:2500  Latency:31  RMR:1.066  Gossip:5164  IHAVE:41126  GRAFT:1577
+T-68414709 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.445  Gossip:6109  IHAVE:52431  GRAFT:3225
+T-68467036 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.683  Gossip:6704  IHAVE:51828  GRAFT:2296
+T-68500482 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.784  Gossip:4457  IHAVE:52375  GRAFT:1459
+T-68638189 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.42  Gossip:6047  IHAVE:52094  GRAFT:2370
+T-68738837 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.768  Gossip:4417  IHAVE:52534  GRAFT:1519
+T-69029969 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:8.762  Gossip:24395  IHAVE:0  GRAFT:0
+T-69123283 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.343  Gossip:3355  IHAVE:52523  GRAFT:758
+T-69214410 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.572  Gossip:6427  IHAVE:52523  GRAFT:3812
+T-69580419 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:0.866  Gossip:4664  IHAVE:52519  GRAFT:2129
+T-69799503 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.424  Gossip:3558  IHAVE:48273  GRAFT:448
+T-69964423 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.353  Gossip:5879  IHAVE:52480  GRAFT:3168
+T-69992567 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.933  Gossip:7329  IHAVE:52253  GRAFT:4632
+T-70334313 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:0.71  Gossip:4273  IHAVE:52567  GRAFT:1593
+T-70428042 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.805  Gossip:4510  IHAVE:52488  GRAFT:1927
+T-70571171 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.921  Gossip:4801  IHAVE:52281  GRAFT:1647
+T-71026131 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.194  Gossip:5482  IHAVE:52339  GRAFT:2187
+T-71099939 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.435  Gossip:6085  IHAVE:52357  GRAFT:2753
+T-71265932 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.426  Gossip:3564  IHAVE:31259  GRAFT:714
+T-71352631 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.076  Gossip:5187  IHAVE:52432  GRAFT:2266
+T-71474479 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.429  Gossip:6071  IHAVE:52507  GRAFT:3255
+T-72192963 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.513  Gossip:6280  IHAVE:52346  GRAFT:3452
+T-72489598 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.136  Gossip:5339  IHAVE:52324  GRAFT:2332
+T-72511123 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.117  Gossip:5290  IHAVE:52092  GRAFT:1464
+T-72782159 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.637  Gossip:4092  IHAVE:37800  GRAFT:817
+T-73167666 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.42  Gossip:3548  IHAVE:31828  GRAFT:838
+T-73253903 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.769  Gossip:4420  IHAVE:52535  GRAFT:1884
+T-73535327 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.292  Gossip:5728  IHAVE:52541  GRAFT:3168
+T-73631061 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.631  Gossip:4075  IHAVE:52556  GRAFT:1417
+T-73648105 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.669  Gossip:4170  IHAVE:52499  GRAFT:1517
+T-73804741 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.194  Gossip:5484  IHAVE:52206  GRAFT:2025
+T-73879260 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.429  Gossip:6071  IHAVE:52180  GRAFT:2699
+T-74495732 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.463  Gossip:6155  IHAVE:52244  GRAFT:2833
+T-74524204 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.556  Gossip:3888  IHAVE:37390  GRAFT:1176
+T-74581475 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.329  Gossip:5820  IHAVE:52326  GRAFT:2600
+T-74600673 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.866  Gossip:7161  IHAVE:52298  GRAFT:4162
+T-74724751 -- Reliability:100.0%  Nodes:2500  Latency:28  RMR:0.456  Gossip:3639  IHAVE:37122  GRAFT:1140
+T-74813965 -- Reliability:100.0%  Nodes:2500  Latency:29  RMR:0.387  Gossip:3465  IHAVE:36678  GRAFT:764
+T-75025346 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.349  Gossip:5869  IHAVE:52465  GRAFT:3169
+T-75043167 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.504  Gossip:6257  IHAVE:52449  GRAFT:3214
+T-75233704 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.628  Gossip:4068  IHAVE:52436  GRAFT:1142
+T-75510244 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.375  Gossip:3437  IHAVE:25139  GRAFT:702
+T-75525932 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.58  Gossip:3949  IHAVE:49629  GRAFT:908
+T-75634023 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.536  Gossip:3839  IHAVE:35325  GRAFT:1093
+T-75761442 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.812  Gossip:4529  IHAVE:52508  GRAFT:1835
+T-75962068 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.142  Gossip:5353  IHAVE:52312  GRAFT:2094
+T-76082951 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.71  Gossip:6772  IHAVE:52141  GRAFT:3724
+T-76189666 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.703  Gossip:4256  IHAVE:50414  GRAFT:842
+T-76440665 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.657  Gossip:4140  IHAVE:52589  GRAFT:1352
+T-76471272 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.81  Gossip:4524  IHAVE:52329  GRAFT:1295
+T-76527299 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.65  Gossip:4124  IHAVE:48155  GRAFT:1182
+T-76606523 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.322  Gossip:3304  IHAVE:48320  GRAFT:637
+T-76629080 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.282  Gossip:3204  IHAVE:24429  GRAFT:524
+T-76760869 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.619  Gossip:4047  IHAVE:43714  GRAFT:1192
+T-76819299 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.895  Gossip:4735  IHAVE:52603  GRAFT:2130
+T-76910057 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.95  Gossip:4873  IHAVE:52311  GRAFT:1650
+T-77050534 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.527  Gossip:3815  IHAVE:42067  GRAFT:1238
+T-77151152 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:0.968  Gossip:4917  IHAVE:52626  GRAFT:2332
+T-77204473 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.744  Gossip:6858  IHAVE:52421  GRAFT:3857
+T-77307036 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.772  Gossip:4427  IHAVE:52467  GRAFT:1378
+T-77318116 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.842  Gossip:4604  IHAVE:40700  GRAFT:1813
+T-77357276 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.62  Gossip:4049  IHAVE:44364  GRAFT:1033
+T-77391570 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.598  Gossip:6493  IHAVE:52193  GRAFT:3035
+T-77844971 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.187  Gossip:5466  IHAVE:52373  GRAFT:2533
+T-78357113 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.227  Gossip:5565  IHAVE:52503  GRAFT:2983
+T-78409694 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.558  Gossip:3894  IHAVE:52631  GRAFT:1297
+T-78678996 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.632  Gossip:6578  IHAVE:51953  GRAFT:2645
+T-78729972 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.908  Gossip:4768  IHAVE:52601  GRAFT:1998
+T-78847497 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.571  Gossip:3926  IHAVE:43945  GRAFT:904
+T-78881153 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.639  Gossip:4096  IHAVE:52025  GRAFT:1501
+T-78951575 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.882  Gossip:4703  IHAVE:52569  GRAFT:2129
+T-79125215 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.46  Gossip:6147  IHAVE:52411  GRAFT:3500
+T-79184778 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:0.634  Gossip:4083  IHAVE:52570  GRAFT:1434
+T-79211303 -- Reliability:100.0%  Nodes:2500  Latency:33  RMR:0.409  Gossip:3521  IHAVE:38538  GRAFT:974
+T-79269909 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.345  Gossip:3360  IHAVE:27869  GRAFT:797
+T-79491494 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.108  Gossip:5269  IHAVE:52203  GRAFT:1748
+T-79575737 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:1.052  Gossip:5128  IHAVE:52130  GRAFT:1565
+T-79592952 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.662  Gossip:6652  IHAVE:52503  GRAFT:3756
+T-79671074 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.083  Gossip:5206  IHAVE:52278  GRAFT:1839
+T-79760844 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:1.23  Gossip:5572  IHAVE:52638  GRAFT:2874
+T-79823810 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.649  Gossip:4120  IHAVE:52509  GRAFT:1370
+T-80104226 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.741  Gossip:4352  IHAVE:52559  GRAFT:1510
+T-80263004 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.469  Gossip:3672  IHAVE:31532  GRAFT:996
+T-80454625 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.142  Gossip:5354  IHAVE:52604  GRAFT:2710
+T-80593560 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.413  Gossip:6030  IHAVE:52372  GRAFT:3222
+T-80621483 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.263  Gossip:3155  IHAVE:26680  GRAFT:638
+T-80912069 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.844  Gossip:4608  IHAVE:52472  GRAFT:1625
+T-81013206 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.723  Gossip:4306  IHAVE:52615  GRAFT:1645
+T-81130135 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.777  Gossip:4441  IHAVE:45846  GRAFT:1825
+T-81153539 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.575  Gossip:3936  IHAVE:52290  GRAFT:1423
+T-81183957 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.942  Gossip:4854  IHAVE:52483  GRAFT:2263
+T-81232832 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.09  Gossip:5223  IHAVE:52625  GRAFT:2515
+T-81255894 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.85  Gossip:4622  IHAVE:52617  GRAFT:2113
+T-81271559 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.481  Gossip:6201  IHAVE:52186  GRAFT:2944
+T-81286123 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.396  Gossip:5987  IHAVE:52641  GRAFT:3391
+T-81328185 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.817  Gossip:4540  IHAVE:48776  GRAFT:1605
+T-81378178 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.666  Gossip:4163  IHAVE:33633  GRAFT:1629
+T-82062962 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.667  Gossip:4166  IHAVE:52492  GRAFT:1337
+T-82139065 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.271  Gossip:3177  IHAVE:24607  GRAFT:575
+T-82303040 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.378  Gossip:5942  IHAVE:52257  GRAFT:2826
+T-82303754 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.683  Gossip:6705  IHAVE:52214  GRAFT:3554
+T-82919201 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.301  Gossip:3252  IHAVE:27758  GRAFT:651
+T-83294663 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.389  Gossip:3470  IHAVE:49905  GRAFT:512
+T-83305904 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.941  Gossip:4851  IHAVE:52426  GRAFT:1859
+T-83403869 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.856  Gossip:4638  IHAVE:52295  GRAFT:1263
+T-83413511 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.134  Gossip:5334  IHAVE:52378  GRAFT:2125
+T-83678932 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.705  Gossip:4262  IHAVE:47245  GRAFT:1519
+T-83692551 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.702  Gossip:6753  IHAVE:52372  GRAFT:3885
+T-83998700 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.441  Gossip:3600  IHAVE:52471  GRAFT:788
+T-84002549 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.234  Gossip:5583  IHAVE:52524  GRAFT:2799
+T-84079968 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.068  Gossip:5169  IHAVE:52502  GRAFT:2458
+T-84241523 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.63  Gossip:4073  IHAVE:52633  GRAFT:1438
+T-84284408 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.334  Gossip:3334  IHAVE:52604  GRAFT:709
+T-85158794 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.887  Gossip:7214  IHAVE:52425  GRAFT:4236
+T-85201289 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:1.338  Gossip:5842  IHAVE:52500  GRAFT:3133
+T-85572667 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.681  Gossip:4201  IHAVE:52494  GRAFT:1351
+T-85783306 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.259  Gossip:3146  IHAVE:33670  GRAFT:630
+T-86003136 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.242  Gossip:3103  IHAVE:24365  GRAFT:597
+T-86111591 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.453  Gossip:3632  IHAVE:33789  GRAFT:832
+T-86202213 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.791  Gossip:4476  IHAVE:52440  GRAFT:1661
+T-86386411 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.88  Gossip:4697  IHAVE:52618  GRAFT:2146
+T-86755553 -- Reliability:100.0%  Nodes:2500  Latency:28  RMR:0.437  Gossip:3590  IHAVE:35476  GRAFT:811
+T-87386021 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.367  Gossip:5916  IHAVE:52211  GRAFT:2734
+T-87717222 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.439  Gossip:3595  IHAVE:27468  GRAFT:684
+T-87752209 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.307  Gossip:3267  IHAVE:31516  GRAFT:733
+T-87814698 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.509  Gossip:6270  IHAVE:52379  GRAFT:3421
+T-87945000 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.667  Gossip:4165  IHAVE:43840  GRAFT:1534
+T-88007767 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.248  Gossip:3119  IHAVE:23806  GRAFT:536
+T-88060693 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.504  Gossip:3758  IHAVE:45122  GRAFT:809
+T-88394474 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.296  Gossip:3239  IHAVE:22231  GRAFT:510
+T-88441641 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.526  Gossip:6312  IHAVE:52297  GRAFT:3256
+T-88856389 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:0.802  Gossip:4502  IHAVE:52663  GRAFT:1985
+T-89107490 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.893  Gossip:4730  IHAVE:46368  GRAFT:1599
+T-89286907 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.068  Gossip:5168  IHAVE:52328  GRAFT:2290
+T-89499622 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.625  Gossip:4062  IHAVE:47805  GRAFT:1118
+T-89638377 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.932  Gossip:4829  IHAVE:52306  GRAFT:1325
+T-89712552 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.717  Gossip:4292  IHAVE:52443  GRAFT:1484
+T-90053054 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.545  Gossip:3860  IHAVE:48943  GRAFT:1142
+T-90122911 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.583  Gossip:3956  IHAVE:44268  GRAFT:1025
+T-90699930 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.752  Gossip:4377  IHAVE:52567  GRAFT:1800
+T-90722848 -- Reliability:100.0%  Nodes:2500  Latency:30  RMR:0.841  Gossip:4600  IHAVE:37375  GRAFT:1200
+T-90855074 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.511  Gossip:6275  IHAVE:52463  GRAFT:3419
+T-91192816 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:0.534  Gossip:3834  IHAVE:52580  GRAFT:1232
+T-91973142 -- Reliability:100.0%  Nodes:2500  Latency:12  RMR:0.811  Gossip:4526  IHAVE:52429  GRAFT:1586
+T-91997355 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.595  Gossip:6485  IHAVE:52280  GRAFT:3208
+T-92145346 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:0.569  Gossip:3920  IHAVE:45965  GRAFT:1229
+T-92154912 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.992  Gossip:4978  IHAVE:52526  GRAFT:2356
+T-92481188 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.594  Gossip:3983  IHAVE:41803  GRAFT:1130
+T-92553502 -- Reliability:100.0%  Nodes:2500  Latency:26  RMR:0.253  Gossip:3131  IHAVE:23039  GRAFT:598
+T-92864445 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.442  Gossip:3603  IHAVE:46431  GRAFT:1013
+T-92967424 -- Reliability:100.0%  Nodes:2500  Latency:15  RMR:1.307  Gossip:5765  IHAVE:52388  GRAFT:2685
+T-93127990 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:1.06  Gossip:5149  IHAVE:52533  GRAFT:2623
+T-93337209 -- Reliability:100.0%  Nodes:2500  Latency:24  RMR:0.449  Gossip:3622  IHAVE:51780  GRAFT:737
+T-93386500 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.215  Gossip:5535  IHAVE:52237  GRAFT:2314
+T-93414633 -- Reliability:100.0%  Nodes:2500  Latency:16  RMR:1.465  Gossip:6160  IHAVE:51473  GRAFT:2210
+T-93765165 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.612  Gossip:4029  IHAVE:34439  GRAFT:1256
+T-93827623 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:0.944  Gossip:4859  IHAVE:52426  GRAFT:1984
+T-93861984 -- Reliability:100.0%  Nodes:2500  Latency:25  RMR:0.828  Gossip:4567  IHAVE:43518  GRAFT:1538
+T-93892630 -- Reliability:100.0%  Nodes:2500  Latency:8  RMR:1.572  Gossip:6427  IHAVE:52437  GRAFT:3713
+T-93982588 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.712  Gossip:6777  IHAVE:52341  GRAFT:3644
+T-94130467 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.486  Gossip:6213  IHAVE:52450  GRAFT:3351
+T-94215959 -- Reliability:100.0%  Nodes:2500  Latency:23  RMR:0.596  Gossip:3988  IHAVE:42626  GRAFT:1483
+T-94346951 -- Reliability:100.0%  Nodes:2500  Latency:22  RMR:0.329  Gossip:3320  IHAVE:52607  GRAFT:818
+T-94358706 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.889  Gossip:7220  IHAVE:52281  GRAFT:3819
+T-95019746 -- Reliability:100.0%  Nodes:2500  Latency:19  RMR:0.458  Gossip:3643  IHAVE:45859  GRAFT:944
+T-95075520 -- Reliability:100.0%  Nodes:2500  Latency:27  RMR:0.384  Gossip:3458  IHAVE:26593  GRAFT:833
+T-95413548 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.883  Gossip:7204  IHAVE:52481  GRAFT:4488
+T-95546267 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.41  Gossip:3523  IHAVE:27082  GRAFT:990
+T-95647469 -- Reliability:100.0%  Nodes:2500  Latency:30  RMR:0.779  Gossip:4446  IHAVE:35808  GRAFT:691
+T-95847588 -- Reliability:100.0%  Nodes:2500  Latency:21  RMR:0.431  Gossip:3577  IHAVE:31778  GRAFT:1011
+T-95868554 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.856  Gossip:4638  IHAVE:52603  GRAFT:2076
+T-95899474 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:0.969  Gossip:4920  IHAVE:52532  GRAFT:2239
+T-96475712 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.309  Gossip:5770  IHAVE:52198  GRAFT:2268
+T-96787511 -- Reliability:100.0%  Nodes:2500  Latency:13  RMR:1.079  Gossip:5196  IHAVE:52411  GRAFT:2063
+T-96790743 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.354  Gossip:5883  IHAVE:52072  GRAFT:2153
+T-96833910 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.306  Gossip:5762  IHAVE:52361  GRAFT:2823
+T-97438515 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.077  Gossip:5190  IHAVE:52338  GRAFT:2126
+T-97542923 -- Reliability:100.0%  Nodes:2500  Latency:20  RMR:0.647  Gossip:4115  IHAVE:44150  GRAFT:1478
+T-97602796 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:0.797  Gossip:4490  IHAVE:52205  GRAFT:1740
+T-98014517 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:0.891  Gossip:4726  IHAVE:52438  GRAFT:2034
+T-98083773 -- Reliability:100.0%  Nodes:2500  Latency:17  RMR:1.362  Gossip:5902  IHAVE:47294  GRAFT:3034
+T-98345077 -- Reliability:100.0%  Nodes:2500  Latency:9  RMR:1.64  Gossip:6597  IHAVE:52438  GRAFT:3555
+T-98976865 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.124  Gossip:5309  IHAVE:52144  GRAFT:1793
+T-99477637 -- Reliability:100.0%  Nodes:2500  Latency:11  RMR:1.051  Gossip:5125  IHAVE:52561  GRAFT:2361
+T-99642053 -- Reliability:100.0%  Nodes:2500  Latency:10  RMR:1.442  Gossip:6102  IHAVE:52391  GRAFT:3013
+T-99743747 -- Reliability:100.0%  Nodes:2500  Latency:18  RMR:0.791  Gossip:4475  IHAVE:46746  GRAFT:1909
+
+Number of Miners: 25  Total Transactions: 542
+AVERAGE -- Reliability:100.000%  Nodes:2500.0  Latency:15.6  RMR:0.911  Gossip:4776.1  IHAVE:47130.5  GRAFT:1839.0
+Degree Avg:22.09  Min:22  Max:46  Shortest Path Avg:7.15 Clustering Coefficient  0.1782
+
+===================================================
+SIMULATION COMPLETED IN: 961.9082440950001 SECONDS
+SIMULATED EVENTS: 103935162
+EVENTS PER SECOND: 108051.0148842587
+===================================================

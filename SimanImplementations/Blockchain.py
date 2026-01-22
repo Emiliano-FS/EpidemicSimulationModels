@@ -119,13 +119,19 @@ class Blockchain:
         self.orphans = []
 
     def create_genesis_block(self):
-        genesis_block = Block(0, [], 0, "0")
+        genesis_block = Block(0, [], 0, None)
         genesis_block.hash = genesis_block.compute_hash()
-        self.chain.append(genesis_block)
+
+        self.blocks[genesis_block.hash] = genesis_block
+        self.heights[genesis_block.hash] = 0
+        self.head = genesis_block.hash
+        self.chain = [genesis_block]
+
 
     @property
     def last_block(self):
-        return self.chain[-1]
+        return self.blocks[self.head]
+
 
     def block_validity(self, block):
         if not Blockchain.is_valid_proof(block, block.hash):
@@ -139,10 +145,6 @@ class Blockchain:
     
         parent = self.blocks[block.previous_hash]
         return block.index == parent.index + 1
-
-    def add_block(self, block):
-        self.chain.append(block)
-        return True
 
     @staticmethod
     def proof_of_work(block):
@@ -188,21 +190,21 @@ class Blockchain:
         if not self.unconfirmed_transactions:
             return False
 
-        last_block = self.last_block
+        parent_hash = self.head
+        parent_block = self.blocks[parent_hash]
 
         new_block = Block(
-            index=last_block.index + 1,
+            index=parent_block.index + 1,
             transactions=self.unconfirmed_transactions[:100],
             timestamp=time.time(),
-            previous_hash=last_block.hash,
+            previous_hash=parent_hash,
         )
 
         proof = self.proof_of_work(new_block)
 
         if Blockchain.is_valid_proof(new_block, proof):
             new_block.hash = proof
-            self.add_block(new_block)
-            self.unconfirmed_transactions = self.unconfirmed_transactions[100:]
+            self.consensus(new_block)
             return True
 
         return False
@@ -216,37 +218,37 @@ class Blockchain:
         if block.hash in self.blocks:
             return False
 
+        # Orphan check FIRST
+        if block.previous_hash not in self.blocks and block.index != 0:
+            self.orphans.append(block)
+            return False
+
         # Store block
         self.blocks[block.hash] = block
         self.children.setdefault(block.previous_hash, []).append(block.hash)
 
-        # Genesis
-        if block.index == 0:
-            self.heights[block.hash] = 0
-            self.head = block.hash
-            self.chain = [block]
-            return True
-
-        # Orphan
-        if block.previous_hash not in self.blocks:
-            self.orphans.append(block)
-            return False
-
-        # Normal block
+        # Set height
         self.heights[block.hash] = self.heights[block.previous_hash] + 1
 
         # Update best chain
-        if self.head is None or self.heights[block.hash] > self.heights[self.head]:
+        if self.heights[block.hash] > self.heights[self.head]:
             self.head = block.hash
             self._rebuild_chain()
 
+        # Try to attach orphans
+        for orphan in self.orphans[:]:
+            if orphan.previous_hash in self.blocks:
+                self.orphans.remove(orphan)
+                self.consensus(orphan)
+
         return True
+
 
     def _rebuild_chain(self):
         chain = []
         current = self.head
 
-        while current:
+        while current is not None:
             block = self.blocks[current]
             chain.append(block)
             current = block.previous_hash
@@ -254,9 +256,22 @@ class Blockchain:
         self.chain = list(reversed(chain))
 
 
+
     def remove_confirmed_transactions(self, block):
-        confirmed_ids = {tx.tx_id for tx in block.transactions}
-        self.current_transactions = [
-            tx for tx in self.current_transactions
-            if tx.tx_id not in confirmed_ids
+        confirmed_ids = {tx.trans_id for tx in block.transactions}
+        self.unconfirmed_transactions = [
+            tx for tx in self.unconfirmed_transactions
+            if tx.trans_id not in confirmed_ids
         ]
+
+
+    def print_block_dag(self):
+        print("Blocks known:")
+
+        for h, block in self.blocks.items():
+            height = self.heights.get(h, "?")
+            parent = block.previous_hash[:6] if block.previous_hash else "None"
+            print(
+                f"  {block.hash[:6]} "
+                f"(h={height}) <- {parent}"
+            )

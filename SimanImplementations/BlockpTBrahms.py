@@ -298,6 +298,7 @@ class Node(simianEngine.Entity):
         self.active = True
         self.blockchain = Blockchain()
         self.blockchain.create_genesis_block()
+        self.mining_parent = None               
         self.mining = False
 
         #plumTree variables
@@ -312,7 +313,7 @@ class Node(simianEngine.Entity):
         self.timersAck = {}
 
         #brahms variables
-        self.S = []
+        self.S = []               
         self.V = []
         self.Vpush = []
         self.Vpull = []
@@ -336,21 +337,40 @@ class Node(simianEngine.Entity):
 
         self.reqService(triggerSysReportTime, "TriggerSystemReport", "none")
 
+    def start_mining(self):
+        if not (self.miner and self.active):
+            return
+        if self.mining:
+            return  # already mining
 
+        self.mining = True
+        self.mining_parent = self.blockchain.head
+        avg_mining_time = 30
+        delay = random.expovariate(1 / avg_mining_time)
+        self.reqService(delay, "mine_block", "none")
 
 #--------------------------------------- GOSSIP ---------------------------------------------------
 
     def PlumTreeGossip(self, *args):
         msg = args[0]
-        #self.out.write(str(self.engine.now) + (":%d rcvd msg '%s' %d\n" % (self.node_idx, msg.type,msg.hops)))
         if self.active==True:
             if msg.type =='PRUNE':
+                if msg.sender in self.timersAck.keys():
+                    val = False
+                    for pair in self.timersAck[msg.sender]:
+                        if val == False and pair[0] == msg.ID and pair[1] == msg.hops:
+                             self.timersAck[msg.sender].remove(pair)
+                             val = True
+
                 if msg.sender in self.eagerPushPeers:
                     self.eagerPushPeers.remove(msg.sender)
-                    if msg.sender not in self.lazyPushPeers:
-                        self.lazyPushPeers.append(msg.sender)
+                if msg.sender not in self.lazyPushPeers and msg.sender in self.V:
+                    self.lazyPushPeers.append(msg.sender)
 
             elif msg.type =='IHAVE':
+                msgToSend = msgGossip('ACK','','',msg.ID,msg.hops,self.node_idx)
+                self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", msg.sender)
+
                 if msg.ID not in self.report.keys():
                     self.report[msg.ID] = [0,1,0]
                 else:
@@ -369,10 +389,10 @@ class Node(simianEngine.Entity):
                 else:
                     self.report[msg.ID][2] += 1
 
+                if msg.sender not in self.eagerPushPeers and msg.sender in self.V:
+                    self.eagerPushPeers.append(msg.sender)
                 if msg.sender in self.lazyPushPeers:
                     self.lazyPushPeers.remove(msg.sender)
-                    if msg.sender not in self.eagerPushPeers:
-                        self.eagerPushPeers.append(msg.sender)
                 if msg.ID in self.receivedMsgs.keys():
                     msgToSend = msgGossip('GOSSIP',self.receivedMsgs[msg.ID].payloadType,self.receivedMsgs[msg.ID].payload,msg.ID,msg.hops,self.node_idx)
                     self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", msg.sender)
@@ -384,8 +404,11 @@ class Node(simianEngine.Entity):
                     self.report[msg.ID][0] += 1
 
                 if msg.ID not in self.receivedMsgs.keys():
-                    self.receivedMsgs[msg.ID] = msg
+                    msgToSend = msgGossip('ACK','','',msg.ID,msg.hops,self.node_idx)
+                    self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", msg.sender)
 
+                    self.receivedMsgs[msg.ID] = msg
+                    
                     if msg.ID in self.timers:
                         self.timers.remove(msg.ID)
 
@@ -396,32 +419,29 @@ class Node(simianEngine.Entity):
                             self.blockchain.remove_confirmed_transactions(block)
                             if accepted and block.previous_hash == self.blockchain.last_block.hash:
                                 self.mining = False
+                            self.start_mining()
 
                         self.LazyPush(msg)
                         self.EagerPush(msg)            
 
-                    elif msg.payloadType  == "TRX":
+                    elif msg.payloadType == "TRX":
                         if self.miner:
                             self.blockchain.add_new_transaction(msg.payload)
-                            if self.miner and not self.mining and len(self.blockchain.unconfirmed_transactions) >= 100:
-                                self.mining = True
-                                avg_mining_time = 30
-                                delay = random.expovariate(1/avg_mining_time)
-                                self.reqService(delay, "mine_block", "none")
+                            self.start_mining()
                 
                         self.LazyPush(msg)
                         self.EagerPush(msg)
 
+                    if msg.sender not in self.eagerPushPeers and msg.sender in self.V:
+                        self.eagerPushPeers.append(msg.sender)
                     if msg.sender in self.lazyPushPeers:
                         self.lazyPushPeers.remove(msg.sender)
 
-                        if msg.sender not in self.eagerPushPeers:
-                            self.eagerPushPeers.append(msg.sender)
                 else:
                     if msg.sender in self.eagerPushPeers:
                         self.eagerPushPeers.remove(msg.sender)
-                        if msg.sender not in self.lazyPushPeers:
-                            self.lazyPushPeers.append(msg.sender)
+                    if msg.sender not in self.lazyPushPeers and msg.sender in self.V:
+                        self.lazyPushPeers.append(msg.sender)
 
                     msgToSend = msgGossip('PRUNE','','',msg.ID,msg.hops,self.node_idx)
                     self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", msg.sender)
@@ -434,19 +454,47 @@ class Node(simianEngine.Entity):
                 self.receivedMsgs[mID] = msg
                 self.report[msg.ID] = [0,0,0]
 
+            elif msg.type =='ACK':
+                #remover lista de timers
+                if msg.sender in self.timersAck.keys():
+                    val = False
+                    for pair in self.timersAck[msg.sender]:
+                        if val == False and pair[0] == msg.ID and pair[1] == msg.hops:
+                             self.timersAck[msg.sender].remove(pair)
+                             val = True
+
 
     def mine_block(self, *args):
-        if not self.active or not self.mining:
+        if not self.mining:
             return
+
+        # Chain advanced → abort
+        if self.blockchain.head != self.mining_parent:
+            self.mining = False
+            self.start_mining()
+            return
+
+        # No transactions → wait
+        if not self.blockchain.unconfirmed_transactions:
+            self.mining = False
+            self.start_mining()
+            return
+
+        # Success
         self.blockchain.mine()
+
         new_block = self.blockchain.last_block
         block_id = "B-" +str(random.randint(11111111,99999999))
+
         block_msg = msgGossip('GOSSIP',"BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)        
         self.receivedMsgs[block_msg.ID] = block_msg
         self.report[block_msg.ID] = [1, 0, 0]
+
         self.LazyPush(block_msg)
         self.EagerPush(block_msg)
+
         self.mining = False
+        self.start_mining()
 
     def EagerPush(self, msg):
         sender = msg.sender
@@ -499,9 +547,25 @@ class Node(simianEngine.Entity):
 
                 self.reqService(timeout2, "Timer", mID)
 
+    def TimerAcks(self,*args):
+        pair = args[0]
+        dest = pair[0]
+        mID = pair[1]
+        round = pair[2]
+        if dest in self.timersAck.keys():
+            val = False
+            for pair in self.timersAck[dest]:
+                if val == False and pair[0] == mID and pair[1] == round:
+                     self.timersAck[dest].remove(pair)
+                     val = True
+
+            if val == True:
+                #self.out.write("ack n chegou no node:"+ str(self.node_idx)+"\n")
+                self.NodeFailure(dest)
+                self.timersAck[dest] = []
+                self.NeighborDown(dest)
+
 #--------------------------------------- PEER SELECTION ---------------------------------------------------
-
-
 
     def BrahmsInit(self, v0):
         self.V = v0
@@ -554,12 +618,12 @@ class Node(simianEngine.Entity):
     def TriggerBrahmsSend(self, *args):
         #self.out.write(str(self.engine.now) + (":%d: %s %s %s\n" % (self.node_idx, str(self.Vpull),str(self.Vpush),str(self.V))))
         if self.active==True:
-            #self.Vpull = list( dict.fromkeys(self.Vpull) )
+            self.Vpull = list( dict.fromkeys(self.Vpull) )
             if len(self.Vpush) <= (math.ceil(a*l1)) and len(self.Vpush) != 0 and len(self.Vpull) != 0:
-                #sample = []
-                #for s in self.S:
-                #    if s.q not in sample:
-                #        sample.append(s.q)
+                sample = []
+                for s in self.S:
+                    if s.q not in sample:
+                        sample.append(s.q)
 
                 self.V = list( dict.fromkeys( self.rand(self.Vpush,math.ceil(a*l1)) + self.rand(self.Vpull,math.floor(b*l1))  )   ) #+ self.rand(self.S,math.ceil(y*l1))
                 #self.out.write(str(self.engine.now) + (":%d: %s %s %s\n" % (self.node_idx, str(self.Vpull),str(self.Vpush),str(self.V))))
@@ -573,7 +637,7 @@ class Node(simianEngine.Entity):
 
                 self.eagerPushPeers = listE
                 self.lazyPushPeers = listL
-            #self.updateSample(list( dict.fromkeys(self.Vpush + self.Vpull) ) )
+            self.updateSample(list( dict.fromkeys(self.Vpush + self.Vpull) ) )
 
 
             self.Vpush = []
@@ -621,6 +685,11 @@ class Node(simianEngine.Entity):
                 self.node_idx,
                 list(self.V)
             )
+
+            #print("\n=== BLOCK DAG PER NODE ===")
+            #print(f"\nNode {self.node_idx}")
+            #self.blockchain.print_block_dag()
+
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
 
@@ -643,6 +712,7 @@ class Node(simianEngine.Entity):
     
     def BecomeMiner(self, *args):
         self.miner = True
+        self.start_mining()
 
     def force_churn_out(self, *args):
         if self.active:

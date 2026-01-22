@@ -286,6 +286,7 @@ class Node(simianEngine.Entity):
         self.active = True
         self.blockchain = Blockchain()
         self.blockchain.create_genesis_block()
+        self.mining_parent = None              
         self.mining = False
 
         #plumTree variables
@@ -300,7 +301,6 @@ class Node(simianEngine.Entity):
         #Report Variables
         self.report = {}
 
-
         #DIMPLE Variables
         self.partial_view = []
         self.timerDimple = []
@@ -310,16 +310,34 @@ class Node(simianEngine.Entity):
         delay2 = random.uniform(*JOIN_WINDOW)
 
         if self.node_idx == 0:  # Seed nodes
-            self.partial_view.append(partialViewEntry(self.node_idx, 0, [self.node_idx]))
+            seederBootstap = random.sample(
+                [n for n in upNodes if n != self.node_idx],
+                min(3, len(upNodes) - 1)
+            )
+            for sample in seederBootstap:
+                self.partial_view.append(partialViewEntry(sample, 0, [sample, self.node_idx]))
+            self.UpdatePlumTreePeers()
             self.reqService(shuffleTime, "DimpleShuffle", "none")
+
 
         else:
             contactNode = 0 
             msg = msgDimple('JOIN',[],self.node_idx)
             self.reqService( delay2, "Dimple", msg, "Node", contactNode)  
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
-                                  
 
+    def start_mining(self):
+        if not (self.miner and self.active):
+            return
+        if self.mining:
+            return  # already mining
+
+        self.mining = True
+        self.mining_parent = self.blockchain.head
+        avg_mining_time = 30
+        delay = random.expovariate(1 / avg_mining_time)
+        self.reqService(delay, "mine_block", "none")
+                                  
    #--------------------------------------- GOSSIP ---------------------------------------------------
 
     def PlumTreeGossip(self, *args):
@@ -391,19 +409,16 @@ class Node(simianEngine.Entity):
                             self.blockchain.remove_confirmed_transactions(block)
                             if accepted and block.previous_hash == self.blockchain.last_block.hash:
                                 self.mining = False
+                            self.start_mining()
 
                         self.LazyPush(msg)
                         self.EagerPush(msg)            
 
-                    elif msg.payloadType  == "TRX":
+                    elif msg.payloadType == "TRX":
                         if self.miner:
                             self.blockchain.add_new_transaction(msg.payload)
-                            if self.miner and not self.mining and len(self.blockchain.unconfirmed_transactions) >= 100:
-                                self.mining = True
-                                avg_mining_time = 30
-                                delay = random.expovariate(1/avg_mining_time)
-                                self.reqService(delay, "mine_block", "none")
-
+                            self.start_mining()
+                
                         self.LazyPush(msg)
                         self.EagerPush(msg)
 
@@ -439,17 +454,36 @@ class Node(simianEngine.Entity):
 
 
     def mine_block(self, *args):
-        if not self.active or not self.mining:
+        if not self.mining:
             return
+
+        # Chain advanced → abort
+        if self.blockchain.head != self.mining_parent:
+            self.mining = False
+            self.start_mining()
+            return
+
+        # No transactions → wait
+        if not self.blockchain.unconfirmed_transactions:
+            self.mining = False
+            self.start_mining()
+            return
+
+        # Success
         self.blockchain.mine()
+
         new_block = self.blockchain.last_block
         block_id = "B-" +str(random.randint(11111111,99999999))
+
         block_msg = msgGossip('GOSSIP',"BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)        
         self.receivedMsgs[block_msg.ID] = block_msg
         self.report[block_msg.ID] = [1, 0, 0]
+
         self.LazyPush(block_msg)
         self.EagerPush(block_msg)
+
         self.mining = False
+        self.start_mining()
 
     def EagerPush(self, msg):
         sender = msg.sender
@@ -580,15 +614,16 @@ class Node(simianEngine.Entity):
             
                 # Use msg.sender (Q's id) as the entry_to_replace_id
                 if response_entry is not None:
+                    if self.node_idx not in response_entry.visited:
+                        response_entry.visited.append(self.node_idx)
                     self.ReinforcementResponseProcedure(response_entry, msg.sender)
 
             elif msg.type == 'JOIN':
-                # JOIN Request → Q returns local view built from visited[-2] or fallback
                 local_view = []
+            
                 for entry in self.partial_view:
-                    local_view.append(entry.visited[-1])
-           
-                # Send join_candidates to P
+                    local_view.append(entry.visited[-2])
+            
                 response = msgDimple("JOIN_RESPONSE", local_view, self.node_idx)
                 self.reqService(lookahead, "Dimple", response, "Node", msg.sender)
                 
@@ -612,7 +647,12 @@ class Node(simianEngine.Entity):
                 
     
     def DimpleShuffle(self, *args):
-
+        if not self.active:
+            return
+        if len(self.partial_view) == 0:
+            self.reqService(shuffleTime, "DimpleShuffle", "none")
+            return
+        
         #print(f"Node {self.node_idx} Partial View before shuffle: {[str(entry) for entry in self.partial_view]}")
         # Age all entries
         for entry in self.partial_view:
@@ -648,6 +688,8 @@ class Node(simianEngine.Entity):
             for entry in self.partial_view:
                 if entry.node_idx == received_entry_id:
                     entry.age = 0
+                    entry.visited.remove(self.node_idx)
+                    entry.visited.append(self.node_idx)
                     return None
         
         # If space available, add directly
@@ -672,6 +714,8 @@ class Node(simianEngine.Entity):
             for entry in self.partial_view:
                 if entry.node_idx == response_entry.node_idx:
                     entry.age = 0
+                    entry.visited.remove(self.node_idx)
+                    entry.visited.append(self.node_idx)
                     return
 
         # If P receives a valid response, P adds the node information to an empty slot if there is one
@@ -702,6 +746,9 @@ class Node(simianEngine.Entity):
             new_visited = received_entry.visited.copy()
             if self.node_idx not in new_visited:
                 new_visited.append(self.node_idx)
+            else:
+                new_visited.remove(self.node_idx)
+                new_visited.append(self.node_idx)
 
             new_entry = partialViewEntry(received_entry.node_idx, 0, new_visited)
 
@@ -720,8 +767,6 @@ class Node(simianEngine.Entity):
 
                 self.partial_view[idx_to_replace] = new_entry
                 current_ids.add(new_entry.node_idx)
-
-                continue
 
         self.UpdatePlumTreePeers()
 
@@ -773,10 +818,15 @@ class Node(simianEngine.Entity):
                 neighbors
             )
 
+            #print("\n=== BLOCK DAG PER NODE ===")
+            #print(f"\nNode {self.node_idx}")
+            #self.blockchain.print_block_dag()
+            
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
     def BecomeMiner(self, *args):
         self.miner = True
+        self.start_mining()
 
     def force_churn_out(self, *args):
         if self.active:
@@ -807,15 +857,15 @@ class Node(simianEngine.Entity):
 
 
 for i in range(0, nodes):
+    upNodes.append(i)
+
+for i in range(0, nodes):
     simianEngine.addEntity("Node", Node, i, i, nodes)
 
 simianEngine.addEntity("ReportNode", ReportNode, 0, 0)
 
 if churn:
     simianEngine.addEntity("ChurnManager", ChurnManager, 0, 0)
-
-for i in range(0, nodes):
-    upNodes.append(i)
 
 for i in range(0, math.ceil((0.01 * nodes))):
     n = random.choice(upNodes)

@@ -1,0 +1,1637 @@
+Simian JIT PDES Engine (1.65)
+(c) Copyright 2015-. Triad National Security, LLC. All rights reserved. Released under BSD 3-clause license.
+Author: Nandakishore Santhi (with other contributors as acknowledged in source code)
+
+===================================================
+------------SIMIAN-PIE JIT PDES ENGINE-------------
+------------       VERSION: 1.65      -------------
+===================================================
+MPI: OFF
+===================================================
+
+Seeder[0]: Running on rank 0
+Seeder[1]: Running on rank 0
+Seeder[2]: Running on rank 0
+Node[0]: Running on rank 0
+Node[1]: Running on rank 0
+Node[2]: Running on rank 0
+Node[3]: Running on rank 0
+Node[4]: Running on rank 0
+Node[5]: Running on rank 0
+Node[6]: Running on rank 0
+Node[7]: Running on rank 0
+Node[8]: Running on rank 0
+Node[9]: Running on rank 0
+Node[10]: Running on rank 0
+Node[11]: Running on rank 0
+Node[12]: Running on rank 0
+Node[13]: Running on rank 0
+Node[14]: Running on rank 0
+Node[15]: Running on rank 0
+Node[16]: Running on rank 0
+Node[17]: Running on rank 0
+Node[18]: Running on rank 0
+Node[19]: Running on rank 0
+Node[20]: Running on rank 0
+Node[21]: Running on rank 0
+Node[22]: Running on rank 0
+Node[23]: Running on rank 0
+Node[24]: Running on rank 0
+Node[25]: Running on rank 0
+Node[26]: Running on rank 0
+Node[27]: Running on rank 0
+Node[28]: Running on rank 0
+Node[29]: Running on rank 0
+Node[30]: Running on rank 0
+Node[31]: Running on rank 0
+Node[32]: Running on rank 0
+Node[33]: Running on rank 0
+Node[34]: Running on rank 0
+Node[35]: Running on rank 0
+Node[36]: Running on rank 0
+Node[37]: Running on rank 0
+Node[38]: Running on rank 0
+Node[39]: Running on rank 0
+Node[40]: Running on rank 0
+Node[41]: Running on rank 0
+Node[42]: Running on rank 0
+Node[43]: Running on rank 0
+Node[44]: Running on rank 0
+Node[45]: Running on rank 0
+Node[46]: Running on rank 0
+Node[47]: Running on rank 0
+Node[48]: Running on rank 0
+Node[49]: Running on rank 0
+Node[50]: Running on rank 0
+Node[51]: Running on rank 0
+Node[52]: Running on rank 0
+Node[53]: Running on rank 0
+Node[54]: Running on rank 0
+Node[55]: Running on rank 0
+Node[56]: Running on rank 0
+Node[57]: Running on rank 0
+Node[58]: Running on rank 0
+Node[59]: Running on rank 0
+Node[60]: Running on rank 0
+Node[61]: Running on rank 0
+Node[62]: Running on rank 0
+Node[63]: Running on rank 0
+Node[64]: Running on rank 0
+Node[65]: Running on rank 0
+Node[66]: Running on rank 0
+Node[67]: Running on rank 0
+Node[68]: Running on rank 0
+Node[69]: Running on rank 0
+Node[70]: Running on rank 0
+Node[71]: Running on rank 0
+Node[72]: Running on rank 0
+Node[73]: Running on rank 0
+Node[74]: Running on rank 0
+Node[75]: Running on rank 0
+Node[76]: Running on rank 0
+Node[77]: Running on rank 0
+Node[78]: Running on rank 0
+Node[79]: Running on rank 0
+Node[80]: Running on rank 0
+Node[81]: Running on rank 0
+Node[82]: Running on rank 0
+Node[83]: Running on rank 0
+Node[84]: Running on rank 0
+Node[85]: Running on rank 0
+Node[86]: Running on rank 0
+Node[87]: Running on rank 0
+Node[88]: Running on rank 0
+Node[89]: Running on rank 0
+Node[90]: Running on rank 0
+Node[91]: Running on rank 0
+Node[92]: Running on rank 0
+Node[93]: Running on rank 0
+Node[94]: Running on rank 0
+Node[95]: Running on rank 0
+Node[96]: Running on rank 0
+Node[97]: Running on rank 0
+Node[98]: Running on rank 0
+Node[99]: Running on rank 0
+Node[100]: Running on rank 0
+Node[101]: Running on rank 0
+Node[102]: Running on rank 0
+Node[103]: Running on rank 0
+Node[104]: Running on rank 0
+Node[105]: Running on rank 0
+Node[106]: Running on rank 0
+Node[107]: Running on rank 0
+Node[108]: Running on rank 0
+Node[109]: Running on rank 0
+Node[110]: Running on rank 0
+Node[111]: Running on rank 0
+Node[112]: Running on rank 0
+Node[113]: Running on rank 0
+Node[114]: Running on rank 0
+Node[115]: Running on rank 0
+Node[116]: Running on rank 0
+Node[117]: Running on rank 0
+Node[118]: Running on rank 0
+Node[119]: Running on rank 0
+Node[120]: Running on rank 0
+Node[121]: Running on rank 0
+Node[122]: Running on rank 0
+Node[123]: Running on rank 0
+Node[124]: Running on rank 0
+Node[125]: Running on rank 0
+Node[126]: Running on rank 0
+Node[127]: Running on rank 0
+Node[128]: Running on rank 0
+Node[129]: Running on rank 0
+Node[130]: Running on rank 0
+Node[131]: Running on rank 0
+Node[132]: Running on rank 0
+Node[133]: Running on rank 0
+Node[134]: Running on rank 0
+Node[135]: Running on rank 0
+Node[136]: Running on rank 0
+Node[137]: Running on rank 0
+Node[138]: Running on rank 0
+Node[139]: Running on rank 0
+Node[140]: Running on rank 0
+Node[141]: Running on rank 0
+Node[142]: Running on rank 0
+Node[143]: Running on rank 0
+Node[144]: Running on rank 0
+Node[145]: Running on rank 0
+Node[146]: Running on rank 0
+Node[147]: Running on rank 0
+Node[148]: Running on rank 0
+Node[149]: Running on rank 0
+Node[150]: Running on rank 0
+Node[151]: Running on rank 0
+Node[152]: Running on rank 0
+Node[153]: Running on rank 0
+Node[154]: Running on rank 0
+Node[155]: Running on rank 0
+Node[156]: Running on rank 0
+Node[157]: Running on rank 0
+Node[158]: Running on rank 0
+Node[159]: Running on rank 0
+Node[160]: Running on rank 0
+Node[161]: Running on rank 0
+Node[162]: Running on rank 0
+Node[163]: Running on rank 0
+Node[164]: Running on rank 0
+Node[165]: Running on rank 0
+Node[166]: Running on rank 0
+Node[167]: Running on rank 0
+Node[168]: Running on rank 0
+Node[169]: Running on rank 0
+Node[170]: Running on rank 0
+Node[171]: Running on rank 0
+Node[172]: Running on rank 0
+Node[173]: Running on rank 0
+Node[174]: Running on rank 0
+Node[175]: Running on rank 0
+Node[176]: Running on rank 0
+Node[177]: Running on rank 0
+Node[178]: Running on rank 0
+Node[179]: Running on rank 0
+Node[180]: Running on rank 0
+Node[181]: Running on rank 0
+Node[182]: Running on rank 0
+Node[183]: Running on rank 0
+Node[184]: Running on rank 0
+Node[185]: Running on rank 0
+Node[186]: Running on rank 0
+Node[187]: Running on rank 0
+Node[188]: Running on rank 0
+Node[189]: Running on rank 0
+Node[190]: Running on rank 0
+Node[191]: Running on rank 0
+Node[192]: Running on rank 0
+Node[193]: Running on rank 0
+Node[194]: Running on rank 0
+Node[195]: Running on rank 0
+Node[196]: Running on rank 0
+Node[197]: Running on rank 0
+Node[198]: Running on rank 0
+Node[199]: Running on rank 0
+Node[200]: Running on rank 0
+Node[201]: Running on rank 0
+Node[202]: Running on rank 0
+Node[203]: Running on rank 0
+Node[204]: Running on rank 0
+Node[205]: Running on rank 0
+Node[206]: Running on rank 0
+Node[207]: Running on rank 0
+Node[208]: Running on rank 0
+Node[209]: Running on rank 0
+Node[210]: Running on rank 0
+Node[211]: Running on rank 0
+Node[212]: Running on rank 0
+Node[213]: Running on rank 0
+Node[214]: Running on rank 0
+Node[215]: Running on rank 0
+Node[216]: Running on rank 0
+Node[217]: Running on rank 0
+Node[218]: Running on rank 0
+Node[219]: Running on rank 0
+Node[220]: Running on rank 0
+Node[221]: Running on rank 0
+Node[222]: Running on rank 0
+Node[223]: Running on rank 0
+Node[224]: Running on rank 0
+Node[225]: Running on rank 0
+Node[226]: Running on rank 0
+Node[227]: Running on rank 0
+Node[228]: Running on rank 0
+Node[229]: Running on rank 0
+Node[230]: Running on rank 0
+Node[231]: Running on rank 0
+Node[232]: Running on rank 0
+Node[233]: Running on rank 0
+Node[234]: Running on rank 0
+Node[235]: Running on rank 0
+Node[236]: Running on rank 0
+Node[237]: Running on rank 0
+Node[238]: Running on rank 0
+Node[239]: Running on rank 0
+Node[240]: Running on rank 0
+Node[241]: Running on rank 0
+Node[242]: Running on rank 0
+Node[243]: Running on rank 0
+Node[244]: Running on rank 0
+Node[245]: Running on rank 0
+Node[246]: Running on rank 0
+Node[247]: Running on rank 0
+Node[248]: Running on rank 0
+Node[249]: Running on rank 0
+Node[250]: Running on rank 0
+Node[251]: Running on rank 0
+Node[252]: Running on rank 0
+Node[253]: Running on rank 0
+Node[254]: Running on rank 0
+Node[255]: Running on rank 0
+Node[256]: Running on rank 0
+Node[257]: Running on rank 0
+Node[258]: Running on rank 0
+Node[259]: Running on rank 0
+Node[260]: Running on rank 0
+Node[261]: Running on rank 0
+Node[262]: Running on rank 0
+Node[263]: Running on rank 0
+Node[264]: Running on rank 0
+Node[265]: Running on rank 0
+Node[266]: Running on rank 0
+Node[267]: Running on rank 0
+Node[268]: Running on rank 0
+Node[269]: Running on rank 0
+Node[270]: Running on rank 0
+Node[271]: Running on rank 0
+Node[272]: Running on rank 0
+Node[273]: Running on rank 0
+Node[274]: Running on rank 0
+Node[275]: Running on rank 0
+Node[276]: Running on rank 0
+Node[277]: Running on rank 0
+Node[278]: Running on rank 0
+Node[279]: Running on rank 0
+Node[280]: Running on rank 0
+Node[281]: Running on rank 0
+Node[282]: Running on rank 0
+Node[283]: Running on rank 0
+Node[284]: Running on rank 0
+Node[285]: Running on rank 0
+Node[286]: Running on rank 0
+Node[287]: Running on rank 0
+Node[288]: Running on rank 0
+Node[289]: Running on rank 0
+Node[290]: Running on rank 0
+Node[291]: Running on rank 0
+Node[292]: Running on rank 0
+Node[293]: Running on rank 0
+Node[294]: Running on rank 0
+Node[295]: Running on rank 0
+Node[296]: Running on rank 0
+Node[297]: Running on rank 0
+Node[298]: Running on rank 0
+Node[299]: Running on rank 0
+Node[300]: Running on rank 0
+Node[301]: Running on rank 0
+Node[302]: Running on rank 0
+Node[303]: Running on rank 0
+Node[304]: Running on rank 0
+Node[305]: Running on rank 0
+Node[306]: Running on rank 0
+Node[307]: Running on rank 0
+Node[308]: Running on rank 0
+Node[309]: Running on rank 0
+Node[310]: Running on rank 0
+Node[311]: Running on rank 0
+Node[312]: Running on rank 0
+Node[313]: Running on rank 0
+Node[314]: Running on rank 0
+Node[315]: Running on rank 0
+Node[316]: Running on rank 0
+Node[317]: Running on rank 0
+Node[318]: Running on rank 0
+Node[319]: Running on rank 0
+Node[320]: Running on rank 0
+Node[321]: Running on rank 0
+Node[322]: Running on rank 0
+Node[323]: Running on rank 0
+Node[324]: Running on rank 0
+Node[325]: Running on rank 0
+Node[326]: Running on rank 0
+Node[327]: Running on rank 0
+Node[328]: Running on rank 0
+Node[329]: Running on rank 0
+Node[330]: Running on rank 0
+Node[331]: Running on rank 0
+Node[332]: Running on rank 0
+Node[333]: Running on rank 0
+Node[334]: Running on rank 0
+Node[335]: Running on rank 0
+Node[336]: Running on rank 0
+Node[337]: Running on rank 0
+Node[338]: Running on rank 0
+Node[339]: Running on rank 0
+Node[340]: Running on rank 0
+Node[341]: Running on rank 0
+Node[342]: Running on rank 0
+Node[343]: Running on rank 0
+Node[344]: Running on rank 0
+Node[345]: Running on rank 0
+Node[346]: Running on rank 0
+Node[347]: Running on rank 0
+Node[348]: Running on rank 0
+Node[349]: Running on rank 0
+Node[350]: Running on rank 0
+Node[351]: Running on rank 0
+Node[352]: Running on rank 0
+Node[353]: Running on rank 0
+Node[354]: Running on rank 0
+Node[355]: Running on rank 0
+Node[356]: Running on rank 0
+Node[357]: Running on rank 0
+Node[358]: Running on rank 0
+Node[359]: Running on rank 0
+Node[360]: Running on rank 0
+Node[361]: Running on rank 0
+Node[362]: Running on rank 0
+Node[363]: Running on rank 0
+Node[364]: Running on rank 0
+Node[365]: Running on rank 0
+Node[366]: Running on rank 0
+Node[367]: Running on rank 0
+Node[368]: Running on rank 0
+Node[369]: Running on rank 0
+Node[370]: Running on rank 0
+Node[371]: Running on rank 0
+Node[372]: Running on rank 0
+Node[373]: Running on rank 0
+Node[374]: Running on rank 0
+Node[375]: Running on rank 0
+Node[376]: Running on rank 0
+Node[377]: Running on rank 0
+Node[378]: Running on rank 0
+Node[379]: Running on rank 0
+Node[380]: Running on rank 0
+Node[381]: Running on rank 0
+Node[382]: Running on rank 0
+Node[383]: Running on rank 0
+Node[384]: Running on rank 0
+Node[385]: Running on rank 0
+Node[386]: Running on rank 0
+Node[387]: Running on rank 0
+Node[388]: Running on rank 0
+Node[389]: Running on rank 0
+Node[390]: Running on rank 0
+Node[391]: Running on rank 0
+Node[392]: Running on rank 0
+Node[393]: Running on rank 0
+Node[394]: Running on rank 0
+Node[395]: Running on rank 0
+Node[396]: Running on rank 0
+Node[397]: Running on rank 0
+Node[398]: Running on rank 0
+Node[399]: Running on rank 0
+Node[400]: Running on rank 0
+Node[401]: Running on rank 0
+Node[402]: Running on rank 0
+Node[403]: Running on rank 0
+Node[404]: Running on rank 0
+Node[405]: Running on rank 0
+Node[406]: Running on rank 0
+Node[407]: Running on rank 0
+Node[408]: Running on rank 0
+Node[409]: Running on rank 0
+Node[410]: Running on rank 0
+Node[411]: Running on rank 0
+Node[412]: Running on rank 0
+Node[413]: Running on rank 0
+Node[414]: Running on rank 0
+Node[415]: Running on rank 0
+Node[416]: Running on rank 0
+Node[417]: Running on rank 0
+Node[418]: Running on rank 0
+Node[419]: Running on rank 0
+Node[420]: Running on rank 0
+Node[421]: Running on rank 0
+Node[422]: Running on rank 0
+Node[423]: Running on rank 0
+Node[424]: Running on rank 0
+Node[425]: Running on rank 0
+Node[426]: Running on rank 0
+Node[427]: Running on rank 0
+Node[428]: Running on rank 0
+Node[429]: Running on rank 0
+Node[430]: Running on rank 0
+Node[431]: Running on rank 0
+Node[432]: Running on rank 0
+Node[433]: Running on rank 0
+Node[434]: Running on rank 0
+Node[435]: Running on rank 0
+Node[436]: Running on rank 0
+Node[437]: Running on rank 0
+Node[438]: Running on rank 0
+Node[439]: Running on rank 0
+Node[440]: Running on rank 0
+Node[441]: Running on rank 0
+Node[442]: Running on rank 0
+Node[443]: Running on rank 0
+Node[444]: Running on rank 0
+Node[445]: Running on rank 0
+Node[446]: Running on rank 0
+Node[447]: Running on rank 0
+Node[448]: Running on rank 0
+Node[449]: Running on rank 0
+Node[450]: Running on rank 0
+Node[451]: Running on rank 0
+Node[452]: Running on rank 0
+Node[453]: Running on rank 0
+Node[454]: Running on rank 0
+Node[455]: Running on rank 0
+Node[456]: Running on rank 0
+Node[457]: Running on rank 0
+Node[458]: Running on rank 0
+Node[459]: Running on rank 0
+Node[460]: Running on rank 0
+Node[461]: Running on rank 0
+Node[462]: Running on rank 0
+Node[463]: Running on rank 0
+Node[464]: Running on rank 0
+Node[465]: Running on rank 0
+Node[466]: Running on rank 0
+Node[467]: Running on rank 0
+Node[468]: Running on rank 0
+Node[469]: Running on rank 0
+Node[470]: Running on rank 0
+Node[471]: Running on rank 0
+Node[472]: Running on rank 0
+Node[473]: Running on rank 0
+Node[474]: Running on rank 0
+Node[475]: Running on rank 0
+Node[476]: Running on rank 0
+Node[477]: Running on rank 0
+Node[478]: Running on rank 0
+Node[479]: Running on rank 0
+Node[480]: Running on rank 0
+Node[481]: Running on rank 0
+Node[482]: Running on rank 0
+Node[483]: Running on rank 0
+Node[484]: Running on rank 0
+Node[485]: Running on rank 0
+Node[486]: Running on rank 0
+Node[487]: Running on rank 0
+Node[488]: Running on rank 0
+Node[489]: Running on rank 0
+Node[490]: Running on rank 0
+Node[491]: Running on rank 0
+Node[492]: Running on rank 0
+Node[493]: Running on rank 0
+Node[494]: Running on rank 0
+Node[495]: Running on rank 0
+Node[496]: Running on rank 0
+Node[497]: Running on rank 0
+Node[498]: Running on rank 0
+Node[499]: Running on rank 0
+Node[500]: Running on rank 0
+Node[501]: Running on rank 0
+Node[502]: Running on rank 0
+Node[503]: Running on rank 0
+Node[504]: Running on rank 0
+Node[505]: Running on rank 0
+Node[506]: Running on rank 0
+Node[507]: Running on rank 0
+Node[508]: Running on rank 0
+Node[509]: Running on rank 0
+Node[510]: Running on rank 0
+Node[511]: Running on rank 0
+Node[512]: Running on rank 0
+Node[513]: Running on rank 0
+Node[514]: Running on rank 0
+Node[515]: Running on rank 0
+Node[516]: Running on rank 0
+Node[517]: Running on rank 0
+Node[518]: Running on rank 0
+Node[519]: Running on rank 0
+Node[520]: Running on rank 0
+Node[521]: Running on rank 0
+Node[522]: Running on rank 0
+Node[523]: Running on rank 0
+Node[524]: Running on rank 0
+Node[525]: Running on rank 0
+Node[526]: Running on rank 0
+Node[527]: Running on rank 0
+Node[528]: Running on rank 0
+Node[529]: Running on rank 0
+Node[530]: Running on rank 0
+Node[531]: Running on rank 0
+Node[532]: Running on rank 0
+Node[533]: Running on rank 0
+Node[534]: Running on rank 0
+Node[535]: Running on rank 0
+Node[536]: Running on rank 0
+Node[537]: Running on rank 0
+Node[538]: Running on rank 0
+Node[539]: Running on rank 0
+Node[540]: Running on rank 0
+Node[541]: Running on rank 0
+Node[542]: Running on rank 0
+Node[543]: Running on rank 0
+Node[544]: Running on rank 0
+Node[545]: Running on rank 0
+Node[546]: Running on rank 0
+Node[547]: Running on rank 0
+Node[548]: Running on rank 0
+Node[549]: Running on rank 0
+Node[550]: Running on rank 0
+Node[551]: Running on rank 0
+Node[552]: Running on rank 0
+Node[553]: Running on rank 0
+Node[554]: Running on rank 0
+Node[555]: Running on rank 0
+Node[556]: Running on rank 0
+Node[557]: Running on rank 0
+Node[558]: Running on rank 0
+Node[559]: Running on rank 0
+Node[560]: Running on rank 0
+Node[561]: Running on rank 0
+Node[562]: Running on rank 0
+Node[563]: Running on rank 0
+Node[564]: Running on rank 0
+Node[565]: Running on rank 0
+Node[566]: Running on rank 0
+Node[567]: Running on rank 0
+Node[568]: Running on rank 0
+Node[569]: Running on rank 0
+Node[570]: Running on rank 0
+Node[571]: Running on rank 0
+Node[572]: Running on rank 0
+Node[573]: Running on rank 0
+Node[574]: Running on rank 0
+Node[575]: Running on rank 0
+Node[576]: Running on rank 0
+Node[577]: Running on rank 0
+Node[578]: Running on rank 0
+Node[579]: Running on rank 0
+Node[580]: Running on rank 0
+Node[581]: Running on rank 0
+Node[582]: Running on rank 0
+Node[583]: Running on rank 0
+Node[584]: Running on rank 0
+Node[585]: Running on rank 0
+Node[586]: Running on rank 0
+Node[587]: Running on rank 0
+Node[588]: Running on rank 0
+Node[589]: Running on rank 0
+Node[590]: Running on rank 0
+Node[591]: Running on rank 0
+Node[592]: Running on rank 0
+Node[593]: Running on rank 0
+Node[594]: Running on rank 0
+Node[595]: Running on rank 0
+Node[596]: Running on rank 0
+Node[597]: Running on rank 0
+Node[598]: Running on rank 0
+Node[599]: Running on rank 0
+Node[600]: Running on rank 0
+Node[601]: Running on rank 0
+Node[602]: Running on rank 0
+Node[603]: Running on rank 0
+Node[604]: Running on rank 0
+Node[605]: Running on rank 0
+Node[606]: Running on rank 0
+Node[607]: Running on rank 0
+Node[608]: Running on rank 0
+Node[609]: Running on rank 0
+Node[610]: Running on rank 0
+Node[611]: Running on rank 0
+Node[612]: Running on rank 0
+Node[613]: Running on rank 0
+Node[614]: Running on rank 0
+Node[615]: Running on rank 0
+Node[616]: Running on rank 0
+Node[617]: Running on rank 0
+Node[618]: Running on rank 0
+Node[619]: Running on rank 0
+Node[620]: Running on rank 0
+Node[621]: Running on rank 0
+Node[622]: Running on rank 0
+Node[623]: Running on rank 0
+Node[624]: Running on rank 0
+Node[625]: Running on rank 0
+Node[626]: Running on rank 0
+Node[627]: Running on rank 0
+Node[628]: Running on rank 0
+Node[629]: Running on rank 0
+Node[630]: Running on rank 0
+Node[631]: Running on rank 0
+Node[632]: Running on rank 0
+Node[633]: Running on rank 0
+Node[634]: Running on rank 0
+Node[635]: Running on rank 0
+Node[636]: Running on rank 0
+Node[637]: Running on rank 0
+Node[638]: Running on rank 0
+Node[639]: Running on rank 0
+Node[640]: Running on rank 0
+Node[641]: Running on rank 0
+Node[642]: Running on rank 0
+Node[643]: Running on rank 0
+Node[644]: Running on rank 0
+Node[645]: Running on rank 0
+Node[646]: Running on rank 0
+Node[647]: Running on rank 0
+Node[648]: Running on rank 0
+Node[649]: Running on rank 0
+Node[650]: Running on rank 0
+Node[651]: Running on rank 0
+Node[652]: Running on rank 0
+Node[653]: Running on rank 0
+Node[654]: Running on rank 0
+Node[655]: Running on rank 0
+Node[656]: Running on rank 0
+Node[657]: Running on rank 0
+Node[658]: Running on rank 0
+Node[659]: Running on rank 0
+Node[660]: Running on rank 0
+Node[661]: Running on rank 0
+Node[662]: Running on rank 0
+Node[663]: Running on rank 0
+Node[664]: Running on rank 0
+Node[665]: Running on rank 0
+Node[666]: Running on rank 0
+Node[667]: Running on rank 0
+Node[668]: Running on rank 0
+Node[669]: Running on rank 0
+Node[670]: Running on rank 0
+Node[671]: Running on rank 0
+Node[672]: Running on rank 0
+Node[673]: Running on rank 0
+Node[674]: Running on rank 0
+Node[675]: Running on rank 0
+Node[676]: Running on rank 0
+Node[677]: Running on rank 0
+Node[678]: Running on rank 0
+Node[679]: Running on rank 0
+Node[680]: Running on rank 0
+Node[681]: Running on rank 0
+Node[682]: Running on rank 0
+Node[683]: Running on rank 0
+Node[684]: Running on rank 0
+Node[685]: Running on rank 0
+Node[686]: Running on rank 0
+Node[687]: Running on rank 0
+Node[688]: Running on rank 0
+Node[689]: Running on rank 0
+Node[690]: Running on rank 0
+Node[691]: Running on rank 0
+Node[692]: Running on rank 0
+Node[693]: Running on rank 0
+Node[694]: Running on rank 0
+Node[695]: Running on rank 0
+Node[696]: Running on rank 0
+Node[697]: Running on rank 0
+Node[698]: Running on rank 0
+Node[699]: Running on rank 0
+Node[700]: Running on rank 0
+Node[701]: Running on rank 0
+Node[702]: Running on rank 0
+Node[703]: Running on rank 0
+Node[704]: Running on rank 0
+Node[705]: Running on rank 0
+Node[706]: Running on rank 0
+Node[707]: Running on rank 0
+Node[708]: Running on rank 0
+Node[709]: Running on rank 0
+Node[710]: Running on rank 0
+Node[711]: Running on rank 0
+Node[712]: Running on rank 0
+Node[713]: Running on rank 0
+Node[714]: Running on rank 0
+Node[715]: Running on rank 0
+Node[716]: Running on rank 0
+Node[717]: Running on rank 0
+Node[718]: Running on rank 0
+Node[719]: Running on rank 0
+Node[720]: Running on rank 0
+Node[721]: Running on rank 0
+Node[722]: Running on rank 0
+Node[723]: Running on rank 0
+Node[724]: Running on rank 0
+Node[725]: Running on rank 0
+Node[726]: Running on rank 0
+Node[727]: Running on rank 0
+Node[728]: Running on rank 0
+Node[729]: Running on rank 0
+Node[730]: Running on rank 0
+Node[731]: Running on rank 0
+Node[732]: Running on rank 0
+Node[733]: Running on rank 0
+Node[734]: Running on rank 0
+Node[735]: Running on rank 0
+Node[736]: Running on rank 0
+Node[737]: Running on rank 0
+Node[738]: Running on rank 0
+Node[739]: Running on rank 0
+Node[740]: Running on rank 0
+Node[741]: Running on rank 0
+Node[742]: Running on rank 0
+Node[743]: Running on rank 0
+Node[744]: Running on rank 0
+Node[745]: Running on rank 0
+Node[746]: Running on rank 0
+Node[747]: Running on rank 0
+Node[748]: Running on rank 0
+Node[749]: Running on rank 0
+Node[750]: Running on rank 0
+Node[751]: Running on rank 0
+Node[752]: Running on rank 0
+Node[753]: Running on rank 0
+Node[754]: Running on rank 0
+Node[755]: Running on rank 0
+Node[756]: Running on rank 0
+Node[757]: Running on rank 0
+Node[758]: Running on rank 0
+Node[759]: Running on rank 0
+Node[760]: Running on rank 0
+Node[761]: Running on rank 0
+Node[762]: Running on rank 0
+Node[763]: Running on rank 0
+Node[764]: Running on rank 0
+Node[765]: Running on rank 0
+Node[766]: Running on rank 0
+Node[767]: Running on rank 0
+Node[768]: Running on rank 0
+Node[769]: Running on rank 0
+Node[770]: Running on rank 0
+Node[771]: Running on rank 0
+Node[772]: Running on rank 0
+Node[773]: Running on rank 0
+Node[774]: Running on rank 0
+Node[775]: Running on rank 0
+Node[776]: Running on rank 0
+Node[777]: Running on rank 0
+Node[778]: Running on rank 0
+Node[779]: Running on rank 0
+Node[780]: Running on rank 0
+Node[781]: Running on rank 0
+Node[782]: Running on rank 0
+Node[783]: Running on rank 0
+Node[784]: Running on rank 0
+Node[785]: Running on rank 0
+Node[786]: Running on rank 0
+Node[787]: Running on rank 0
+Node[788]: Running on rank 0
+Node[789]: Running on rank 0
+Node[790]: Running on rank 0
+Node[791]: Running on rank 0
+Node[792]: Running on rank 0
+Node[793]: Running on rank 0
+Node[794]: Running on rank 0
+Node[795]: Running on rank 0
+Node[796]: Running on rank 0
+Node[797]: Running on rank 0
+Node[798]: Running on rank 0
+Node[799]: Running on rank 0
+Node[800]: Running on rank 0
+Node[801]: Running on rank 0
+Node[802]: Running on rank 0
+Node[803]: Running on rank 0
+Node[804]: Running on rank 0
+Node[805]: Running on rank 0
+Node[806]: Running on rank 0
+Node[807]: Running on rank 0
+Node[808]: Running on rank 0
+Node[809]: Running on rank 0
+Node[810]: Running on rank 0
+Node[811]: Running on rank 0
+Node[812]: Running on rank 0
+Node[813]: Running on rank 0
+Node[814]: Running on rank 0
+Node[815]: Running on rank 0
+Node[816]: Running on rank 0
+Node[817]: Running on rank 0
+Node[818]: Running on rank 0
+Node[819]: Running on rank 0
+Node[820]: Running on rank 0
+Node[821]: Running on rank 0
+Node[822]: Running on rank 0
+Node[823]: Running on rank 0
+Node[824]: Running on rank 0
+Node[825]: Running on rank 0
+Node[826]: Running on rank 0
+Node[827]: Running on rank 0
+Node[828]: Running on rank 0
+Node[829]: Running on rank 0
+Node[830]: Running on rank 0
+Node[831]: Running on rank 0
+Node[832]: Running on rank 0
+Node[833]: Running on rank 0
+Node[834]: Running on rank 0
+Node[835]: Running on rank 0
+Node[836]: Running on rank 0
+Node[837]: Running on rank 0
+Node[838]: Running on rank 0
+Node[839]: Running on rank 0
+Node[840]: Running on rank 0
+Node[841]: Running on rank 0
+Node[842]: Running on rank 0
+Node[843]: Running on rank 0
+Node[844]: Running on rank 0
+Node[845]: Running on rank 0
+Node[846]: Running on rank 0
+Node[847]: Running on rank 0
+Node[848]: Running on rank 0
+Node[849]: Running on rank 0
+Node[850]: Running on rank 0
+Node[851]: Running on rank 0
+Node[852]: Running on rank 0
+Node[853]: Running on rank 0
+Node[854]: Running on rank 0
+Node[855]: Running on rank 0
+Node[856]: Running on rank 0
+Node[857]: Running on rank 0
+Node[858]: Running on rank 0
+Node[859]: Running on rank 0
+Node[860]: Running on rank 0
+Node[861]: Running on rank 0
+Node[862]: Running on rank 0
+Node[863]: Running on rank 0
+Node[864]: Running on rank 0
+Node[865]: Running on rank 0
+Node[866]: Running on rank 0
+Node[867]: Running on rank 0
+Node[868]: Running on rank 0
+Node[869]: Running on rank 0
+Node[870]: Running on rank 0
+Node[871]: Running on rank 0
+Node[872]: Running on rank 0
+Node[873]: Running on rank 0
+Node[874]: Running on rank 0
+Node[875]: Running on rank 0
+Node[876]: Running on rank 0
+Node[877]: Running on rank 0
+Node[878]: Running on rank 0
+Node[879]: Running on rank 0
+Node[880]: Running on rank 0
+Node[881]: Running on rank 0
+Node[882]: Running on rank 0
+Node[883]: Running on rank 0
+Node[884]: Running on rank 0
+Node[885]: Running on rank 0
+Node[886]: Running on rank 0
+Node[887]: Running on rank 0
+Node[888]: Running on rank 0
+Node[889]: Running on rank 0
+Node[890]: Running on rank 0
+Node[891]: Running on rank 0
+Node[892]: Running on rank 0
+Node[893]: Running on rank 0
+Node[894]: Running on rank 0
+Node[895]: Running on rank 0
+Node[896]: Running on rank 0
+Node[897]: Running on rank 0
+Node[898]: Running on rank 0
+Node[899]: Running on rank 0
+Node[900]: Running on rank 0
+Node[901]: Running on rank 0
+Node[902]: Running on rank 0
+Node[903]: Running on rank 0
+Node[904]: Running on rank 0
+Node[905]: Running on rank 0
+Node[906]: Running on rank 0
+Node[907]: Running on rank 0
+Node[908]: Running on rank 0
+Node[909]: Running on rank 0
+Node[910]: Running on rank 0
+Node[911]: Running on rank 0
+Node[912]: Running on rank 0
+Node[913]: Running on rank 0
+Node[914]: Running on rank 0
+Node[915]: Running on rank 0
+Node[916]: Running on rank 0
+Node[917]: Running on rank 0
+Node[918]: Running on rank 0
+Node[919]: Running on rank 0
+Node[920]: Running on rank 0
+Node[921]: Running on rank 0
+Node[922]: Running on rank 0
+Node[923]: Running on rank 0
+Node[924]: Running on rank 0
+Node[925]: Running on rank 0
+Node[926]: Running on rank 0
+Node[927]: Running on rank 0
+Node[928]: Running on rank 0
+Node[929]: Running on rank 0
+Node[930]: Running on rank 0
+Node[931]: Running on rank 0
+Node[932]: Running on rank 0
+Node[933]: Running on rank 0
+Node[934]: Running on rank 0
+Node[935]: Running on rank 0
+Node[936]: Running on rank 0
+Node[937]: Running on rank 0
+Node[938]: Running on rank 0
+Node[939]: Running on rank 0
+Node[940]: Running on rank 0
+Node[941]: Running on rank 0
+Node[942]: Running on rank 0
+Node[943]: Running on rank 0
+Node[944]: Running on rank 0
+Node[945]: Running on rank 0
+Node[946]: Running on rank 0
+Node[947]: Running on rank 0
+Node[948]: Running on rank 0
+Node[949]: Running on rank 0
+Node[950]: Running on rank 0
+Node[951]: Running on rank 0
+Node[952]: Running on rank 0
+Node[953]: Running on rank 0
+Node[954]: Running on rank 0
+Node[955]: Running on rank 0
+Node[956]: Running on rank 0
+Node[957]: Running on rank 0
+Node[958]: Running on rank 0
+Node[959]: Running on rank 0
+Node[960]: Running on rank 0
+Node[961]: Running on rank 0
+Node[962]: Running on rank 0
+Node[963]: Running on rank 0
+Node[964]: Running on rank 0
+Node[965]: Running on rank 0
+Node[966]: Running on rank 0
+Node[967]: Running on rank 0
+Node[968]: Running on rank 0
+Node[969]: Running on rank 0
+Node[970]: Running on rank 0
+Node[971]: Running on rank 0
+Node[972]: Running on rank 0
+Node[973]: Running on rank 0
+Node[974]: Running on rank 0
+Node[975]: Running on rank 0
+Node[976]: Running on rank 0
+Node[977]: Running on rank 0
+Node[978]: Running on rank 0
+Node[979]: Running on rank 0
+Node[980]: Running on rank 0
+Node[981]: Running on rank 0
+Node[982]: Running on rank 0
+Node[983]: Running on rank 0
+Node[984]: Running on rank 0
+Node[985]: Running on rank 0
+Node[986]: Running on rank 0
+Node[987]: Running on rank 0
+Node[988]: Running on rank 0
+Node[989]: Running on rank 0
+Node[990]: Running on rank 0
+Node[991]: Running on rank 0
+Node[992]: Running on rank 0
+Node[993]: Running on rank 0
+Node[994]: Running on rank 0
+Node[995]: Running on rank 0
+Node[996]: Running on rank 0
+Node[997]: Running on rank 0
+Node[998]: Running on rank 0
+Node[999]: Running on rank 0
+ReportNode[0]: Running on rank 0
+B-12637555 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.468  Gossip:3465  Inv:16000  Requests:3464
+B-15118046 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-16318432 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-16730234 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.068  Gossip:3065  Inv:16000  Requests:3064
+B-17869856 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-18100751 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-18568678 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.2  Gossip:3197  Inv:16000  Requests:3196
+B-18827437 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-19217228 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-24258652 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.221  Gossip:4217  Inv:16000  Requests:4216
+B-26728205 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.068  Gossip:3065  Inv:16000  Requests:3064
+B-27107431 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.2  Gossip:3197  Inv:16000  Requests:3196
+B-27935270 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.468  Gossip:3465  Inv:16000  Requests:3464
+B-27937497 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.327  Gossip:3324  Inv:16000  Requests:3323
+B-28530668 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-29706620 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-33369969 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.586  Gossip:3582  Inv:16000  Requests:3581
+B-34864837 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-35838276 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.468  Gossip:3465  Inv:16000  Requests:3464
+B-36139475 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-37204486 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.221  Gossip:4217  Inv:16000  Requests:4216
+B-38155055 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.586  Gossip:3582  Inv:16000  Requests:3581
+B-38582369 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.2  Gossip:3197  Inv:16000  Requests:3196
+B-39341577 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-43809385 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-45386576 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-47834044 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-48883133 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-49241054 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-49923740 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.2  Gossip:3197  Inv:16000  Requests:3196
+B-52411246 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.221  Gossip:4217  Inv:16000  Requests:4216
+B-53536577 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.586  Gossip:3582  Inv:16000  Requests:3581
+B-54773655 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-57270368 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-57405704 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-58332297 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-58729222 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-59859223 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.068  Gossip:3065  Inv:16000  Requests:3064
+B-59980080 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-61401549 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-66792967 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.221  Gossip:4217  Inv:16000  Requests:4216
+B-68515737 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-71297763 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.2  Gossip:3197  Inv:16000  Requests:3196
+B-71442674 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-72816629 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-73003639 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.327  Gossip:3324  Inv:16000  Requests:3323
+B-73678834 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-74124296 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.259  Gossip:3256  Inv:16000  Requests:3255
+B-76369485 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.974  Gossip:3970  Inv:16000  Requests:3969
+B-76690293 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.221  Gossip:4217  Inv:16000  Requests:4216
+B-77235020 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.221  Gossip:4217  Inv:16000  Requests:4216
+B-79973089 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.2  Gossip:3197  Inv:16000  Requests:3196
+B-80670238 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.586  Gossip:3582  Inv:16000  Requests:3581
+B-80737282 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.162  Gossip:3159  Inv:16000  Requests:3158
+B-86286263 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.586  Gossip:3582  Inv:16000  Requests:3581
+B-86855607 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-88351487 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-88673946 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.468  Gossip:3465  Inv:16000  Requests:3464
+B-91009502 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.162  Gossip:3159  Inv:16000  Requests:3158
+B-91266393 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-93574250 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.2  Gossip:3197  Inv:16000  Requests:3196
+B-94660036 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-95060848 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+B-95845743 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.586  Gossip:3582  Inv:16000  Requests:3581
+B-97763142 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.327  Gossip:3324  Inv:16000  Requests:3323
+T-11504725 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.72  Gossip:3716  Inv:16000  Requests:3715
+T-11572158 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.624  Gossip:3620  Inv:16000  Requests:3619
+T-11736793 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.605  Gossip:3601  Inv:16000  Requests:3600
+T-11868746 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.39  Gossip:3387  Inv:16000  Requests:3386
+T-12046466 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.455  Gossip:3452  Inv:16000  Requests:3451
+T-12147627 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.321  Gossip:3318  Inv:16000  Requests:3317
+T-12343180 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.738  Gossip:3734  Inv:16000  Requests:3733
+T-12358468 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.529  Gossip:3525  Inv:16000  Requests:3524
+T-12385749 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.645  Gossip:3641  Inv:16000  Requests:3640
+T-12550631 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.513  Gossip:3509  Inv:16000  Requests:3508
+T-12581284 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.661  Gossip:3657  Inv:16000  Requests:3656
+T-13037918 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.352  Gossip:3349  Inv:16000  Requests:3348
+T-13109687 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.533  Gossip:3529  Inv:16000  Requests:3528
+T-13358377 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.119  Gossip:3116  Inv:16000  Requests:3115
+T-13418542 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.264  Gossip:3261  Inv:16000  Requests:3260
+T-13585493 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.407  Gossip:3404  Inv:16000  Requests:3403
+T-13609158 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.072  Gossip:3069  Inv:16000  Requests:3068
+T-13741207 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.119  Gossip:3116  Inv:16000  Requests:3115
+T-13914128 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.074  Gossip:4070  Inv:16000  Requests:4069
+T-13978936 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.153  Gossip:3150  Inv:16000  Requests:3149
+T-14193657 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.107  Gossip:3104  Inv:16000  Requests:3103
+T-14363868 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.504  Gossip:3500  Inv:16000  Requests:3499
+T-14489236 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.011  Gossip:3008  Inv:16000  Requests:3007
+T-14525452 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.866  Gossip:3862  Inv:16000  Requests:3861
+T-14830207 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.346  Gossip:4342  Inv:16000  Requests:4341
+T-15091405 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.83  Gossip:3826  Inv:16000  Requests:3825
+T-15213323 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.216  Gossip:3213  Inv:16000  Requests:3212
+T-15448827 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.666  Gossip:3662  Inv:16000  Requests:3661
+T-15490637 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.303  Gossip:3300  Inv:16000  Requests:3299
+T-15635597 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.114  Gossip:4110  Inv:16000  Requests:4109
+T-15968184 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.497  Gossip:3494  Inv:16000  Requests:3493
+T-16260332 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.768  Gossip:3764  Inv:16000  Requests:3763
+T-16279717 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.206  Gossip:3203  Inv:16000  Requests:3202
+T-16298574 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.18  Gossip:3177  Inv:16000  Requests:3176
+T-16383771 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.309  Gossip:4305  Inv:16000  Requests:4304
+T-16400053 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.565  Gossip:3561  Inv:16000  Requests:3560
+T-16645644 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.43  Gossip:3427  Inv:16000  Requests:3426
+T-16655722 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.652  Gossip:3648  Inv:16000  Requests:3647
+T-16820996 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.62  Gossip:3616  Inv:16000  Requests:3615
+T-16863204 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.048  Gossip:4044  Inv:16000  Requests:4043
+T-17125558 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.924  Gossip:3920  Inv:16000  Requests:3919
+T-17172484 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.31  Gossip:4306  Inv:16000  Requests:4305
+T-17269122 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.92  Gossip:3916  Inv:16000  Requests:3915
+T-17527509 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.78  Gossip:3776  Inv:16000  Requests:3775
+T-17569760 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.178  Gossip:3175  Inv:16000  Requests:3174
+T-17629035 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.06  Gossip:4056  Inv:16000  Requests:4055
+T-17636699 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.525  Gossip:3521  Inv:16000  Requests:3520
+T-17640973 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.669  Gossip:3665  Inv:16000  Requests:3664
+T-17964216 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.474  Gossip:3471  Inv:16000  Requests:3470
+T-17983641 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.548  Gossip:3544  Inv:16000  Requests:3543
+T-18010789 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.321  Gossip:3318  Inv:16000  Requests:3317
+T-18213604 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.289  Gossip:3286  Inv:16000  Requests:3285
+T-18281879 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.173  Gossip:3170  Inv:16000  Requests:3169
+T-18401195 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.323  Gossip:3320  Inv:16000  Requests:3319
+T-18463032 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.878  Gossip:3874  Inv:16000  Requests:3873
+T-18719002 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.69  Gossip:3686  Inv:16000  Requests:3685
+T-18772676 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.677  Gossip:3673  Inv:16000  Requests:3672
+T-18802428 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.446  Gossip:3443  Inv:16000  Requests:3442
+T-18877010 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.096  Gossip:4092  Inv:16000  Requests:4091
+T-18957055 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.074  Gossip:4070  Inv:16000  Requests:4069
+T-19075641 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.298  Gossip:4294  Inv:16000  Requests:4293
+T-19456249 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.541  Gossip:3537  Inv:16000  Requests:3536
+T-19464131 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.119  Gossip:3116  Inv:16000  Requests:3115
+T-19472256 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.419  Gossip:3416  Inv:16000  Requests:3415
+T-19482011 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.362  Gossip:3359  Inv:16000  Requests:3358
+T-19831967 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.172  Gossip:3169  Inv:16000  Requests:3168
+T-19965800 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.312  Gossip:3309  Inv:16000  Requests:3308
+T-20351733 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.092  Gossip:3089  Inv:16000  Requests:3088
+T-20376090 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.799  Gossip:3795  Inv:16000  Requests:3794
+T-20421194 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.283  Gossip:4279  Inv:16000  Requests:4278
+T-20478277 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.656  Gossip:3652  Inv:16000  Requests:3651
+T-20526139 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.235  Gossip:3232  Inv:16000  Requests:3231
+T-20663915 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.35  Gossip:3347  Inv:16000  Requests:3346
+T-20677717 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.444  Gossip:3441  Inv:16000  Requests:3440
+T-20703837 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.091  Gossip:3088  Inv:16000  Requests:3087
+T-20856885 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.229  Gossip:3226  Inv:16000  Requests:3225
+T-21298249 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.068  Gossip:3065  Inv:16000  Requests:3064
+T-21327250 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.996  Gossip:3992  Inv:16000  Requests:3991
+T-21361987 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.137  Gossip:4133  Inv:16000  Requests:4132
+T-21707441 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.43  Gossip:3427  Inv:16000  Requests:3426
+T-22023208 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.161  Gossip:3158  Inv:16000  Requests:3157
+T-22092423 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.115  Gossip:4111  Inv:16000  Requests:4110
+T-22131707 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.382  Gossip:3379  Inv:16000  Requests:3378
+T-22138637 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.136  Gossip:4132  Inv:16000  Requests:4131
+T-22237154 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.087  Gossip:3084  Inv:16000  Requests:3083
+T-22312495 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.323  Gossip:4319  Inv:16000  Requests:4318
+T-22375880 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.201  Gossip:4197  Inv:16000  Requests:4196
+T-22523890 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.82  Gossip:3816  Inv:16000  Requests:3815
+T-22667886 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.315  Gossip:3312  Inv:16000  Requests:3311
+T-22795272 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.687  Gossip:3683  Inv:16000  Requests:3682
+T-22796278 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.136  Gossip:3133  Inv:16000  Requests:3132
+T-23108397 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.039  Gossip:3036  Inv:16000  Requests:3035
+T-23345158 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.102  Gossip:3099  Inv:16000  Requests:3098
+T-23530742 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:1.959  Gossip:2956  Inv:16000  Requests:2955
+T-23556971 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.146  Gossip:3143  Inv:16000  Requests:3142
+T-23898355 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.916  Gossip:3912  Inv:16000  Requests:3911
+T-23904840 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.212  Gossip:3209  Inv:16000  Requests:3208
+T-24322988 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.185  Gossip:3182  Inv:16000  Requests:3181
+T-24355244 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.568  Gossip:3564  Inv:16000  Requests:3563
+T-24408371 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.382  Gossip:3379  Inv:16000  Requests:3378
+T-24495727 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.228  Gossip:3225  Inv:16000  Requests:3224
+T-24524511 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.188  Gossip:3185  Inv:16000  Requests:3184
+T-24853715 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.516  Gossip:3512  Inv:16000  Requests:3511
+T-24987180 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.474  Gossip:3471  Inv:16000  Requests:3470
+T-25216962 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.517  Gossip:3513  Inv:16000  Requests:3512
+T-25521608 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.49  Gossip:3487  Inv:16000  Requests:3486
+T-25644324 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.547  Gossip:3543  Inv:16000  Requests:3542
+T-25652394 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.648  Gossip:3644  Inv:16000  Requests:3643
+T-26160035 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.216  Gossip:3213  Inv:16000  Requests:3212
+T-26208235 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.862  Gossip:3858  Inv:16000  Requests:3857
+T-26448102 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.147  Gossip:3144  Inv:16000  Requests:3143
+T-26593312 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.185  Gossip:3182  Inv:16000  Requests:3181
+T-26899000 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.285  Gossip:3282  Inv:16000  Requests:3281
+T-26964542 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.167  Gossip:3164  Inv:16000  Requests:3163
+T-27516190 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.95  Gossip:3946  Inv:16000  Requests:3945
+T-27609617 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.114  Gossip:3111  Inv:16000  Requests:3110
+T-27750096 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.249  Gossip:3246  Inv:16000  Requests:3245
+T-27833904 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.095  Gossip:3092  Inv:16000  Requests:3091
+T-27859376 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.552  Gossip:3548  Inv:16000  Requests:3547
+T-28413314 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.686  Gossip:3682  Inv:16000  Requests:3681
+T-28788594 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.604  Gossip:3600  Inv:16000  Requests:3599
+T-28943435 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.277  Gossip:3274  Inv:16000  Requests:3273
+T-29096632 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.228  Gossip:3225  Inv:16000  Requests:3224
+T-29109623 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.671  Gossip:3667  Inv:16000  Requests:3666
+T-29285775 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.089  Gossip:3086  Inv:16000  Requests:3085
+T-29377837 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.921  Gossip:3917  Inv:16000  Requests:3916
+T-30385211 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.705  Gossip:3701  Inv:16000  Requests:3700
+T-30639202 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.086  Gossip:4082  Inv:16000  Requests:4081
+T-31168330 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.051  Gossip:3048  Inv:16000  Requests:3047
+T-31361545 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.255  Gossip:3252  Inv:16000  Requests:3251
+T-31534831 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.533  Gossip:3529  Inv:16000  Requests:3528
+T-31607722 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.677  Gossip:3673  Inv:16000  Requests:3672
+T-31726667 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.342  Gossip:3339  Inv:16000  Requests:3338
+T-31842716 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.293  Gossip:3290  Inv:16000  Requests:3289
+T-31873715 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.071  Gossip:3068  Inv:16000  Requests:3067
+T-31954696 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.261  Gossip:3258  Inv:16000  Requests:3257
+T-32092243 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.396  Gossip:3393  Inv:16000  Requests:3392
+T-32098853 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.203  Gossip:3200  Inv:16000  Requests:3199
+T-32101671 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.145  Gossip:3142  Inv:16000  Requests:3141
+T-32148744 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.281  Gossip:4277  Inv:16000  Requests:4276
+T-32386194 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.113  Gossip:3110  Inv:16000  Requests:3109
+T-32635675 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.253  Gossip:3250  Inv:16000  Requests:3249
+T-33536642 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.362  Gossip:3359  Inv:16000  Requests:3358
+T-33786406 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.82  Gossip:3816  Inv:16000  Requests:3815
+T-34237909 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.045  Gossip:4041  Inv:16000  Requests:4040
+T-34547392 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.238  Gossip:3235  Inv:16000  Requests:3234
+T-34781086 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.774  Gossip:3770  Inv:16000  Requests:3769
+T-34858120 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.183  Gossip:3180  Inv:16000  Requests:3179
+T-34988394 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.878  Gossip:3874  Inv:16000  Requests:3873
+T-35060898 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.142  Gossip:3139  Inv:16000  Requests:3138
+T-35068269 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.338  Gossip:4334  Inv:16000  Requests:4333
+T-35103244 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.798  Gossip:3794  Inv:16000  Requests:3793
+T-35349271 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.334  Gossip:3331  Inv:16000  Requests:3330
+T-35403213 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.429  Gossip:3426  Inv:16000  Requests:3425
+T-35469691 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.708  Gossip:3704  Inv:16000  Requests:3703
+T-35479621 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.191  Gossip:3188  Inv:16000  Requests:3187
+T-35543959 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.012  Gossip:4008  Inv:16000  Requests:4007
+T-35841573 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.204  Gossip:3201  Inv:16000  Requests:3200
+T-36459493 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.024  Gossip:3021  Inv:16000  Requests:3020
+T-36477602 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.596  Gossip:3592  Inv:16000  Requests:3591
+T-36485401 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.634  Gossip:3630  Inv:16000  Requests:3629
+T-37152087 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.218  Gossip:3215  Inv:16000  Requests:3214
+T-37161788 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.869  Gossip:3865  Inv:16000  Requests:3864
+T-37249387 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.18  Gossip:3177  Inv:16000  Requests:3176
+T-37331532 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.511  Gossip:3507  Inv:16000  Requests:3506
+T-37621761 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.115  Gossip:3112  Inv:16000  Requests:3111
+T-37810268 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.188  Gossip:3185  Inv:16000  Requests:3184
+T-37853353 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.171  Gossip:3168  Inv:16000  Requests:3167
+T-38019072 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.6  Gossip:3596  Inv:16000  Requests:3595
+T-38223507 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.194  Gossip:3191  Inv:16000  Requests:3190
+T-38390514 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.071  Gossip:3068  Inv:16000  Requests:3067
+T-38539278 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.049  Gossip:4045  Inv:16000  Requests:4044
+T-38798643 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.538  Gossip:3534  Inv:16000  Requests:3533
+T-38938080 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.472  Gossip:3469  Inv:16000  Requests:3468
+T-39046919 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.31  Gossip:3307  Inv:16000  Requests:3306
+T-39316873 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.039  Gossip:3036  Inv:16000  Requests:3035
+T-39421588 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.145  Gossip:3142  Inv:16000  Requests:3141
+T-39620932 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.825  Gossip:3821  Inv:16000  Requests:3820
+T-39881408 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.677  Gossip:3673  Inv:16000  Requests:3672
+T-39911466 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.913  Gossip:3909  Inv:16000  Requests:3908
+T-40122682 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.39  Gossip:3387  Inv:16000  Requests:3386
+T-40196922 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.269  Gossip:3266  Inv:16000  Requests:3265
+T-40205527 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.335  Gossip:4331  Inv:16000  Requests:4330
+T-40715440 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.909  Gossip:3905  Inv:16000  Requests:3904
+T-40892711 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.168  Gossip:4164  Inv:16000  Requests:4163
+T-40930611 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.29  Gossip:3287  Inv:16000  Requests:3286
+T-41058478 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.311  Gossip:4307  Inv:16000  Requests:4306
+T-41169855 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.52  Gossip:3516  Inv:16000  Requests:3515
+T-41179384 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.749  Gossip:3745  Inv:16000  Requests:3744
+T-41320044 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.243  Gossip:3240  Inv:16000  Requests:3239
+T-41362525 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.084  Gossip:3081  Inv:16000  Requests:3080
+T-41678668 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.18  Gossip:4176  Inv:16000  Requests:4175
+T-41964111 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.849  Gossip:3845  Inv:16000  Requests:3844
+T-41974430 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.696  Gossip:3692  Inv:16000  Requests:3691
+T-41996482 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.438  Gossip:3435  Inv:16000  Requests:3434
+T-42004483 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.022  Gossip:4018  Inv:16000  Requests:4017
+T-42004704 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.599  Gossip:3595  Inv:16000  Requests:3594
+T-42307249 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.674  Gossip:3670  Inv:16000  Requests:3669
+T-42372083 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.42  Gossip:3417  Inv:16000  Requests:3416
+T-42376915 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.336  Gossip:3333  Inv:16000  Requests:3332
+T-42664973 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.869  Gossip:3865  Inv:16000  Requests:3864
+T-42794617 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.125  Gossip:4121  Inv:16000  Requests:4120
+T-42828536 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.774  Gossip:3770  Inv:16000  Requests:3769
+T-43061919 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.56  Gossip:3556  Inv:16000  Requests:3555
+T-43070844 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.571  Gossip:3567  Inv:16000  Requests:3566
+T-43568079 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.359  Gossip:3356  Inv:16000  Requests:3355
+T-43669080 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.369  Gossip:3366  Inv:16000  Requests:3365
+T-43871424 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.095  Gossip:4091  Inv:16000  Requests:4090
+T-43918142 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.02  Gossip:3017  Inv:16000  Requests:3016
+T-44237359 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.137  Gossip:3134  Inv:16000  Requests:3133
+T-44251287 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.62  Gossip:3616  Inv:16000  Requests:3615
+T-44386455 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.382  Gossip:3379  Inv:16000  Requests:3378
+T-44428510 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.11  Gossip:4106  Inv:16000  Requests:4105
+T-44633644 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.116  Gossip:4112  Inv:16000  Requests:4111
+T-44778845 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.23  Gossip:4226  Inv:16000  Requests:4225
+T-45106994 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.346  Gossip:4342  Inv:16000  Requests:4341
+T-45134959 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.183  Gossip:3180  Inv:16000  Requests:3179
+T-45184872 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.362  Gossip:3359  Inv:16000  Requests:3358
+T-45285622 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.6  Gossip:3596  Inv:16000  Requests:3595
+T-45310657 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.264  Gossip:3261  Inv:16000  Requests:3260
+T-45316238 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.6  Gossip:3596  Inv:16000  Requests:3595
+T-45363775 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.143  Gossip:3140  Inv:16000  Requests:3139
+T-45444667 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.478  Gossip:3475  Inv:16000  Requests:3474
+T-45690948 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.784  Gossip:3780  Inv:16000  Requests:3779
+T-45844559 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.094  Gossip:4090  Inv:16000  Requests:4089
+T-46129416 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.18  Gossip:4176  Inv:16000  Requests:4175
+T-46173107 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.452  Gossip:3449  Inv:16000  Requests:3448
+T-46186014 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.475  Gossip:3472  Inv:16000  Requests:3471
+T-46231985 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.878  Gossip:3874  Inv:16000  Requests:3873
+T-46514120 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.105  Gossip:3102  Inv:16000  Requests:3101
+T-46560298 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.189  Gossip:3186  Inv:16000  Requests:3185
+T-46845303 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.034  Gossip:3031  Inv:16000  Requests:3030
+T-46930218 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.319  Gossip:3316  Inv:16000  Requests:3315
+T-46996648 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.277  Gossip:3274  Inv:16000  Requests:3273
+T-47686517 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.242  Gossip:3239  Inv:16000  Requests:3238
+T-47697473 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.121  Gossip:3118  Inv:16000  Requests:3117
+T-47804207 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.118  Gossip:4114  Inv:16000  Requests:4113
+T-47830438 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.243  Gossip:3240  Inv:16000  Requests:3239
+T-47998948 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.308  Gossip:4304  Inv:16000  Requests:4303
+T-48294336 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.444  Gossip:3441  Inv:16000  Requests:3440
+T-48317847 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.707  Gossip:3703  Inv:16000  Requests:3702
+T-48330576 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.398  Gossip:3395  Inv:16000  Requests:3394
+T-48486609 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.891  Gossip:3887  Inv:16000  Requests:3886
+T-48650430 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.768  Gossip:3764  Inv:16000  Requests:3763
+T-48746663 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.555  Gossip:3551  Inv:16000  Requests:3550
+T-49749704 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.516  Gossip:3512  Inv:16000  Requests:3511
+T-49852135 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.107  Gossip:3104  Inv:16000  Requests:3103
+T-49908284 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.001  Gossip:3997  Inv:16000  Requests:3996
+T-50131865 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.334  Gossip:4330  Inv:16000  Requests:4329
+T-50206300 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.616  Gossip:3612  Inv:16000  Requests:3611
+T-51243698 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.26  Gossip:3257  Inv:16000  Requests:3256
+T-51246202 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.183  Gossip:3180  Inv:16000  Requests:3179
+T-51387824 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.503  Gossip:3499  Inv:16000  Requests:3498
+T-51670819 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.968  Gossip:3964  Inv:16000  Requests:3963
+T-51671078 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.856  Gossip:3852  Inv:16000  Requests:3851
+T-51713727 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.738  Gossip:3734  Inv:16000  Requests:3733
+T-51729702 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.301  Gossip:3298  Inv:16000  Requests:3297
+T-51739862 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.454  Gossip:3451  Inv:16000  Requests:3450
+T-52231160 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.973  Gossip:3969  Inv:16000  Requests:3968
+T-52360187 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.674  Gossip:3670  Inv:16000  Requests:3669
+T-52497852 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.066  Gossip:3063  Inv:16000  Requests:3062
+T-52507231 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.146  Gossip:3143  Inv:16000  Requests:3142
+T-52609293 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.549  Gossip:3545  Inv:16000  Requests:3544
+T-52622371 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.893  Gossip:3889  Inv:16000  Requests:3888
+T-53426931 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.173  Gossip:4169  Inv:16000  Requests:4168
+T-53519223 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.847  Gossip:3843  Inv:16000  Requests:3842
+T-53561576 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.41  Gossip:3407  Inv:16000  Requests:3406
+T-53874481 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:1.938  Gossip:2935  Inv:16000  Requests:2934
+T-54023027 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.736  Gossip:3732  Inv:16000  Requests:3731
+T-54288752 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.397  Gossip:3394  Inv:16000  Requests:3393
+T-54549327 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.953  Gossip:3949  Inv:16000  Requests:3948
+T-54718501 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.159  Gossip:3156  Inv:16000  Requests:3155
+T-54820546 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.517  Gossip:3513  Inv:16000  Requests:3512
+T-54917616 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.102  Gossip:3099  Inv:16000  Requests:3098
+T-55562418 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.29  Gossip:3287  Inv:16000  Requests:3286
+T-55694986 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.33  Gossip:4326  Inv:16000  Requests:4325
+T-55737043 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.121  Gossip:3118  Inv:16000  Requests:3117
+T-55783426 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.086  Gossip:4082  Inv:16000  Requests:4081
+T-55818263 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.171  Gossip:3168  Inv:16000  Requests:3167
+T-55990670 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.52  Gossip:3516  Inv:16000  Requests:3515
+T-56013389 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.147  Gossip:4143  Inv:16000  Requests:4142
+T-56227224 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.58  Gossip:3576  Inv:16000  Requests:3575
+T-56273548 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.199  Gossip:3196  Inv:16000  Requests:3195
+T-56346024 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.96  Gossip:3956  Inv:16000  Requests:3955
+T-56367650 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.301  Gossip:3298  Inv:16000  Requests:3297
+T-56449857 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.171  Gossip:3168  Inv:16000  Requests:3167
+T-56787516 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.749  Gossip:3745  Inv:16000  Requests:3744
+T-56859801 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:1.996  Gossip:2993  Inv:16000  Requests:2992
+T-57357717 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.069  Gossip:3066  Inv:16000  Requests:3065
+T-57421427 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.136  Gossip:3133  Inv:16000  Requests:3132
+T-57443905 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.102  Gossip:3099  Inv:16000  Requests:3098
+T-57585299 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.15  Gossip:3147  Inv:16000  Requests:3146
+T-57694098 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.383  Gossip:3380  Inv:16000  Requests:3379
+T-57792660 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.953  Gossip:3949  Inv:16000  Requests:3948
+T-58051707 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.397  Gossip:3394  Inv:16000  Requests:3393
+T-58068309 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.571  Gossip:3567  Inv:16000  Requests:3566
+T-58218086 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.115  Gossip:4111  Inv:16000  Requests:4110
+T-58329737 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.195  Gossip:3192  Inv:16000  Requests:3191
+T-58458579 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.345  Gossip:3342  Inv:16000  Requests:3341
+T-58538852 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.766  Gossip:3762  Inv:16000  Requests:3761
+T-58557200 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.187  Gossip:3184  Inv:16000  Requests:3183
+T-58594949 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.799  Gossip:3795  Inv:16000  Requests:3794
+T-58627919 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.656  Gossip:3652  Inv:16000  Requests:3651
+T-58654505 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.43  Gossip:3427  Inv:16000  Requests:3426
+T-58675670 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.107  Gossip:3104  Inv:16000  Requests:3103
+T-58748004 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.092  Gossip:3089  Inv:16000  Requests:3088
+T-59292676 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.808  Gossip:3804  Inv:16000  Requests:3803
+T-59423054 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.365  Gossip:3362  Inv:16000  Requests:3361
+T-59464245 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.138  Gossip:4134  Inv:16000  Requests:4133
+T-59496683 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.641  Gossip:3637  Inv:16000  Requests:3636
+T-59548078 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.066  Gossip:3063  Inv:16000  Requests:3062
+T-59630716 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.039  Gossip:3036  Inv:16000  Requests:3035
+T-59755859 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.095  Gossip:3092  Inv:16000  Requests:3091
+T-60647668 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.099  Gossip:3096  Inv:16000  Requests:3095
+T-60666628 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.542  Gossip:3538  Inv:16000  Requests:3537
+T-60695001 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.391  Gossip:3388  Inv:16000  Requests:3387
+T-60719762 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.634  Gossip:3630  Inv:16000  Requests:3629
+T-60855746 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.165  Gossip:3162  Inv:16000  Requests:3161
+T-60910048 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.066  Gossip:3063  Inv:16000  Requests:3062
+T-61046389 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.342  Gossip:3339  Inv:16000  Requests:3338
+T-61115317 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.836  Gossip:3832  Inv:16000  Requests:3831
+T-61654626 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.678  Gossip:3674  Inv:16000  Requests:3673
+T-61924883 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.384  Gossip:3381  Inv:16000  Requests:3380
+T-62030410 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.843  Gossip:3839  Inv:16000  Requests:3838
+T-62241579 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.628  Gossip:3624  Inv:16000  Requests:3623
+T-62297136 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.438  Gossip:3435  Inv:16000  Requests:3434
+T-62381440 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.218  Gossip:3215  Inv:16000  Requests:3214
+T-62524376 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.088  Gossip:3085  Inv:16000  Requests:3084
+T-62564406 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.466  Gossip:3463  Inv:16000  Requests:3462
+T-62796636 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.215  Gossip:3212  Inv:16000  Requests:3211
+T-62983550 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.4  Gossip:3397  Inv:16000  Requests:3396
+T-63089216 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.751  Gossip:3747  Inv:16000  Requests:3746
+T-63198318 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.649  Gossip:3645  Inv:16000  Requests:3644
+T-63249418 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.104  Gossip:3101  Inv:16000  Requests:3100
+T-63288130 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.314  Gossip:3311  Inv:16000  Requests:3310
+T-63499022 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.829  Gossip:3825  Inv:16000  Requests:3824
+T-63800133 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.248  Gossip:3245  Inv:16000  Requests:3244
+T-63827947 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.107  Gossip:3104  Inv:16000  Requests:3103
+T-63901269 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.56  Gossip:3556  Inv:16000  Requests:3555
+T-63929794 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.538  Gossip:3534  Inv:16000  Requests:3533
+T-64047071 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.494  Gossip:3491  Inv:16000  Requests:3490
+T-64289837 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.097  Gossip:3094  Inv:16000  Requests:3093
+T-64291495 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.312  Gossip:3309  Inv:16000  Requests:3308
+T-64445138 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.303  Gossip:3300  Inv:16000  Requests:3299
+T-64515242 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.179  Gossip:3176  Inv:16000  Requests:3175
+T-64571699 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.426  Gossip:3423  Inv:16000  Requests:3422
+T-64787502 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.14  Gossip:3137  Inv:16000  Requests:3136
+T-65010565 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.063  Gossip:4059  Inv:16000  Requests:4058
+T-65070113 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.218  Gossip:3215  Inv:16000  Requests:3214
+T-65375800 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.195  Gossip:3192  Inv:16000  Requests:3191
+T-65495022 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.924  Gossip:3920  Inv:16000  Requests:3919
+T-65985992 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.129  Gossip:3126  Inv:16000  Requests:3125
+T-66096962 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.179  Gossip:3176  Inv:16000  Requests:3175
+T-66913789 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.805  Gossip:3801  Inv:16000  Requests:3800
+T-66934627 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.799  Gossip:3795  Inv:16000  Requests:3794
+T-67115514 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.261  Gossip:3258  Inv:16000  Requests:3257
+T-67173739 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.504  Gossip:3500  Inv:16000  Requests:3499
+T-67184078 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.204  Gossip:3201  Inv:16000  Requests:3200
+T-67222833 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.889  Gossip:3885  Inv:16000  Requests:3884
+T-67272520 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.813  Gossip:3809  Inv:16000  Requests:3808
+T-67484081 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.565  Gossip:3561  Inv:16000  Requests:3560
+T-67538839 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.171  Gossip:4167  Inv:16000  Requests:4166
+T-68170583 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.541  Gossip:3537  Inv:16000  Requests:3536
+T-68349684 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.426  Gossip:4422  Inv:16000  Requests:4421
+T-68372305 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.397  Gossip:3394  Inv:16000  Requests:3393
+T-68536881 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.552  Gossip:3548  Inv:16000  Requests:3547
+T-68647899 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.222  Gossip:3219  Inv:16000  Requests:3218
+T-68647978 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.798  Gossip:3794  Inv:16000  Requests:3793
+T-69115255 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.132  Gossip:3129  Inv:16000  Requests:3128
+T-69203998 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.449  Gossip:3446  Inv:16000  Requests:3445
+T-69382761 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.167  Gossip:3164  Inv:16000  Requests:3163
+T-69935611 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.156  Gossip:4152  Inv:16000  Requests:4151
+T-70023267 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.581  Gossip:3577  Inv:16000  Requests:3576
+T-70176523 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.107  Gossip:3104  Inv:16000  Requests:3103
+T-70552107 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.912  Gossip:3908  Inv:16000  Requests:3907
+T-71077359 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.315  Gossip:3312  Inv:16000  Requests:3311
+T-71261340 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.571  Gossip:3567  Inv:16000  Requests:3566
+T-71617394 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.452  Gossip:3449  Inv:16000  Requests:3448
+T-71788160 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.376  Gossip:3373  Inv:16000  Requests:3372
+T-71788346 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.171  Gossip:3168  Inv:16000  Requests:3167
+T-72097920 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.242  Gossip:3239  Inv:16000  Requests:3238
+T-72129033 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.18  Gossip:3177  Inv:16000  Requests:3176
+T-72131273 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.178  Gossip:4174  Inv:16000  Requests:4173
+T-72215885 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.312  Gossip:3309  Inv:16000  Requests:3308
+T-72233976 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.171  Gossip:3168  Inv:16000  Requests:3167
+T-72284732 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.552  Gossip:3548  Inv:16000  Requests:3547
+T-72291037 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.742  Gossip:3738  Inv:16000  Requests:3737
+T-72468537 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.829  Gossip:3825  Inv:16000  Requests:3824
+T-72505532 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.741  Gossip:3737  Inv:16000  Requests:3736
+T-72679094 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.827  Gossip:3823  Inv:16000  Requests:3822
+T-72745386 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.291  Gossip:3288  Inv:16000  Requests:3287
+T-73051910 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.59  Gossip:3586  Inv:16000  Requests:3585
+T-73078494 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.862  Gossip:3858  Inv:16000  Requests:3857
+T-73730161 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.835  Gossip:3831  Inv:16000  Requests:3830
+T-73910183 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.36  Gossip:3357  Inv:16000  Requests:3356
+T-73953284 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.543  Gossip:3539  Inv:16000  Requests:3538
+T-74040110 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.441  Gossip:3438  Inv:16000  Requests:3437
+T-74581475 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.805  Gossip:3801  Inv:16000  Requests:3800
+T-74624505 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.199  Gossip:3196  Inv:16000  Requests:3195
+T-74799151 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.924  Gossip:3920  Inv:16000  Requests:3919
+T-74889474 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.009  Gossip:4005  Inv:16000  Requests:4004
+T-74981408 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.199  Gossip:3196  Inv:16000  Requests:3195
+T-74982166 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.235  Gossip:3232  Inv:16000  Requests:3231
+T-75085428 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.847  Gossip:3843  Inv:16000  Requests:3842
+T-75218492 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.814  Gossip:3810  Inv:16000  Requests:3809
+T-75386731 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.636  Gossip:3632  Inv:16000  Requests:3631
+T-75798671 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.511  Gossip:3507  Inv:16000  Requests:3506
+T-75951115 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.114  Gossip:3111  Inv:16000  Requests:3110
+T-76007717 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.984  Gossip:3980  Inv:16000  Requests:3979
+T-76121435 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.442  Gossip:3439  Inv:16000  Requests:3438
+T-76176309 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.516  Gossip:3512  Inv:16000  Requests:3511
+T-76249071 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.048  Gossip:3045  Inv:16000  Requests:3044
+T-76636396 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.012  Gossip:4008  Inv:16000  Requests:4007
+T-76721173 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.194  Gossip:3191  Inv:16000  Requests:3190
+T-76766577 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.911  Gossip:3907  Inv:16000  Requests:3906
+T-77605121 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.751  Gossip:3747  Inv:16000  Requests:3746
+T-77682720 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.24  Gossip:3237  Inv:16000  Requests:3236
+T-77844597 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.954  Gossip:3950  Inv:16000  Requests:3949
+T-78158214 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.535  Gossip:3531  Inv:16000  Requests:3530
+T-78671810 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.46  Gossip:3457  Inv:16000  Requests:3456
+T-78702892 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.146  Gossip:3143  Inv:16000  Requests:3142
+T-79125804 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.362  Gossip:3359  Inv:16000  Requests:3358
+T-79207519 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.862  Gossip:3858  Inv:16000  Requests:3857
+T-79807367 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+T-79907447 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+T-80000472 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.159  Gossip:3156  Inv:16000  Requests:3155
+T-80100138 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.476  Gossip:3473  Inv:16000  Requests:3472
+T-80163109 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.418  Gossip:3415  Inv:16000  Requests:3414
+T-80216434 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.171  Gossip:4167  Inv:16000  Requests:4166
+T-80216469 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.437  Gossip:3434  Inv:16000  Requests:3433
+T-80280155 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.843  Gossip:3839  Inv:16000  Requests:3838
+T-80493613 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.497  Gossip:3494  Inv:16000  Requests:3493
+T-80691551 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.553  Gossip:3549  Inv:16000  Requests:3548
+T-80764422 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.506  Gossip:3502  Inv:16000  Requests:3501
+T-81049653 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.128  Gossip:3125  Inv:16000  Requests:3124
+T-81554232 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.416  Gossip:4412  Inv:16000  Requests:4411
+T-81726041 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.708  Gossip:3704  Inv:16000  Requests:3703
+T-81804406 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.315  Gossip:3312  Inv:16000  Requests:3311
+T-81857437 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.42  Gossip:3417  Inv:16000  Requests:3416
+T-81888785 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.701  Gossip:3697  Inv:16000  Requests:3696
+T-81975703 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.681  Gossip:3677  Inv:16000  Requests:3676
+T-82080932 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.597  Gossip:3593  Inv:16000  Requests:3592
+T-82115506 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.122  Gossip:3119  Inv:16000  Requests:3118
+T-82213334 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.416  Gossip:4412  Inv:16000  Requests:4411
+T-82305676 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.487  Gossip:3484  Inv:16000  Requests:3483
+T-82430390 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.081  Gossip:3078  Inv:16000  Requests:3077
+T-82561670 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.622  Gossip:3618  Inv:16000  Requests:3617
+T-82760365 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.166  Gossip:3163  Inv:16000  Requests:3162
+T-82824282 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.878  Gossip:3874  Inv:16000  Requests:3873
+T-82909373 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.608  Gossip:3604  Inv:16000  Requests:3603
+T-82996649 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.095  Gossip:4091  Inv:16000  Requests:4090
+T-83081975 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.404  Gossip:3401  Inv:16000  Requests:3400
+T-83108782 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.286  Gossip:3283  Inv:16000  Requests:3282
+T-83328522 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.517  Gossip:3513  Inv:16000  Requests:3512
+T-83344755 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.219  Gossip:3216  Inv:16000  Requests:3215
+T-83783106 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.152  Gossip:3149  Inv:16000  Requests:3148
+T-83947595 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.935  Gossip:3931  Inv:16000  Requests:3930
+T-84083678 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.24  Gossip:3237  Inv:16000  Requests:3236
+T-84086270 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.272  Gossip:3269  Inv:16000  Requests:3268
+T-84123052 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.159  Gossip:3156  Inv:16000  Requests:3155
+T-84274592 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.752  Gossip:3748  Inv:16000  Requests:3747
+T-84484963 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.107  Gossip:3104  Inv:16000  Requests:3103
+T-85422772 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.372  Gossip:3369  Inv:16000  Requests:3368
+T-85821799 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.159  Gossip:3156  Inv:16000  Requests:3155
+T-85946630 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.812  Gossip:3808  Inv:16000  Requests:3807
+T-86106308 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.946  Gossip:3942  Inv:16000  Requests:3941
+T-86363506 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.092  Gossip:3089  Inv:16000  Requests:3088
+T-86439734 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.096  Gossip:4092  Inv:16000  Requests:4091
+T-86444452 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.219  Gossip:3216  Inv:16000  Requests:3215
+T-86743288 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.104  Gossip:3101  Inv:16000  Requests:3100
+T-87088022 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.701  Gossip:3697  Inv:16000  Requests:3696
+T-87209782 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.065  Gossip:4061  Inv:16000  Requests:4060
+T-87212494 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.702  Gossip:3698  Inv:16000  Requests:3697
+T-87237702 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.235  Gossip:3232  Inv:16000  Requests:3231
+T-87276268 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.494  Gossip:3491  Inv:16000  Requests:3490
+T-87290463 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.298  Gossip:4294  Inv:16000  Requests:4293
+T-87809039 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.242  Gossip:3239  Inv:16000  Requests:3238
+T-88103968 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.073  Gossip:3070  Inv:16000  Requests:3069
+T-88106254 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.069  Gossip:3066  Inv:16000  Requests:3065
+T-88124001 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.927  Gossip:3923  Inv:16000  Requests:3922
+T-88159307 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.16  Gossip:3157  Inv:16000  Requests:3156
+T-88274766 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.197  Gossip:4193  Inv:16000  Requests:4192
+T-88461575 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.494  Gossip:3491  Inv:16000  Requests:3490
+T-88469833 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.219  Gossip:3216  Inv:16000  Requests:3215
+T-88641793 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.622  Gossip:3618  Inv:16000  Requests:3617
+T-88773071 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.437  Gossip:3434  Inv:16000  Requests:3433
+T-88823806 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.253  Gossip:3250  Inv:16000  Requests:3249
+T-88848647 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.116  Gossip:4112  Inv:16000  Requests:4111
+T-88949963 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.135  Gossip:3132  Inv:16000  Requests:3131
+T-89395538 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.535  Gossip:3531  Inv:16000  Requests:3530
+T-89575537 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.658  Gossip:3654  Inv:16000  Requests:3653
+T-89713050 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.533  Gossip:3529  Inv:16000  Requests:3528
+T-89971989 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.245  Gossip:4241  Inv:16000  Requests:4240
+T-90066212 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.166  Gossip:3163  Inv:16000  Requests:3162
+T-90109418 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.565  Gossip:3561  Inv:16000  Requests:3560
+T-90294183 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.553  Gossip:3549  Inv:16000  Requests:3548
+T-90905311 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.693  Gossip:3689  Inv:16000  Requests:3688
+T-91103622 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.973  Gossip:3969  Inv:16000  Requests:3968
+T-91171914 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.656  Gossip:3652  Inv:16000  Requests:3651
+T-91433073 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.857  Gossip:3853  Inv:16000  Requests:3852
+T-91779048 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.517  Gossip:3513  Inv:16000  Requests:3512
+T-91811215 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.801  Gossip:3797  Inv:16000  Requests:3796
+T-91855600 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.676  Gossip:3672  Inv:16000  Requests:3671
+T-91900909 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.022  Gossip:4018  Inv:16000  Requests:4017
+T-91945121 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.113  Gossip:3110  Inv:16000  Requests:3109
+T-91951683 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.087  Gossip:3084  Inv:16000  Requests:3083
+T-92098937 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.232  Gossip:3229  Inv:16000  Requests:3228
+T-92104567 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.49  Gossip:3487  Inv:16000  Requests:3486
+T-92368301 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.203  Gossip:3200  Inv:16000  Requests:3199
+T-92448626 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.269  Gossip:3266  Inv:16000  Requests:3265
+T-92882718 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.674  Gossip:3670  Inv:16000  Requests:3669
+T-92925243 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.932  Gossip:3928  Inv:16000  Requests:3927
+T-92938946 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.516  Gossip:3512  Inv:16000  Requests:3511
+T-93091883 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.518  Gossip:3514  Inv:16000  Requests:3513
+T-93186632 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.242  Gossip:3239  Inv:16000  Requests:3238
+T-93317411 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.116  Gossip:4112  Inv:16000  Requests:4111
+T-93858456 -- Reliability:100.0%  Nodes:1000  Latency:3  RMR:3.426  Gossip:4422  Inv:16000  Requests:4421
+T-93939176 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.11  Gossip:3107  Inv:16000  Requests:3106
+T-94490558 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.172  Gossip:3169  Inv:16000  Requests:3168
+T-94598680 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.073  Gossip:4069  Inv:16000  Requests:4068
+T-94628541 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.222  Gossip:3219  Inv:16000  Requests:3218
+T-94744630 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.909  Gossip:3905  Inv:16000  Requests:3904
+T-94984074 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.142  Gossip:3139  Inv:16000  Requests:3138
+T-94999666 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.194  Gossip:3191  Inv:16000  Requests:3190
+T-95024323 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.286  Gossip:3283  Inv:16000  Requests:3282
+T-95665255 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.466  Gossip:3463  Inv:16000  Requests:3462
+T-95905590 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.191  Gossip:3188  Inv:16000  Requests:3187
+T-96053652 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.678  Gossip:3674  Inv:16000  Requests:3673
+T-96109704 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.792  Gossip:3788  Inv:16000  Requests:3787
+T-96326756 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.204  Gossip:3201  Inv:16000  Requests:3200
+T-96863248 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.218  Gossip:3215  Inv:16000  Requests:3214
+T-96886496 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.467  Gossip:3464  Inv:16000  Requests:3463
+T-97215662 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.316  Gossip:3313  Inv:16000  Requests:3312
+T-97385108 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.957  Gossip:3953  Inv:16000  Requests:3952
+T-97486408 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.173  Gossip:3170  Inv:16000  Requests:3169
+T-97956767 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.538  Gossip:3534  Inv:16000  Requests:3533
+T-98075000 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.116  Gossip:3113  Inv:16000  Requests:3112
+T-98100684 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:3.166  Gossip:4162  Inv:16000  Requests:4161
+T-98290352 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.219  Gossip:3216  Inv:16000  Requests:3215
+T-98379700 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.382  Gossip:3379  Inv:16000  Requests:3378
+T-98611899 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.618  Gossip:3614  Inv:16000  Requests:3613
+T-98654552 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.862  Gossip:3858  Inv:16000  Requests:3857
+T-99215513 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.168  Gossip:3165  Inv:16000  Requests:3164
+T-99234359 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.768  Gossip:3764  Inv:16000  Requests:3763
+T-99489310 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.14  Gossip:3137  Inv:16000  Requests:3136
+T-99518739 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.02  Gossip:3017  Inv:16000  Requests:3016
+T-99604630 -- Reliability:100.0%  Nodes:1000  Latency:4  RMR:2.497  Gossip:3494  Inv:16000  Requests:3493
+
+Number of Miners: 10  Total Transactions: 547
+AVERAGE -- Reliability:100.000%  Nodes:1000.0  Latency:4.0  RMR:2.520  Gossip:3516.6  Inv:16000.0  Requests:3515.6
+Degree Avg:16.0  Min:8  Max:43  Shortest Path Avg:2.77 Clustering Coefficient  0.0324
+
+===================================================
+SIMULATION COMPLETED IN: 81.63698672499982 SECONDS
+SIMULATED EVENTS: 14194574
+EVENTS PER SECOND: 173874.3009686953
+===================================================

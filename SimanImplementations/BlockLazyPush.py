@@ -237,7 +237,7 @@ class ReportNode(simianEngine.Entity):
                        f"RMR:{avRmr:.3f}  Gossip:{avGossip:.1f}  Inv:{avInv:.1f}  Requests:{avReq:.1f}\n")
         self.out.write(f"Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
                       f"Shortest Path Avg:{avg_shortest_path:.2f} Clustering Coefficient  {clustering:.4f}\n")
-
+        
 total_seeders = [1,2,3]
 
 class Seeder(simianEngine.Entity):
@@ -281,6 +281,7 @@ class Node(simianEngine.Entity):
         self.active = True
         self.blockchain = Blockchain()
         self.blockchain.create_genesis_block()
+        self.mining_parent = None
         self.mining = False
 
 
@@ -300,14 +301,27 @@ class Node(simianEngine.Entity):
         self.receivedMsgs = {}
         self.report = {}
 
-
         JOIN_WINDOW = (0, 200)
         self.reqService(random.uniform(*JOIN_WINDOW), "Bootstrap", "none")
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
-
+           
     def next_nonce(self):
         self.ping_nonce += 1
         return self.ping_nonce
+
+    def start_mining(self):
+        if not (self.miner and self.active):
+            return
+        if self.mining:
+            return  # already mining
+
+        self.mining = True
+        self.mining_parent = self.blockchain.head
+        avg_mining_time = 30
+        delay = random.expovariate(1 / avg_mining_time)
+        self.reqService(delay, "mine_block", "none")
+
+
 
 #--------------------------------------- PEER SELECTION ---------------------------------------------------
 
@@ -532,28 +546,43 @@ class Node(simianEngine.Entity):
 
                 self.SendInv(msg.ID)
 
-            elif msg.type  == "TRX":
+            elif msg.type == "TRX":
                 if self.miner:
                     self.blockchain.add_new_transaction(msg.payload)
-                    if self.miner and not self.mining and len(self.blockchain.unconfirmed_transactions) >= 100:
-                        self.mining = True
-                        avg_mining_time = 30
-                        delay = random.expovariate(1/avg_mining_time)
-                        self.reqService(delay, "mine_block", "none")
-
                 self.SendInv(msg.ID)
 
 
     def mine_block(self, *args):
-        if self.active and self.mining:
-            self.blockchain.mine()
-            new_block = self.blockchain.last_block
-            block_id = "B-" +str(random.randint(11111111,99999999))
-            block_msg = msg2("BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)
-            self.receivedMsgs[block_msg.ID] = block_msg
-            self.report[block_msg.ID] = [1, 0, 0]
-            self.SendInv(block_msg.ID)
+        if not self.mining:
+            return
+
+        # Chain advanced → abort
+        if self.blockchain.head != self.mining_parent:
             self.mining = False
+            self.start_mining()
+            return
+
+        # No transactions → wait
+        if not self.blockchain.unconfirmed_transactions:
+            self.mining = False
+            self.start_mining()
+            return
+
+        # Success
+        self.blockchain.mine()
+        new_block = self.blockchain.last_block
+
+        new_block = self.blockchain.last_block
+        block_id = "B-" + str(random.randint(11111111,99999999))
+
+        block_msg = msg2("BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)
+        self.receivedMsgs[block_msg.ID] = block_msg
+        self.report[block_msg.ID] = [1, 0, 0]
+        self.SendInv(block_msg.ID)
+
+        self.mining = False
+        self.start_mining()
+
 
 
     def SendInv(self, msg_id):
@@ -615,10 +644,16 @@ class Node(simianEngine.Entity):
                 neighbors
             )
 
+            #print("\n=== BLOCK DAG PER NODE ===")
+            #print(f"\nNode {self.node_idx}")
+            #self.blockchain.print_block_dag()
+
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
     def BecomeMiner(self, *args):
-        self.miner = True  
+        self.miner = True
+        self.start_mining()
+  
 
     def force_churn_out(self, *args):
         if self.active:

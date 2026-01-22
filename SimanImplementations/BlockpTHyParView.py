@@ -310,6 +310,7 @@ class Node(simianEngine.Entity):
         self.active = True
         self.blockchain = Blockchain()
         self.blockchain.create_genesis_block()
+        self.mining_parent = None       
         self.mining = False
 
         #plumTree variables
@@ -347,6 +348,17 @@ class Node(simianEngine.Entity):
 
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
 
+    def start_mining(self):
+        if not (self.miner and self.active):
+            return
+        if self.mining:
+            return  # already mining
+
+        self.mining = True
+        self.mining_parent = self.blockchain.head
+        avg_mining_time = 30
+        delay = random.expovariate(1 / avg_mining_time)
+        self.reqService(delay, "mine_block", "none")
         
 
     # def GetPeers(self):
@@ -431,19 +443,16 @@ class Node(simianEngine.Entity):
                             self.blockchain.remove_confirmed_transactions(block)
                             if accepted and block.previous_hash == self.blockchain.last_block.hash:
                                 self.mining = False
+                            self.start_mining()
 
                         self.LazyPush(msg)
                         self.EagerPush(msg)            
 
-                    elif msg.payloadType  == "TRX":
+                    elif msg.payloadType == "TRX":
                         if self.miner:
                             self.blockchain.add_new_transaction(msg.payload)
-                            if self.miner and not self.mining and len(self.blockchain.unconfirmed_transactions) >= 100:
-                                self.mining = True
-                                avg_mining_time = 30
-                                delay = random.expovariate(1/avg_mining_time)
-                                self.reqService(delay, "mine_block", "none")
-                
+                            self.start_mining()
+
                         self.LazyPush(msg)
                         self.EagerPush(msg)
 
@@ -479,17 +488,36 @@ class Node(simianEngine.Entity):
 
 
     def mine_block(self, *args):
-        if not self.active or not self.mining:
+        if not self.mining:
             return
+
+        # Chain advanced → abort
+        if self.blockchain.head != self.mining_parent:
+            self.mining = False
+            self.start_mining()
+            return
+
+        # No transactions → wait
+        if not self.blockchain.unconfirmed_transactions:
+            self.mining = False
+            self.start_mining()
+            return
+
+        # Success
         self.blockchain.mine()
+
         new_block = self.blockchain.last_block
         block_id = "B-" +str(random.randint(11111111,99999999))
+
         block_msg = msgGossip('GOSSIP',"BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)        
         self.receivedMsgs[block_msg.ID] = block_msg
         self.report[block_msg.ID] = [1, 0, 0]
+
         self.LazyPush(block_msg)
         self.EagerPush(block_msg)
+
         self.mining = False
+        self.start_mining()
 
     def EagerPush(self, msg):
         sender = msg.sender
@@ -858,6 +886,11 @@ class Node(simianEngine.Entity):
                 self.node_idx,
                 list(self.activeView)
             )
+
+            #print("\n=== BLOCK DAG PER NODE ===")
+            #print(f"\nNode {self.node_idx}")
+            #self.blockchain.print_block_dag()
+
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
     def printViews(self, *args):
@@ -869,6 +902,7 @@ class Node(simianEngine.Entity):
 
     def BecomeMiner(self, *args):
         self.miner = True
+        self.start_mining()
 
     def force_churn_out(self, *args):
         if self.active:
