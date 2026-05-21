@@ -1,4 +1,5 @@
 from hashlib import sha256
+import uuid
 import random
 import json
 import time
@@ -6,7 +7,7 @@ import time
 
 class Transaction:
     def __init__(self, author):
-        self.trans_id = "T-" + str(random.randint(11111111, 99999999))
+        self.trans_id = "T-" + str(uuid.uuid4())[:8]
         self.author = author
         self.timestamp = time.time()
         self.content = (
@@ -127,22 +128,20 @@ class Blockchain:
         self.head = genesis_block.hash
         self.chain = [genesis_block]
 
-
     @property
     def last_block(self):
         return self.blocks[self.head]
 
-
     def block_validity(self, block):
         if not Blockchain.is_valid_proof(block, block.hash):
             return False
-    
+
         if block.index == 0:
             return True
-    
+
         if block.previous_hash not in self.blocks:
             return False
-    
+
         parent = self.blocks[block.previous_hash]
         return block.index == parent.index + 1
 
@@ -160,7 +159,10 @@ class Blockchain:
 
     @classmethod
     def is_valid_proof(cls, block, block_hash):
-        return block_hash.startswith("0" * Blockchain.difficulty) and block_hash == block.compute_hash()
+        return (
+            block_hash.startswith("0" * Blockchain.difficulty)
+            and block_hash == block.compute_hash()
+        )
 
     @classmethod
     def check_chain_validity(cls, chain):
@@ -187,8 +189,6 @@ class Blockchain:
         return result
 
     def mine(self):
-        if not self.unconfirmed_transactions:
-            return False
 
         parent_hash = self.head
         parent_block = self.blocks[parent_hash]
@@ -230,10 +230,12 @@ class Blockchain:
         # Set height
         self.heights[block.hash] = self.heights[block.previous_hash] + 1
 
-        # Update best chain
+        # Update best chain — detect reorg before updating head
         if self.heights[block.hash] > self.heights[self.head]:
+            old_head = self.head
             self.head = block.hash
             self._rebuild_chain()
+            self._reorg_mempool(old_head)
 
         # Try to attach orphans
         for orphan in self.orphans[:]:
@@ -242,7 +244,6 @@ class Blockchain:
                 self.consensus(orphan)
 
         return True
-
 
     def _rebuild_chain(self):
         chain = []
@@ -255,7 +256,36 @@ class Blockchain:
 
         self.chain = list(reversed(chain))
 
+    def _reorg_mempool(self, old_head):
 
+        old_chain = set()
+        current = old_head
+        while current is not None:
+            old_chain.add(current)
+            block = self.blocks[current]
+            current = block.previous_hash
+
+        new_chain = set()
+        current = self.head
+        while current is not None:
+            new_chain.add(current)
+            block = self.blocks[current]
+            current = block.previous_hash
+
+        abandoned = old_chain - new_chain
+        added = new_chain - old_chain
+
+        confirmed_ids = set()
+        for h in added:
+            for tx in self.blocks[h].transactions:
+                confirmed_ids.add(tx.trans_id)
+
+        mempool_ids = {tx.trans_id for tx in self.unconfirmed_transactions}
+
+        for h in abandoned:
+            for tx in self.blocks[h].transactions:
+                if tx.trans_id not in confirmed_ids and tx.trans_id not in mempool_ids:
+                    self.unconfirmed_transactions.append(tx)
 
     def remove_confirmed_transactions(self, block):
         confirmed_ids = {tx.trans_id for tx in block.transactions}
@@ -263,7 +293,6 @@ class Blockchain:
             tx for tx in self.unconfirmed_transactions
             if tx.trans_id not in confirmed_ids
         ]
-
 
     def print_block_dag(self):
         print("Blocks known:")
@@ -273,5 +302,6 @@ class Blockchain:
             parent = block.previous_hash[:6] if block.previous_hash else "None"
             print(
                 f"  {block.hash[:6]} "
+               # f"  {block.transactions}"
                 f"(h={height}) <- {parent}"
             )

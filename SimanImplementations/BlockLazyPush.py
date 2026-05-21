@@ -312,13 +312,21 @@ class Node(simianEngine.Entity):
     def start_mining(self):
         if not (self.miner and self.active):
             return
+
         if self.mining:
-            return  # already mining
+            return
 
         self.mining = True
         self.mining_parent = self.blockchain.head
-        avg_mining_time = 30
+        
+        total_miners = math.ceil(0.01 * self.total_nodes)
+
+        NETWORK_BLOCK_TIME = 10
+
+        avg_mining_time = NETWORK_BLOCK_TIME * total_miners
+
         delay = random.expovariate(1 / avg_mining_time)
+
         self.reqService(delay, "mine_block", "none")
 
 
@@ -536,34 +544,27 @@ class Node(simianEngine.Entity):
         if msg.ID not in self.receivedMsgs.keys():
             self.receivedMsgs[msg.ID] = msg
 
-            if msg.type  == "BLOCK":
+            if msg.type == "BLOCK":
                 block = Block.from_dict(msg.payload)
                 accepted = self.blockchain.consensus(block)
                 if accepted and block.hash == self.blockchain.head:
                     self.blockchain.remove_confirmed_transactions(block)
-                    if accepted and block.previous_hash == self.blockchain.last_block.hash:
-                        self.mining = False
-
-                self.SendInv(msg.ID)
+                    self.mining = False  
+                self.SendInv(msg.ID, msg.sender)
 
             elif msg.type == "TRX":
                 if self.miner:
                     self.blockchain.add_new_transaction(msg.payload)
-                self.SendInv(msg.ID)
+                self.SendInv(msg.ID, msg.sender)
 
 
     def mine_block(self, *args):
         if not self.mining:
-            return
-
-        # Chain advanced → abort
-        if self.blockchain.head != self.mining_parent:
-            self.mining = False
             self.start_mining()
             return
 
-        # No transactions → wait
-        if not self.blockchain.unconfirmed_transactions:
+        # Chain advanced → abort Depricated
+        if self.blockchain.head != self.mining_parent:
             self.mining = False
             self.start_mining()
             return
@@ -571,10 +572,10 @@ class Node(simianEngine.Entity):
         # Success
         self.blockchain.mine()
         new_block = self.blockchain.last_block
+        self.blockchain.remove_confirmed_transactions(new_block)
 
-        new_block = self.blockchain.last_block
-        block_id = "B-" + str(random.randint(11111111,99999999))
-
+        
+        block_id = "B-" + new_block.hash[:8]
         block_msg = msg2("BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)
         self.receivedMsgs[block_msg.ID] = block_msg
         self.report[block_msg.ID] = [1, 0, 0]
@@ -585,12 +586,14 @@ class Node(simianEngine.Entity):
 
 
 
-    def SendInv(self, msg_id):
+    def SendInv(self, msg_id, exclude = None):
         for peer in self.outbound:
-            self.reqService(lookahead, "ReceiveInv", (msg_id, self.node_idx), "Node", peer)
+            if peer != exclude:
+                self.reqService(lookahead, "ReceiveInv", (msg_id, self.node_idx), "Node", peer)
 
         for peer in self.inbound:
-            self.reqService(lookahead, "ReceiveInv", (msg_id, self.node_idx), "Node", peer)
+            if peer != exclude:
+                self.reqService(lookahead, "ReceiveInv", (msg_id, self.node_idx), "Node", peer)
 
     def ReceiveInv(self, *args):
         if not self.active:
@@ -615,7 +618,7 @@ class Node(simianEngine.Entity):
 
         if msg_id in self.receivedMsgs:
             msg = self.receivedMsgs[msg_id]
-            self.reqService(lookahead, "Receive", msg2(msg.type , msg.payload , msg.ID, msg.hops + 1 , msg.sender), "Node", requester_id)
+            self.reqService(lookahead, "Receive", msg2(msg.type , msg.payload , msg.ID, msg.hops + 1 , self.node_idx), "Node", requester_id)
     
 
     def TriggerSystemReport(self,*args):
@@ -672,7 +675,7 @@ class Node(simianEngine.Entity):
 
     def create_transaction(self,*args):
         n = random.choice(upNodes)
-        avg_transactionT = 1.4
+        avg_transactionT = 5.0
         delay = random.expovariate(1/avg_transactionT)
         if self.active and not self.miner:
             transaction = Transaction(self.node_idx)
@@ -703,7 +706,8 @@ for i in range(0, nodes):
 
 for i in range(0, math.ceil((0.01 * nodes))):
     n = random.choice(upNodes)
-    simianEngine.schedService(lookahead, "BecomeMiner", "", "Node", n)
+   
+    simianEngine.schedService(250 + lookahead, "BecomeMiner", "", "Node", n)
     upNodes.remove(n)
 
 n = random.choice(upNodes)

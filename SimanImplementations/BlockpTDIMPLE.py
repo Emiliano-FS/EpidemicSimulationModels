@@ -282,14 +282,13 @@ class Node(simianEngine.Entity):
         self.node_idx = int(args[0])
         self.miner = False
         self.trxMade = 0
-
         self.active = True
         self.blockchain = Blockchain()
         self.blockchain.create_genesis_block()
         self.mining_parent = None              
         self.mining = False
 
-        #plumTree variables
+        # PlumTree variables
         self.eagerPushPeers = []
         self.lazyPushPeers = []
         self.lazyQueues = []
@@ -298,45 +297,58 @@ class Node(simianEngine.Entity):
         self.timers = []
         self.timersAck = {}
 
-        #Report Variables
+        # Report Variables
         self.report = {}
 
-        #DIMPLE Variables
+        # DIMPLE Variables
         self.partial_view = []
         self.timerDimple = []
-        delay = 10 / self.total_nodes
 
-        JOIN_WINDOW = (0, 200)
-        delay2 = random.uniform(*JOIN_WINDOW)
-
-        if self.node_idx == 0:  # Seed nodes
-            seederBootstap = random.sample(
-                [n for n in upNodes if n != self.node_idx],
-                min(3, len(upNodes) - 1)
-            )
-            for sample in seederBootstap:
-                self.partial_view.append(partialViewEntry(sample, 0, [sample, self.node_idx]))
+        BOOTSTRAP_SIZE = max(10, math.ceil(math.log(nodes, 2)) * 2)
+        if self.node_idx < BOOTSTRAP_SIZE:
+           
+          
+            initial_peers = [
+                (self.node_idx - 1) % BOOTSTRAP_SIZE,
+                (self.node_idx + 1) % BOOTSTRAP_SIZE
+            ]
+            for peer in initial_peers:
+                self.partial_view.append(
+                    partialViewEntry(peer, 0, [self.node_idx, peer])  
+                )
             self.UpdatePlumTreePeers()
-            self.reqService(shuffleTime, "DimpleShuffle", "none")
-
-
+            shuffle_delay = random.uniform(0, shuffleTime)
+            self.reqService(shuffle_delay, "DimpleShuffle", "none")
         else:
-            contactNode = 0 
-            msg = msgDimple('JOIN',[],self.node_idx)
-            self.reqService( delay2, "Dimple", msg, "Node", contactNode)  
+           
+           
+            contact = random.randint(0, BOOTSTRAP_SIZE - 1)
+            join_msg = msgDimple("JOIN", self.node_idx, self.node_idx)
+            join_delay = random.uniform(lookahead, 10)  # escalonar joins
+            self.reqService(join_delay, "Dimple", join_msg, "Node", contact)
+            
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
-
+    
     def start_mining(self):
         if not (self.miner and self.active):
             return
+
         if self.mining:
-            return  # already mining
+            return
 
         self.mining = True
         self.mining_parent = self.blockchain.head
-        avg_mining_time = 30
+        
+        total_miners = math.ceil(0.01 * self.total_nodes)
+
+        NETWORK_BLOCK_TIME = 10
+
+        avg_mining_time = NETWORK_BLOCK_TIME * total_miners
+
         delay = random.expovariate(1 / avg_mining_time)
+
         self.reqService(delay, "mine_block", "none")
+
                                   
    #--------------------------------------- GOSSIP ---------------------------------------------------
 
@@ -406,18 +418,15 @@ class Node(simianEngine.Entity):
                         block = Block.from_dict(msg.payload)
                         accepted = self.blockchain.consensus(block)
                         if accepted and block.hash == self.blockchain.head:
-                            self.blockchain.remove_confirmed_transactions(block)
-                            if accepted and block.previous_hash == self.blockchain.last_block.hash:
-                                self.mining = False
-                            self.start_mining()
-
+                            self.blockchain.remove_confirmed_transactions(block)  
+                            self.mining = False
+                        
                         self.LazyPush(msg)
                         self.EagerPush(msg)            
 
                     elif msg.payloadType == "TRX":
                         if self.miner:
                             self.blockchain.add_new_transaction(msg.payload)
-                            self.start_mining()
                 
                         self.LazyPush(msg)
                         self.EagerPush(msg)
@@ -455,6 +464,7 @@ class Node(simianEngine.Entity):
 
     def mine_block(self, *args):
         if not self.mining:
+            self.start_mining()
             return
 
         # Chain advanced → abort
@@ -463,18 +473,12 @@ class Node(simianEngine.Entity):
             self.start_mining()
             return
 
-        # No transactions → wait
-        if not self.blockchain.unconfirmed_transactions:
-            self.mining = False
-            self.start_mining()
-            return
-
         # Success
         self.blockchain.mine()
-
         new_block = self.blockchain.last_block
-        block_id = "B-" +str(random.randint(11111111,99999999))
-
+        self.blockchain.remove_confirmed_transactions(new_block)
+        
+        block_id = "B-" + new_block.hash[:8]
         block_msg = msgGossip('GOSSIP',"BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)        
         self.receivedMsgs[block_msg.ID] = block_msg
         self.report[block_msg.ID] = [1, 0, 0]
@@ -586,7 +590,8 @@ class Node(simianEngine.Entity):
                 self.reqService(lookahead, "Dimple", reply, "Node", msg.sender)
                 
             elif msg.type == 'VIEW_EXCHANGE_RESPONSE':
-                self.timerDimple.remove(msg.sender)
+                if msg.sender in self.timerDimple:
+                    self.timerDimple.remove(msg.sender)
                 received_subset, sent_subset = msg.payload
                 self.ExchangeProcedure(received_subset, sent_subset)
 
@@ -610,7 +615,8 @@ class Node(simianEngine.Entity):
                 
             elif msg.type == 'REINFORCEMENT_RESPONSE':
                 response_entry, _ = msg.payload   # Q sent back an evicted entry or None
-                self.timerDimple.remove(msg.sender)
+                if msg.sender in self.timerDimple:
+                    self.timerDimple.remove(msg.sender)
             
                 # Use msg.sender (Q's id) as the entry_to_replace_id
                 if response_entry is not None:
@@ -622,7 +628,7 @@ class Node(simianEngine.Entity):
                 local_view = []
             
                 for entry in self.partial_view:
-                    local_view.append(entry.visited[-2])
+                    local_view.append(entry.visited[-1])
             
                 response = msgDimple("JOIN_RESPONSE", local_view, self.node_idx)
                 self.reqService(lookahead, "Dimple", response, "Node", msg.sender)
@@ -688,7 +694,8 @@ class Node(simianEngine.Entity):
             for entry in self.partial_view:
                 if entry.node_idx == received_entry_id:
                     entry.age = 0
-                    entry.visited.remove(self.node_idx)
+                    if self.node_idx in entry.visited:
+                        entry.visited.remove(self.node_idx)
                     entry.visited.append(self.node_idx)
                     return None
         
@@ -714,7 +721,8 @@ class Node(simianEngine.Entity):
             for entry in self.partial_view:
                 if entry.node_idx == response_entry.node_idx:
                     entry.age = 0
-                    entry.visited.remove(self.node_idx)
+                    if self.node_idx in entry.visited:
+                        entry.visited.remove(self.node_idx)
                     entry.visited.append(self.node_idx)
                     return
 
@@ -782,13 +790,16 @@ class Node(simianEngine.Entity):
             self.NodeFailure(dest)
 
     def UpdatePlumTreePeers(self):
-        current_peers = [entry.node_idx for entry in self.partial_view if entry.node_idx != self.node_idx]
+        current_peers = [entry.node_idx for entry in self.partial_view 
+                        if entry.node_idx != self.node_idx]
+    
 
-        # Reset eager from partial_view
-        self.eagerPushPeers = current_peers
+        for peer in current_peers:
+            if peer not in self.eagerPushPeers and peer not in self.lazyPushPeers:
+                self.eagerPushPeers.append(peer)
 
-        # Retain lazy peers only if they still exist in partial_view
-        self.lazyPushPeers = [peer for peer in self.lazyPushPeers if peer in current_peers]
+        self.eagerPushPeers = [p for p in self.eagerPushPeers if p in current_peers]
+        self.lazyPushPeers = [p for p in self.lazyPushPeers if p in current_peers]
 
  #--------------------------------------- TRIGGERS ---------------------------------------------------#   
       
@@ -844,7 +855,7 @@ class Node(simianEngine.Entity):
 
     def create_transaction(self,*args):
         n = random.choice(upNodes)
-        avg_transactionT = 1.4
+        avg_transactionT = 5.0
         delay = random.expovariate(1/avg_transactionT)
         if self.active and not self.miner:
             transaction = Transaction(self.node_idx)
@@ -869,7 +880,7 @@ if churn:
 
 for i in range(0, math.ceil((0.01 * nodes))):
     n = random.choice(upNodes)
-    simianEngine.schedService(lookahead, "BecomeMiner", "", "Node", n)
+    simianEngine.schedService(250 + lookahead, "BecomeMiner", "", "Node", n)
     upNodes.remove(n)
 
 n = random.choice(upNodes)

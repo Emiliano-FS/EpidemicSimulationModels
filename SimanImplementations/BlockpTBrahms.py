@@ -1,7 +1,7 @@
 import report
 from Blockchain import * 
 from simian import Simian
-import random, math, argparse
+import random, math, argparse, hashlib
 
 parser = argparse.ArgumentParser(
     description='The PHOLD model.',
@@ -27,9 +27,9 @@ parser.add_argument("--failRate", type=float, metavar='FAILRATE', default=0.0,
 
 parser.add_argument("--c", type=int, metavar='VIEWSIZE', default=3,
                     help="c value -> view Size = log n + c -> default 3")
-parser.add_argument("--a", type=float, metavar='ALFA', default=0.5,
+parser.add_argument("--a", type=float, metavar='ALFA', default=0.45,
                     help="alpha value [0.0 ... 1.0]")
-parser.add_argument("--b", type=float, metavar='BETA', default=0.5,
+parser.add_argument("--b", type=float, metavar='BETA', default=0.45,
                     help="beta value [0.0 ... 1.0]")
 args = parser.parse_args()
 
@@ -52,7 +52,7 @@ delayLazy = 1
 TriggerBrahmsTime = args.updateViews
 TriggerBrahmsTime2 = args.updateViews
 churnEndtime = 50 #args.endtime
-stabilizationTime = 200 #args.endtime
+stabilizationTime = 250 #args.endtime
 
 l1 = math.ceil(math.log(args.total_nodes,10)) + args.c #math.ceil(math.pow(nodes,1.0/3.0))
 l2 = math.ceil(math.log(args.total_nodes,10)) + args.c #math.ceil(math.pow(nodes,1.0/3.0))
@@ -100,22 +100,23 @@ class msgBrahms:
 
 class Sampler:
     def __init__(self):
-        self.h = random.randrange(0,1000)
-        #random.seed(self.h)
-        #self.state = random.getstate()
-        self.q = -1
+        self.h = random.random()   # fixed seed per sampler
+        self.q = None
+        self.hq = None
 
-    def next(self,elem):
-        if self.q == -1:
+    @staticmethod
+    def stable_hash(seed, elem):
+        return int(hashlib.sha256(f"{seed}-{elem}".encode()).hexdigest(), 16)
+    
+    def next(self, elem):
+        helem = self.stable_hash(self.h, elem)
+        if self.q is None or helem < self.hq:
             self.q = elem
-        else:
-            helem = random.randrange(0,nodes)
-            hq = random.randrange(0,nodes)
-            if helem < hq:
-                self.q = elem
+            self.hq = helem
 
     def sample(self):
         return self.q
+
 
     def toString(self):
         return str(self.q)
@@ -340,14 +341,23 @@ class Node(simianEngine.Entity):
     def start_mining(self):
         if not (self.miner and self.active):
             return
+
         if self.mining:
-            return  # already mining
+            return
 
         self.mining = True
         self.mining_parent = self.blockchain.head
-        avg_mining_time = 30
+        
+        total_miners = math.ceil(0.01 * self.total_nodes)
+
+        NETWORK_BLOCK_TIME = 10
+ 
+        avg_mining_time = NETWORK_BLOCK_TIME * total_miners
+
         delay = random.expovariate(1 / avg_mining_time)
+
         self.reqService(delay, "mine_block", "none")
+
 
 #--------------------------------------- GOSSIP ---------------------------------------------------
 
@@ -417,9 +427,8 @@ class Node(simianEngine.Entity):
                         accepted = self.blockchain.consensus(block)
                         if accepted and block.hash == self.blockchain.head:
                             self.blockchain.remove_confirmed_transactions(block)
-                            if accepted and block.previous_hash == self.blockchain.last_block.hash:
-                                self.mining = False
-                            self.start_mining()
+                            self.mining = False
+                            
 
                         self.LazyPush(msg)
                         self.EagerPush(msg)            
@@ -427,7 +436,6 @@ class Node(simianEngine.Entity):
                     elif msg.payloadType == "TRX":
                         if self.miner:
                             self.blockchain.add_new_transaction(msg.payload)
-                            self.start_mining()
                 
                         self.LazyPush(msg)
                         self.EagerPush(msg)
@@ -466,6 +474,7 @@ class Node(simianEngine.Entity):
 
     def mine_block(self, *args):
         if not self.mining:
+            self.start_mining()
             return
 
         # Chain advanced → abort
@@ -474,18 +483,13 @@ class Node(simianEngine.Entity):
             self.start_mining()
             return
 
-        # No transactions → wait
-        if not self.blockchain.unconfirmed_transactions:
-            self.mining = False
-            self.start_mining()
-            return
-
         # Success
         self.blockchain.mine()
-
         new_block = self.blockchain.last_block
-        block_id = "B-" +str(random.randint(11111111,99999999))
+        self.blockchain.remove_confirmed_transactions(new_block)
 
+
+        block_id = "B-" + new_block.hash[:8]
         block_msg = msgGossip('GOSSIP',"BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)        
         self.receivedMsgs[block_msg.ID] = block_msg
         self.report[block_msg.ID] = [1, 0, 0]
@@ -619,13 +623,18 @@ class Node(simianEngine.Entity):
         #self.out.write(str(self.engine.now) + (":%d: %s %s %s\n" % (self.node_idx, str(self.Vpull),str(self.Vpush),str(self.V))))
         if self.active==True:
             self.Vpull = list( dict.fromkeys(self.Vpull) )
-            if len(self.Vpush) <= (math.ceil(a*l1)) and len(self.Vpush) != 0 and len(self.Vpull) != 0:
-                sample = []
-                for s in self.S:
-                    if s.q not in sample:
-                        sample.append(s.q)
+            if len(self.Vpush) != 0 or len(self.Vpull) != 0:
+                sample = [s.sample() for s in self.S if s.sample() is not None]
 
-                self.V = list( dict.fromkeys( self.rand(self.Vpush,math.ceil(a*l1)) + self.rand(self.Vpull,math.floor(b*l1))  )   ) #+ self.rand(self.S,math.ceil(y*l1))
+                self.V = list(dict.fromkeys(
+                    self.rand(self.Vpush, math.ceil(a*l1)) +
+                    self.rand(self.Vpull, math.floor(b*l1)) +
+                    self.rand(sample, math.ceil(y*l1))
+                ))
+
+                if self.node_idx in self.V:
+                    self.V.remove(self.node_idx)
+
                 #self.out.write(str(self.engine.now) + (":%d: %s %s %s\n" % (self.node_idx, str(self.Vpull),str(self.Vpush),str(self.V))))
                 listE = []
                 listL = []
@@ -655,11 +664,8 @@ class Node(simianEngine.Entity):
                     n = self.V[idx]
                     msgToSend = msgBrahms('PULL',"[]",self.node_idx)
                     self.reqService(lookahead, "Brahms", msgToSend, "Node", n)
-
-            if self.engine.now < churnEndtime:
-                self.reqService(TriggerBrahmsTime, "TriggerBrahmsSend", "none")
-            elif self.engine.now < stabilizationTime:
-                self.reqService(TriggerBrahmsTime2, "TriggerBrahmsSend", "none")
+  
+            self.reqService(TriggerBrahmsTime2, "TriggerBrahmsSend", "none")
 
     def TriggerSystemReport(self,*args):
         if self.active:
@@ -730,7 +736,7 @@ class Node(simianEngine.Entity):
 
     def create_transaction(self,*args):
         n = random.choice(upNodes)
-        avg_transactionT = 1.4
+        avg_transactionT = 5.0
         delay = random.expovariate(1/avg_transactionT)
         if self.active and not self.miner:
             transaction = Transaction(self.node_idx)
@@ -755,7 +761,7 @@ for i in range(0, nodes):
 
 for i in range(0, math.ceil((0.01 * nodes))):
     n = random.choice(upNodes)
-    simianEngine.schedService(lookahead, "BecomeMiner", "", "Node", n)
+    simianEngine.schedService(250 + lookahead, "BecomeMiner", "", "Node", n)
     upNodes.remove(n)
 
 n = random.choice(upNodes)
