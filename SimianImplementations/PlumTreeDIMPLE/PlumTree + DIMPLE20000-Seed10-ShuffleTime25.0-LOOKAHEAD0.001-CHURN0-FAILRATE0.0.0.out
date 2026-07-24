@@ -20010,150 +20010,179 @@ Node[19997]: Running on rank 0
 Node[19998]: Running on rank 0
 Node[19999]: Running on rank 0
 ReportNode[0]: Running on rank 0
-B-055c2f25 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.698  Gossip:73965  IHAVE:538961  GRAFT:53269
-B-0bc60685 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:3.219  Gossip:84385  IHAVE:538870  GRAFT:63576
-B-0c940dbf -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.362  Gossip:47244  IHAVE:555990  GRAFT:43555
-T-00356fb8 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.35  Gossip:47006  IHAVE:556019  GRAFT:43343
-T-01808053 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.067  Gossip:61328  IHAVE:539101  GRAFT:40811
-T-020df688 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.358  Gossip:47152  IHAVE:556056  GRAFT:43498
-T-0237e411 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.71  Gossip:74192  IHAVE:539005  GRAFT:53511
-T-02ff5123 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.906  Gossip:78125  IHAVE:538862  GRAFT:57342
-T-05f6733f -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.862  Gossip:77239  IHAVE:538919  GRAFT:56483
-T-0cd9a73b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.547  Gossip:70933  IHAVE:539007  GRAFT:50273
-T-0cf071d8 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.756  Gossip:55118  IHAVE:539212  GRAFT:34687
-T-0ecbaaba -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.357  Gossip:47146  IHAVE:555971  GRAFT:43440
-T-133c3cf0 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.947  Gossip:78931  IHAVE:538931  GRAFT:58202
-T-14a8ee4c -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.635  Gossip:72698  IHAVE:538984  GRAFT:52042
-T-14c791fd -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.6  Gossip:51999  IHAVE:555927  GRAFT:48270
-T-173d09dc -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.819  Gossip:76367  IHAVE:538909  GRAFT:55612
-T-1ce91914 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.607  Gossip:72146  IHAVE:538967  GRAFT:51430
-T-1d29df39 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.186  Gossip:63710  IHAVE:539215  GRAFT:43232
-T-1e20d94b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.922  Gossip:78439  IHAVE:538885  GRAFT:57690
-T-1e760a1a -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.519  Gossip:70378  IHAVE:539020  GRAFT:49729
-T-204d4987 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.347  Gossip:46938  IHAVE:556082  GRAFT:43325
-T-231c7212 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.684  Gossip:73674  IHAVE:538964  GRAFT:52948
-T-26544d7b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.889  Gossip:57778  IHAVE:539197  GRAFT:37338
-T-28c7b4cb -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:3.01  Gossip:80204  IHAVE:538905  GRAFT:59447
-T-2ddcd4e9 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.342  Gossip:46830  IHAVE:555923  GRAFT:43093
-T-2e2ebe2c -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.83  Gossip:76590  IHAVE:538865  GRAFT:55808
-T-30cd7b9a -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.342  Gossip:46846  IHAVE:555972  GRAFT:43161
-T-32677845 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.941  Gossip:78825  IHAVE:538897  GRAFT:58046
-T-32e6cc30 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.76  Gossip:75191  IHAVE:538906  GRAFT:54408
-T-35fa9109 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.52  Gossip:70402  IHAVE:539035  GRAFT:49750
-T-37302860 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.989  Gossip:59777  IHAVE:539113  GRAFT:39265
-T-37acf7a7 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.89  Gossip:77800  IHAVE:538920  GRAFT:57065
-T-37efdc6d -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.366  Gossip:47309  IHAVE:555953  GRAFT:43586
-T-3865944b -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.525  Gossip:70494  IHAVE:538966  GRAFT:49830
-T-39f7740b -- Reliability:100.0%  Nodes:20000  Latency:5  RMR:1.358  Gossip:47157  IHAVE:559177  GRAFT:46629
-T-3bc8e16f -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.911  Gossip:78215  IHAVE:538839  GRAFT:57425
-T-3c754a9d -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.233  Gossip:64666  IHAVE:539052  GRAFT:44058
-T-428f0b8c -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.553  Gossip:51049  IHAVE:556025  GRAFT:47382
-T-433fb186 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.906  Gossip:78125  IHAVE:538930  GRAFT:57352
-T-437e9cdb -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.864  Gossip:77280  IHAVE:538919  GRAFT:56502
-T-493dc59a -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.836  Gossip:76713  IHAVE:538988  GRAFT:56029
-T-4ccf4c2d -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.661  Gossip:73215  IHAVE:538933  GRAFT:52475
-T-4ce3455b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.819  Gossip:56370  IHAVE:539182  GRAFT:35932
-T-4e7e9962 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.772  Gossip:75434  IHAVE:538910  GRAFT:54654
-T-5406b1fb -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.98  Gossip:59601  IHAVE:539220  GRAFT:39170
-T-5502bb47 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.863  Gossip:77251  IHAVE:538931  GRAFT:56521
-T-5536860e -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.796  Gossip:75914  IHAVE:538888  GRAFT:55150
-T-56b3b93a -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.962  Gossip:79233  IHAVE:538926  GRAFT:58509
-T-59fe210a -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.307  Gossip:66138  IHAVE:539047  GRAFT:45543
-T-5b9070d5 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.359  Gossip:47175  IHAVE:556070  GRAFT:43582
-T-5c09e1d1 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.907  Gossip:58136  IHAVE:555974  GRAFT:54429
-T-5e50705c -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.912  Gossip:78243  IHAVE:538874  GRAFT:57472
-T-60a43d5b -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.379  Gossip:67572  IHAVE:539012  GRAFT:46923
-T-612c1fad -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.962  Gossip:79231  IHAVE:538842  GRAFT:58414
-T-61979a65 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.654  Gossip:53086  IHAVE:539265  GRAFT:32691
-T-63d197c6 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.674  Gossip:73469  IHAVE:538925  GRAFT:52716
-T-68082f84 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.561  Gossip:71213  IHAVE:538994  GRAFT:50547
-T-683940ef -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.65  Gossip:72997  IHAVE:538994  GRAFT:52315
-T-6d8d8049 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.957  Gossip:79140  IHAVE:538918  GRAFT:58352
-T-6efb18de -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.871  Gossip:77411  IHAVE:538858  GRAFT:56629
-T-71cacc4b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.543  Gossip:70857  IHAVE:538960  GRAFT:50138
-T-71d17da8 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.336  Gossip:46714  IHAVE:556017  GRAFT:43062
-T-71ee7403 -- Reliability:100.0%  Nodes:20000  Latency:9  RMR:2.225  Gossip:64488  IHAVE:539075  GRAFT:43893
-T-72a1d194 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.348  Gossip:46950  IHAVE:556067  GRAFT:43331
-T-7447663a -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.854  Gossip:77079  IHAVE:538876  GRAFT:56297
-T-76137154 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.858  Gossip:77157  IHAVE:538899  GRAFT:56393
-T-7863cb07 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.349  Gossip:46974  IHAVE:556061  GRAFT:43355
-T-7c02fdde -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.37  Gossip:47406  IHAVE:556173  GRAFT:43903
-T-7c6a2078 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.902  Gossip:78034  IHAVE:538871  GRAFT:57220
-T-7dd2fa5f -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.337  Gossip:46737  IHAVE:556005  GRAFT:43089
-T-81c568b7 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.247  Gossip:64934  IHAVE:539113  GRAFT:44412
-T-81f5f3df -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.826  Gossip:76514  IHAVE:538957  GRAFT:55803
-T-823f6f1f -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.927  Gossip:58536  IHAVE:539221  GRAFT:38071
-T-827ff032 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.364  Gossip:47273  IHAVE:556038  GRAFT:43642
-T-85db19b7 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.351  Gossip:47025  IHAVE:556176  GRAFT:43488
-T-88dcd644 -- Reliability:100.0%  Nodes:20000  Latency:4  RMR:1.748  Gossip:54956  IHAVE:559190  GRAFT:54428
-T-8a40c519 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.357  Gossip:67142  IHAVE:539146  GRAFT:46638
-T-8bec61e5 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.777  Gossip:75541  IHAVE:538933  GRAFT:54815
-T-8cc6350c -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.661  Gossip:73220  IHAVE:538891  GRAFT:52461
-T-8e535d8a -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.439  Gossip:68776  IHAVE:538983  GRAFT:48092
-T-8f40cdc3 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.517  Gossip:70337  IHAVE:539031  GRAFT:49691
-T-912f83c8 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.34  Gossip:46791  IHAVE:556028  GRAFT:43116
-T-9183e69b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.74  Gossip:74797  IHAVE:539001  GRAFT:54120
-T-93f7c7af -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.977  Gossip:79544  IHAVE:538902  GRAFT:58766
-T-9719d984 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.79  Gossip:75806  IHAVE:538890  GRAFT:55004
-T-988bd28d -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.451  Gossip:69017  IHAVE:538957  GRAFT:48339
-T-9983bef5 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.969  Gossip:79384  IHAVE:538851  GRAFT:58581
-T-9a0c46b9 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.799  Gossip:75970  IHAVE:538898  GRAFT:55209
-T-9a21f058 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.843  Gossip:76848  IHAVE:538857  GRAFT:56036
-T-9ba45fd6 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.706  Gossip:74108  IHAVE:538913  GRAFT:53352
-T-9c0be6a6 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.338  Gossip:46760  IHAVE:556041  GRAFT:43119
-T-9faeac8c -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.799  Gossip:75975  IHAVE:538938  GRAFT:55233
-T-9ff5e28a -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.706  Gossip:74120  IHAVE:538949  GRAFT:53372
-T-a227c3c2 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.924  Gossip:58472  IHAVE:539140  GRAFT:37989
-T-a28b143f -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.657  Gossip:73134  IHAVE:538947  GRAFT:52423
-T-a3a0792a -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.432  Gossip:68630  IHAVE:539060  GRAFT:48055
-T-a3ca9c94 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.565  Gossip:71292  IHAVE:539054  GRAFT:50668
-T-a4509b22 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.827  Gossip:76535  IHAVE:538908  GRAFT:55816
-T-a5167679 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.882  Gossip:77639  IHAVE:539011  GRAFT:56936
-T-a64a2f40 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.85  Gossip:76990  IHAVE:538856  GRAFT:56194
-T-a68b731c -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.497  Gossip:69932  IHAVE:539037  GRAFT:49295
-T-a7e30123 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.414  Gossip:68276  IHAVE:538972  GRAFT:47608
-T-ab81b4d8 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.717  Gossip:74338  IHAVE:538947  GRAFT:53596
-T-b050fc23 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.794  Gossip:55869  IHAVE:539143  GRAFT:35358
-T-b4acdcf9 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.329  Gossip:46576  IHAVE:556074  GRAFT:42955
-T-b7dc1a22 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.842  Gossip:56840  IHAVE:539153  GRAFT:36384
-T-b8d4b347 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.615  Gossip:72305  IHAVE:538942  GRAFT:51583
-T-ba14fd66 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.271  Gossip:65412  IHAVE:539035  GRAFT:44780
-T-bd20fb38 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.644  Gossip:72881  IHAVE:538969  GRAFT:52204
-T-bd2d63ac -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.875  Gossip:77490  IHAVE:538916  GRAFT:56744
-T-c1e88a0f -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.643  Gossip:72851  IHAVE:538953  GRAFT:52156
-T-c3838278 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.993  Gossip:79856  IHAVE:538905  GRAFT:59085
-T-c6629f65 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.368  Gossip:47360  IHAVE:556021  GRAFT:43678
-T-ca6f5b2e -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:3.052  Gossip:81032  IHAVE:538924  GRAFT:60270
-T-caf3586f -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.345  Gossip:46889  IHAVE:556055  GRAFT:43264
-T-cbb489a0 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.355  Gossip:47091  IHAVE:556017  GRAFT:43460
-T-cd49dbd3 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.455  Gossip:69098  IHAVE:539035  GRAFT:48425
-T-d61c9680 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.696  Gossip:73923  IHAVE:538945  GRAFT:53194
-T-d675bad7 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:1.944  Gossip:58870  IHAVE:539139  GRAFT:38376
-T-d6ba28a9 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.517  Gossip:70328  IHAVE:538995  GRAFT:49652
-T-d6f2f6d9 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:3.048  Gossip:80951  IHAVE:538922  GRAFT:60178
-T-d8a38bce -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:1.657  Gossip:53144  IHAVE:539269  GRAFT:32706
-T-db8b10b3 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.734  Gossip:74670  IHAVE:538948  GRAFT:53917
-T-db96e5a7 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.985  Gossip:79696  IHAVE:538802  GRAFT:58853
-T-df9c3f73 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.976  Gossip:79518  IHAVE:538869  GRAFT:58689
-T-e2682dab -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.792  Gossip:75831  IHAVE:538930  GRAFT:55136
-T-eab2519c -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.518  Gossip:70352  IHAVE:538999  GRAFT:49662
-T-eb787cf2 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.351  Gossip:47016  IHAVE:556168  GRAFT:43497
-T-ebd13084 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.944  Gossip:58870  IHAVE:539093  GRAFT:38283
-T-ec1afa2f -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.312  Gossip:66238  IHAVE:539056  GRAFT:45629
-T-f2dd7973 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.346  Gossip:66907  IHAVE:539045  GRAFT:46313
-T-f3165e04 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.992  Gossip:59835  IHAVE:539121  GRAFT:39352
-T-f6c084d6 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.587  Gossip:71738  IHAVE:538976  GRAFT:51031
-T-f717eb5a -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.493  Gossip:69861  IHAVE:539026  GRAFT:49224
-T-f7444a89 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.206  Gossip:64112  IHAVE:539098  GRAFT:43589
-T-f8c93592 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.327  Gossip:46529  IHAVE:556142  GRAFT:42995
-T-fab94122 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.548  Gossip:70965  IHAVE:539073  GRAFT:50375
+B-022291e6 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.352  Gossip:47044  IHAVE:556097  GRAFT:43410
+B-03ef7b84 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.863  Gossip:77264  IHAVE:538899  GRAFT:56497
+B-088cea7a -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:3.011  Gossip:80223  IHAVE:539029  GRAFT:59599
+B-0b774f25 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:3.219  Gossip:84381  IHAVE:538870  GRAFT:63572
+T-0355a2c0 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.678  Gossip:53557  IHAVE:539229  GRAFT:33153
+T-0393a7ad -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.571  Gossip:71424  IHAVE:539049  GRAFT:50829
+T-06a307aa -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.435  Gossip:68703  IHAVE:539048  GRAFT:48083
+T-06f7e52d -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.295  Gossip:65888  IHAVE:539052  GRAFT:45271
+T-07e7ed8c -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.399  Gossip:47969  IHAVE:556025  GRAFT:44278
+T-08274e01 -- Reliability:100.0%  Nodes:20000  Latency:9  RMR:2.251  Gossip:65012  IHAVE:539125  GRAFT:44471
+T-0a86cc97 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.616  Gossip:72326  IHAVE:539024  GRAFT:51647
+T-0ac78620 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.847  Gossip:76928  IHAVE:538945  GRAFT:56195
+T-0ea5c55c -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.364  Gossip:47271  IHAVE:556035  GRAFT:43612
+T-0f4dab83 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.381  Gossip:47611  IHAVE:556159  GRAFT:44059
+T-0f502024 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.342  Gossip:46845  IHAVE:555983  GRAFT:43151
+T-104eca68 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.905  Gossip:78090  IHAVE:538906  GRAFT:57342
+T-16260dfc -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.365  Gossip:47299  IHAVE:556091  GRAFT:43699
+T-1787ced2 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.366  Gossip:47308  IHAVE:556007  GRAFT:43615
+T-19bad482 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.753  Gossip:75051  IHAVE:538958  GRAFT:54334
+T-1d9f8454 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.582  Gossip:71646  IHAVE:539012  GRAFT:50956
+T-1e4dd563 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.968  Gossip:59352  IHAVE:539227  GRAFT:38903
+T-216cf17c -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.475  Gossip:69505  IHAVE:539069  GRAFT:48910
+T-221efed8 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.354  Gossip:47077  IHAVE:555971  GRAFT:43356
+T-2250130c -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.448  Gossip:48952  IHAVE:555941  GRAFT:45214
+T-229d7e8b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.619  Gossip:72367  IHAVE:538972  GRAFT:51683
+T-23e5a329 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.821  Gossip:76410  IHAVE:538899  GRAFT:55640
+T-243cc6a4 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.354  Gossip:47076  IHAVE:556021  GRAFT:43428
+T-2450dcde -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.91  Gossip:78197  IHAVE:538905  GRAFT:57415
+T-252f725f -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:3.027  Gossip:80541  IHAVE:538900  GRAFT:59749
+T-25f1422a -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.642  Gossip:72831  IHAVE:538962  GRAFT:52114
+T-282c24c5 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.715  Gossip:74305  IHAVE:538968  GRAFT:53608
+T-2c004cd2 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.976  Gossip:79520  IHAVE:538822  GRAFT:58713
+T-2cdc74f8 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.884  Gossip:77676  IHAVE:538924  GRAFT:56905
+T-2d0c8755 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.913  Gossip:78257  IHAVE:538841  GRAFT:57454
+T-2e40141c -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.549  Gossip:70968  IHAVE:539084  GRAFT:50391
+T-2eb32d54 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.751  Gossip:75019  IHAVE:538925  GRAFT:54280
+T-2fcbe7cc -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.824  Gossip:76483  IHAVE:538868  GRAFT:55717
+T-31cc2cd3 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.72  Gossip:74399  IHAVE:538883  GRAFT:53611
+T-3407af29 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.337  Gossip:46739  IHAVE:555989  GRAFT:43059
+T-357f412f -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.337  Gossip:46730  IHAVE:556040  GRAFT:43103
+T-37293e90 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.865  Gossip:77301  IHAVE:538978  GRAFT:56621
+T-386dd4a4 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.88  Gossip:77589  IHAVE:538930  GRAFT:56855
+T-3a694eb2 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.352  Gossip:47046  IHAVE:556042  GRAFT:43413
+T-3c774802 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.87  Gossip:77396  IHAVE:538908  GRAFT:56612
+T-3dca716c -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.759  Gossip:75180  IHAVE:538938  GRAFT:54421
+T-3e697b88 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.33  Gossip:46596  IHAVE:555934  GRAFT:42894
+T-3ef54cde -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.514  Gossip:70283  IHAVE:539022  GRAFT:49636
+T-45c8b588 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.892  Gossip:77837  IHAVE:538833  GRAFT:57021
+T-4c41e15f -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.601  Gossip:72015  IHAVE:538994  GRAFT:51371
+T-4d1b275b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.204  Gossip:64078  IHAVE:539092  GRAFT:43523
+T-4ddc7ea0 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:3.023  Gossip:80459  IHAVE:538805  GRAFT:59565
+T-4f3c2108 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.913  Gossip:78254  IHAVE:539000  GRAFT:57586
+T-4fa6137e -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:3.056  Gossip:81118  IHAVE:538871  GRAFT:60306
+T-530612af -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.294  Gossip:65867  IHAVE:539064  GRAFT:45286
+T-54433776 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.942  Gossip:78829  IHAVE:538897  GRAFT:58060
+T-54f5f100 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.891  Gossip:77811  IHAVE:538995  GRAFT:57122
+T-570aa0fa -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.683  Gossip:73648  IHAVE:538969  GRAFT:52955
+T-5d3d1408 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.979  Gossip:79577  IHAVE:538913  GRAFT:58818
+T-5dbd27ff -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.708  Gossip:74160  IHAVE:538907  GRAFT:53410
+T-6427ae50 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.357  Gossip:47142  IHAVE:556068  GRAFT:43524
+T-669db3ee -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.795  Gossip:75888  IHAVE:538929  GRAFT:55140
+T-686972d4 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.208  Gossip:64155  IHAVE:539039  GRAFT:43561
+T-6b1c07d1 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.786  Gossip:75718  IHAVE:538999  GRAFT:55010
+T-6b4c78ab -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.847  Gossip:76931  IHAVE:538909  GRAFT:56180
+T-6d21bf81 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.882  Gossip:77642  IHAVE:539006  GRAFT:56966
+T-6f66dd12 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.368  Gossip:67348  IHAVE:539094  GRAFT:46760
+T-71ddffa2 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.93  Gossip:58606  IHAVE:539090  GRAFT:38032
+T-73adc1bb -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.258  Gossip:65161  IHAVE:539113  GRAFT:44607
+T-787bbb39 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.372  Gossip:47445  IHAVE:556108  GRAFT:43850
+T-79467006 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.858  Gossip:77164  IHAVE:538878  GRAFT:56388
+T-7ab87a52 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.362  Gossip:47235  IHAVE:555925  GRAFT:43485
+T-7c435cda -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.284  Gossip:65682  IHAVE:539143  GRAFT:45155
+T-7e9dfab5 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.633  Gossip:72659  IHAVE:539043  GRAFT:52030
+T-83a2f6fb -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.686  Gossip:73716  IHAVE:538970  GRAFT:53030
+T-886e4570 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.817  Gossip:76331  IHAVE:538890  GRAFT:55562
+T-892333fc -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.936  Gossip:78726  IHAVE:538927  GRAFT:58010
+T-8a4eb290 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.966  Gossip:59324  IHAVE:539122  GRAFT:38859
+T-934f6301 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.85  Gossip:77005  IHAVE:538968  GRAFT:56281
+T-94fb8cc6 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.843  Gossip:76864  IHAVE:538932  GRAFT:56155
+T-953e47a6 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.833  Gossip:76653  IHAVE:538888  GRAFT:55918
+T-95558ff1 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.819  Gossip:76371  IHAVE:538872  GRAFT:55579
+T-96bc90d2 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.355  Gossip:47092  IHAVE:556080  GRAFT:43481
+T-9725d53b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.733  Gossip:74653  IHAVE:538816  GRAFT:53831
+T-972615af -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.442  Gossip:68842  IHAVE:539035  GRAFT:48220
+T-97db8490 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.414  Gossip:48270  IHAVE:555943  GRAFT:44534
+T-9830d36a -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.356  Gossip:47113  IHAVE:556166  GRAFT:43592
+T-99c7c8bc -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.897  Gossip:77941  IHAVE:538825  GRAFT:57134
+T-9c8e8a49 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.667  Gossip:73339  IHAVE:538933  GRAFT:52631
+T-9d75086c -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.402  Gossip:68027  IHAVE:538973  GRAFT:47369
+T-a6d244ad -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.662  Gossip:73243  IHAVE:538948  GRAFT:52558
+T-a71a8d41 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.913  Gossip:78249  IHAVE:538805  GRAFT:57421
+T-a8b00357 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.759  Gossip:75183  IHAVE:538958  GRAFT:54524
+T-ac13e5fe -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.635  Gossip:72703  IHAVE:538916  GRAFT:51922
+T-acda908e -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.715  Gossip:54297  IHAVE:539227  GRAFT:33862
+T-aebb1c71 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.753  Gossip:75057  IHAVE:538924  GRAFT:54346
+T-afc99526 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.354  Gossip:47084  IHAVE:556023  GRAFT:43451
+T-b011272d -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.069  Gossip:61376  IHAVE:539109  GRAFT:40844
+T-b03b7cd4 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.799  Gossip:75967  IHAVE:538948  GRAFT:55230
+T-b050c95f -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.679  Gossip:73573  IHAVE:538949  GRAFT:52862
+T-b0a415fa -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.331  Gossip:46626  IHAVE:556114  GRAFT:43042
+T-b1384153 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.074  Gossip:61482  IHAVE:539251  GRAFT:41080
+T-b19f02b1 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.94  Gossip:78802  IHAVE:538848  GRAFT:58010
+T-b3711dab -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.811  Gossip:76226  IHAVE:538865  GRAFT:55472
+T-b4c788ad -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.993  Gossip:79853  IHAVE:538883  GRAFT:59066
+T-b53f1ee5 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.971  Gossip:79416  IHAVE:538823  GRAFT:58568
+T-b5c829b4 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.918  Gossip:78364  IHAVE:538847  GRAFT:57553
+T-b87fde41 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.907  Gossip:78133  IHAVE:538875  GRAFT:57316
+T-ba0b17cd -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.867  Gossip:77343  IHAVE:538911  GRAFT:56597
+T-bbfe9478 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.104  Gossip:62078  IHAVE:539106  GRAFT:41559
+T-bd0b158e -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.098  Gossip:61961  IHAVE:539111  GRAFT:41411
+T-c00db247 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.346  Gossip:46922  IHAVE:556022  GRAFT:43255
+T-c58458e7 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.851  Gossip:57022  IHAVE:539211  GRAFT:36585
+T-c942a3ff -- Reliability:100.0%  Nodes:20000  Latency:4  RMR:1.748  Gossip:54956  IHAVE:559190  GRAFT:54428
+T-c9f4f63e -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.73  Gossip:74594  IHAVE:538935  GRAFT:53851
+T-d04cc8c9 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.585  Gossip:71692  IHAVE:538987  GRAFT:51008
+T-d10ef926 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.351  Gossip:47015  IHAVE:555974  GRAFT:43321
+T-d4cae395 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.623  Gossip:72460  IHAVE:538965  GRAFT:51766
+T-d5462441 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.65  Gossip:72988  IHAVE:538971  GRAFT:52301
+T-d60624b5 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.8  Gossip:76003  IHAVE:538898  GRAFT:55241
+T-d68070cc -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.043  Gossip:60859  IHAVE:555857  GRAFT:57043
+T-db512f25 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.84  Gossip:76806  IHAVE:538895  GRAFT:56048
+T-dbb35cf6 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.794  Gossip:75884  IHAVE:538906  GRAFT:55127
+T-dbb71d1d -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.428  Gossip:68548  IHAVE:539038  GRAFT:47923
+T-dc4b6686 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.701  Gossip:74024  IHAVE:538912  GRAFT:53297
+T-dcf3597b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.758  Gossip:75165  IHAVE:538918  GRAFT:54420
+T-de6b384b -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:1.697  Gossip:53929  IHAVE:539201  GRAFT:33473
+T-df497e3f -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:1.357  Gossip:47145  IHAVE:555970  GRAFT:43420
+T-e164b670 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.848  Gossip:76962  IHAVE:538886  GRAFT:56184
+T-e19cbd61 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.611  Gossip:72222  IHAVE:538995  GRAFT:51536
+T-e2bb0a28 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.323  Gossip:46457  IHAVE:556097  GRAFT:42875
+T-e33bbb6d -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.967  Gossip:79331  IHAVE:538908  GRAFT:58590
+T-e3bb83b2 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.768  Gossip:75349  IHAVE:538930  GRAFT:54606
+T-e523288d -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.756  Gossip:75118  IHAVE:538906  GRAFT:54352
+T-e6bb384c -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.874  Gossip:77480  IHAVE:538853  GRAFT:56674
+T-ea237eba -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.948  Gossip:78962  IHAVE:538817  GRAFT:58129
+T-ea42bb2e -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.455  Gossip:69099  IHAVE:538976  GRAFT:48445
+T-ec5d1ffd -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.874  Gossip:77475  IHAVE:538914  GRAFT:56697
+T-ecc9d320 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.874  Gossip:77469  IHAVE:538917  GRAFT:56705
+T-ece2cb9a -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.368  Gossip:67352  IHAVE:539047  GRAFT:46722
+T-ee8da1d4 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.867  Gossip:77338  IHAVE:538878  GRAFT:56552
+T-eea3e77b -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.607  Gossip:72141  IHAVE:538991  GRAFT:51476
+T-eea95ffb -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:2.869  Gossip:77372  IHAVE:538911  GRAFT:56630
+T-f1eeb306 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.927  Gossip:78536  IHAVE:538898  GRAFT:57785
+T-f4f2a3c1 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.904  Gossip:78073  IHAVE:538892  GRAFT:57285
+T-f4ff10a5 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.362  Gossip:47234  IHAVE:556003  GRAFT:43543
+T-f57aa78a -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.963  Gossip:79253  IHAVE:538862  GRAFT:58457
+T-f75b7d99 -- Reliability:100.0%  Nodes:20000  Latency:7  RMR:2.908  Gossip:78164  IHAVE:538832  GRAFT:57338
+T-f794ec50 -- Reliability:100.0%  Nodes:20000  Latency:6  RMR:1.338  Gossip:46762  IHAVE:555947  GRAFT:43033
+T-faa4d614 -- Reliability:100.0%  Nodes:20000  Latency:8  RMR:2.458  Gossip:69165  IHAVE:538987  GRAFT:48477
 
-Number of Miners: 200  Total Transactions: 134
-AVERAGE -- Reliability:100.000%  Nodes:20000.0  Latency:6.8  RMR:2.333  Gossip:66665.0  IHAVE:542640.9  GRAFT:49638.8
-Degree Avg:28.0  Min:28  Max:28  Shortest Path Avg:3.61 Clustering Coefficient  0.0135
+Number of Miners: 200  Total Transactions: 145
+AVERAGE -- Reliability:100.000%  Nodes:20000.0  Latency:6.8  RMR:2.412  Gossip:68246.1  IHAVE:542417.9  GRAFT:50997.8
+PlumTree Degree Avg:28.0  Min:28  Max:28  Shortest Path Avg:3.60 Clustering Coefficient  0.0117
+Membership Degree Avg:28.0
+
+--- Degree distribution (membership, directed) ---
+   Grado     Nodos       % red
+      28     20000     100.00%  ##################################################
+Media: 28.00  Varianza: 0.00  Desv. Est.: 0.00
+
+--- Overlay convergence snapshots ---
+     t   nodes   eager_avg   eager_std   lazy_avg   lazy_std    v_avg    v_std  lazy=0 (%)  tree_formed (%)
+    50   20000        0.00        0.00       0.17       2.01     0.17     2.01        99.3              0.0
+   100   20000        0.00        0.00      27.99       0.21    27.99     0.21         0.0              0.0
+   150   20000        0.00        0.00      28.00       0.00    28.00     0.00         0.0              0.0
+   200   20000        0.00        0.00      28.00       0.00    28.00     0.00         0.0              0.0
+   250   20000        0.00        0.00      28.00       0.00    28.00     0.00         0.0              0.0
+   300   20000        1.02        3.28      26.98       3.28    28.00     0.00         0.1             19.8
+tree_formed: % of nodes con eager>0 AND lazy>0 at snapshot time
+lazy=0: % of nodes con no lazy peers (pure eager flood)
 
 ===================================================
-SIMULATION COMPLETED IN: 6583.259103032004 SECONDS
-SIMULATED EVENTS: 293665669
-EVENTS PER SECOND: 44607.94636880516
+SIMULATION COMPLETED IN: 14895.504730450004 SECONDS
+SIMULATED EVENTS: 319309732
+EVENTS PER SECOND: 21436.65070625327
 ===================================================

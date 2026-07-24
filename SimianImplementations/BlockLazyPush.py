@@ -17,10 +17,10 @@ parser.add_argument('--seedR', type=int, metavar='SEED', default=10,
 #                    help="maximum distance to be neighbors")
 parser.add_argument("-l", "--lookahead", type=float, metavar='LOOKAHEAD', default=0.1, 
                     help="min delay of mailboxes")
-parser.add_argument("-r", "--maxrounds", type=int, default=math.inf, 
-                    help="maximum number of times a message is retransmitted by nodes")
-parser.add_argument("-f", "--fanout", type=int, default=5, 
-                    help="number of nodes that are selected as gossip targets")
+#parser.add_argument("-r", "--maxrounds", type=int, default=math.inf, 
+#                    help="maximum number of times a message is retransmitted by nodes")
+#parser.add_argument("-f", "--fanout", type=int, default=5, 
+#                    help="number of nodes that are selected as gossip targets")
 parser.add_argument("--useMPI", type=int, metavar='MPI', default=0, 
                     help="use mpi")
 parser.add_argument("--activeChurn", type=int, metavar='CHURN', default=0,

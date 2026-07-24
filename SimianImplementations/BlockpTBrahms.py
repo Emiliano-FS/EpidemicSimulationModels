@@ -56,11 +56,8 @@ stabilizationTime = 250 #args.endtime
 
 # After stabilization, Brahms keeps running but at a slower cadence
 # to avoid disrupting the PlumTree overlay while still reacting to churn/failures.
-# Set to 0 to use the original behavior (stop after stabilizationTime).
 TriggerBrahmsTimePost = args.updateViews * 5
 
-# View size following paper Section 6.3: l1 = l2 = c * cbrt(n)
-# c=2 reproduces the paper exactly (2 * n^(1/3))
 l1 = math.ceil(args.c * math.pow(args.total_nodes, 1.0/3.0))
 l2 = math.ceil(args.c * math.pow(args.total_nodes, 1.0/3.0))
 a = args.a
@@ -69,9 +66,8 @@ y = 1 - a - b
 
 downNodes = []
 upNodes = []
-minerNodes = [] 
 
-name = "PlumTreeBrahms/PlumTree + Brahms" + str(args.total_nodes)+'-Seed'+str(args.seedR)+'-Update'+str(args.updateViews)+'-View'+str(args.c)+'-LOOKAHEAD'+str(args.lookahead)+'-CHURN'+str(args.activeChurn)
+name = "PlumTreeBrahms/PlumTree + Brahms" + str(args.total_nodes)+'-Seed'+str(args.seedR)+'-Update'+str(args.updateViews)+'-View'+str(args.c)+'-LOOKAHEAD'+str(args.lookahead)+'-CHURN'+str(args.activeChurn)+'-FAILRATE'+str(args.failRate)
 
 simName, startTime, endTime, minDelay, useMPI, mpiLib = name, 0, args.endtime, 0.00001, uMPI, "/usr/lib/x86_64-linux-gnu/libmpich.so"
 simianEngine = Simian(simName, startTime, endTime, minDelay, useMPI)
@@ -91,14 +87,15 @@ class msgGossip:
 
 class msgReport:
     def __init__(self, msgs, diss_degree, miner, length, trx,
-                 node_id, neighbors):
+                 node_id, neighbors, membership_degree):
         self.msgsFromNode = msgs
         self.disseminationDegree = diss_degree
         self.isMiner = miner
         self.lengthChainFromNode = length
         self.trxFromNode = trx
         self.node_id = node_id
-        self.neighbors = neighbors  # activeView snapshot
+        self.neighbors = neighbors 
+        self.membership_degree = membership_degree 
 
 class msgBrahms:
     def __init__(self,type,view,sender):
@@ -107,16 +104,17 @@ class msgBrahms:
         self.sender = sender
 
 class msgOverlaySnapshot:
-    def __init__(self, node_id, t, eager, lazy, v):
+    def __init__(self, node_id, t, eager, lazy, v, membership_view):
         self.node_id = node_id
         self.t = t
         self.eager = eager
         self.lazy = lazy
         self.v = v
+        self.membership_view = membership_view 
 
 class Sampler:
     def __init__(self):
-        self.h = random.random()   # fixed seed per sampler
+        self.h = random.random() 
         self.q = None
         self.hq = None
 
@@ -133,6 +131,9 @@ class Sampler:
     def sample(self):
         return self.q
 
+    def invalidate(self):
+        # Re-initialize this sampler when its stored node is no longer active.
+        self.__init__()
 
     def toString(self):
         return str(self.q)
@@ -140,12 +141,14 @@ class Sampler:
 class ChurnManager(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
         super(ChurnManager, self).__init__(baseInfo)
-        self.reqService(300, "do_churn_cycle", "none")
+        if churn == 1:
+            self.reqService(stabilizationTime + 50, "do_churn_cycle", "none")
 
     def do_churn_cycle(self, *args):
         churn_size = int(nodes * failRate)
-        # Churn out
-        if len(upNodes) > churn_size:
+        # Churn out: a single batch of node failures, staggered with
+        # random delays so they don't all fail at the exact same instant.
+        if len(upNodes) > churn_size and churn_size > 0:
             to_churn = random.sample(upNodes, churn_size)
             for node_id in to_churn:
                 delay = random.expovariate(1/20)
@@ -170,7 +173,8 @@ class ReportNode(simianEngine.Entity):
         self.minDegree = float('inf')
         self.shortestPathSum = 0
         self.servedNodes = 0
-        self.graph = {}  # node_id -> set(active neighbors)
+        self.graph = {}         
+        self.membership_degree_sum = 0  
 
         # Overlay convergence snapshots: {t -> {'eager': [], 'lazy': [], 'v': []}}
         self.snapshots = {}
@@ -197,10 +201,10 @@ class ReportNode(simianEngine.Entity):
         u = report.node_id
         Nu = set(report.neighbors)
 
+       
         self.graph.setdefault(u, set()).update(Nu)
-        for v in Nu:
-            self.graph.setdefault(v, set()).add(u)
 
+        self.membership_degree_sum += report.membership_degree
 
         self.servedNodes += 1
 
@@ -251,12 +255,13 @@ class ReportNode(simianEngine.Entity):
                 continue
 
             links = 0
-            for v in Nu:
-                if v not in self.graph:
-                    continue
-                links += len(Nu & self.graph[v])
-
-            links /= 2  # undirected double count
+            Nu_list = list(Nu)
+            for i in range(len(Nu_list)):
+                for j in range(i+1, len(Nu_list)):
+                    v, w = Nu_list[i], Nu_list[j]
+                    if (v in self.graph and w in self.graph[v]) or \
+                       (w in self.graph and v in self.graph[w]):
+                        links += 1
 
             Ci = links / (k * (k - 1) / 2)
             total += Ci
@@ -312,8 +317,30 @@ class ReportNode(simianEngine.Entity):
         self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}\n")
         self.out.write(f"AVERAGE -- Reliability:{avRel:.3f}%  Nodes:{avNodes:.1f}  Latency:{avLat:.1f}  "
                        f"RMR:{avRmr:.3f}  Gossip:{avGossip:.1f}  IHAVE:{avInv:.1f}  GRAFT:{avReq:.1f}\n")
-        self.out.write(f"Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
+        avg_membership_degree = round(self.membership_degree_sum / node_count, 2) if node_count > 0 else 0
+        self.out.write(f"PlumTree Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
                        f"Shortest Path Avg:{avg_shortest_path:.2f} Clustering Coefficient  {clustering:.4f}\n")
+        self.out.write(f"Membership Degree Avg:{avg_membership_degree}\n")
+
+        # --- Degree distribution histogram ---
+        self.out.write("\n--- Degree distribution (membership, directed) ---\n")
+        degree_dist = {}
+        for u, Nu in self.graph.items():
+            d = len(Nu)
+            degree_dist[d] = degree_dist.get(d, 0) + 1
+
+        total_nodes_graph = len(self.graph)
+        degrees = [len(Nu) for Nu in self.graph.values()]
+        mean_d  = sum(degrees) / len(degrees) if degrees else 0
+        var_d   = sum((d - mean_d)**2 for d in degrees) / len(degrees) if degrees else 0
+        std_d   = var_d ** 0.5
+
+        self.out.write(f"{'Grado':>8}  {'Nodos':>8}  {'% red':>10}\n")
+        for d in sorted(degree_dist.keys()):
+            pct = degree_dist[d] / total_nodes_graph * 100
+            bar = '#' * int(pct / 2)
+            self.out.write(f"{d:>8}  {degree_dist[d]:>8}  {pct:>9.2f}%  {bar}\n")
+        self.out.write(f"Media: {mean_d:.2f}  Varianza: {var_d:.2f}  Desv. Est.: {std_d:.2f}\n")
 
         # --- Overlay convergence snapshots ---
         if self.snapshots:
@@ -330,10 +357,9 @@ class ReportNode(simianEngine.Entity):
                 l_std = (sum((x - l_avg)**2  for x in s['lazy'])  / n_snap) ** 0.5
                 v_avg = sum(s['v'])     / n_snap
                 v_std = (sum((x - v_avg)**2  for x in s['v'])     / n_snap) ** 0.5
-                # "lazy=0" means the node has no lazy peers yet → tree not formed
                 lazy_zero_pct = sum(1 for x in s['lazy'] if x == 0) / n_snap * 100
-                # "tree formed" = node has at least 1 eager AND 1 lazy peer
                 tree_formed_pct = sum(1 for e, l in zip(s['eager'], s['lazy']) if e > 0 and l > 0) / n_snap * 100
+
                 self.out.write(f"{t:>6}  {n_snap:>6}  {e_avg:>10.2f}  {e_std:>10.2f}  "
                                f"{l_avg:>9.2f}  {l_std:>9.2f}  {v_avg:>7.2f}  {v_std:>7.2f}  "
                                f"{lazy_zero_pct:>10.1f}  {tree_formed_pct:>15.1f}\n")
@@ -372,6 +398,9 @@ class Node(simianEngine.Entity):
         self.Vpush = []
         self.Vpull = []
 
+        self.samplerPingTimer = {}  # {sampler_idx: nonce}
+        self.sampler_nonce = 0
+
         contactNode = self.node_idx - 1 #random.randrange(nodes)
         contactNode2 = self.node_idx - 2
         contactNode3 = self.node_idx + 1
@@ -386,8 +415,8 @@ class Node(simianEngine.Entity):
             contactNode3 -= nodes
 
         self.BrahmsInit([contactNode,contactNode2])
-
         self.reqService(5, "TriggerBrahmsSend", "none")
+        self.reqService(stabilizationTime, "TriggerSamplerProbe", "none")
 
         # Overlay convergence snapshots at key moments
         for snap_t in [50, 100, 150, 200, 250, 300]:
@@ -623,8 +652,6 @@ class Node(simianEngine.Entity):
 
     def BrahmsInit(self, v0):
         self.V = v0
-        # Start all initial neighbors as lazy so PlumTree promotes them to eager
-        # via GRAFT only when a message is actually needed.
         self.eagerPushPeers = set()
         self.lazyPushPeers = set(v0)
 
@@ -656,11 +683,10 @@ class Node(simianEngine.Entity):
                 msgToSend = msgBrahms('PULL_REPLY',str(self.V),self.node_idx)
                 self.reqService(lookahead, "Brahms", msgToSend, "Node", msg.sender)
             elif msg.type == 'PULL_REPLY':
-                if len(self.Vpull) == 0:
+                if len(self.Vpull) < math.floor(b * l1):
                     v2 = list(msg.view)
                     if self.node_idx in v2:
                         v2.remove(self.node_idx)
-
                     self.Vpull = self.Vpull + v2
 
     def NodeFailure(self,node):
@@ -676,11 +702,6 @@ class Node(simianEngine.Entity):
         if self.active==True:
             self.Vpull = list( dict.fromkeys(self.Vpull) )
 
-            # Byzantine blocking mechanism (paper Section 4.2, Line 35):
-            # If more than a*l1 pushes arrived this round, the view is under
-            # a targeted push-flooding attack. Do NOT update V this round.
-            # This slows down the attacker without blocking all correct nodes
-            # simultaneously (thanks to limited send).
             push_flooded = len(self.Vpush) > math.ceil(a * l1)
 
             if not push_flooded and (len(self.Vpush) != 0 or len(self.Vpull) != 0):
@@ -695,10 +716,7 @@ class Node(simianEngine.Entity):
                 if self.node_idx in new_V:
                     new_V.remove(self.node_idx)
 
-                # --- Incremental overlay merge ---
-                # Instead of rebuilding eagerPushPeers/lazyPushPeers from scratch,
-                # only remove nodes that left V and add nodes that joined V.
-                # This preserves the PlumTree spanning tree built over previous rounds.
+
                 old_V_set = set(self.V)
                 new_V_set = set(new_V)
 
@@ -708,8 +726,6 @@ class Node(simianEngine.Entity):
 
                 for n in new_V_set - old_V_set:
                     if n not in self.eagerPushPeers:
-                        # Add new neighbors as lazy: PlumTree will promote to eager
-                        # via GRAFT if a message doesn't arrive through other paths.
                         self.lazyPushPeers.add(n)
 
                 self.V = set(new_V)
@@ -717,8 +733,6 @@ class Node(simianEngine.Entity):
 
                 self.updateSample(list( dict.fromkeys(self.Vpush + self.Vpull) ) )
 
-            # Always stream received ids to samplers regardless of blocking
-            # (paper Line 37: all ids are input to S even when V is not updated)
             if push_flooded:
                 self.updateSample(list(dict.fromkeys(self.Vpush + self.Vpull)))
 
@@ -735,10 +749,6 @@ class Node(simianEngine.Entity):
                     msgToSend = msgBrahms('PULL',"[]",self.node_idx)
                     self.reqService(lookahead, "Brahms", msgToSend, "Node", n)
 
-            # Brahms runs continuously throughout the simulation.
-            # Before stabilization: fast cadence (updateViews) for quick convergence.
-            # After stabilization: slower cadence (updateViews * 5) to keep the
-            # PlumTree overlay stable while still reacting to churn/failures.
             if self.engine.now < churnEndtime:
                 self.reqService(TriggerBrahmsTime, "TriggerBrahmsSend", "none")
             elif self.engine.now < stabilizationTime:
@@ -746,6 +756,41 @@ class Node(simianEngine.Entity):
             else:
                 self.reqService(TriggerBrahmsTimePost, "TriggerBrahmsSend", "none")
                 
+    def next_sampler_nonce(self):
+        self.sampler_nonce += 1
+        return self.sampler_nonce
+
+    def TriggerSamplerProbe(self, *args):
+        if not self.active:
+            return
+        for i, s in enumerate(self.S):
+            if s.sample() is not None:
+                nonce = self.next_sampler_nonce()
+                self.samplerPingTimer[i] = nonce
+                self.reqService(lookahead, "SamplerPingMsg",
+                               (self.node_idx, i, nonce), "Node", s.sample())
+                self.reqService(1.5, "SamplerPingTimer", (i, nonce))
+        self.reqService(stabilizationTime / 10, "TriggerSamplerProbe", "none")
+
+    def SamplerPingMsg(self, *args):
+        sender, sampler_idx, nonce = args[0]
+        if self.active:
+            self.reqService(lookahead, "SamplerPongMsg",
+                           (self.node_idx, sampler_idx, nonce), "Node", sender)
+
+    def SamplerPongMsg(self, *args):
+        sender, sampler_idx, nonce = args[0]
+        if self.samplerPingTimer.get(sampler_idx) == nonce:
+            del self.samplerPingTimer[sampler_idx]
+
+    def SamplerPingTimer(self, *args):
+
+        sampler_idx, nonce = args[0]
+        if self.samplerPingTimer.get(sampler_idx) != nonce:
+            return 
+        del self.samplerPingTimer[sampler_idx]
+        self.S[sampler_idx].invalidate()
+
     def SendOverlaySnapshot(self, *args):
         snap_t = args[0]
         if self.active:
@@ -754,14 +799,15 @@ class Node(simianEngine.Entity):
                 snap_t,
                 len(self.eagerPushPeers),
                 len(self.lazyPushPeers),
-                len(self.V)
+                len(self.V),
+                list(self.V)  
             )
             self.reqService(lookahead, "OverlaySnapshot", snap, "ReportNode", 0)
 
     def TriggerSystemReport(self,*args):
         if self.active:
             messageMetrics = []
-            
+           
             for m in self.receivedMsgs.keys():
                 messageMetrics.append( {
                                         'id': m,
@@ -780,7 +826,8 @@ class Node(simianEngine.Entity):
                 len(self.blockchain.chain),
                 self.trxMade,
                 self.node_idx,
-                list(self.V)
+                list(self.V),
+                len(self.V) 
             )
 
             #print("\n=== BLOCK DAG PER NODE ===")
@@ -809,8 +856,6 @@ class Node(simianEngine.Entity):
     
     def BecomeMiner(self, *args):
         self.miner = True
-        if self.node_idx not in minerNodes:
-            minerNodes.append(self.node_idx) 
         self.start_mining()
 
     def force_churn_out(self, *args):
@@ -828,19 +873,17 @@ class Node(simianEngine.Entity):
                 downNodes.append(self.node_idx)
 
     def create_transaction(self,*args):
+        n = random.choice(upNodes)
         avg_transactionT = 5.0
         delay = random.expovariate(1/avg_transactionT)
-
         if self.active and not self.miner:
             transaction = Transaction(self.node_idx)
             tx_msg = msgGossip('BROADCAST',"TRX", transaction, transaction.trans_id, 0, self.node_idx)
             self.reqService(lookahead, "PlumTreeGossip", tx_msg, "Node", self.node_idx)
             self.trxMade += 1
-
-        non_miner_nodes = [n for n in upNodes if n not in minerNodes]
-        if non_miner_nodes:
-            n = random.choice(non_miner_nodes)
-            self.reqService(delay, "create_transaction", "", "Node", n)
+            self.reqService(delay , "create_transaction", "" , "Node", n)
+        else:
+            self.reqService(delay , "create_transaction", "" , "Node", n)
 
 
 for i in range(0, nodes):

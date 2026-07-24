@@ -1,0 +1,29 @@
+
+
+#python BlockLazyPush.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --failRate 0.5
+#python BlockLazyPush.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1  --failRate 0.6
+#python BlockLazyPush.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1  --failRate 0.7
+#python BlockLazyPush.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1  --failRate 0.8
+#python BlockLazyPush.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1  --failRate 0.9
+
+
+#python BlockpTHyParView.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --c 2 --arwl 6 --prwl 3 --updateViews 5 --failRate 0.5
+#python BlockpTHyParView.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --c 2 --arwl 6 --prwl 3 --updateViews 5 --failRate 0.6
+#python BlockpTHyParView.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --c 2 --arwl 6 --prwl 3 --updateViews 5 --failRate 0.7
+#python BlockpTHyParView.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --c 2 --arwl 6 --prwl 3 --updateViews 5 --failRate 0.8
+#python BlockpTHyParView.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --c 2 --arwl 6 --prwl 3 --updateViews 5 --failRate 0.9
+
+
+
+python BlockpTBrahms.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --updateViews 5 --c 1 --failRate 0.5
+python BlockpTBrahms.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --updateViews 5 --c 1 --failRate 0.6
+python BlockpTBrahms.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --updateViews 5 --c 1 --failRate 0.7
+python BlockpTBrahms.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --updateViews 5 --c 1 --failRate 0.8
+python BlockpTBrahms.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --updateViews 5 --c 1 --failRate 0.9
+
+
+#python BlockpTDIMPLE.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --shuffleTime 25 --failRate 0.5
+#python BlockpTDIMPLE.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --shuffleTime 25 --failRate 0.6
+#python BlockpTDIMPLE.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --shuffleTime 25 --failRate 0.7
+#python BlockpTDIMPLE.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --shuffleTime 25 --failRate 0.8
+#python BlockpTDIMPLE.py 10000 1000 --seedR 10 -l 0.001 --activeChurn 1 --shuffleTime 25 --failRate 0.9

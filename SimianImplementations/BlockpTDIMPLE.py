@@ -56,7 +56,7 @@ downNodes = []
 upNodes = []
 minerNodes = []
 
-name = "PlumTreeDIMPLE/PlumTree + DIMPLE" + str(args.total_nodes)+'-Seed'+str(args.seedR)+'-ShuffleTime'+str(args.shuffleTime)+'-LOOKAHEAD'+str(args.lookahead)+'-CHURN'+str(args.activeChurn)
+name = "PlumTreeDIMPLE/PlumTree + DIMPLE" + str(args.total_nodes)+'-Seed'+str(args.seedR)+'-ShuffleTime'+str(args.shuffleTime)+'-LOOKAHEAD'+str(args.lookahead)+'-CHURN'+str(args.activeChurn)+'-FAILRATE'+str(args.failRate)
 
 simName, startTime, endTime, minDelay, useMPI, mpiLib = name, 0, args.endtime, 0.00001, uMPI, "/usr/lib/x86_64-linux-gnu/libmpich.so"
 simianEngine = Simian(simName, startTime, endTime, minDelay, useMPI)
@@ -98,7 +98,7 @@ class partialViewEntry:
     
 class msgReport:
     def __init__(self, msgs, diss_degree, miner, length, trx,
-                 node_id, neighbors):
+                 node_id, neighbors, membership_degree):
         self.msgsFromNode = msgs
         self.disseminationDegree = diss_degree
         self.isMiner = miner
@@ -106,6 +106,16 @@ class msgReport:
         self.trxFromNode = trx
         self.node_id = node_id
         self.neighbors = neighbors  # activeView snapshot
+        self.membership_degree = membership_degree  # tamaño real de partial_view
+
+class msgOverlaySnapshot:
+    def __init__(self, node_id, t, eager, lazy, v, membership_view):
+        self.node_id = node_id
+        self.t = t
+        self.eager = eager
+        self.lazy = lazy
+        self.v = v
+        self.membership_view = membership_view
 
 class ChurnManager(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
@@ -139,10 +149,23 @@ class ReportNode(simianEngine.Entity):
         self.minDegree = float('inf')
         self.shortestPathSum = 0
         self.servedNodes = 0
-        self.graph = {}  # node_id -> set(active neighbors)
+        self.graph = {}           
+        self.membership_degree_sum = 0 
+
+        # Overlay convergence snapshots: {t -> {'eager': [], 'lazy': [], 'v': []}}
+        self.snapshots = {}
 
         # Schedule the final report
         self.reqService(endTime, "PrintSystemReport", "none")
+
+    def OverlaySnapshot(self, *args):
+        snap = args[0]
+        t = snap.t
+        if t not in self.snapshots:
+            self.snapshots[t] = {'eager': [], 'lazy': [], 'v': []}
+        self.snapshots[t]['eager'].append(snap.eager)
+        self.snapshots[t]['lazy'].append(snap.lazy)
+        self.snapshots[t]['v'].append(snap.v)
 
     def SystemReport(self, *args):
         report = args[0]
@@ -154,13 +177,10 @@ class ReportNode(simianEngine.Entity):
         u = report.node_id
         Nu = set(report.neighbors)
 
-        # ensure node exists
+        
         self.graph.setdefault(u, set()).update(Nu)
 
-        # enforce undirected edges
-        for v in Nu:
-            self.graph.setdefault(v, set()).add(u)
-
+        self.membership_degree_sum += report.membership_degree
 
         self.servedNodes += 1
 
@@ -211,12 +231,13 @@ class ReportNode(simianEngine.Entity):
                 continue
 
             links = 0
-            for v in Nu:
-                if v not in self.graph:
-                    continue
-                links += len(Nu & self.graph[v])
-
-            links /= 2  # undirected double count
+            Nu_list = list(Nu)
+            for i in range(len(Nu_list)):
+                for j in range(i+1, len(Nu_list)):
+                    v, w = Nu_list[i], Nu_list[j]
+                    if (v in self.graph and w in self.graph[v]) or \
+                       (w in self.graph and v in self.graph[w]):
+                        links += 1
 
             Ci = links / (k * (k - 1) / 2)
             total += Ci
@@ -272,8 +293,54 @@ class ReportNode(simianEngine.Entity):
         self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}\n")
         self.out.write(f"AVERAGE -- Reliability:{avRel:.3f}%  Nodes:{avNodes:.1f}  Latency:{avLat:.1f}  "
                        f"RMR:{avRmr:.3f}  Gossip:{avGossip:.1f}  IHAVE:{avInv:.1f}  GRAFT:{avReq:.1f}\n")
-        self.out.write(f"Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
+        avg_membership_degree = round(self.membership_degree_sum / node_count, 2) if node_count > 0 else 0
+        self.out.write(f"PlumTree Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
                        f"Shortest Path Avg:{avg_shortest_path:.2f} Clustering Coefficient  {clustering:.4f}\n")
+        self.out.write(f"Membership Degree Avg:{avg_membership_degree}\n")
+
+        # --- Degree distribution histogram (grafo dirigido de membresía) ---
+        self.out.write("\n--- Degree distribution (membership, directed) ---\n")
+        degree_dist = {}
+        for u, Nu in self.graph.items():
+            d = len(Nu)
+            degree_dist[d] = degree_dist.get(d, 0) + 1
+
+        total_nodes_graph = len(self.graph)
+        degrees = [len(Nu) for Nu in self.graph.values()]
+        mean_d  = sum(degrees) / len(degrees) if degrees else 0
+        var_d   = sum((d - mean_d)**2 for d in degrees) / len(degrees) if degrees else 0
+        std_d   = var_d ** 0.5
+
+        self.out.write(f"{'Grado':>8}  {'Nodos':>8}  {'% red':>10}\n")
+        for d in sorted(degree_dist.keys()):
+            pct = degree_dist[d] / total_nodes_graph * 100
+            bar = '#' * int(pct / 2)
+            self.out.write(f"{d:>8}  {degree_dist[d]:>8}  {pct:>9.2f}%  {bar}\n")
+        self.out.write(f"Media: {mean_d:.2f}  Varianza: {var_d:.2f}  Desv. Est.: {std_d:.2f}\n")
+
+        # --- Overlay convergence snapshots ---
+        if self.snapshots:
+            self.out.write("\n--- Overlay convergence snapshots ---\n")
+            self.out.write(f"{'t':>6}  {'nodes':>6}  {'eager_avg':>10}  {'eager_std':>10}  "
+                           f"{'lazy_avg':>9}  {'lazy_std':>9}  {'v_avg':>7}  {'v_std':>7}  "
+                           f"{'lazy=0 (%)':>10}  {'tree_formed (%)':>15}\n")
+            for t in sorted(self.snapshots.keys()):
+                s = self.snapshots[t]
+                n_snap = len(s['eager'])
+                e_avg = sum(s['eager']) / n_snap
+                e_std = (sum((x - e_avg)**2 for x in s['eager']) / n_snap) ** 0.5
+                l_avg = sum(s['lazy'])  / n_snap
+                l_std = (sum((x - l_avg)**2 for x in s['lazy'])  / n_snap) ** 0.5
+                v_avg = sum(s['v'])     / n_snap
+                v_std = (sum((x - v_avg)**2 for x in s['v'])     / n_snap) ** 0.5
+                lazy_zero_pct    = sum(1 for x in s['lazy'] if x == 0) / n_snap * 100
+                tree_formed_pct  = sum(1 for e, l in zip(s['eager'], s['lazy']) if e > 0 and l > 0) / n_snap * 100
+
+                self.out.write(f"{t:>6}  {n_snap:>6}  {e_avg:>10.2f}  {e_std:>10.2f}  "
+                               f"{l_avg:>9.2f}  {l_std:>9.2f}  {v_avg:>7.2f}  {v_std:>7.2f}  "
+                               f"{lazy_zero_pct:>10.1f}  {tree_formed_pct:>15.1f}\n")
+            self.out.write("tree_formed: % of nodes con eager>0 AND lazy>0 at snapshot time\n")
+            self.out.write("lazy=0: % of nodes con no lazy peers (pure eager flood)\n")
 
 
 
@@ -330,6 +397,11 @@ class Node(simianEngine.Entity):
             self.reqService(join_delay, "Dimple", join_msg, "Node", contact)
             
         self.reqService(endTime - 1, "TriggerSystemReport", "none")
+
+        # Overlay convergence snapshots at key moments
+        for snap_t in [50, 100, 150, 200, 250, 300]:
+            if snap_t < endTime:
+                self.reqService(snap_t, "SendOverlaySnapshot", snap_t)
     
     def start_mining(self):
         if not (self.miner and self.active):
@@ -798,13 +870,25 @@ class Node(simianEngine.Entity):
         self.NeighborDown(node_id)
         
     def TimerDimple(self, *args):
-        dest, responseTime = args[0]  # ← args[0] porque pasas una lista
-        # Si el peer ya respondió, fue removido de la lista
+        dest, responseTime = args[0]  
         if dest not in self.timerDimple[responseTime]:
-            return  # ya respondió, ignorar
+            return  
         self.timerDimple[responseTime].remove(dest)
         self.NodeFailure(dest)
 
+
+    def SendOverlaySnapshot(self, *args):
+        snap_t = args[0]
+        if self.active:
+            snap = msgOverlaySnapshot(
+                self.node_idx,
+                snap_t,
+                len(self.eagerPushPeers),
+                len(self.lazyPushPeers),
+                len(self.partial_view),
+                [e.node_idx for e in self.partial_view] 
+            )
+            self.reqService(lookahead, "OverlaySnapshot", snap, "ReportNode", 0)
 
  #--------------------------------------- TRIGGERS ---------------------------------------------------#   
       
@@ -831,7 +915,8 @@ class Node(simianEngine.Entity):
                 len(self.blockchain.chain),
                 self.trxMade,
                 self.node_idx,
-                neighbors
+                neighbors,
+                len(self.partial_view)   
             )
 
             #print("\n=== BLOCK DAG PER NODE ===")
