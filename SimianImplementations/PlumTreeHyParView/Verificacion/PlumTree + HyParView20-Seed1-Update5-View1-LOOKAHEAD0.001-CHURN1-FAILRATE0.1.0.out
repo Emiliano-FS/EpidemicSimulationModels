@@ -1,0 +1,279 @@
+Simian JIT PDES Engine (1.65)
+(c) Copyright 2015-. Triad National Security, LLC. All rights reserved. Released under BSD 3-clause license.
+Author: Nandakishore Santhi (with other contributors as acknowledged in source code)
+
+===================================================
+------------SIMIAN-PIE JIT PDES ENGINE-------------
+------------       VERSION: 1.65      -------------
+===================================================
+MPI: OFF
+===================================================
+
+Node[0]: Running on rank 0
+Node[1]: Running on rank 0
+Node[2]: Running on rank 0
+Node[3]: Running on rank 0
+Node[4]: Running on rank 0
+Node[5]: Running on rank 0
+Node[6]: Running on rank 0
+Node[7]: Running on rank 0
+Node[8]: Running on rank 0
+Node[9]: Running on rank 0
+Node[10]: Running on rank 0
+Node[11]: Running on rank 0
+Node[12]: Running on rank 0
+Node[13]: Running on rank 0
+Node[14]: Running on rank 0
+Node[15]: Running on rank 0
+Node[16]: Running on rank 0
+Node[17]: Running on rank 0
+Node[18]: Running on rank 0
+Node[19]: Running on rank 0
+ReportNode[0]: Running on rank 0
+ChurnManager[0]: Running on rank 0
+B-0035ef89 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-006b5e82 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+B-009d4366 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-010ca272 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+B-012ae2db -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0131e5ea -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+B-015b110a -- Reliability:100.0%  Nodes:18  Latency:4  RMR:0.118  GossipSent:19  IHAVESent:19  GRAFTSent:2
+B-01ab88a5 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+B-01bae794 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-01eb8474 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.0  GossipSent:17  IHAVESent:20  GRAFTSent:0
+B-01f6611f -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.118  GossipSent:19  IHAVESent:19  GRAFTSent:2
+B-0259cb6e -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-029ddcae -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+B-02aff296 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-02f2193d -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+B-03124334 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-03138320 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0388e3f5 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+B-03eafc9b -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:16  GRAFTSent:3
+B-046fe3e7 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-04836bd0 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+B-048c9db6 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-04bc838b -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-04e993a2 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.529  GossipSent:26  IHAVESent:15  GRAFTSent:10
+B-04eaa2d8 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+B-04eaaef3 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+B-054de03c -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+B-0552b11e -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-05599a74 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.471  GossipSent:25  IHAVESent:15  GRAFTSent:7
+B-05781fa1 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0579a6bb -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+B-059dcebf -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+B-05bf2e36 -- Reliability:100.0%  Nodes:18  Latency:4  RMR:0.118  GossipSent:19  IHAVESent:19  GRAFTSent:2
+B-062d5e67 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0661de78 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-073de194 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+B-07ad7a14 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.294  GossipSent:22  IHAVESent:16  GRAFTSent:5
+B-084fea92 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.471  GossipSent:25  IHAVESent:15  GRAFTSent:7
+B-09535053 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+B-09fe12fe -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+B-0a1fd54f -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+B-0a8b146d -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.059  GossipSent:18  IHAVESent:18  GRAFTSent:2
+B-0a9a8a48 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+B-0aa2f5e1 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+B-0ac02fdc -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+B-0ac056e1 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+B-0ae854b6 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0b09e0cd -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+B-0b1d3376 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.882  GossipSent:32  IHAVESent:10  GRAFTSent:14
+B-0bde30d7 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.471  GossipSent:25  IHAVESent:15  GRAFTSent:7
+B-0c1d46d6 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0ca490a9 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+B-0cb28e14 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0d204759 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0d257628 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+B-0d8e8381 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.471  GossipSent:25  IHAVESent:15  GRAFTSent:7
+B-0dc9059e -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.353  GossipSent:23  IHAVESent:16  GRAFTSent:6
+B-0dfafd44 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0e4c2d55 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0e5b5140 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+B-0e747df3 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.294  GossipSent:22  IHAVESent:17  GRAFTSent:6
+B-0e86150c -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+B-0ee530ba -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+B-0eeca402 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.118  GossipSent:19  IHAVESent:19  GRAFTSent:2
+B-0ef256cd -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+B-0f615c15 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+B-0f632027 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+B-0f7621a7 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.118  GossipSent:19  IHAVESent:19  GRAFTSent:2
+B-0fe316f1 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-00221a97 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:1.059  GossipSent:35  IHAVESent:0  GRAFTSent:0
+T-00c9b80e -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:15  GRAFTSent:5
+T-015df7b6 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-0174c5c4 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-03635641 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.647  GossipSent:28  IHAVESent:12  GRAFTSent:9
+T-03cb64b5 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-06cc4f4b -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-06d2c5b8 -- Reliability:100.0%  Nodes:18  Latency:4  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-0a791245 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-0bffca01 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-0e6550e6 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-0f29a19b -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-11aed0ca -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-14275e6a -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-15a5e30b -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:13  GRAFTSent:7
+T-1781ab78 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-17946783 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-18b0b9a3 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.529  GossipSent:26  IHAVESent:14  GRAFTSent:9
+T-19372c76 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.353  GossipSent:23  IHAVESent:16  GRAFTSent:5
+T-194cf879 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-1a202c42 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-1a588e1f -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-1c379432 -- Reliability:100.0%  Nodes:18  Latency:4  RMR:0.118  GossipSent:19  IHAVESent:19  GRAFTSent:2
+T-205d646e -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-208c8ed6 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-23533745 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-2d79c287 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-3058b6e6 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-31363c79 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.294  GossipSent:22  IHAVESent:14  GRAFTSent:6
+T-341cf976 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.647  GossipSent:28  IHAVESent:14  GRAFTSent:12
+T-3473c8e6 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-363ce5a9 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.824  GossipSent:31  IHAVESent:12  GRAFTSent:13
+T-36814bbe -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-36ba7298 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:1.059  GossipSent:35  IHAVESent:11  GRAFTSent:18
+T-37ce4447 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-3a444b2c -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.941  GossipSent:33  IHAVESent:12  GRAFTSent:16
+T-3af449f9 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:14  GRAFTSent:9
+T-3cf8b953 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.941  GossipSent:33  IHAVESent:12  GRAFTSent:16
+T-3d6b6499 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-403c413d -- Reliability:100.0%  Nodes:18  Latency:9  RMR:0.588  GossipSent:27  IHAVESent:14  GRAFTSent:11
+T-40fe866b -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-4165e623 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-41a9ff84 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-41dad354 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-424ca168 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-42d1db90 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-434836ed -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-438adc52 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-4ad2f929 -- Reliability:100.0%  Nodes:18  Latency:4  RMR:0.0  GossipSent:17  IHAVESent:20  GRAFTSent:0
+T-4e376aed -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-4f3c14e5 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-5106f868 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-514f401c -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-51573481 -- Reliability:100.0%  Nodes:18  Latency:9  RMR:1.059  GossipSent:35  IHAVESent:11  GRAFTSent:18
+T-52282088 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-55013962 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-5562bccd -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.118  GossipSent:19  IHAVESent:19  GRAFTSent:2
+T-55d11971 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-56735030 -- Reliability:100.0%  Nodes:18  Latency:4  RMR:0.118  GossipSent:19  IHAVESent:19  GRAFTSent:2
+T-57c654e2 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-599a396e -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-5a25a6f7 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-5a8a061c -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-5cbaf2aa -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-5df4b10f -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-5e298e7f -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-5ea479c9 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-5f12ae27 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:1.059  GossipSent:35  IHAVESent:11  GRAFTSent:18
+T-601da186 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-635729d3 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-6430a570 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:14  GRAFTSent:9
+T-64e3e1c3 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-668ac2eb -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-683eea6e -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-6e4a8adc -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-6fe51a84 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-716dd63d -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-71e9e732 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-758259b6 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-7587c383 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-7744b0ad -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:13  GRAFTSent:6
+T-783547d8 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-78a35398 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-78e1265d -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-7c073a08 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:15  GRAFTSent:7
+T-80bde2c4 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-815275e1 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:16  GRAFTSent:3
+T-8193e0d8 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.941  GossipSent:33  IHAVESent:12  GRAFTSent:16
+T-81f11176 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-828b4209 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:13  GRAFTSent:10
+T-856f5f68 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-8662c257 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.353  GossipSent:23  IHAVESent:16  GRAFTSent:6
+T-8ad7a466 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-8c13e625 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-934302ae -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.529  GossipSent:26  IHAVESent:13  GRAFTSent:8
+T-94878471 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-9557302b -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-9614fce2 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.353  GossipSent:23  IHAVESent:13  GRAFTSent:5
+T-96b62951 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-98a8c787 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-9a71b5a8 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-9ae2a0f2 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-9b36b886 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.647  GossipSent:28  IHAVESent:13  GRAFTSent:10
+T-9da64961 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-9e33d1f7 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-9f6f5d22 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-9f75ed9a -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-a017843d -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.765  GossipSent:30  IHAVESent:13  GRAFTSent:12
+T-a20afa3b -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-a33224a5 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-a52549e2 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-a86a9fef -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-aa4c08b7 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:1.059  GossipSent:35  IHAVESent:11  GRAFTSent:18
+T-ac656621 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-adcc6aed -- Reliability:100.0%  Nodes:18  Latency:9  RMR:0.647  GossipSent:28  IHAVESent:11  GRAFTSent:9
+T-aecce21c -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.941  GossipSent:33  IHAVESent:12  GRAFTSent:16
+T-af8552a3 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:1.0  GossipSent:34  IHAVESent:11  GRAFTSent:16
+T-b0de7a8b -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-b3cc3573 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-b4a32ec9 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-b4accd45 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-b551edb5 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-b779155d -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-c25c4f85 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-c6778336 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-c6f541d5 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-cb5b7399 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-cc3b346c -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-cce8cc57 -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-d2be6d13 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-d2f5afb5 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:15  GRAFTSent:5
+T-d365e71b -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-d59bac97 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-d8800aff -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-da8b724b -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-dba3a196 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-dca726ac -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.824  GossipSent:31  IHAVESent:11  GRAFTSent:10
+T-e1f82635 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.941  GossipSent:33  IHAVESent:12  GRAFTSent:16
+T-e252330f -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-e2729e09 -- Reliability:100.0%  Nodes:18  Latency:9  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-e35ef92d -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-eb492979 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.647  GossipSent:28  IHAVESent:13  GRAFTSent:12
+T-ebf68f17 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+T-eef0331e -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.588  GossipSent:27  IHAVESent:15  GRAFTSent:10
+T-f1982fd9 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-f2b227ae -- Reliability:100.0%  Nodes:18  Latency:7  RMR:0.235  GossipSent:21  IHAVESent:18  GRAFTSent:4
+T-f6eba079 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-f9b79df1 -- Reliability:100.0%  Nodes:18  Latency:6  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-f9cdd041 -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.471  GossipSent:25  IHAVESent:16  GRAFTSent:8
+T-f9e8f849 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-fa7da5ba -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.353  GossipSent:23  IHAVESent:17  GRAFTSent:6
+T-fa9bc46c -- Reliability:100.0%  Nodes:18  Latency:8  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-fc294dbe -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.706  GossipSent:29  IHAVESent:14  GRAFTSent:12
+T-ff474634 -- Reliability:100.0%  Nodes:18  Latency:5  RMR:0.824  GossipSent:31  IHAVESent:13  GRAFTSent:14
+
+Number of Miners: 1  Total Transactions: 151
+AVERAGE -- Reliability:100.000%  Nodes:18.0  Latency:6.3  RMR:0.537  GossipSent:26.1  IHAVESent:15.1  GRAFTSent:9.0
+Degree Avg:3.0  Min:3  Max:3  Shortest Path Avg:3.21 Clustering Coefficient  0.0556
+
+--- Membership control messages ---
+               DISCONNECT:         35  (  0.11%)
+              FORWARDJOIN:        222  (  0.70%)
+                     JOIN:         17  (  0.05%)
+                 NEIGHBOR:       1274  (  4.00%)
+            NEIGHBORREPLY:       1214  (  3.81%)
+                  SHUFFLE:      19621  ( 61.55%)
+             SHUFFLEREPLY:       3287  ( 10.31%)
+              SHUFFLE_ACK:       3743  ( 11.74%)
+               TCPCONNECT:       1285  (  4.03%)
+           TCPCONNECT_ACK:       1180  (  3.70%)
+                    TOTAL:      31878
+
+===================================================
+SIMULATION COMPLETED IN: 3.247999027997139 SECONDS
+SIMULATED EVENTS: 71499
+EVENTS PER SECOND: 22013.245503983257
+===================================================

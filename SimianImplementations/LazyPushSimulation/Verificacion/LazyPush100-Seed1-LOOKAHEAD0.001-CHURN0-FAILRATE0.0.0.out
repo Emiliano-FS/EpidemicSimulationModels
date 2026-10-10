@@ -1,0 +1,389 @@
+Simian JIT PDES Engine (1.65)
+(c) Copyright 2015-. Triad National Security, LLC. All rights reserved. Released under BSD 3-clause license.
+Author: Nandakishore Santhi (with other contributors as acknowledged in source code)
+
+===================================================
+------------SIMIAN-PIE JIT PDES ENGINE-------------
+------------       VERSION: 1.65      -------------
+===================================================
+MPI: OFF
+===================================================
+
+Seeder[0]: Running on rank 0
+Seeder[1]: Running on rank 0
+Seeder[2]: Running on rank 0
+Node[0]: Running on rank 0
+Node[1]: Running on rank 0
+Node[2]: Running on rank 0
+Node[3]: Running on rank 0
+Node[4]: Running on rank 0
+Node[5]: Running on rank 0
+Node[6]: Running on rank 0
+Node[7]: Running on rank 0
+Node[8]: Running on rank 0
+Node[9]: Running on rank 0
+Node[10]: Running on rank 0
+Node[11]: Running on rank 0
+Node[12]: Running on rank 0
+Node[13]: Running on rank 0
+Node[14]: Running on rank 0
+Node[15]: Running on rank 0
+Node[16]: Running on rank 0
+Node[17]: Running on rank 0
+Node[18]: Running on rank 0
+Node[19]: Running on rank 0
+Node[20]: Running on rank 0
+Node[21]: Running on rank 0
+Node[22]: Running on rank 0
+Node[23]: Running on rank 0
+Node[24]: Running on rank 0
+Node[25]: Running on rank 0
+Node[26]: Running on rank 0
+Node[27]: Running on rank 0
+Node[28]: Running on rank 0
+Node[29]: Running on rank 0
+Node[30]: Running on rank 0
+Node[31]: Running on rank 0
+Node[32]: Running on rank 0
+Node[33]: Running on rank 0
+Node[34]: Running on rank 0
+Node[35]: Running on rank 0
+Node[36]: Running on rank 0
+Node[37]: Running on rank 0
+Node[38]: Running on rank 0
+Node[39]: Running on rank 0
+Node[40]: Running on rank 0
+Node[41]: Running on rank 0
+Node[42]: Running on rank 0
+Node[43]: Running on rank 0
+Node[44]: Running on rank 0
+Node[45]: Running on rank 0
+Node[46]: Running on rank 0
+Node[47]: Running on rank 0
+Node[48]: Running on rank 0
+Node[49]: Running on rank 0
+Node[50]: Running on rank 0
+Node[51]: Running on rank 0
+Node[52]: Running on rank 0
+Node[53]: Running on rank 0
+Node[54]: Running on rank 0
+Node[55]: Running on rank 0
+Node[56]: Running on rank 0
+Node[57]: Running on rank 0
+Node[58]: Running on rank 0
+Node[59]: Running on rank 0
+Node[60]: Running on rank 0
+Node[61]: Running on rank 0
+Node[62]: Running on rank 0
+Node[63]: Running on rank 0
+Node[64]: Running on rank 0
+Node[65]: Running on rank 0
+Node[66]: Running on rank 0
+Node[67]: Running on rank 0
+Node[68]: Running on rank 0
+Node[69]: Running on rank 0
+Node[70]: Running on rank 0
+Node[71]: Running on rank 0
+Node[72]: Running on rank 0
+Node[73]: Running on rank 0
+Node[74]: Running on rank 0
+Node[75]: Running on rank 0
+Node[76]: Running on rank 0
+Node[77]: Running on rank 0
+Node[78]: Running on rank 0
+Node[79]: Running on rank 0
+Node[80]: Running on rank 0
+Node[81]: Running on rank 0
+Node[82]: Running on rank 0
+Node[83]: Running on rank 0
+Node[84]: Running on rank 0
+Node[85]: Running on rank 0
+Node[86]: Running on rank 0
+Node[87]: Running on rank 0
+Node[88]: Running on rank 0
+Node[89]: Running on rank 0
+Node[90]: Running on rank 0
+Node[91]: Running on rank 0
+Node[92]: Running on rank 0
+Node[93]: Running on rank 0
+Node[94]: Running on rank 0
+Node[95]: Running on rank 0
+Node[96]: Running on rank 0
+Node[97]: Running on rank 0
+Node[98]: Running on rank 0
+Node[99]: Running on rank 0
+ReportNode[0]: Running on rank 0
+B-000acdef -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-000e38ea -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-003027c6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-008ab855 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-00c84c3c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-00dfc28c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-00ea4d02 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-00fba8dd -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0140fb85 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-01475ef2 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-01743145 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-018b8d9b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-01a4b5d0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-01f4e68d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-022e88c6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0232a7c6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-024b5a56 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-02749858 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-027f28a8 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-02839b9c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-029d09a7 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-030f85e6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-03d6de02 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-04110277 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-04117737 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-041260e5 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0415079e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-04180b97 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-04281285 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0431e600 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-04ba3a05 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-04ddd21a -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-04fc79f2 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0529723e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-055518e5 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0594d769 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0599e8e0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-05c73a05 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-05de20da -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-05e1c54f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-05e577dc -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-06195b88 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-062ba17d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0673f4d2 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0678f748 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-06e09ca5 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-06f07754 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0750917a -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-079059da -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-07a1c020 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-081444d4 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0821dbf7 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-08651b21 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-08ae8e6f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-093b130f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-09622737 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-099b2d6e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-09f85abf -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0a12dc63 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0a230245 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0a2d13dc -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0a407b50 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0aa3052e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0af16c99 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0b2a8612 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0b547124 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0b684200 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0b764043 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0c55f765 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0d17ddf7 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0d36340f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0d68f968 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0d7da8af -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0d8050ef -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0dc8411d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0df77bb0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0e37edf0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0e5c9732 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0e73478f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0ef1b5c0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0ef88b7c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0ef96b9a -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0ef9c981 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0f228f50 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0f88d121 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+B-0f8efd27 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.293  PayloadSent:326  INVSent:1501  GETDATASent:326
+T-00aa33e7 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.929  PayloadSent:290  INVSent:1501  GETDATASent:290
+T-010f0ea9 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.848  PayloadSent:282  INVSent:1501  GETDATASent:282
+T-0124de19 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.01  PayloadSent:298  INVSent:1501  GETDATASent:298
+T-01bb3446 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.071  PayloadSent:304  INVSent:1501  GETDATASent:304
+T-0291336b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.929  PayloadSent:290  INVSent:1501  GETDATASent:290
+T-0396e8a2 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.848  PayloadSent:282  INVSent:1501  GETDATASent:282
+T-07910c56 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.121  PayloadSent:309  INVSent:1501  GETDATASent:309
+T-07e198ee -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.232  PayloadSent:320  INVSent:1501  GETDATASent:320
+T-08a563c6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.838  PayloadSent:281  INVSent:1501  GETDATASent:281
+T-0a31f4a0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.717  PayloadSent:269  INVSent:1501  GETDATASent:269
+T-0d8b8fa2 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.737  PayloadSent:271  INVSent:1501  GETDATASent:271
+T-0e4c564f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.949  PayloadSent:292  INVSent:1501  GETDATASent:292
+T-0eb1a44e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-0f8ff350 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.97  PayloadSent:294  INVSent:1501  GETDATASent:294
+T-108430c0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.778  PayloadSent:275  INVSent:1501  GETDATASent:275
+T-128e07e0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.778  PayloadSent:275  INVSent:1501  GETDATASent:275
+T-12d0f28d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-14cd4650 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.97  PayloadSent:294  INVSent:1501  GETDATASent:294
+T-14d6b938 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.03  PayloadSent:300  INVSent:1501  GETDATASent:300
+T-14dfd422 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.929  PayloadSent:290  INVSent:1501  GETDATASent:290
+T-14f95470 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.778  PayloadSent:374  INVSent:1501  GETDATASent:374
+T-16c0cc54 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.899  PayloadSent:287  INVSent:1501  GETDATASent:287
+T-1a1f52c6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.374  PayloadSent:334  INVSent:1501  GETDATASent:334
+T-1d54725c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.101  PayloadSent:307  INVSent:1501  GETDATASent:307
+T-20656b1c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.717  PayloadSent:269  INVSent:1501  GETDATASent:269
+T-239501fa -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.232  PayloadSent:320  INVSent:1501  GETDATASent:320
+T-246f4025 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-2861068b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.788  PayloadSent:276  INVSent:1501  GETDATASent:276
+T-2b0d5d2e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.899  PayloadSent:287  INVSent:1501  GETDATASent:287
+T-2e123707 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.949  PayloadSent:292  INVSent:1501  GETDATASent:292
+T-31ec1864 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.798  PayloadSent:277  INVSent:1501  GETDATASent:277
+T-33c37869 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.929  PayloadSent:290  INVSent:1501  GETDATASent:290
+T-33f725a9 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.818  PayloadSent:279  INVSent:1501  GETDATASent:279
+T-340756be -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.152  PayloadSent:312  INVSent:1501  GETDATASent:312
+T-35dc4439 -- Reliability:100.0%  Nodes:100  Latency:2  RMR:1.859  PayloadSent:283  INVSent:1501  GETDATASent:283
+T-3601b27e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.354  PayloadSent:332  INVSent:1501  GETDATASent:332
+T-36703eee -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.01  PayloadSent:298  INVSent:1501  GETDATASent:298
+T-38b5fefa -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.263  PayloadSent:323  INVSent:1501  GETDATASent:323
+T-3ae6d51b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.778  PayloadSent:374  INVSent:1501  GETDATASent:374
+T-42138db9 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.152  PayloadSent:312  INVSent:1501  GETDATASent:312
+T-422f71ff -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.374  PayloadSent:334  INVSent:1501  GETDATASent:334
+T-43a5e7e1 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.747  PayloadSent:272  INVSent:1501  GETDATASent:272
+T-4710bd2c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.96  PayloadSent:293  INVSent:1501  GETDATASent:293
+T-47c2fdef -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.354  PayloadSent:332  INVSent:1501  GETDATASent:332
+T-48e43940 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.01  PayloadSent:298  INVSent:1501  GETDATASent:298
+T-49f65409 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.111  PayloadSent:308  INVSent:1501  GETDATASent:308
+T-4b682f5a -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-4e3bd83b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.778  PayloadSent:374  INVSent:1501  GETDATASent:374
+T-4f429425 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-51119974 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.03  PayloadSent:300  INVSent:1501  GETDATASent:300
+T-5118a48a -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.818  PayloadSent:279  INVSent:1501  GETDATASent:279
+T-517e4224 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.97  PayloadSent:294  INVSent:1501  GETDATASent:294
+T-52af0a5b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.586  PayloadSent:256  INVSent:1501  GETDATASent:256
+T-5445b9d1 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.232  PayloadSent:320  INVSent:1501  GETDATASent:320
+T-54c98014 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.04  PayloadSent:301  INVSent:1501  GETDATASent:301
+T-597ae799 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.374  PayloadSent:334  INVSent:1501  GETDATASent:334
+T-5ad5b7c1 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.131  PayloadSent:310  INVSent:1501  GETDATASent:310
+T-5cd2e680 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.131  PayloadSent:310  INVSent:1501  GETDATASent:310
+T-5e26623f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.788  PayloadSent:276  INVSent:1501  GETDATASent:276
+T-5f1bd105 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.01  PayloadSent:298  INVSent:1501  GETDATASent:298
+T-5f911687 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.485  PayloadSent:345  INVSent:1501  GETDATASent:345
+T-60bfe046 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-624d9129 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.687  PayloadSent:266  INVSent:1501  GETDATASent:266
+T-627db38b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.798  PayloadSent:277  INVSent:1501  GETDATASent:277
+T-63cbf47f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-66cb0a09 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.96  PayloadSent:293  INVSent:1501  GETDATASent:293
+T-68b8d81d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.374  PayloadSent:334  INVSent:1501  GETDATASent:334
+T-69002583 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.121  PayloadSent:309  INVSent:1501  GETDATASent:309
+T-69cff3f9 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.212  PayloadSent:318  INVSent:1501  GETDATASent:318
+T-69d9aef8 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.848  PayloadSent:282  INVSent:1501  GETDATASent:282
+T-6c026a87 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.152  PayloadSent:312  INVSent:1501  GETDATASent:312
+T-6ca192af -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.091  PayloadSent:306  INVSent:1501  GETDATASent:306
+T-6ca2bf32 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.253  PayloadSent:322  INVSent:1501  GETDATASent:322
+T-71a565d5 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.374  PayloadSent:334  INVSent:1501  GETDATASent:334
+T-7216a110 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.131  PayloadSent:310  INVSent:1501  GETDATASent:310
+T-741b693b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.687  PayloadSent:266  INVSent:1501  GETDATASent:266
+T-74e7134d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.152  PayloadSent:312  INVSent:1501  GETDATASent:312
+T-75678329 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.788  PayloadSent:276  INVSent:1501  GETDATASent:276
+T-75bfebce -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.374  PayloadSent:334  INVSent:1501  GETDATASent:334
+T-7651c1ff -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.848  PayloadSent:282  INVSent:1501  GETDATASent:282
+T-7ab70f71 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.162  PayloadSent:313  INVSent:1501  GETDATASent:313
+T-7aea434f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.687  PayloadSent:266  INVSent:1501  GETDATASent:266
+T-7b4dc468 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.121  PayloadSent:309  INVSent:1501  GETDATASent:309
+T-7cfec536 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.0  PayloadSent:297  INVSent:1501  GETDATASent:297
+T-7fda9e40 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.404  PayloadSent:337  INVSent:1501  GETDATASent:337
+T-811a12e1 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.222  PayloadSent:319  INVSent:1501  GETDATASent:319
+T-81611e24 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.879  PayloadSent:285  INVSent:1501  GETDATASent:285
+T-81b50961 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.121  PayloadSent:309  INVSent:1501  GETDATASent:309
+T-81b8bcaf -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.879  PayloadSent:285  INVSent:1501  GETDATASent:285
+T-82029145 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-82198434 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-82d902be -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.838  PayloadSent:281  INVSent:1501  GETDATASent:281
+T-86f41749 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.222  PayloadSent:319  INVSent:1501  GETDATASent:319
+T-8b7ea397 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.404  PayloadSent:337  INVSent:1501  GETDATASent:337
+T-8bff92f7 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-8d1d7aea -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.606  PayloadSent:258  INVSent:1501  GETDATASent:258
+T-907588fe -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.404  PayloadSent:337  INVSent:1501  GETDATASent:337
+T-90e5e89b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.737  PayloadSent:271  INVSent:1501  GETDATASent:271
+T-910129a9 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.899  PayloadSent:287  INVSent:1501  GETDATASent:287
+T-93aa4a20 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.919  PayloadSent:289  INVSent:1501  GETDATASent:289
+T-954806fc -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.505  PayloadSent:347  INVSent:1501  GETDATASent:347
+T-9747e317 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.848  PayloadSent:282  INVSent:1501  GETDATASent:282
+T-976d15a3 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.222  PayloadSent:319  INVSent:1501  GETDATASent:319
+T-97abb175 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.051  PayloadSent:302  INVSent:1501  GETDATASent:302
+T-9972161a -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-9a841b2f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.354  PayloadSent:332  INVSent:1501  GETDATASent:332
+T-9b7cbd0b -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.111  PayloadSent:308  INVSent:1501  GETDATASent:308
+T-9bbdcc94 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.222  PayloadSent:319  INVSent:1501  GETDATASent:319
+T-9cef2022 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.788  PayloadSent:276  INVSent:1501  GETDATASent:276
+T-a05afe22 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.121  PayloadSent:309  INVSent:1501  GETDATASent:309
+T-a0822a3a -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-a18fcea7 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.03  PayloadSent:300  INVSent:1501  GETDATASent:300
+T-a4081c7e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.071  PayloadSent:304  INVSent:1501  GETDATASent:304
+T-a551a04d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.111  PayloadSent:308  INVSent:1501  GETDATASent:308
+T-a66ec4d0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.222  PayloadSent:319  INVSent:1501  GETDATASent:319
+T-a83fed08 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.97  PayloadSent:294  INVSent:1501  GETDATASent:294
+T-aa7ccf18 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.717  PayloadSent:269  INVSent:1501  GETDATASent:269
+T-ab5e3483 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.535  PayloadSent:350  INVSent:1501  GETDATASent:350
+T-ae36634e -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-aef53ef0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.778  PayloadSent:275  INVSent:1501  GETDATASent:275
+T-af77f4e9 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.97  PayloadSent:294  INVSent:1501  GETDATASent:294
+T-af86531d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.232  PayloadSent:320  INVSent:1501  GETDATASent:320
+T-b0f868b6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.01  PayloadSent:298  INVSent:1501  GETDATASent:298
+T-b20735e6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.374  PayloadSent:334  INVSent:1501  GETDATASent:334
+T-b324daf4 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.232  PayloadSent:320  INVSent:1501  GETDATASent:320
+T-b36f6d77 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.0  PayloadSent:297  INVSent:1501  GETDATASent:297
+T-b3deaecc -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.232  PayloadSent:320  INVSent:1501  GETDATASent:320
+T-b56177ac -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.051  PayloadSent:302  INVSent:1501  GETDATASent:302
+T-b82e51e9 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.343  PayloadSent:331  INVSent:1501  GETDATASent:331
+T-bc7bd448 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.101  PayloadSent:307  INVSent:1501  GETDATASent:307
+T-c1086b41 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.111  PayloadSent:308  INVSent:1501  GETDATASent:308
+T-c20f11c0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.212  PayloadSent:318  INVSent:1501  GETDATASent:318
+T-c34c11e2 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.465  PayloadSent:343  INVSent:1501  GETDATASent:343
+T-c63a3c04 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-c7fdffa6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.131  PayloadSent:310  INVSent:1501  GETDATASent:310
+T-c8c099c6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.899  PayloadSent:287  INVSent:1501  GETDATASent:287
+T-cc521c29 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.051  PayloadSent:302  INVSent:1501  GETDATASent:302
+T-ccd21943 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-cdb2ddb0 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.717  PayloadSent:269  INVSent:1501  GETDATASent:269
+T-cedef9fe -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.929  PayloadSent:290  INVSent:1501  GETDATASent:290
+T-ceffc88d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.01  PayloadSent:298  INVSent:1501  GETDATASent:298
+T-cff73985 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.97  PayloadSent:294  INVSent:1501  GETDATASent:294
+T-d00e5d52 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.879  PayloadSent:285  INVSent:1501  GETDATASent:285
+T-d255484d -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.515  PayloadSent:348  INVSent:1501  GETDATASent:348
+T-d35ec7c9 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.152  PayloadSent:312  INVSent:1501  GETDATASent:312
+T-d510e5e6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.717  PayloadSent:269  INVSent:1501  GETDATASent:269
+T-d52b4664 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.747  PayloadSent:272  INVSent:1501  GETDATASent:272
+T-d8596d88 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-db626e5f -- Reliability:100.0%  Nodes:100  Latency:2  RMR:1.566  PayloadSent:254  INVSent:1501  GETDATASent:254
+T-de15bc09 -- Reliability:100.0%  Nodes:100  Latency:2  RMR:2.051  PayloadSent:302  INVSent:1501  GETDATASent:302
+T-df638181 -- Reliability:100.0%  Nodes:100  Latency:2  RMR:1.859  PayloadSent:283  INVSent:1501  GETDATASent:283
+T-dfd5374c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.818  PayloadSent:279  INVSent:1501  GETDATASent:279
+T-e0bbd9a6 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.111  PayloadSent:308  INVSent:1501  GETDATASent:308
+T-e19c9680 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.848  PayloadSent:282  INVSent:1501  GETDATASent:282
+T-e3dce1c4 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-e71257e3 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.879  PayloadSent:285  INVSent:1501  GETDATASent:285
+T-e8936cce -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.253  PayloadSent:322  INVSent:1501  GETDATASent:322
+T-e9981312 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.404  PayloadSent:337  INVSent:1501  GETDATASent:337
+T-efa65046 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.404  PayloadSent:337  INVSent:1501  GETDATASent:337
+T-f070e1d8 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.515  PayloadSent:348  INVSent:1501  GETDATASent:348
+T-f22cc97f -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.263  PayloadSent:323  INVSent:1501  GETDATASent:323
+T-f253693c -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.747  PayloadSent:272  INVSent:1501  GETDATASent:272
+T-f2c6b880 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.667  PayloadSent:264  INVSent:1501  GETDATASent:264
+T-f4d412f7 -- Reliability:100.0%  Nodes:100  Latency:2  RMR:1.687  PayloadSent:266  INVSent:1501  GETDATASent:266
+T-f8d1f0fe -- Reliability:100.0%  Nodes:100  Latency:3  RMR:1.909  PayloadSent:288  INVSent:1501  GETDATASent:288
+T-f95a9601 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.424  PayloadSent:339  INVSent:1501  GETDATASent:339
+T-f997de15 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.152  PayloadSent:312  INVSent:1501  GETDATASent:312
+T-fa5b7725 -- Reliability:100.0%  Nodes:100  Latency:3  RMR:2.354  PayloadSent:332  INVSent:1501  GETDATASent:332
+
+Number of Miners: 1  Total Transactions: 168
+AVERAGE -- Reliability:100.000%  Nodes:100.0  Latency:3.0  RMR:2.118  PayloadSent:308.7  INVSent:1501.0  GETDATASent:308.7
+Degree Avg:16.0  Min:11  Max:24  Shortest Path Avg:1.90 Clustering Coefficient  0.1624
+
+--- Membership control messages ---
+          FeelerHandshake:        694  (  1.19%)
+  FeelerHandshakeResponse:        694  (  1.19%)
+                HandShake:        891  (  1.53%)
+        HandShakeResponse:        891  (  1.53%)
+              PeerRequest:        100  (  0.17%)
+                  PingMsg:      27556  ( 47.20%)
+                  PongMsg:      27556  ( 47.20%)
+                    TOTAL:      58382
+
+===================================================
+SIMULATION COMPLETED IN: 9.990002133010421 SECONDS
+SIMULATED EVENTS: 628849
+EVENTS PER SECOND: 62947.834407568895
+===================================================

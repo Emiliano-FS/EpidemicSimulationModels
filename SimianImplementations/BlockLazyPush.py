@@ -2,6 +2,7 @@ import report
 from Blockchain import * 
 from simian import Simian
 import random, math, argparse
+from collections import defaultdict
 
 parser = argparse.ArgumentParser(
     description='Simple Gossip Protocol Simulation.',
@@ -13,14 +14,8 @@ parser.add_argument('endtime', metavar='ENDTIME', type=float,
                     help='simulation end time')
 parser.add_argument('--seedR', type=int, metavar='SEED', default=10, 
                     help='seed for random')
-#parser.add_argument("-d", "--distance", type=float, metavar='DISTANCE', default=100.0, 
-#                    help="maximum distance to be neighbors")
 parser.add_argument("-l", "--lookahead", type=float, metavar='LOOKAHEAD', default=0.1, 
                     help="min delay of mailboxes")
-#parser.add_argument("-r", "--maxrounds", type=int, default=math.inf, 
-#                    help="maximum number of times a message is retransmitted by nodes")
-#parser.add_argument("-f", "--fanout", type=int, default=5, 
-#                    help="number of nodes that are selected as gossip targets")
 parser.add_argument("--useMPI", type=int, metavar='MPI', default=0, 
                     help="use mpi")
 parser.add_argument("--activeChurn", type=int, metavar='CHURN', default=0,
@@ -37,8 +32,6 @@ if args.useMPI == 1:
 
 nodes = args.total_nodes
 lookahead = args.lookahead
-maxrounds = args.maxrounds
-fanout = args.fanout
 random.seed(args.seedR)
 churn = args.activeChurn
 failRate = args.failRate
@@ -64,7 +57,7 @@ class msg2:
 
 class msgReport:
     def __init__(self, msgs, diss_degree, miner, length, trx,
-                 node_id, neighbors):
+                 node_id, neighbors, membership_msgs=None):
         self.msgsFromNode = msgs
         self.disseminationDegree = diss_degree
         self.isMiner = miner
@@ -72,6 +65,7 @@ class msgReport:
         self.trxFromNode = trx
         self.node_id = node_id
         self.neighbors = neighbors 
+        self.membership_msgs = membership_msgs if membership_msgs else {}
 
 class ChurnManager(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
@@ -80,7 +74,6 @@ class ChurnManager(simianEngine.Entity):
 
     def do_churn_cycle(self, *args):
         churn_size = int(nodes * failRate)
-        # Churn out
         if len(upNodes) > churn_size:
             to_churn = random.sample(upNodes, churn_size)
             for node_id in to_churn:
@@ -90,12 +83,10 @@ class ChurnManager(simianEngine.Entity):
 class ReportNode(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
         super().__init__(baseInfo)
-        # Per-message metrics
-        self.reliability = {}      # number of nodes that received each message
-        self.latency = {}          # max hops per message
-        self.redundancy = {}       # [gossip, inv, requests] per message
+        self.reliability = {}
+        self.latency = {}
+        self.redundancy = {}
 
-        # Node-level aggregates
         self.degree_sum = 0
         self.totalMiners = 0
         self.totalTransactions = 0
@@ -105,9 +96,11 @@ class ReportNode(simianEngine.Entity):
         self.minDegree = float('inf')
         self.shortestPathSum = 0
         self.servedNodes = 0
-        self.graph = {}  # node_id -> set(active neighbors)
+        self.graph = {}
 
-        # Schedule the final report
+        # Membership message counters
+        self.membership_msgs_sum = defaultdict(int)
+
         self.reqService(endTime, "PrintSystemReport", "none")
 
     def SystemReport(self, *args):
@@ -127,40 +120,37 @@ class ReportNode(simianEngine.Entity):
 
         self.servedNodes += 1
 
-        # Update degree stats
         self.degree_sum += degree
         self.maxDegree = max(self.maxDegree, degree)
         self.minDegree = min(self.minDegree, degree)
 
-        # Process each message
+        # Aggregate membership messages
+        if report.membership_msgs:
+            for k, v in report.membership_msgs.items():
+                self.membership_msgs_sum[k] += v
+
         for m in msgs:
             msg_id = m['id']
             hops = m['hopsDone']
             self.shortestPathSum += hops
 
-            # Latency: max hops for this message
             if msg_id not in self.latency or hops > self.latency[msg_id]:
                 self.latency[msg_id] = hops
 
-            # Reliability: count of nodes that received this message
             self.reliability[msg_id] = self.reliability.get(msg_id, 0) + 1
 
-            # Redundancy sums
             if msg_id not in self.redundancy:
                 self.redundancy[msg_id] = [0, 0, 0]
             self.redundancy[msg_id][0] += m['gossip']
             self.redundancy[msg_id][1] += m['inv']
             self.redundancy[msg_id][2] += m['requests']
 
-        # Aggregate transactions
         self.totalTransactions += trx
 
-        # Track longest chain
         if chain > self.longestChain:
             self.longestChain = chain
         self.chainLengths += chain
 
-        # Count miners
         if isMiner:
             self.totalMiners += 1
 
@@ -179,7 +169,7 @@ class ReportNode(simianEngine.Entity):
                      continue
                  links += len(Nu & self.graph[v])
 
-             links /= 2  # undirected double count
+             links /= 2
 
              Ci = links / (k * (k - 1) / 2)
              total += Ci
@@ -197,19 +187,16 @@ class ReportNode(simianEngine.Entity):
             self.out.write("No messages received.\n")
             return
 
-        # Initialize aggregates
         avRel = avNodes = avLat = avRmr = avGossip = avInv = avReq = 0
 
         clustering = self.compute_clustering()
 
-        # Per-message report
         for msg_id in sorted(self.reliability.keys()):
             received_count = self.reliability[msg_id]
             reliability_pct = round(received_count / node_count * 100, 3)
             latency = self.latency[msg_id]
             rmr = round((self.redundancy[msg_id][0] / (received_count - 1)) - 1, 3) if received_count > 1 else 0
 
-            # Sum for averages
             avRel += reliability_pct
             avNodes += received_count
             avLat += latency
@@ -219,10 +206,9 @@ class ReportNode(simianEngine.Entity):
             avReq += self.redundancy[msg_id][2]
 
             self.out.write(f"{msg_id} -- Reliability:{reliability_pct}%  Nodes:{received_count}  "
-                           f"Latency:{latency}  RMR:{rmr}  Gossip:{self.redundancy[msg_id][0]}  "
-                           f"Inv:{self.redundancy[msg_id][1]}  Requests:{self.redundancy[msg_id][2]}\n")
+                           f"Latency:{latency}  RMR:{rmr}  PayloadSent:{self.redundancy[msg_id][0]}  "
+                           f"INVSent:{self.redundancy[msg_id][1]}  GETDATASent:{self.redundancy[msg_id][2]}\n")
 
-        # Compute averages
         avRel /= total_msgs
         avNodes /= total_msgs
         avLat /= total_msgs
@@ -232,29 +218,36 @@ class ReportNode(simianEngine.Entity):
         avReq /= total_msgs
         avg_shortest_path = self.shortestPathSum / (total_msgs * node_count)
 
-        # Print summary
         self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}\n")
         self.out.write(f"AVERAGE -- Reliability:{avRel:.3f}%  Nodes:{avNodes:.1f}  Latency:{avLat:.1f}  "
-                       f"RMR:{avRmr:.3f}  Gossip:{avGossip:.1f}  Inv:{avInv:.1f}  Requests:{avReq:.1f}\n")
+                       f"RMR:{avRmr:.3f}  PayloadSent:{avGossip:.1f}  INVSent:{avInv:.1f}  GETDATASent:{avReq:.1f}\n")
         self.out.write(f"Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
                       f"Shortest Path Avg:{avg_shortest_path:.2f} Clustering Coefficient  {clustering:.4f}\n")
+
+        # Membership message summary
+        self.out.write("\n--- Membership control messages ---\n")
+        total_membership = sum(self.membership_msgs_sum.values())
+        if total_membership == 0:
+            self.out.write("No membership messages recorded.\n")
+        else:
+            for msg_type in sorted(self.membership_msgs_sum.keys()):
+                count = self.membership_msgs_sum[msg_type]
+                pct = count / total_membership * 100
+                self.out.write(f"{msg_type:>25}: {count:>10}  ({pct:>6.2f}%)\n")
+            self.out.write(f"{'TOTAL':>25}: {total_membership:>10}\n")
+
         
 class Seeder(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
         super(Seeder, self).__init__(baseInfo)
 
-        self.sid = args[0]  # seeder ID
+        self.sid = args[0]
 
-        # --- biased region for this seeder ---
-        # Use SEEDER_COUNT directly to avoid stale total_seeders reference
         region_size = nodes // SEEDER_COUNT
         region_start = self.sid * region_size
         region_end = (self.sid + 1) * region_size
         bias_pool = list(range(region_start, region_end))
 
-        #  known_nodes scales with network size (~5% of nodes) ---
-        # Justification: seed server maintains a partial but scalable directory.
-        # 60% from own region, 40% from full network.
         known_size = max(100, int(0.05 * nodes))
         bias_count = int(0.6 * known_size)
         global_count = known_size - bias_count
@@ -265,7 +258,6 @@ class Seeder(simianEngine.Entity):
     def PeerRequest(self, *args):
         requester_id = args[0]
         candidates = [p for p in self.known_nodes if p != requester_id]
-        #respond with up to 200 addresses (Bitcoin Core sends up to 1000 via ADDR)
         sample_size = min(200, len(candidates))
         peers = random.sample(candidates, sample_size)
         self.reqService(lookahead, "ReceivePeers", peers, "Node", requester_id)
@@ -285,20 +277,23 @@ class Node(simianEngine.Entity):
 
 
         #Seeder/Peer Management
-        self.inbound = []           # inbound connections 117
-        self.outbound = []          # outbound connections (max 8)
+        self.inbound = []
+        self.outbound = []
         self.MAX_OUT = 8
         self.MAX_IN = 117
-        self.addr_new = []    # learned but untried
-        self.addr_tried = []   # successfully connected
+        self.addr_new = []
+        self.addr_tried = []
         self.MAX_NEW = 1000
         self.MAX_TRIED = 256
-        self.nodeTimer = set()   # peers with outstanding connection attempts
+        self.nodeTimer = set()
         self.pingTimer = {}  
         self.ping_nonce = 0
 
         self.receivedMsgs = {}
         self.report = {}
+
+        # Membership message counters
+        self.membership_msgs = defaultdict(int)
 
         JOIN_WINDOW = (0, 200)
         self.reqService(random.uniform(*JOIN_WINDOW), "Bootstrap", "none")
@@ -334,6 +329,7 @@ class Node(simianEngine.Entity):
 
     def Bootstrap(self, *args):
 
+        self.membership_msgs['PeerRequest'] += 1
         self.reqService(lookahead, "PeerRequest", self.node_idx, "Seeder", random.choice(total_seeders))
         self.reqService(120, "FeelerMechanism", "none")
         self.reqService(50, "Ping", "none")
@@ -356,7 +352,6 @@ class Node(simianEngine.Entity):
             if not self.addr_new and not self.addr_tried:
                 break
 
-            # 50/50 probability between tried and new (Bitcoin Core approximation)
             if self.addr_tried and (not self.addr_new or random.random() < 0.5):
                 peer = random.choice(list(self.addr_tried))
                 self.addr_tried.remove(peer) 
@@ -376,6 +371,7 @@ class Node(simianEngine.Entity):
             handshakePeers = triedPeers + newPeers
             self.nodeTimer.add(peer)
             self.reqService(seederTimer, "NodeTimer", peer)
+            self.membership_msgs['HandShake'] += 1
             self.reqService(lookahead,"HandShake",(self.node_idx, handshakePeers),"Node",peer)
 
 
@@ -383,8 +379,8 @@ class Node(simianEngine.Entity):
 
         sender, receivedPeers = args[0]
 
-        # Reject duplicate connection
         if sender in self.outbound or sender in self.inbound:
+            self.membership_msgs['HandShakeResponse'] += 1
             self.reqService(lookahead, "HandShakeResponse", (self.node_idx, "Duplicate"), "Node", sender)
             return
 
@@ -400,12 +396,11 @@ class Node(simianEngine.Entity):
                 if len(self.addr_new) > self.MAX_NEW:
                     self.addr_new.pop()
 
-        # Send response 
         triedPeers = random.sample(list(self.addr_tried),min(10, len(self.addr_tried)))
         newPeers = random.sample(list(self.addr_new),min(5, len(self.addr_new)))
         responsePeers = triedPeers + newPeers
 
-        #print(f"Node {self.node_idx} sending this respinse peers {responsePeers} to node {sender}")
+        self.membership_msgs['HandShakeResponse'] += 1
         self.reqService(lookahead,"HandShakeResponse", (self.node_idx, responsePeers),"Node",sender)
 
 
@@ -416,7 +411,6 @@ class Node(simianEngine.Entity):
             self.nodeTimer.discard(sender)
             if sender in self.outbound:
                 self.outbound.remove(sender)
-            # peer is alive and known — return it to addr_tried so it isn't lost
             if sender not in self.addr_tried and sender not in self.addr_new:
                 self.addr_tried.append(sender)
             self.OutboundConnect()
@@ -441,7 +435,6 @@ class Node(simianEngine.Entity):
         if not self.active:
             return
 
-        #reschedule periodically (~2 min in Bitcoin Core)
         self.reqService(120, "FeelerMechanism", "none")
 
         if not self.addr_new:
@@ -449,17 +442,19 @@ class Node(simianEngine.Entity):
 
         peer = random.choice(list(self.addr_new))
 
-        # Temporary connection
         self.nodeTimer.add(peer)
         self.reqService(seederTimer, "NodeTimer", peer)
+        self.membership_msgs['FeelerHandshake'] += 1
         self.reqService(lookahead,"FeelerHandshake",self.node_idx,"Node",peer)
 
         
     def FeelerHandshake(self, *args):
         sender = args[0]
         if sender in self.outbound or sender in self.inbound:
+            self.membership_msgs['FeelerHandshakeResponse'] += 1
             self.reqService(lookahead,"FeelerHandshakeResponse",  (-1 * self.node_idx) ,"Node",sender)
             return
+        self.membership_msgs['FeelerHandshakeResponse'] += 1
         self.reqService(lookahead,"FeelerHandshakeResponse",self.node_idx,"Node",sender)
 
 
@@ -488,11 +483,13 @@ class Node(simianEngine.Entity):
             nonce = self.next_nonce()
             self.pingTimer[peer] = nonce
             self.reqService(seederTimer, "PingTimer", (peer, nonce))
+            self.membership_msgs['PingMsg'] += 1
             self.reqService(lookahead, "PingMsg", (self.node_idx, nonce), "Node", peer)
 
 
     def PingMsg(self, *args):
         sender, nonce = args[0]
+        self.membership_msgs['PongMsg'] += 1
         self.reqService(lookahead, "PongMsg", (self.node_idx, nonce), "Node", sender)
 
     
@@ -521,22 +518,18 @@ class Node(simianEngine.Entity):
 
         self.nodeTimer.remove(peer)
 
-        # Connection attempt timed out — peer may still be alive (busy/full)
         if peer not in self.outbound and peer not in self.inbound:
-            # Remove from outbound if pending, but keep peer in addr_new for future attempts
             if peer not in self.addr_new and peer not in self.addr_tried:
                 self.addr_new.append(peer)
             self.OutboundConnect()
 
     def NodeFailure(self, node_id):
-        # Called only for confirmed failures (ping timeout on established connection)
         if node_id in self.inbound:
             self.inbound.remove(node_id)
 
         if node_id in self.outbound:
             self.outbound.remove(node_id)
 
-        # Purge from both address tables — node is considered down
         if node_id in self.addr_tried:
             self.addr_tried.remove(node_id)
         
@@ -552,13 +545,10 @@ class Node(simianEngine.Entity):
             return
         msg = args[0]
 
-        if msg.ID not in self.report.keys():
-            self.report[msg.ID] = [1,0,0]
-        else:
-            self.report[msg.ID][0] += 1
-    
         if msg.ID not in self.receivedMsgs.keys():
             self.receivedMsgs[msg.ID] = msg
+            if msg.ID not in self.report.keys():
+                self.report[msg.ID] = [0,0,0]
 
             if msg.type == "BLOCK":
                 block = Block.from_dict(msg.payload)
@@ -579,13 +569,11 @@ class Node(simianEngine.Entity):
             self.start_mining()
             return
 
-        # Chain advanced → abort Depricated
         if self.blockchain.head != self.mining_parent:
             self.mining = False
             self.start_mining()
             return
 
-        # Success
         self.blockchain.mine()
         new_block = self.blockchain.last_block
         self.blockchain.remove_confirmed_transactions(new_block)
@@ -594,21 +582,24 @@ class Node(simianEngine.Entity):
         block_id = "B-" + new_block.hash[:8]
         block_msg = msg2("BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)
         self.receivedMsgs[block_msg.ID] = block_msg
-        self.report[block_msg.ID] = [1, 0, 0]
         self.SendInv(block_msg.ID)
 
         self.mining = False
         self.start_mining()
 
-
-
     def SendInv(self, msg_id, exclude = None):
         for peer in self.outbound:
             if peer != exclude:
+                if msg_id not in self.report.keys():
+                    self.report[msg_id] = [0,0,0]
+                self.report[msg_id][1] += 1
                 self.reqService(lookahead, "ReceiveInv", (msg_id, self.node_idx), "Node", peer)
 
         for peer in self.inbound:
             if peer != exclude:
+                if msg_id not in self.report.keys():
+                    self.report[msg_id] = [0,0,0]
+                self.report[msg_id][1] += 1
                 self.reqService(lookahead, "ReceiveInv", (msg_id, self.node_idx), "Node", peer)
 
     def ReceiveInv(self, *args):
@@ -616,23 +607,20 @@ class Node(simianEngine.Entity):
             return
         msg_id, sender_id = args[0]
 
-        if msg_id not in self.report.keys():
-            self.report[msg_id] = [0,1,0]
-        else:
-            self.report[msg_id][1] += 1
-
         if msg_id not in self.receivedMsgs:
+            if msg_id not in self.report.keys():
+                self.report[msg_id] = [0,0,0]
+            self.report[msg_id][2] += 1
             self.reqService(lookahead, "RequestMessage", (msg_id, self.node_idx), "Node", sender_id)
 
     def RequestMessage(self, *args):
         msg_id, requester_id = args[0]
 
-        if msg_id not in self.report.keys():
-            self.report[msg_id] = [0,0,1]
-        else:
-            self.report[msg_id][2] += 1
-
         if msg_id in self.receivedMsgs:
+            if msg_id not in self.report.keys():
+                self.report[msg_id] = [0,0,0]
+            self.report[msg_id][0] += 1
+
             msg = self.receivedMsgs[msg_id]
             self.reqService(lookahead, "Receive", msg2(msg.type , msg.payload , msg.ID, msg.hops + 1 , self.node_idx), "Node", requester_id)
     
@@ -660,12 +648,9 @@ class Node(simianEngine.Entity):
                 len(self.blockchain.chain),
                 self.trxMade,
                 self.node_idx,
-                neighbors
+                neighbors,
+                dict(self.membership_msgs)
             )
-
-            #print("\n=== BLOCK DAG PER NODE ===")
-            #print(f"\nNode {self.node_idx}")
-            #self.blockchain.print_block_dag()
 
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
@@ -689,7 +674,7 @@ class Node(simianEngine.Entity):
                 upNodes.remove(self.node_idx)
             if self.node_idx not in downNodes:
                 downNodes.append(self.node_idx)
-        print(f"Node {self.node_idx} has gone down.")
+        #print(f"Node {self.node_idx} has gone down.")
 
     def create_transaction(self,*args):
         avg_transactionT = 5.0

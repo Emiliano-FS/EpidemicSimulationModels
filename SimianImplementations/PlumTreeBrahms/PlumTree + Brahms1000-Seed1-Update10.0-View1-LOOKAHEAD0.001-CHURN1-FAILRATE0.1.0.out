@@ -1,0 +1,1232 @@
+Simian JIT PDES Engine (1.65)
+(c) Copyright 2015-. Triad National Security, LLC. All rights reserved. Released under BSD 3-clause license.
+Author: Nandakishore Santhi (with other contributors as acknowledged in source code)
+
+===================================================
+------------SIMIAN-PIE JIT PDES ENGINE-------------
+------------       VERSION: 1.65      -------------
+===================================================
+MPI: OFF
+===================================================
+
+Node[0]: Running on rank 0
+Node[1]: Running on rank 0
+Node[2]: Running on rank 0
+Node[3]: Running on rank 0
+Node[4]: Running on rank 0
+Node[5]: Running on rank 0
+Node[6]: Running on rank 0
+Node[7]: Running on rank 0
+Node[8]: Running on rank 0
+Node[9]: Running on rank 0
+Node[10]: Running on rank 0
+Node[11]: Running on rank 0
+Node[12]: Running on rank 0
+Node[13]: Running on rank 0
+Node[14]: Running on rank 0
+Node[15]: Running on rank 0
+Node[16]: Running on rank 0
+Node[17]: Running on rank 0
+Node[18]: Running on rank 0
+Node[19]: Running on rank 0
+Node[20]: Running on rank 0
+Node[21]: Running on rank 0
+Node[22]: Running on rank 0
+Node[23]: Running on rank 0
+Node[24]: Running on rank 0
+Node[25]: Running on rank 0
+Node[26]: Running on rank 0
+Node[27]: Running on rank 0
+Node[28]: Running on rank 0
+Node[29]: Running on rank 0
+Node[30]: Running on rank 0
+Node[31]: Running on rank 0
+Node[32]: Running on rank 0
+Node[33]: Running on rank 0
+Node[34]: Running on rank 0
+Node[35]: Running on rank 0
+Node[36]: Running on rank 0
+Node[37]: Running on rank 0
+Node[38]: Running on rank 0
+Node[39]: Running on rank 0
+Node[40]: Running on rank 0
+Node[41]: Running on rank 0
+Node[42]: Running on rank 0
+Node[43]: Running on rank 0
+Node[44]: Running on rank 0
+Node[45]: Running on rank 0
+Node[46]: Running on rank 0
+Node[47]: Running on rank 0
+Node[48]: Running on rank 0
+Node[49]: Running on rank 0
+Node[50]: Running on rank 0
+Node[51]: Running on rank 0
+Node[52]: Running on rank 0
+Node[53]: Running on rank 0
+Node[54]: Running on rank 0
+Node[55]: Running on rank 0
+Node[56]: Running on rank 0
+Node[57]: Running on rank 0
+Node[58]: Running on rank 0
+Node[59]: Running on rank 0
+Node[60]: Running on rank 0
+Node[61]: Running on rank 0
+Node[62]: Running on rank 0
+Node[63]: Running on rank 0
+Node[64]: Running on rank 0
+Node[65]: Running on rank 0
+Node[66]: Running on rank 0
+Node[67]: Running on rank 0
+Node[68]: Running on rank 0
+Node[69]: Running on rank 0
+Node[70]: Running on rank 0
+Node[71]: Running on rank 0
+Node[72]: Running on rank 0
+Node[73]: Running on rank 0
+Node[74]: Running on rank 0
+Node[75]: Running on rank 0
+Node[76]: Running on rank 0
+Node[77]: Running on rank 0
+Node[78]: Running on rank 0
+Node[79]: Running on rank 0
+Node[80]: Running on rank 0
+Node[81]: Running on rank 0
+Node[82]: Running on rank 0
+Node[83]: Running on rank 0
+Node[84]: Running on rank 0
+Node[85]: Running on rank 0
+Node[86]: Running on rank 0
+Node[87]: Running on rank 0
+Node[88]: Running on rank 0
+Node[89]: Running on rank 0
+Node[90]: Running on rank 0
+Node[91]: Running on rank 0
+Node[92]: Running on rank 0
+Node[93]: Running on rank 0
+Node[94]: Running on rank 0
+Node[95]: Running on rank 0
+Node[96]: Running on rank 0
+Node[97]: Running on rank 0
+Node[98]: Running on rank 0
+Node[99]: Running on rank 0
+Node[100]: Running on rank 0
+Node[101]: Running on rank 0
+Node[102]: Running on rank 0
+Node[103]: Running on rank 0
+Node[104]: Running on rank 0
+Node[105]: Running on rank 0
+Node[106]: Running on rank 0
+Node[107]: Running on rank 0
+Node[108]: Running on rank 0
+Node[109]: Running on rank 0
+Node[110]: Running on rank 0
+Node[111]: Running on rank 0
+Node[112]: Running on rank 0
+Node[113]: Running on rank 0
+Node[114]: Running on rank 0
+Node[115]: Running on rank 0
+Node[116]: Running on rank 0
+Node[117]: Running on rank 0
+Node[118]: Running on rank 0
+Node[119]: Running on rank 0
+Node[120]: Running on rank 0
+Node[121]: Running on rank 0
+Node[122]: Running on rank 0
+Node[123]: Running on rank 0
+Node[124]: Running on rank 0
+Node[125]: Running on rank 0
+Node[126]: Running on rank 0
+Node[127]: Running on rank 0
+Node[128]: Running on rank 0
+Node[129]: Running on rank 0
+Node[130]: Running on rank 0
+Node[131]: Running on rank 0
+Node[132]: Running on rank 0
+Node[133]: Running on rank 0
+Node[134]: Running on rank 0
+Node[135]: Running on rank 0
+Node[136]: Running on rank 0
+Node[137]: Running on rank 0
+Node[138]: Running on rank 0
+Node[139]: Running on rank 0
+Node[140]: Running on rank 0
+Node[141]: Running on rank 0
+Node[142]: Running on rank 0
+Node[143]: Running on rank 0
+Node[144]: Running on rank 0
+Node[145]: Running on rank 0
+Node[146]: Running on rank 0
+Node[147]: Running on rank 0
+Node[148]: Running on rank 0
+Node[149]: Running on rank 0
+Node[150]: Running on rank 0
+Node[151]: Running on rank 0
+Node[152]: Running on rank 0
+Node[153]: Running on rank 0
+Node[154]: Running on rank 0
+Node[155]: Running on rank 0
+Node[156]: Running on rank 0
+Node[157]: Running on rank 0
+Node[158]: Running on rank 0
+Node[159]: Running on rank 0
+Node[160]: Running on rank 0
+Node[161]: Running on rank 0
+Node[162]: Running on rank 0
+Node[163]: Running on rank 0
+Node[164]: Running on rank 0
+Node[165]: Running on rank 0
+Node[166]: Running on rank 0
+Node[167]: Running on rank 0
+Node[168]: Running on rank 0
+Node[169]: Running on rank 0
+Node[170]: Running on rank 0
+Node[171]: Running on rank 0
+Node[172]: Running on rank 0
+Node[173]: Running on rank 0
+Node[174]: Running on rank 0
+Node[175]: Running on rank 0
+Node[176]: Running on rank 0
+Node[177]: Running on rank 0
+Node[178]: Running on rank 0
+Node[179]: Running on rank 0
+Node[180]: Running on rank 0
+Node[181]: Running on rank 0
+Node[182]: Running on rank 0
+Node[183]: Running on rank 0
+Node[184]: Running on rank 0
+Node[185]: Running on rank 0
+Node[186]: Running on rank 0
+Node[187]: Running on rank 0
+Node[188]: Running on rank 0
+Node[189]: Running on rank 0
+Node[190]: Running on rank 0
+Node[191]: Running on rank 0
+Node[192]: Running on rank 0
+Node[193]: Running on rank 0
+Node[194]: Running on rank 0
+Node[195]: Running on rank 0
+Node[196]: Running on rank 0
+Node[197]: Running on rank 0
+Node[198]: Running on rank 0
+Node[199]: Running on rank 0
+Node[200]: Running on rank 0
+Node[201]: Running on rank 0
+Node[202]: Running on rank 0
+Node[203]: Running on rank 0
+Node[204]: Running on rank 0
+Node[205]: Running on rank 0
+Node[206]: Running on rank 0
+Node[207]: Running on rank 0
+Node[208]: Running on rank 0
+Node[209]: Running on rank 0
+Node[210]: Running on rank 0
+Node[211]: Running on rank 0
+Node[212]: Running on rank 0
+Node[213]: Running on rank 0
+Node[214]: Running on rank 0
+Node[215]: Running on rank 0
+Node[216]: Running on rank 0
+Node[217]: Running on rank 0
+Node[218]: Running on rank 0
+Node[219]: Running on rank 0
+Node[220]: Running on rank 0
+Node[221]: Running on rank 0
+Node[222]: Running on rank 0
+Node[223]: Running on rank 0
+Node[224]: Running on rank 0
+Node[225]: Running on rank 0
+Node[226]: Running on rank 0
+Node[227]: Running on rank 0
+Node[228]: Running on rank 0
+Node[229]: Running on rank 0
+Node[230]: Running on rank 0
+Node[231]: Running on rank 0
+Node[232]: Running on rank 0
+Node[233]: Running on rank 0
+Node[234]: Running on rank 0
+Node[235]: Running on rank 0
+Node[236]: Running on rank 0
+Node[237]: Running on rank 0
+Node[238]: Running on rank 0
+Node[239]: Running on rank 0
+Node[240]: Running on rank 0
+Node[241]: Running on rank 0
+Node[242]: Running on rank 0
+Node[243]: Running on rank 0
+Node[244]: Running on rank 0
+Node[245]: Running on rank 0
+Node[246]: Running on rank 0
+Node[247]: Running on rank 0
+Node[248]: Running on rank 0
+Node[249]: Running on rank 0
+Node[250]: Running on rank 0
+Node[251]: Running on rank 0
+Node[252]: Running on rank 0
+Node[253]: Running on rank 0
+Node[254]: Running on rank 0
+Node[255]: Running on rank 0
+Node[256]: Running on rank 0
+Node[257]: Running on rank 0
+Node[258]: Running on rank 0
+Node[259]: Running on rank 0
+Node[260]: Running on rank 0
+Node[261]: Running on rank 0
+Node[262]: Running on rank 0
+Node[263]: Running on rank 0
+Node[264]: Running on rank 0
+Node[265]: Running on rank 0
+Node[266]: Running on rank 0
+Node[267]: Running on rank 0
+Node[268]: Running on rank 0
+Node[269]: Running on rank 0
+Node[270]: Running on rank 0
+Node[271]: Running on rank 0
+Node[272]: Running on rank 0
+Node[273]: Running on rank 0
+Node[274]: Running on rank 0
+Node[275]: Running on rank 0
+Node[276]: Running on rank 0
+Node[277]: Running on rank 0
+Node[278]: Running on rank 0
+Node[279]: Running on rank 0
+Node[280]: Running on rank 0
+Node[281]: Running on rank 0
+Node[282]: Running on rank 0
+Node[283]: Running on rank 0
+Node[284]: Running on rank 0
+Node[285]: Running on rank 0
+Node[286]: Running on rank 0
+Node[287]: Running on rank 0
+Node[288]: Running on rank 0
+Node[289]: Running on rank 0
+Node[290]: Running on rank 0
+Node[291]: Running on rank 0
+Node[292]: Running on rank 0
+Node[293]: Running on rank 0
+Node[294]: Running on rank 0
+Node[295]: Running on rank 0
+Node[296]: Running on rank 0
+Node[297]: Running on rank 0
+Node[298]: Running on rank 0
+Node[299]: Running on rank 0
+Node[300]: Running on rank 0
+Node[301]: Running on rank 0
+Node[302]: Running on rank 0
+Node[303]: Running on rank 0
+Node[304]: Running on rank 0
+Node[305]: Running on rank 0
+Node[306]: Running on rank 0
+Node[307]: Running on rank 0
+Node[308]: Running on rank 0
+Node[309]: Running on rank 0
+Node[310]: Running on rank 0
+Node[311]: Running on rank 0
+Node[312]: Running on rank 0
+Node[313]: Running on rank 0
+Node[314]: Running on rank 0
+Node[315]: Running on rank 0
+Node[316]: Running on rank 0
+Node[317]: Running on rank 0
+Node[318]: Running on rank 0
+Node[319]: Running on rank 0
+Node[320]: Running on rank 0
+Node[321]: Running on rank 0
+Node[322]: Running on rank 0
+Node[323]: Running on rank 0
+Node[324]: Running on rank 0
+Node[325]: Running on rank 0
+Node[326]: Running on rank 0
+Node[327]: Running on rank 0
+Node[328]: Running on rank 0
+Node[329]: Running on rank 0
+Node[330]: Running on rank 0
+Node[331]: Running on rank 0
+Node[332]: Running on rank 0
+Node[333]: Running on rank 0
+Node[334]: Running on rank 0
+Node[335]: Running on rank 0
+Node[336]: Running on rank 0
+Node[337]: Running on rank 0
+Node[338]: Running on rank 0
+Node[339]: Running on rank 0
+Node[340]: Running on rank 0
+Node[341]: Running on rank 0
+Node[342]: Running on rank 0
+Node[343]: Running on rank 0
+Node[344]: Running on rank 0
+Node[345]: Running on rank 0
+Node[346]: Running on rank 0
+Node[347]: Running on rank 0
+Node[348]: Running on rank 0
+Node[349]: Running on rank 0
+Node[350]: Running on rank 0
+Node[351]: Running on rank 0
+Node[352]: Running on rank 0
+Node[353]: Running on rank 0
+Node[354]: Running on rank 0
+Node[355]: Running on rank 0
+Node[356]: Running on rank 0
+Node[357]: Running on rank 0
+Node[358]: Running on rank 0
+Node[359]: Running on rank 0
+Node[360]: Running on rank 0
+Node[361]: Running on rank 0
+Node[362]: Running on rank 0
+Node[363]: Running on rank 0
+Node[364]: Running on rank 0
+Node[365]: Running on rank 0
+Node[366]: Running on rank 0
+Node[367]: Running on rank 0
+Node[368]: Running on rank 0
+Node[369]: Running on rank 0
+Node[370]: Running on rank 0
+Node[371]: Running on rank 0
+Node[372]: Running on rank 0
+Node[373]: Running on rank 0
+Node[374]: Running on rank 0
+Node[375]: Running on rank 0
+Node[376]: Running on rank 0
+Node[377]: Running on rank 0
+Node[378]: Running on rank 0
+Node[379]: Running on rank 0
+Node[380]: Running on rank 0
+Node[381]: Running on rank 0
+Node[382]: Running on rank 0
+Node[383]: Running on rank 0
+Node[384]: Running on rank 0
+Node[385]: Running on rank 0
+Node[386]: Running on rank 0
+Node[387]: Running on rank 0
+Node[388]: Running on rank 0
+Node[389]: Running on rank 0
+Node[390]: Running on rank 0
+Node[391]: Running on rank 0
+Node[392]: Running on rank 0
+Node[393]: Running on rank 0
+Node[394]: Running on rank 0
+Node[395]: Running on rank 0
+Node[396]: Running on rank 0
+Node[397]: Running on rank 0
+Node[398]: Running on rank 0
+Node[399]: Running on rank 0
+Node[400]: Running on rank 0
+Node[401]: Running on rank 0
+Node[402]: Running on rank 0
+Node[403]: Running on rank 0
+Node[404]: Running on rank 0
+Node[405]: Running on rank 0
+Node[406]: Running on rank 0
+Node[407]: Running on rank 0
+Node[408]: Running on rank 0
+Node[409]: Running on rank 0
+Node[410]: Running on rank 0
+Node[411]: Running on rank 0
+Node[412]: Running on rank 0
+Node[413]: Running on rank 0
+Node[414]: Running on rank 0
+Node[415]: Running on rank 0
+Node[416]: Running on rank 0
+Node[417]: Running on rank 0
+Node[418]: Running on rank 0
+Node[419]: Running on rank 0
+Node[420]: Running on rank 0
+Node[421]: Running on rank 0
+Node[422]: Running on rank 0
+Node[423]: Running on rank 0
+Node[424]: Running on rank 0
+Node[425]: Running on rank 0
+Node[426]: Running on rank 0
+Node[427]: Running on rank 0
+Node[428]: Running on rank 0
+Node[429]: Running on rank 0
+Node[430]: Running on rank 0
+Node[431]: Running on rank 0
+Node[432]: Running on rank 0
+Node[433]: Running on rank 0
+Node[434]: Running on rank 0
+Node[435]: Running on rank 0
+Node[436]: Running on rank 0
+Node[437]: Running on rank 0
+Node[438]: Running on rank 0
+Node[439]: Running on rank 0
+Node[440]: Running on rank 0
+Node[441]: Running on rank 0
+Node[442]: Running on rank 0
+Node[443]: Running on rank 0
+Node[444]: Running on rank 0
+Node[445]: Running on rank 0
+Node[446]: Running on rank 0
+Node[447]: Running on rank 0
+Node[448]: Running on rank 0
+Node[449]: Running on rank 0
+Node[450]: Running on rank 0
+Node[451]: Running on rank 0
+Node[452]: Running on rank 0
+Node[453]: Running on rank 0
+Node[454]: Running on rank 0
+Node[455]: Running on rank 0
+Node[456]: Running on rank 0
+Node[457]: Running on rank 0
+Node[458]: Running on rank 0
+Node[459]: Running on rank 0
+Node[460]: Running on rank 0
+Node[461]: Running on rank 0
+Node[462]: Running on rank 0
+Node[463]: Running on rank 0
+Node[464]: Running on rank 0
+Node[465]: Running on rank 0
+Node[466]: Running on rank 0
+Node[467]: Running on rank 0
+Node[468]: Running on rank 0
+Node[469]: Running on rank 0
+Node[470]: Running on rank 0
+Node[471]: Running on rank 0
+Node[472]: Running on rank 0
+Node[473]: Running on rank 0
+Node[474]: Running on rank 0
+Node[475]: Running on rank 0
+Node[476]: Running on rank 0
+Node[477]: Running on rank 0
+Node[478]: Running on rank 0
+Node[479]: Running on rank 0
+Node[480]: Running on rank 0
+Node[481]: Running on rank 0
+Node[482]: Running on rank 0
+Node[483]: Running on rank 0
+Node[484]: Running on rank 0
+Node[485]: Running on rank 0
+Node[486]: Running on rank 0
+Node[487]: Running on rank 0
+Node[488]: Running on rank 0
+Node[489]: Running on rank 0
+Node[490]: Running on rank 0
+Node[491]: Running on rank 0
+Node[492]: Running on rank 0
+Node[493]: Running on rank 0
+Node[494]: Running on rank 0
+Node[495]: Running on rank 0
+Node[496]: Running on rank 0
+Node[497]: Running on rank 0
+Node[498]: Running on rank 0
+Node[499]: Running on rank 0
+Node[500]: Running on rank 0
+Node[501]: Running on rank 0
+Node[502]: Running on rank 0
+Node[503]: Running on rank 0
+Node[504]: Running on rank 0
+Node[505]: Running on rank 0
+Node[506]: Running on rank 0
+Node[507]: Running on rank 0
+Node[508]: Running on rank 0
+Node[509]: Running on rank 0
+Node[510]: Running on rank 0
+Node[511]: Running on rank 0
+Node[512]: Running on rank 0
+Node[513]: Running on rank 0
+Node[514]: Running on rank 0
+Node[515]: Running on rank 0
+Node[516]: Running on rank 0
+Node[517]: Running on rank 0
+Node[518]: Running on rank 0
+Node[519]: Running on rank 0
+Node[520]: Running on rank 0
+Node[521]: Running on rank 0
+Node[522]: Running on rank 0
+Node[523]: Running on rank 0
+Node[524]: Running on rank 0
+Node[525]: Running on rank 0
+Node[526]: Running on rank 0
+Node[527]: Running on rank 0
+Node[528]: Running on rank 0
+Node[529]: Running on rank 0
+Node[530]: Running on rank 0
+Node[531]: Running on rank 0
+Node[532]: Running on rank 0
+Node[533]: Running on rank 0
+Node[534]: Running on rank 0
+Node[535]: Running on rank 0
+Node[536]: Running on rank 0
+Node[537]: Running on rank 0
+Node[538]: Running on rank 0
+Node[539]: Running on rank 0
+Node[540]: Running on rank 0
+Node[541]: Running on rank 0
+Node[542]: Running on rank 0
+Node[543]: Running on rank 0
+Node[544]: Running on rank 0
+Node[545]: Running on rank 0
+Node[546]: Running on rank 0
+Node[547]: Running on rank 0
+Node[548]: Running on rank 0
+Node[549]: Running on rank 0
+Node[550]: Running on rank 0
+Node[551]: Running on rank 0
+Node[552]: Running on rank 0
+Node[553]: Running on rank 0
+Node[554]: Running on rank 0
+Node[555]: Running on rank 0
+Node[556]: Running on rank 0
+Node[557]: Running on rank 0
+Node[558]: Running on rank 0
+Node[559]: Running on rank 0
+Node[560]: Running on rank 0
+Node[561]: Running on rank 0
+Node[562]: Running on rank 0
+Node[563]: Running on rank 0
+Node[564]: Running on rank 0
+Node[565]: Running on rank 0
+Node[566]: Running on rank 0
+Node[567]: Running on rank 0
+Node[568]: Running on rank 0
+Node[569]: Running on rank 0
+Node[570]: Running on rank 0
+Node[571]: Running on rank 0
+Node[572]: Running on rank 0
+Node[573]: Running on rank 0
+Node[574]: Running on rank 0
+Node[575]: Running on rank 0
+Node[576]: Running on rank 0
+Node[577]: Running on rank 0
+Node[578]: Running on rank 0
+Node[579]: Running on rank 0
+Node[580]: Running on rank 0
+Node[581]: Running on rank 0
+Node[582]: Running on rank 0
+Node[583]: Running on rank 0
+Node[584]: Running on rank 0
+Node[585]: Running on rank 0
+Node[586]: Running on rank 0
+Node[587]: Running on rank 0
+Node[588]: Running on rank 0
+Node[589]: Running on rank 0
+Node[590]: Running on rank 0
+Node[591]: Running on rank 0
+Node[592]: Running on rank 0
+Node[593]: Running on rank 0
+Node[594]: Running on rank 0
+Node[595]: Running on rank 0
+Node[596]: Running on rank 0
+Node[597]: Running on rank 0
+Node[598]: Running on rank 0
+Node[599]: Running on rank 0
+Node[600]: Running on rank 0
+Node[601]: Running on rank 0
+Node[602]: Running on rank 0
+Node[603]: Running on rank 0
+Node[604]: Running on rank 0
+Node[605]: Running on rank 0
+Node[606]: Running on rank 0
+Node[607]: Running on rank 0
+Node[608]: Running on rank 0
+Node[609]: Running on rank 0
+Node[610]: Running on rank 0
+Node[611]: Running on rank 0
+Node[612]: Running on rank 0
+Node[613]: Running on rank 0
+Node[614]: Running on rank 0
+Node[615]: Running on rank 0
+Node[616]: Running on rank 0
+Node[617]: Running on rank 0
+Node[618]: Running on rank 0
+Node[619]: Running on rank 0
+Node[620]: Running on rank 0
+Node[621]: Running on rank 0
+Node[622]: Running on rank 0
+Node[623]: Running on rank 0
+Node[624]: Running on rank 0
+Node[625]: Running on rank 0
+Node[626]: Running on rank 0
+Node[627]: Running on rank 0
+Node[628]: Running on rank 0
+Node[629]: Running on rank 0
+Node[630]: Running on rank 0
+Node[631]: Running on rank 0
+Node[632]: Running on rank 0
+Node[633]: Running on rank 0
+Node[634]: Running on rank 0
+Node[635]: Running on rank 0
+Node[636]: Running on rank 0
+Node[637]: Running on rank 0
+Node[638]: Running on rank 0
+Node[639]: Running on rank 0
+Node[640]: Running on rank 0
+Node[641]: Running on rank 0
+Node[642]: Running on rank 0
+Node[643]: Running on rank 0
+Node[644]: Running on rank 0
+Node[645]: Running on rank 0
+Node[646]: Running on rank 0
+Node[647]: Running on rank 0
+Node[648]: Running on rank 0
+Node[649]: Running on rank 0
+Node[650]: Running on rank 0
+Node[651]: Running on rank 0
+Node[652]: Running on rank 0
+Node[653]: Running on rank 0
+Node[654]: Running on rank 0
+Node[655]: Running on rank 0
+Node[656]: Running on rank 0
+Node[657]: Running on rank 0
+Node[658]: Running on rank 0
+Node[659]: Running on rank 0
+Node[660]: Running on rank 0
+Node[661]: Running on rank 0
+Node[662]: Running on rank 0
+Node[663]: Running on rank 0
+Node[664]: Running on rank 0
+Node[665]: Running on rank 0
+Node[666]: Running on rank 0
+Node[667]: Running on rank 0
+Node[668]: Running on rank 0
+Node[669]: Running on rank 0
+Node[670]: Running on rank 0
+Node[671]: Running on rank 0
+Node[672]: Running on rank 0
+Node[673]: Running on rank 0
+Node[674]: Running on rank 0
+Node[675]: Running on rank 0
+Node[676]: Running on rank 0
+Node[677]: Running on rank 0
+Node[678]: Running on rank 0
+Node[679]: Running on rank 0
+Node[680]: Running on rank 0
+Node[681]: Running on rank 0
+Node[682]: Running on rank 0
+Node[683]: Running on rank 0
+Node[684]: Running on rank 0
+Node[685]: Running on rank 0
+Node[686]: Running on rank 0
+Node[687]: Running on rank 0
+Node[688]: Running on rank 0
+Node[689]: Running on rank 0
+Node[690]: Running on rank 0
+Node[691]: Running on rank 0
+Node[692]: Running on rank 0
+Node[693]: Running on rank 0
+Node[694]: Running on rank 0
+Node[695]: Running on rank 0
+Node[696]: Running on rank 0
+Node[697]: Running on rank 0
+Node[698]: Running on rank 0
+Node[699]: Running on rank 0
+Node[700]: Running on rank 0
+Node[701]: Running on rank 0
+Node[702]: Running on rank 0
+Node[703]: Running on rank 0
+Node[704]: Running on rank 0
+Node[705]: Running on rank 0
+Node[706]: Running on rank 0
+Node[707]: Running on rank 0
+Node[708]: Running on rank 0
+Node[709]: Running on rank 0
+Node[710]: Running on rank 0
+Node[711]: Running on rank 0
+Node[712]: Running on rank 0
+Node[713]: Running on rank 0
+Node[714]: Running on rank 0
+Node[715]: Running on rank 0
+Node[716]: Running on rank 0
+Node[717]: Running on rank 0
+Node[718]: Running on rank 0
+Node[719]: Running on rank 0
+Node[720]: Running on rank 0
+Node[721]: Running on rank 0
+Node[722]: Running on rank 0
+Node[723]: Running on rank 0
+Node[724]: Running on rank 0
+Node[725]: Running on rank 0
+Node[726]: Running on rank 0
+Node[727]: Running on rank 0
+Node[728]: Running on rank 0
+Node[729]: Running on rank 0
+Node[730]: Running on rank 0
+Node[731]: Running on rank 0
+Node[732]: Running on rank 0
+Node[733]: Running on rank 0
+Node[734]: Running on rank 0
+Node[735]: Running on rank 0
+Node[736]: Running on rank 0
+Node[737]: Running on rank 0
+Node[738]: Running on rank 0
+Node[739]: Running on rank 0
+Node[740]: Running on rank 0
+Node[741]: Running on rank 0
+Node[742]: Running on rank 0
+Node[743]: Running on rank 0
+Node[744]: Running on rank 0
+Node[745]: Running on rank 0
+Node[746]: Running on rank 0
+Node[747]: Running on rank 0
+Node[748]: Running on rank 0
+Node[749]: Running on rank 0
+Node[750]: Running on rank 0
+Node[751]: Running on rank 0
+Node[752]: Running on rank 0
+Node[753]: Running on rank 0
+Node[754]: Running on rank 0
+Node[755]: Running on rank 0
+Node[756]: Running on rank 0
+Node[757]: Running on rank 0
+Node[758]: Running on rank 0
+Node[759]: Running on rank 0
+Node[760]: Running on rank 0
+Node[761]: Running on rank 0
+Node[762]: Running on rank 0
+Node[763]: Running on rank 0
+Node[764]: Running on rank 0
+Node[765]: Running on rank 0
+Node[766]: Running on rank 0
+Node[767]: Running on rank 0
+Node[768]: Running on rank 0
+Node[769]: Running on rank 0
+Node[770]: Running on rank 0
+Node[771]: Running on rank 0
+Node[772]: Running on rank 0
+Node[773]: Running on rank 0
+Node[774]: Running on rank 0
+Node[775]: Running on rank 0
+Node[776]: Running on rank 0
+Node[777]: Running on rank 0
+Node[778]: Running on rank 0
+Node[779]: Running on rank 0
+Node[780]: Running on rank 0
+Node[781]: Running on rank 0
+Node[782]: Running on rank 0
+Node[783]: Running on rank 0
+Node[784]: Running on rank 0
+Node[785]: Running on rank 0
+Node[786]: Running on rank 0
+Node[787]: Running on rank 0
+Node[788]: Running on rank 0
+Node[789]: Running on rank 0
+Node[790]: Running on rank 0
+Node[791]: Running on rank 0
+Node[792]: Running on rank 0
+Node[793]: Running on rank 0
+Node[794]: Running on rank 0
+Node[795]: Running on rank 0
+Node[796]: Running on rank 0
+Node[797]: Running on rank 0
+Node[798]: Running on rank 0
+Node[799]: Running on rank 0
+Node[800]: Running on rank 0
+Node[801]: Running on rank 0
+Node[802]: Running on rank 0
+Node[803]: Running on rank 0
+Node[804]: Running on rank 0
+Node[805]: Running on rank 0
+Node[806]: Running on rank 0
+Node[807]: Running on rank 0
+Node[808]: Running on rank 0
+Node[809]: Running on rank 0
+Node[810]: Running on rank 0
+Node[811]: Running on rank 0
+Node[812]: Running on rank 0
+Node[813]: Running on rank 0
+Node[814]: Running on rank 0
+Node[815]: Running on rank 0
+Node[816]: Running on rank 0
+Node[817]: Running on rank 0
+Node[818]: Running on rank 0
+Node[819]: Running on rank 0
+Node[820]: Running on rank 0
+Node[821]: Running on rank 0
+Node[822]: Running on rank 0
+Node[823]: Running on rank 0
+Node[824]: Running on rank 0
+Node[825]: Running on rank 0
+Node[826]: Running on rank 0
+Node[827]: Running on rank 0
+Node[828]: Running on rank 0
+Node[829]: Running on rank 0
+Node[830]: Running on rank 0
+Node[831]: Running on rank 0
+Node[832]: Running on rank 0
+Node[833]: Running on rank 0
+Node[834]: Running on rank 0
+Node[835]: Running on rank 0
+Node[836]: Running on rank 0
+Node[837]: Running on rank 0
+Node[838]: Running on rank 0
+Node[839]: Running on rank 0
+Node[840]: Running on rank 0
+Node[841]: Running on rank 0
+Node[842]: Running on rank 0
+Node[843]: Running on rank 0
+Node[844]: Running on rank 0
+Node[845]: Running on rank 0
+Node[846]: Running on rank 0
+Node[847]: Running on rank 0
+Node[848]: Running on rank 0
+Node[849]: Running on rank 0
+Node[850]: Running on rank 0
+Node[851]: Running on rank 0
+Node[852]: Running on rank 0
+Node[853]: Running on rank 0
+Node[854]: Running on rank 0
+Node[855]: Running on rank 0
+Node[856]: Running on rank 0
+Node[857]: Running on rank 0
+Node[858]: Running on rank 0
+Node[859]: Running on rank 0
+Node[860]: Running on rank 0
+Node[861]: Running on rank 0
+Node[862]: Running on rank 0
+Node[863]: Running on rank 0
+Node[864]: Running on rank 0
+Node[865]: Running on rank 0
+Node[866]: Running on rank 0
+Node[867]: Running on rank 0
+Node[868]: Running on rank 0
+Node[869]: Running on rank 0
+Node[870]: Running on rank 0
+Node[871]: Running on rank 0
+Node[872]: Running on rank 0
+Node[873]: Running on rank 0
+Node[874]: Running on rank 0
+Node[875]: Running on rank 0
+Node[876]: Running on rank 0
+Node[877]: Running on rank 0
+Node[878]: Running on rank 0
+Node[879]: Running on rank 0
+Node[880]: Running on rank 0
+Node[881]: Running on rank 0
+Node[882]: Running on rank 0
+Node[883]: Running on rank 0
+Node[884]: Running on rank 0
+Node[885]: Running on rank 0
+Node[886]: Running on rank 0
+Node[887]: Running on rank 0
+Node[888]: Running on rank 0
+Node[889]: Running on rank 0
+Node[890]: Running on rank 0
+Node[891]: Running on rank 0
+Node[892]: Running on rank 0
+Node[893]: Running on rank 0
+Node[894]: Running on rank 0
+Node[895]: Running on rank 0
+Node[896]: Running on rank 0
+Node[897]: Running on rank 0
+Node[898]: Running on rank 0
+Node[899]: Running on rank 0
+Node[900]: Running on rank 0
+Node[901]: Running on rank 0
+Node[902]: Running on rank 0
+Node[903]: Running on rank 0
+Node[904]: Running on rank 0
+Node[905]: Running on rank 0
+Node[906]: Running on rank 0
+Node[907]: Running on rank 0
+Node[908]: Running on rank 0
+Node[909]: Running on rank 0
+Node[910]: Running on rank 0
+Node[911]: Running on rank 0
+Node[912]: Running on rank 0
+Node[913]: Running on rank 0
+Node[914]: Running on rank 0
+Node[915]: Running on rank 0
+Node[916]: Running on rank 0
+Node[917]: Running on rank 0
+Node[918]: Running on rank 0
+Node[919]: Running on rank 0
+Node[920]: Running on rank 0
+Node[921]: Running on rank 0
+Node[922]: Running on rank 0
+Node[923]: Running on rank 0
+Node[924]: Running on rank 0
+Node[925]: Running on rank 0
+Node[926]: Running on rank 0
+Node[927]: Running on rank 0
+Node[928]: Running on rank 0
+Node[929]: Running on rank 0
+Node[930]: Running on rank 0
+Node[931]: Running on rank 0
+Node[932]: Running on rank 0
+Node[933]: Running on rank 0
+Node[934]: Running on rank 0
+Node[935]: Running on rank 0
+Node[936]: Running on rank 0
+Node[937]: Running on rank 0
+Node[938]: Running on rank 0
+Node[939]: Running on rank 0
+Node[940]: Running on rank 0
+Node[941]: Running on rank 0
+Node[942]: Running on rank 0
+Node[943]: Running on rank 0
+Node[944]: Running on rank 0
+Node[945]: Running on rank 0
+Node[946]: Running on rank 0
+Node[947]: Running on rank 0
+Node[948]: Running on rank 0
+Node[949]: Running on rank 0
+Node[950]: Running on rank 0
+Node[951]: Running on rank 0
+Node[952]: Running on rank 0
+Node[953]: Running on rank 0
+Node[954]: Running on rank 0
+Node[955]: Running on rank 0
+Node[956]: Running on rank 0
+Node[957]: Running on rank 0
+Node[958]: Running on rank 0
+Node[959]: Running on rank 0
+Node[960]: Running on rank 0
+Node[961]: Running on rank 0
+Node[962]: Running on rank 0
+Node[963]: Running on rank 0
+Node[964]: Running on rank 0
+Node[965]: Running on rank 0
+Node[966]: Running on rank 0
+Node[967]: Running on rank 0
+Node[968]: Running on rank 0
+Node[969]: Running on rank 0
+Node[970]: Running on rank 0
+Node[971]: Running on rank 0
+Node[972]: Running on rank 0
+Node[973]: Running on rank 0
+Node[974]: Running on rank 0
+Node[975]: Running on rank 0
+Node[976]: Running on rank 0
+Node[977]: Running on rank 0
+Node[978]: Running on rank 0
+Node[979]: Running on rank 0
+Node[980]: Running on rank 0
+Node[981]: Running on rank 0
+Node[982]: Running on rank 0
+Node[983]: Running on rank 0
+Node[984]: Running on rank 0
+Node[985]: Running on rank 0
+Node[986]: Running on rank 0
+Node[987]: Running on rank 0
+Node[988]: Running on rank 0
+Node[989]: Running on rank 0
+Node[990]: Running on rank 0
+Node[991]: Running on rank 0
+Node[992]: Running on rank 0
+Node[993]: Running on rank 0
+Node[994]: Running on rank 0
+Node[995]: Running on rank 0
+Node[996]: Running on rank 0
+Node[997]: Running on rank 0
+Node[998]: Running on rank 0
+Node[999]: Running on rank 0
+ReportNode[0]: Running on rank 0
+ChurnManager[0]: Running on rank 0
+B-014000f9 -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.605  GossipSent:2339  IHAVESent:6692  GRAFTSent:1304 PRUNESent:1441
+B-01427bb3 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.598  GossipSent:2336  IHAVESent:6592  GRAFTSent:1267 PRUNESent:1411
+B-016113a3 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.318  GossipSent:2084  IHAVESent:7249  GRAFTSent:1673 PRUNESent:1189
+B-0341e4bd -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.414  GossipSent:2170  IHAVESent:6630  GRAFTSent:1110 PRUNESent:1240
+B-0366feeb -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.493  GossipSent:2241  IHAVESent:6620  GRAFTSent:1185 PRUNESent:1342
+B-044d6a0b -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.594  GossipSent:2332  IHAVESent:6565  GRAFTSent:1268 PRUNESent:1409
+B-05f22015 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.285  GossipSent:2054  IHAVESent:6693  GRAFTSent:1030 PRUNESent:1155
+B-05f6ab2b -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.577  GossipSent:2317  IHAVESent:6514  GRAFTSent:1277 PRUNESent:1417
+B-06db3ca3 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.268  GossipSent:2039  IHAVESent:6557  GRAFTSent:1011 PRUNESent:1137
+B-08a60116 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.428  GossipSent:2183  IHAVESent:6771  GRAFTSent:1182 PRUNESent:1284
+B-099eb742 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.586  GossipSent:2325  IHAVESent:6544  GRAFTSent:1292 PRUNESent:1423
+B-09a526e9 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.641  GossipSent:2374  IHAVESent:6649  GRAFTSent:1316 PRUNESent:1475
+B-0d4d9e28 -- Reliability:100.0%  Nodes:900  Latency:6  RMR:1.289  GossipSent:2058  IHAVESent:7280  GRAFTSent:1613 PRUNESent:1159
+B-0dde16c9 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.545  GossipSent:2288  IHAVESent:6621  GRAFTSent:1250 PRUNESent:1389
+B-0e79c668 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.59  GossipSent:2328  IHAVESent:6609  GRAFTSent:1288 PRUNESent:1428
+B-0f3a5466 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.546  GossipSent:2289  IHAVESent:6571  GRAFTSent:1242 PRUNESent:1403
+T-022b8254 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.453  GossipSent:2205  IHAVESent:6680  GRAFTSent:1180 PRUNESent:1306
+T-0945dfa6 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.38  GossipSent:2140  IHAVESent:6582  GRAFTSent:1084 PRUNESent:1236
+T-098bfb56 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.516  GossipSent:2262  IHAVESent:6730  GRAFTSent:1213 PRUNESent:1363
+T-0a992c53 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.63  GossipSent:2364  IHAVESent:6718  GRAFTSent:1310 PRUNESent:1465
+T-0b4e6873 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:0.989  GossipSent:1788  IHAVESent:6588  GRAFTSent:789 PRUNESent:886
+T-0bd1c55e -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.465  GossipSent:2216  IHAVESent:6526  GRAFTSent:1162 PRUNESent:1314
+T-0c928fd4 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:0.844  GossipSent:1658  IHAVESent:6807  GRAFTSent:683 PRUNESent:759
+T-1042773d -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.657  GossipSent:2389  IHAVESent:6500  GRAFTSent:1335 PRUNESent:1489
+T-11ea6e10 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.61  GossipSent:2346  IHAVESent:6746  GRAFTSent:1320 PRUNESent:1447
+T-13f0ee9f -- Reliability:99.889%  Nodes:899  Latency:9  RMR:1.292  GossipSent:2058  IHAVESent:6639  GRAFTSent:1039 PRUNESent:1160
+T-1577bae9 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.618  GossipSent:2354  IHAVESent:6517  GRAFTSent:1319 PRUNESent:1454
+T-1582efb3 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.542  GossipSent:2285  IHAVESent:6647  GRAFTSent:1246 PRUNESent:1385
+T-18000e61 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.475  GossipSent:2225  IHAVESent:6619  GRAFTSent:1185 PRUNESent:1325
+T-1c8d6fa7 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.2  GossipSent:1978  IHAVESent:6622  GRAFTSent:987 PRUNESent:1103
+T-1d57499b -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.249  GossipSent:2022  IHAVESent:6542  GRAFTSent:1021 PRUNESent:1122
+T-1d970a27 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.567  GossipSent:2308  IHAVESent:6540  GRAFTSent:1277 PRUNESent:1406
+T-1e05048e -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.417  GossipSent:2173  IHAVESent:6523  GRAFTSent:1138 PRUNESent:1273
+T-1f6d38fb -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.196  GossipSent:1974  IHAVESent:6621  GRAFTSent:946 PRUNESent:1058
+T-1fe1246b -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.416  GossipSent:2172  IHAVESent:6595  GRAFTSent:1112 PRUNESent:1277
+T-1ff071a6 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:0.772  GossipSent:1593  IHAVESent:6584  GRAFTSent:618 PRUNESent:693
+T-239865d6 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.288  GossipSent:2057  IHAVESent:7273  GRAFTSent:1677 PRUNESent:1139
+T-282aa458 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.59  GossipSent:2328  IHAVESent:6669  GRAFTSent:1293 PRUNESent:1429
+T-2b4b7d1f -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.65  GossipSent:2382  IHAVESent:6752  GRAFTSent:1349 PRUNESent:1483
+T-2c6b23b5 -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.62  GossipSent:2353  IHAVESent:6677  GRAFTSent:1298 PRUNESent:1455
+T-302e2b09 -- Reliability:100.0%  Nodes:900  Latency:12  RMR:1.289  GossipSent:2058  IHAVESent:6602  GRAFTSent:1030 PRUNESent:1140
+T-31cb0cb0 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.444  GossipSent:2197  IHAVESent:6649  GRAFTSent:1148 PRUNESent:1298
+T-324ca6e0 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.073  GossipSent:1864  IHAVESent:6601  GRAFTSent:839 PRUNESent:945
+T-354a7a79 -- Reliability:99.889%  Nodes:899  Latency:9  RMR:1.423  GossipSent:2176  IHAVESent:6604  GRAFTSent:1145 PRUNESent:1278
+T-357abf36 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.494  GossipSent:2242  IHAVESent:6578  GRAFTSent:1188 PRUNESent:1322
+T-36394e97 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.525  GossipSent:2270  IHAVESent:6653  GRAFTSent:1243 PRUNESent:1370
+T-38a09d5b -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.432  GossipSent:2186  IHAVESent:6699  GRAFTSent:1171 PRUNESent:1287
+T-3954390d -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.344  GossipSent:2107  IHAVESent:6534  GRAFTSent:1068 PRUNESent:1205
+T-3b0d7c4a -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.487  GossipSent:2236  IHAVESent:6593  GRAFTSent:1182 PRUNESent:1316
+T-3bf4bd0a -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.482  GossipSent:2231  IHAVESent:6746  GRAFTSent:1203 PRUNESent:1332
+T-3c20c834 -- Reliability:99.889%  Nodes:899  Latency:7  RMR:1.298  GossipSent:2064  IHAVESent:7347  GRAFTSent:1656 PRUNESent:1166
+T-3d1e2cd7 -- Reliability:99.889%  Nodes:899  Latency:7  RMR:1.666  GossipSent:2394  IHAVESent:6669  GRAFTSent:1347 PRUNESent:1496
+T-3efbf7b4 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.096  GossipSent:1884  IHAVESent:6698  GRAFTSent:884 PRUNESent:985
+T-40eef02b -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.541  GossipSent:2284  IHAVESent:6590  GRAFTSent:1220 PRUNESent:1359
+T-427bbe7c -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.493  GossipSent:2241  IHAVESent:6628  GRAFTSent:1198 PRUNESent:1342
+T-46ea1a6c -- Reliability:99.889%  Nodes:899  Latency:9  RMR:1.621  GossipSent:2354  IHAVESent:6683  GRAFTSent:1297 PRUNESent:1456
+T-4af7883c -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.581  GossipSent:2320  IHAVESent:6732  GRAFTSent:1265 PRUNESent:1421
+T-4b9311d7 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.37  GossipSent:2131  IHAVESent:7324  GRAFTSent:1729 PRUNESent:1232
+T-4bb7c6f5 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.439  GossipSent:2193  IHAVESent:6638  GRAFTSent:1150 PRUNESent:1293
+T-4c05f1ed -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.826  GossipSent:2541  IHAVESent:6571  GRAFTSent:1436 PRUNESent:1589
+T-4ec472c9 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:0.95  GossipSent:1753  IHAVESent:6649  GRAFTSent:738 PRUNESent:825
+T-526b3513 -- Reliability:100.0%  Nodes:900  Latency:12  RMR:1.785  GossipSent:2504  IHAVESent:6629  GRAFTSent:1470 PRUNESent:1625
+T-53feb3ea -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.553  GossipSent:2295  IHAVESent:6677  GRAFTSent:1265 PRUNESent:1396
+T-54bdf0c3 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.468  GossipSent:2219  IHAVESent:6598  GRAFTSent:1167 PRUNESent:1320
+T-5563fe47 -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.581  GossipSent:2318  IHAVESent:6683  GRAFTSent:1270 PRUNESent:1420
+T-55865bb7 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.515  GossipSent:2261  IHAVESent:6612  GRAFTSent:1210 PRUNESent:1345
+T-59991aab -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.516  GossipSent:2259  IHAVESent:6609  GRAFTSent:1224 PRUNESent:1361
+T-5bbeda08 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.655  GossipSent:2387  IHAVESent:6577  GRAFTSent:1298 PRUNESent:1483
+T-5d397c66 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.426  GossipSent:2181  IHAVESent:6678  GRAFTSent:1149 PRUNESent:1282
+T-5d7b886a -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.452  GossipSent:2204  IHAVESent:6676  GRAFTSent:1165 PRUNESent:1305
+T-5d961ae4 -- Reliability:99.889%  Nodes:899  Latency:6  RMR:1.321  GossipSent:2084  IHAVESent:7266  GRAFTSent:1697 PRUNESent:1186
+T-5e5a3074 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.522  GossipSent:2267  IHAVESent:6586  GRAFTSent:1216 PRUNESent:1342
+T-651a2f5e -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.713  GossipSent:2439  IHAVESent:6715  GRAFTSent:1376 PRUNESent:1540
+T-67746a58 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.477  GossipSent:2227  IHAVESent:6769  GRAFTSent:1210 PRUNESent:1328
+T-68cc1222 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.597  GossipSent:2335  IHAVESent:6671  GRAFTSent:1284 PRUNESent:1436
+T-68e0a153 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.7  GossipSent:2427  IHAVESent:6647  GRAFTSent:1365 PRUNESent:1528
+T-6a8c9dd0 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.324  GossipSent:2089  IHAVESent:6640  GRAFTSent:1059 PRUNESent:1190
+T-6acaf5c1 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.554  GossipSent:2296  IHAVESent:6673  GRAFTSent:1269 PRUNESent:1397
+T-6ba2fd8d -- Reliability:99.889%  Nodes:899  Latency:9  RMR:1.404  GossipSent:2159  IHAVESent:6717  GRAFTSent:1133 PRUNESent:1261
+T-6cc74d6e -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.552  GossipSent:2294  IHAVESent:6687  GRAFTSent:1247 PRUNESent:1395
+T-6d1c62df -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.473  GossipSent:2223  IHAVESent:6745  GRAFTSent:1198 PRUNESent:1324
+T-6d2bb276 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.525  GossipSent:2270  IHAVESent:6662  GRAFTSent:1240 PRUNESent:1371
+T-705aaa1a -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.521  GossipSent:2266  IHAVESent:6642  GRAFTSent:1218 PRUNESent:1366
+T-70c1e64b -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.67  GossipSent:2400  IHAVESent:6724  GRAFTSent:1347 PRUNESent:1501
+T-71523dcc -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.313  GossipSent:2079  IHAVESent:6583  GRAFTSent:993 PRUNESent:1112
+T-717a338a -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.627  GossipSent:2362  IHAVESent:6577  GRAFTSent:1307 PRUNESent:1441
+T-732c1b29 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.679  GossipSent:2408  IHAVESent:6656  GRAFTSent:1367 PRUNESent:1509
+T-7424d98e -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.529  GossipSent:2274  IHAVESent:6676  GRAFTSent:1251 PRUNESent:1375
+T-768da77a -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.257  GossipSent:2029  IHAVESent:6529  GRAFTSent:1014 PRUNESent:1129
+T-78095040 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.638  GossipSent:2372  IHAVESent:6610  GRAFTSent:1332 PRUNESent:1472
+T-79fbf57a -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.664  GossipSent:2395  IHAVESent:6664  GRAFTSent:1360 PRUNESent:1496
+T-7a839e84 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.284  GossipSent:2053  IHAVESent:7286  GRAFTSent:1654 PRUNESent:1153
+T-80f935f7 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.435  GossipSent:2189  IHAVESent:6655  GRAFTSent:1146 PRUNESent:1290
+T-818b535c -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.575  GossipSent:2315  IHAVESent:6606  GRAFTSent:1265 PRUNESent:1416
+T-84375c24 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.504  GossipSent:2251  IHAVESent:6563  GRAFTSent:1151 PRUNESent:1275
+T-878fbadc -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.41  GossipSent:2167  IHAVESent:7255  GRAFTSent:1753 PRUNESent:1268
+T-88df35ef -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.261  GossipSent:2033  IHAVESent:6616  GRAFTSent:982 PRUNESent:1067
+T-89433de1 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.474  GossipSent:2224  IHAVESent:6680  GRAFTSent:1206 PRUNESent:1325
+T-897fee0d -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.568  GossipSent:2309  IHAVESent:6525  GRAFTSent:1250 PRUNESent:1407
+T-8abcb540 -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.345  GossipSent:2106  IHAVESent:6735  GRAFTSent:1088 PRUNESent:1208
+T-8ce0bece -- Reliability:99.889%  Nodes:899  Latency:10  RMR:1.717  GossipSent:2440  IHAVESent:6590  GRAFTSent:1382 PRUNESent:1542
+T-8ee7b520 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.152  GossipSent:1935  IHAVESent:6785  GRAFTSent:932 PRUNESent:1036
+T-8f921ce3 -- Reliability:100.0%  Nodes:900  Latency:6  RMR:1.366  GossipSent:2127  IHAVESent:7192  GRAFTSent:1724 PRUNESent:1225
+T-90aa44ca -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.261  GossipSent:2033  IHAVESent:6699  GRAFTSent:1016 PRUNESent:1134
+T-925d8b40 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.525  GossipSent:2270  IHAVESent:6621  GRAFTSent:1212 PRUNESent:1370
+T-925f6fe9 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.501  GossipSent:2248  IHAVESent:6585  GRAFTSent:1207 PRUNESent:1339
+T-9485338c -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.616  GossipSent:2352  IHAVESent:6569  GRAFTSent:1284 PRUNESent:1435
+T-95e7d1b6 -- Reliability:100.0%  Nodes:900  Latency:6  RMR:1.309  GossipSent:2076  IHAVESent:7273  GRAFTSent:1637 PRUNESent:1177
+T-96183f3f -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.561  GossipSent:2302  IHAVESent:6659  GRAFTSent:1257 PRUNESent:1403
+T-96a3f624 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.586  GossipSent:2325  IHAVESent:6735  GRAFTSent:1285 PRUNESent:1426
+T-97de815e -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.209  GossipSent:1984  IHAVESent:6732  GRAFTSent:974 PRUNESent:1086
+T-982b0e6f -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.482  GossipSent:2231  IHAVESent:6612  GRAFTSent:1191 PRUNESent:1306
+T-9a087194 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.437  GossipSent:2191  IHAVESent:6679  GRAFTSent:1160 PRUNESent:1292
+T-9ad1485f -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.316  GossipSent:2082  IHAVESent:6647  GRAFTSent:1065 PRUNESent:1182
+T-9bae2187 -- Reliability:99.889%  Nodes:899  Latency:9  RMR:0.944  GossipSent:1746  IHAVESent:6657  GRAFTSent:754 PRUNESent:848
+T-9c2e57a6 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.665  GossipSent:2396  IHAVESent:6653  GRAFTSent:1350 PRUNESent:1497
+T-9c9875bf -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.575  GossipSent:2315  IHAVESent:6547  GRAFTSent:1271 PRUNESent:1413
+T-9ddef6b5 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.289  GossipSent:2058  IHAVESent:6698  GRAFTSent:1047 PRUNESent:1159
+T-9eb33e83 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.236  GossipSent:2010  IHAVESent:6627  GRAFTSent:982 PRUNESent:1085
+T-9fd54cfa -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.43  GossipSent:2185  IHAVESent:6607  GRAFTSent:1159 PRUNESent:1257
+T-a10951e5 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.643  GossipSent:2376  IHAVESent:6537  GRAFTSent:1338 PRUNESent:1474
+T-a3b9dcfd -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.281  GossipSent:2051  IHAVESent:6538  GRAFTSent:1038 PRUNESent:1151
+T-a4230d87 -- Reliability:99.889%  Nodes:899  Latency:7  RMR:1.646  GossipSent:2376  IHAVESent:6600  GRAFTSent:1324 PRUNESent:1478
+T-a5ac4ef2 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.437  GossipSent:2191  IHAVESent:6679  GRAFTSent:1172 PRUNESent:1292
+T-a5b5a848 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.437  GossipSent:2191  IHAVESent:7223  GRAFTSent:1728 PRUNESent:1256
+T-a8e86d6f -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.784  GossipSent:2503  IHAVESent:6604  GRAFTSent:1416 PRUNESent:1604
+T-a9b2a0c1 -- Reliability:100.0%  Nodes:900  Latency:6  RMR:1.22  GossipSent:1996  IHAVESent:7440  GRAFTSent:1638 PRUNESent:1097
+T-aa3259ff -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.484  GossipSent:2233  IHAVESent:6759  GRAFTSent:1199 PRUNESent:1334
+T-aadcb310 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.627  GossipSent:2362  IHAVESent:6630  GRAFTSent:1329 PRUNESent:1462
+T-aef5a43c -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.38  GossipSent:2140  IHAVESent:6689  GRAFTSent:1103 PRUNESent:1241
+T-b1d715f9 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:0.92  GossipSent:1726  IHAVESent:6711  GRAFTSent:736 PRUNESent:827
+T-b2008700 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.457  GossipSent:2209  IHAVESent:6592  GRAFTSent:1155 PRUNESent:1289
+T-b23907ba -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.69  GossipSent:2418  IHAVESent:6661  GRAFTSent:1383 PRUNESent:1519
+T-b4b97670 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.325  GossipSent:2090  IHAVESent:7152  GRAFTSent:1686 PRUNESent:1190
+T-b64392fa -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.562  GossipSent:2301  IHAVESent:6616  GRAFTSent:1265 PRUNESent:1403
+T-b8e24861 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.635  GossipSent:2369  IHAVESent:6532  GRAFTSent:1318 PRUNESent:1467
+T-b969b4ec -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.467  GossipSent:2218  IHAVESent:6578  GRAFTSent:1164 PRUNESent:1290
+T-ba44be01 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.257  GossipSent:2029  IHAVESent:7371  GRAFTSent:1624 PRUNESent:1130
+T-bb4ee6ec -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.326  GossipSent:2091  IHAVESent:7229  GRAFTSent:1635 PRUNESent:1192
+T-bc83bbff -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.422  GossipSent:2177  IHAVESent:6631  GRAFTSent:1125 PRUNESent:1278
+T-bcd7d772 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:0.872  GossipSent:1683  IHAVESent:6679  GRAFTSent:692 PRUNESent:782
+T-be59a194 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.457  GossipSent:2209  IHAVESent:6668  GRAFTSent:1172 PRUNESent:1310
+T-be78df40 -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.635  GossipSent:2366  IHAVESent:6670  GRAFTSent:1307 PRUNESent:1468
+T-bf5442ee -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.367  GossipSent:2128  IHAVESent:6673  GRAFTSent:1112 PRUNESent:1229
+T-c2d2508e -- Reliability:99.889%  Nodes:899  Latency:9  RMR:0.996  GossipSent:1792  IHAVESent:6648  GRAFTSent:794 PRUNESent:894
+T-c339b72a -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.57  GossipSent:2310  IHAVESent:6752  GRAFTSent:1272 PRUNESent:1411
+T-c40fefb4 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.474  GossipSent:2224  IHAVESent:6775  GRAFTSent:1214 PRUNESent:1325
+T-c45d910b -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.275  GossipSent:2045  IHAVESent:6530  GRAFTSent:1008 PRUNESent:1143
+T-c987148d -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.608  GossipSent:2345  IHAVESent:6576  GRAFTSent:1287 PRUNESent:1441
+T-cb964dca -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.433  GossipSent:2187  IHAVESent:6598  GRAFTSent:1133 PRUNESent:1262
+T-cc8072f4 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.209  GossipSent:1986  IHAVESent:6542  GRAFTSent:981 PRUNESent:1086
+T-d0254ae0 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.359  GossipSent:2121  IHAVESent:6690  GRAFTSent:1099 PRUNESent:1222
+T-d08ba947 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.16  GossipSent:1942  IHAVESent:6751  GRAFTSent:922 PRUNESent:1043
+T-d0c607f1 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.571  GossipSent:2311  IHAVESent:6755  GRAFTSent:1284 PRUNESent:1412
+T-d3dbca61 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.326  GossipSent:2091  IHAVESent:6577  GRAFTSent:1004 PRUNESent:1132
+T-d44d899f -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.604  GossipSent:2341  IHAVESent:6661  GRAFTSent:1292 PRUNESent:1442
+T-d48db0e2 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.17  GossipSent:1951  IHAVESent:6686  GRAFTSent:931 PRUNESent:1052
+T-d87e7625 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.493  GossipSent:2241  IHAVESent:6662  GRAFTSent:1196 PRUNESent:1342
+T-d94f0c74 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.427  GossipSent:2182  IHAVESent:6658  GRAFTSent:1150 PRUNESent:1283
+T-db8d80b3 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.63  GossipSent:2364  IHAVESent:6612  GRAFTSent:1307 PRUNESent:1465
+T-df639222 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.397  GossipSent:2155  IHAVESent:6610  GRAFTSent:1108 PRUNESent:1230
+T-e1571518 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.454  GossipSent:2206  IHAVESent:6669  GRAFTSent:1166 PRUNESent:1307
+T-e28cef1f -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.553  GossipSent:2295  IHAVESent:6738  GRAFTSent:1266 PRUNESent:1396
+T-e6ee1d0e -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.508  GossipSent:2255  IHAVESent:6676  GRAFTSent:1209 PRUNESent:1356
+T-e9e10f05 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.68  GossipSent:2409  IHAVESent:6605  GRAFTSent:1343 PRUNESent:1510
+T-ecaae5e8 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.467  GossipSent:2218  IHAVESent:7519  GRAFTSent:2045 PRUNESent:1304
+T-ecb16589 -- Reliability:100.0%  Nodes:900  Latency:8  RMR:1.294  GossipSent:2062  IHAVESent:6678  GRAFTSent:1039 PRUNESent:1163
+T-ee471e63 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.645  GossipSent:2378  IHAVESent:6630  GRAFTSent:1323 PRUNESent:1478
+T-ef4195d4 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.664  GossipSent:2395  IHAVESent:6580  GRAFTSent:1319 PRUNESent:1470
+T-f1c4a216 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:0.534  GossipSent:1379  IHAVESent:6606  GRAFTSent:415 PRUNESent:477
+T-f5ccb7d4 -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.526  GossipSent:2271  IHAVESent:6541  GRAFTSent:1216 PRUNESent:1369
+T-f5fdeb60 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.624  GossipSent:2359  IHAVESent:6588  GRAFTSent:1297 PRUNESent:1434
+T-f7035718 -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.199  GossipSent:1977  IHAVESent:6673  GRAFTSent:951 PRUNESent:1078
+T-f7ce8ba4 -- Reliability:99.889%  Nodes:899  Latency:8  RMR:1.645  GossipSent:2375  IHAVESent:6614  GRAFTSent:1337 PRUNESent:1477
+T-fdce933c -- Reliability:100.0%  Nodes:900  Latency:9  RMR:1.528  GossipSent:2273  IHAVESent:6668  GRAFTSent:1236 PRUNESent:1374
+T-fdfa706a -- Reliability:100.0%  Nodes:900  Latency:10  RMR:1.613  GossipSent:2349  IHAVESent:6511  GRAFTSent:1282 PRUNESent:1447
+T-fe9ec906 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.323  GossipSent:2088  IHAVESent:6539  GRAFTSent:1055 PRUNESent:1186
+T-ff4e9ab8 -- Reliability:100.0%  Nodes:900  Latency:7  RMR:1.487  GossipSent:2236  IHAVESent:6518  GRAFTSent:1192 PRUNESent:1334
+
+Number of Miners: 10  Total Transactions: 158
+AVERAGE -- Reliability:99.988%  Nodes:899.9  Latency:8.2  RMR:1.443  GossipSent:2196.3  IHAVESent:6695.5  GRAFTSent:1216.0 PRUNESent:1291.9
+PlumTree Degree Avg:8.8  Min:5  Max:11  Shortest Path Avg:4.30 Clustering Coefficient  0.0347
+Membership Degree Avg:8.8
+
+--- Degree distribution (membership, directed) ---
+   Grado     Nodos       % red
+       5         2       0.22%  
+       6        51       5.67%  ##
+       7       131      14.56%  #######
+       8       197      21.89%  ##########
+       9       194      21.56%  ##########
+      10       208      23.11%  ###########
+      11       117      13.00%  ######
+Media: 8.80  Varianza: 2.06  Desv. Est.: 1.43
+
+--- Overlay convergence snapshots ---
+     t   nodes   eager_avg   eager_std   lazy_avg   lazy_std    v_avg    v_std  lazy=0 (%)  tree_formed (%)
+    50    1000        0.00        0.00       7.35       1.32     7.35     1.32         0.0              0.0
+   100    1000        0.00        0.00       8.13       1.36     8.13     1.36         0.0              0.0
+   150    1000        0.00        0.00       8.47       1.38     8.47     1.38         0.0              0.0
+   200    1000        0.00        0.00       8.60       1.40     8.60     1.40         0.0              0.0
+   250    1000        0.00        0.00       8.70       1.43     8.70     1.43         0.0              0.0
+   300    1000        1.20        1.79       7.51       2.14     8.71     1.41         0.9             50.1
+tree_formed: % of nodes with eager>0 AND lazy>0 at snapshot time
+lazy=0: % of nodes with no lazy peers (pure eager flood)
+
+--- Membership control messages ---
+                     PULL:     144000  ( 14.87%)
+               PULL_REPLY:     143434  ( 14.81%)
+                     PUSH:     144000  ( 14.87%)
+              SamplerPing:     269050  ( 27.78%)
+              SamplerPong:     267918  ( 27.67%)
+                    TOTAL:     968402
+
+===================================================
+SIMULATION COMPLETED IN: 101.78665827800432 SECONDS
+SIMULATED EVENTS: 5124591
+EVENTS PER SECOND: 50346.39201931048
+===================================================

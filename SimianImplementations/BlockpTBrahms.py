@@ -2,6 +2,7 @@ import report
 from Blockchain import * 
 from simian import Simian
 import random, math, argparse, hashlib
+from collections import defaultdict
 
 parser = argparse.ArgumentParser(
     description='The PHOLD model.',
@@ -24,7 +25,6 @@ parser.add_argument("--activeChurn", type=int, metavar='CHURN', default=0,
 parser.add_argument("--failRate", type=float, metavar='FAILRATE', default=0.0,
                     help="node fail rate [0.0 ... 1.0]")
 
-
 parser.add_argument("--c", type=int, metavar='VIEWSIZE', default=3,
                     help="c value -> view Size = log n + c -> default 3")
 parser.add_argument("--a", type=float, metavar='ALFA', default=0.45,
@@ -32,7 +32,6 @@ parser.add_argument("--a", type=float, metavar='ALFA', default=0.45,
 parser.add_argument("--b", type=float, metavar='BETA', default=0.45,
                     help="beta value [0.0 ... 1.0]")
 args = parser.parse_args()
-
 
 uMPI = False
 if args.useMPI == 1:
@@ -51,11 +50,9 @@ delayLazy = 1
 
 TriggerBrahmsTime = args.updateViews
 TriggerBrahmsTime2 = args.updateViews
-churnEndtime = 50 #args.endtime
-stabilizationTime = 250 #args.endtime
+churnEndtime = 50
+stabilizationTime = 250
 
-# After stabilization, Brahms keeps running but at a slower cadence
-# to avoid disrupting the PlumTree overlay while still reacting to churn/failures.
 TriggerBrahmsTimePost = args.updateViews * 5
 
 l1 = math.ceil(args.c * math.pow(args.total_nodes, 1.0/3.0))
@@ -87,7 +84,7 @@ class msgGossip:
 
 class msgReport:
     def __init__(self, msgs, diss_degree, miner, length, trx,
-                 node_id, neighbors, membership_degree):
+                 node_id, neighbors, membership_degree, membership_msgs=None):
         self.msgsFromNode = msgs
         self.disseminationDegree = diss_degree
         self.isMiner = miner
@@ -96,6 +93,7 @@ class msgReport:
         self.node_id = node_id
         self.neighbors = neighbors 
         self.membership_degree = membership_degree 
+        self.membership_msgs = membership_msgs if membership_msgs else {}
 
 class msgBrahms:
     def __init__(self,type,view,sender):
@@ -132,11 +130,10 @@ class Sampler:
         return self.q
 
     def invalidate(self):
-        # Re-initialize this sampler when its stored node is no longer active.
         self.__init__()
 
     def toString(self):
-        return str(self.q)
+        return '%s-' %(self.q)
     
 class ChurnManager(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
@@ -146,8 +143,6 @@ class ChurnManager(simianEngine.Entity):
 
     def do_churn_cycle(self, *args):
         churn_size = int(nodes * failRate)
-        # Churn out: a single batch of node failures, staggered with
-        # random delays so they don't all fail at the exact same instant.
         if len(upNodes) > churn_size and churn_size > 0:
             to_churn = random.sample(upNodes, churn_size)
             for node_id in to_churn:
@@ -158,12 +153,10 @@ class ChurnManager(simianEngine.Entity):
 class ReportNode(simianEngine.Entity):
     def __init__(self, baseInfo, *args):
         super().__init__(baseInfo)
-        # Per-message metrics
-        self.reliability = {}      # number of nodes that received each message
-        self.latency = {}          # max hops per message
-        self.redundancy = {}       # [gossip, inv, requests] per message
+        self.reliability = {}
+        self.latency = {}
+        self.redundancy = {}
 
-        # Node-level aggregates
         self.degree_sum = 0
         self.totalMiners = 0
         self.totalTransactions = 0
@@ -176,10 +169,10 @@ class ReportNode(simianEngine.Entity):
         self.graph = {}         
         self.membership_degree_sum = 0  
 
-        # Overlay convergence snapshots: {t -> {'eager': [], 'lazy': [], 'v': []}}
         self.snapshots = {}
 
-        # Schedule the final report
+        self.membership_msgs_sum = defaultdict(int)
+
         self.reqService(endTime, "PrintSystemReport", "none")
 
     def OverlaySnapshot(self, *args):
@@ -201,47 +194,43 @@ class ReportNode(simianEngine.Entity):
         u = report.node_id
         Nu = set(report.neighbors)
 
-       
         self.graph.setdefault(u, set()).update(Nu)
 
         self.membership_degree_sum += report.membership_degree
 
         self.servedNodes += 1
 
-        # Update degree stats
         self.degree_sum += degree
         self.maxDegree = max(self.maxDegree, degree)
         self.minDegree = min(self.minDegree, degree)
 
-        # Process each message
+        if report.membership_msgs:
+            for k, v in report.membership_msgs.items():
+                self.membership_msgs_sum[k] += v
+
         for m in msgs:
             msg_id = m['id']
             hops = m['hopsDone']
             self.shortestPathSum += hops
 
-            # Latency: max hops for this message
             if msg_id not in self.latency or hops > self.latency[msg_id]:
                 self.latency[msg_id] = hops
 
-            # Reliability: count of nodes that received this message
             self.reliability[msg_id] = self.reliability.get(msg_id, 0) + 1
 
-            # Redundancy sums
             if msg_id not in self.redundancy:
-                self.redundancy[msg_id] = [0, 0, 0]
+                self.redundancy[msg_id] = [0, 0, 0, 0]
             self.redundancy[msg_id][0] += m['gossip']
             self.redundancy[msg_id][1] += m['ihave']
             self.redundancy[msg_id][2] += m['graft']
+            self.redundancy[msg_id][3] += m['prune']
 
-        # Aggregate transactions
         self.totalTransactions += trx
 
-        # Track longest chain
         if chain > self.longestChain:
             self.longestChain = chain
         self.chainLengths += chain
 
-        # Count miners
         if isMiner:
             self.totalMiners += 1
 
@@ -278,19 +267,16 @@ class ReportNode(simianEngine.Entity):
             self.out.write("No messages received.\n")
             return
 
-        # Initialize aggregates
-        avRel = avNodes = avLat = avRmr = avGossip = avInv = avReq = 0
+        avRel = avNodes = avLat = avRmr = avGossip = avInv = avReq = avPru = 0
 
         clustering = self.compute_clustering()
 
-        # Per-message report
         for msg_id in sorted(self.reliability.keys()):
             received_count = self.reliability[msg_id]
             reliability_pct = round(received_count / node_count * 100, 3)
             latency = self.latency[msg_id]
             rmr = round((self.redundancy[msg_id][0] / (received_count - 1)) - 1, 3) if received_count > 1 else 0
 
-            # Sum for averages
             avRel += reliability_pct
             avNodes += received_count
             avLat += latency
@@ -298,12 +284,12 @@ class ReportNode(simianEngine.Entity):
             avGossip += self.redundancy[msg_id][0]
             avInv += self.redundancy[msg_id][1]
             avReq += self.redundancy[msg_id][2]
-
+            avPru += self.redundancy[msg_id][3]
+            
             self.out.write(f"{msg_id} -- Reliability:{reliability_pct}%  Nodes:{received_count}  "
-                           f"Latency:{latency}  RMR:{rmr}  Gossip:{self.redundancy[msg_id][0]}  "
-                           f"IHAVE:{self.redundancy[msg_id][1]}  GRAFT:{self.redundancy[msg_id][2]}\n")
+                           f"Latency:{latency}  RMR:{rmr}  GossipSent:{self.redundancy[msg_id][0]}  "
+                           f"IHAVESent:{self.redundancy[msg_id][1]}  GRAFTSent:{self.redundancy[msg_id][2]} PRUNESent:{self.redundancy[msg_id][3]}\n")
 
-        # Compute averages
         avRel /= total_msgs
         avNodes /= total_msgs
         avLat /= total_msgs
@@ -311,18 +297,18 @@ class ReportNode(simianEngine.Entity):
         avGossip /= total_msgs
         avInv /= total_msgs
         avReq /= total_msgs
+        avPru /= total_msgs
         avg_shortest_path = self.shortestPathSum / (total_msgs * node_count)
 
-        # Print summary
         self.out.write(f"\nNumber of Miners: {self.totalMiners}  Total Transactions: {self.totalTransactions}\n")
         self.out.write(f"AVERAGE -- Reliability:{avRel:.3f}%  Nodes:{avNodes:.1f}  Latency:{avLat:.1f}  "
-                       f"RMR:{avRmr:.3f}  Gossip:{avGossip:.1f}  IHAVE:{avInv:.1f}  GRAFT:{avReq:.1f}\n")
+                       f"RMR:{avRmr:.3f}  GossipSent:{avGossip:.1f}  IHAVESent:{avInv:.1f}  GRAFTSent:{avReq:.1f} PRUNESent:{avPru:.1f}\n")
         avg_membership_degree = round(self.membership_degree_sum / node_count, 2) if node_count > 0 else 0
         self.out.write(f"PlumTree Degree Avg:{avg_degree}  Min:{self.minDegree}  Max:{self.maxDegree}  "
                        f"Shortest Path Avg:{avg_shortest_path:.2f} Clustering Coefficient  {clustering:.4f}\n")
         self.out.write(f"Membership Degree Avg:{avg_membership_degree}\n")
 
-        # --- Degree distribution histogram ---
+        # Degree distribution histogram
         self.out.write("\n--- Degree distribution (membership, directed) ---\n")
         degree_dist = {}
         for u, Nu in self.graph.items():
@@ -342,7 +328,7 @@ class ReportNode(simianEngine.Entity):
             self.out.write(f"{d:>8}  {degree_dist[d]:>8}  {pct:>9.2f}%  {bar}\n")
         self.out.write(f"Media: {mean_d:.2f}  Varianza: {var_d:.2f}  Desv. Est.: {std_d:.2f}\n")
 
-        # --- Overlay convergence snapshots ---
+        # Overlay convergence snapshots
         if self.snapshots:
             self.out.write("\n--- Overlay convergence snapshots ---\n")
             self.out.write(f"{'t':>6}  {'nodes':>6}  {'eager_avg':>10}  {'eager_std':>10}  "
@@ -365,6 +351,18 @@ class ReportNode(simianEngine.Entity):
                                f"{lazy_zero_pct:>10.1f}  {tree_formed_pct:>15.1f}\n")
             self.out.write("tree_formed: % of nodes with eager>0 AND lazy>0 at snapshot time\n")
             self.out.write("lazy=0: % of nodes with no lazy peers (pure eager flood)\n")
+
+        # Membership message summary
+        self.out.write("\n--- Membership control messages ---\n")
+        total_membership = sum(self.membership_msgs_sum.values())
+        if total_membership == 0:
+            self.out.write("No membership messages recorded.\n")
+        else:
+            for msg_type in sorted(self.membership_msgs_sum.keys()):
+                count = self.membership_msgs_sum[msg_type]
+                pct = count / total_membership * 100
+                self.out.write(f"{msg_type:>25}: {count:>10}  ({pct:>6.2f}%)\n")
+            self.out.write(f"{'TOTAL':>25}: {total_membership:>10}\n")
 
 
 class Node(simianEngine.Entity):
@@ -392,16 +390,18 @@ class Node(simianEngine.Entity):
         self.report = {}
         self.timersAck = {}
 
-        #brahms variables
+        #brahms variables 
         self.S = []               
         self.V = set()
         self.Vpush = []
         self.Vpull = []
 
-        self.samplerPingTimer = {}  # {sampler_idx: nonce}
+        self.samplerPingTimer = {}
         self.sampler_nonce = 0
 
-        contactNode = self.node_idx - 1 #random.randrange(nodes)
+        self.membership_msgs = defaultdict(int)
+
+        contactNode = self.node_idx - 1
         contactNode2 = self.node_idx - 2
         contactNode3 = self.node_idx + 1
         contactNode4 = self.node_idx + 2
@@ -418,7 +418,6 @@ class Node(simianEngine.Entity):
         self.reqService(5, "TriggerBrahmsSend", "none")
         self.reqService(stabilizationTime, "TriggerSamplerProbe", "none")
 
-        # Overlay convergence snapshots at key moments
         for snap_t in [50, 100, 150, 200, 250, 300]:
             if snap_t < endTime:
                 self.reqService(snap_t, "SendOverlaySnapshot", snap_t)
@@ -458,7 +457,7 @@ class Node(simianEngine.Entity):
                         if val == False and pair[0] == msg.ID and pair[1] == msg.hops:
                              self.timersAck[msg.sender].remove(pair)
                              val = True
-
+                  
                 if msg.sender in self.eagerPushPeers:
                     self.eagerPushPeers.discard(msg.sender)
                 if msg.sender in self.V:
@@ -468,42 +467,34 @@ class Node(simianEngine.Entity):
                 msgToSend = msgGossip('ACK','','',msg.ID,msg.hops,self.node_idx)
                 self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", msg.sender)
 
-                if msg.ID not in self.report.keys():
-                    self.report[msg.ID] = [0,1,0]
-                else:
-                    self.report[msg.ID][1] += 1
-
                 if msg.ID not in self.receivedMsgs.keys():
                     self.missing.append((msg.ID,msg.sender,msg.hops))
-                    # setup timer
                     if msg.ID not in self.timers:
                         self.timers.append(msg.ID)
                         self.reqService(timeout1, "Timer", msg.ID)
 
             elif msg.type =='GRAFT':
-                if msg.ID not in self.report.keys():
-                    self.report[msg.ID] = [0,0,1]
-                else:
-                    self.report[msg.ID][2] += 1
-
                 if msg.sender in self.V:
                     self.eagerPushPeers.add(msg.sender)
                 self.lazyPushPeers.discard(msg.sender)
                 if msg.ID in self.receivedMsgs.keys():
+            
+                    if msg.ID not in self.report.keys():
+                        self.report[msg.ID] = [0,0,0,0]
+                    self.report[msg.ID][0] += 1
+
                     msgToSend = msgGossip('GOSSIP',self.receivedMsgs[msg.ID].payloadType,self.receivedMsgs[msg.ID].payload,msg.ID,msg.hops,self.node_idx)
                     self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", msg.sender)
 
             elif msg.type =='GOSSIP':
-                if msg.ID not in self.report.keys():
-                    self.report[msg.ID] = [1,0,0]
-                else:
-                    self.report[msg.ID][0] += 1
-
                 if msg.ID not in self.receivedMsgs.keys():
                     msgToSend = msgGossip('ACK','','',msg.ID,msg.hops,self.node_idx)
                     self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", msg.sender)
 
                     self.receivedMsgs[msg.ID] = msg
+
+                    if msg.ID not in self.report.keys():
+                        self.report[msg.ID] = [0,0,0,0]
                     
                     if msg.ID in self.timers:
                         self.timers.remove(msg.ID)
@@ -514,7 +505,6 @@ class Node(simianEngine.Entity):
                         if accepted and block.hash == self.blockchain.head:
                             self.blockchain.remove_confirmed_transactions(block)
                             self.mining = False
-                            
 
                         self.LazyPush(msg)
                         self.EagerPush(msg)            
@@ -535,19 +525,23 @@ class Node(simianEngine.Entity):
                     if msg.sender in self.V:
                         self.lazyPushPeers.add(msg.sender)
 
+                    if msg.ID not in self.report.keys():
+                        self.report[msg.ID] = [0,0,0,0]
+                    else:
+                        self.report[msg.ID][3] += 1
+
                     msgToSend = msgGossip('PRUNE','','',msg.ID,msg.hops,self.node_idx)
                     self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", msg.sender)
 
             elif msg.type =='BROADCAST':
                 mID = msg.ID
                 msg.type = 'GOSSIP'
+                self.receivedMsgs[mID] = msg
+                self.report[msg.ID] = [0,0,0,0]
                 self.EagerPush(msg)
                 self.LazyPush(msg)
-                self.receivedMsgs[mID] = msg
-                self.report[msg.ID] = [0,0,0]
 
             elif msg.type =='ACK':
-                #remover lista de timers
                 if msg.sender in self.timersAck.keys():
                     val = False
                     for pair in self.timersAck[msg.sender]:
@@ -561,25 +555,22 @@ class Node(simianEngine.Entity):
             self.start_mining()
             return
 
-        # Chain advanced → abort
         if self.blockchain.head != self.mining_parent:
             self.mining = False
             self.start_mining()
             return
 
-        # Success
         self.blockchain.mine()
         new_block = self.blockchain.last_block
         self.blockchain.remove_confirmed_transactions(new_block)
 
-
         block_id = "B-" + new_block.hash[:8]
         block_msg = msgGossip('GOSSIP',"BLOCK", new_block.to_dict(), block_id, 0, self.node_idx)        
         self.receivedMsgs[block_msg.ID] = block_msg
-        self.report[block_msg.ID] = [1, 0, 0]
+        self.report[block_msg.ID] = [0, 0, 0, 0]
 
-        self.LazyPush(block_msg)
         self.EagerPush(block_msg)
+        self.LazyPush(block_msg)
 
         self.mining = False
         self.start_mining()
@@ -589,6 +580,10 @@ class Node(simianEngine.Entity):
         msgToSend = msgGossip('GOSSIP',msg.payloadType,msg.payload,msg.ID,msg.hops + 1,self.node_idx)
         for n in self.eagerPushPeers:
             if n != sender:
+                if msg.ID not in self.report.keys():
+                    self.report[msg.ID] = [0,0,0,0]
+                self.report[msg.ID][0] += 1
+
                 self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", n)
 
     def LazyPush(self, msg):
@@ -596,6 +591,10 @@ class Node(simianEngine.Entity):
         msgToSend = msgGossip('IHAVE','',msg.payload,msg.ID,msg.hops + 1,self.node_idx)
         for n in self.lazyPushPeers:
             if n != sender:
+                if msg.ID not in self.report.keys():
+                    self.report[msg.ID] = [0,0,0,0]
+                self.report[msg.ID][1] += 1
+
                 self.reqService(lookahead * delayLazy, "PlumTreeGossip", msgToSend, "Node", n)
 
     def NeighborUP(self, node):
@@ -625,6 +624,10 @@ class Node(simianEngine.Entity):
                     self.eagerPushPeers.add(m[1])
                     self.lazyPushPeers.discard(m[1])
 
+                if mID not in self.report.keys():
+                    self.report[mID] = [0,0,0,0]
+                self.report[mID][2] += 1
+
                 msgToSend = msgGossip('GRAFT','','',mID,m[2],self.node_idx)
                 self.reqService(lookahead, "PlumTreeGossip", msgToSend, "Node", m[1])
 
@@ -643,7 +646,6 @@ class Node(simianEngine.Entity):
                      val = True
 
             if val == True:
-                #self.out.write("ack n chegou no node:"+ str(self.node_idx)+"\n")
                 self.NodeFailure(dest)
                 self.timersAck[dest] = []
                 self.NeighborDown(dest)
@@ -674,13 +676,13 @@ class Node(simianEngine.Entity):
 
     def Brahms(self, *args):
         msg = args[0]
-        #self.out.write(str(self.engine.now) + (":%d rcvd msg '%s' %d\n" % (self.node_idx, msg.type,msg.sender)))
         if self.active:
             if msg.type == 'PUSH':
                 if msg.sender not in self.Vpush:
                     self.Vpush.append(msg.sender)
             elif msg.type == 'PULL':
                 msgToSend = msgBrahms('PULL_REPLY',str(self.V),self.node_idx)
+                self.membership_msgs['PULL_REPLY'] += 1
                 self.reqService(lookahead, "Brahms", msgToSend, "Node", msg.sender)
             elif msg.type == 'PULL_REPLY':
                 if len(self.Vpull) < math.floor(b * l1):
@@ -690,7 +692,6 @@ class Node(simianEngine.Entity):
                     self.Vpull = self.Vpull + v2
 
     def NodeFailure(self,node):
-        #self.out.write("FAIL DETECTED ---------\n")
         self.V.discard(node)
 
 
@@ -698,7 +699,6 @@ class Node(simianEngine.Entity):
 #--------------------------------------- TRIGGERS ---------------------------------------------------
 
     def TriggerBrahmsSend(self, *args):
-        #self.out.write(str(self.engine.now) + (":%d: %s %s %s\n" % (self.node_idx, str(self.Vpull),str(self.Vpush),str(self.V))))
         if self.active==True:
             self.Vpull = list( dict.fromkeys(self.Vpull) )
 
@@ -716,7 +716,6 @@ class Node(simianEngine.Entity):
                 if self.node_idx in new_V:
                     new_V.remove(self.node_idx)
 
-
                 old_V_set = set(self.V)
                 new_V_set = set(new_V)
 
@@ -729,9 +728,8 @@ class Node(simianEngine.Entity):
                         self.lazyPushPeers.add(n)
 
                 self.V = set(new_V)
-                # ---------------------------------
 
-                self.updateSample(list( dict.fromkeys(self.Vpush + self.Vpull) ) )
+                self.updateSample(list( dict.fromkeys(self.Vpush + self.Vpull) ))
 
             if push_flooded:
                 self.updateSample(list(dict.fromkeys(self.Vpush + self.Vpull)))
@@ -743,10 +741,12 @@ class Node(simianEngine.Entity):
                 V_list = list(self.V)
                 for n in random.choices(V_list, k=math.floor(a * l1)):
                     msgToSend = msgBrahms('PUSH',"[]",self.node_idx)
+                    self.membership_msgs['PUSH'] += 1
                     self.reqService(lookahead, "Brahms", msgToSend, "Node", n)
 
                 for n in random.choices(V_list, k=math.floor(b * l1)):
                     msgToSend = msgBrahms('PULL',"[]",self.node_idx)
+                    self.membership_msgs['PULL'] += 1
                     self.reqService(lookahead, "Brahms", msgToSend, "Node", n)
 
             if self.engine.now < churnEndtime:
@@ -767,6 +767,7 @@ class Node(simianEngine.Entity):
             if s.sample() is not None:
                 nonce = self.next_sampler_nonce()
                 self.samplerPingTimer[i] = nonce
+                self.membership_msgs['SamplerPing'] += 1
                 self.reqService(lookahead, "SamplerPingMsg",
                                (self.node_idx, i, nonce), "Node", s.sample())
                 self.reqService(1.5, "SamplerPingTimer", (i, nonce))
@@ -775,6 +776,7 @@ class Node(simianEngine.Entity):
     def SamplerPingMsg(self, *args):
         sender, sampler_idx, nonce = args[0]
         if self.active:
+            self.membership_msgs['SamplerPong'] += 1
             self.reqService(lookahead, "SamplerPongMsg",
                            (self.node_idx, sampler_idx, nonce), "Node", sender)
 
@@ -784,7 +786,6 @@ class Node(simianEngine.Entity):
             del self.samplerPingTimer[sampler_idx]
 
     def SamplerPingTimer(self, *args):
-
         sampler_idx, nonce = args[0]
         if self.samplerPingTimer.get(sampler_idx) != nonce:
             return 
@@ -814,7 +815,8 @@ class Node(simianEngine.Entity):
                                         'hopsDone': self.receivedMsgs[m].hops,
                                         'gossip': self.report[m][0],
                                         'ihave': self.report[m][1],
-                                        'graft': self.report[m][2]
+                                        'graft': self.report[m][2],
+                                        'prune': self.report[m][3]
                                         })
 
             diss_degree = len(self.eagerPushPeers) + len(self.lazyPushPeers)
@@ -827,18 +829,14 @@ class Node(simianEngine.Entity):
                 self.trxMade,
                 self.node_idx,
                 list(self.V),
-                len(self.V) 
+                len(self.V),
+                dict(self.membership_msgs)
             )
-
-            #print("\n=== BLOCK DAG PER NODE ===")
-            #print(f"\nNode {self.node_idx}")
-            #self.blockchain.print_block_dag()
 
             self.reqService(lookahead, "SystemReport", msgToSend , "ReportNode", 0)
 
 
     def nodeFail(self, *args):
-        #self.out.write("FAIL NODE "+str(self.node_idx)+'\n')
         if self.active:
             self.active = False
         else:
@@ -846,8 +844,6 @@ class Node(simianEngine.Entity):
 
     def printViews(self, *args):
         res = ''
-        # for m in self.receivedMsgs.keys():
-        #     res += self.receivedMsgs[m].toString() + " "
         sampleStr = ''
         for i in range(len(self.S)):
             sampleStr += self.S[i].toString() + '-'
