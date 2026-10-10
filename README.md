@@ -1,3 +1,4 @@
-# EpidemicSimulationModels
-PlumTree protocols implementation on SimPy, Simulus and Simian.
-Implementations on Simian of HyParView + PlumTree and Brahms + PlumTree
+# EpidemicSimulationModels with Blockchain features
+Protocols implementation on Simian.
+Implementations on Simian of HyParView + PlumTree, Brahms + PlumTree and DIMPLE + PlumTree
+Baseline protocol of BitCoin Core for research purpose 
